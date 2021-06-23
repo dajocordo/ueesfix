@@ -132,16 +132,17 @@
         </style>
     </head>
     <body>
-
-        <!--|===| Barra de navegacion | menu | inicio |===|-->
+        <!------------ Barra de navegacion ------------>
         <div class="topnav" id="myTopnav">
-            <a href="home.php" class="active">Inicio</a>
-            <a href="notas.php">Notas</a>
-            <a href="perfil.php">Perfil</a>
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-              <i class="fa fa-bars"></i>
-            </a>
+          <a href="home.php" class="active">ueesfix</a>
+          <a href="#news">News</a>
+          <a href="#contact">Contact</a>
+          <a href="#about">About</a>
+          <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+          </a>
         </div>
+
         <script>
             function myFunction() {
               var x = document.getElementById("myTopnav");
@@ -152,7 +153,6 @@
               }
             }
         </script>
-        <!--|===| Barra de navegacion | menu | fin |===|-->
 
         <!------------ Container |inicio| ------------>
         <div class="container">
