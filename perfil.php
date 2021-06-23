@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Home</title>
+        <title>Perfil</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <!-- Bootstrap CSS -->
@@ -29,7 +29,7 @@
             align-items: center;
         }
   
-        .first {
+        .seeprofile {
             height: 4em;
             width: 25%;
             font-weight: bold;
@@ -38,7 +38,7 @@
             background-color: #F8BBD0;
         }
   
-        .second {
+        .editprofile {
             height: 4em;
             width: 25%;
             font-weight: bold;
@@ -47,7 +47,7 @@
             background-color: #FFF176;
         }
   
-        .third {
+        .knowteam {
             height: 4em;
             width: 25%;
             font-weight: bold;
@@ -57,6 +57,12 @@
         }
 
         #greeting{
+            margin-top: 1em;
+            margin-bottom: 1em;
+        }
+
+        #grito{
+            font-size: 5em;
             margin-top: 1em;
             margin-bottom: 1em;
         }
@@ -118,9 +124,9 @@
         }
           
         @media screen and (max-width: 600px) {
-            .first,
-            .second,
-            .third {
+            .seeprofile,
+            .editprofile,
+            .knowteam {
                 width: 70%;
                 height: 5em;
             }
@@ -132,15 +138,14 @@
         </style>
     </head>
     <body>
-
-        <!--|===| Barra de navegacion | menu | inicio |===|-->
+        <!--|   Barra de navegacion |menu |inicio |  |-->
         <div class="topnav" id="myTopnav">
-            <a href="home.php" class="active">Inicio</a>
-            <a href="notas.php">Notas</a>
-            <a href="perfil.php">Perfil</a>
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-              <i class="fa fa-bars"></i>
-            </a>
+          <a href="home.php">ueesfix</a>
+          <a href="notas.php">Notas</a>
+          <a href="perfil.php" class="active">Perfil</a>
+          <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+          </a>
         </div>
         <script>
             function myFunction() {
@@ -152,31 +157,31 @@
               }
             }
         </script>
-        <!--|===| Barra de navegacion | menu | fin |===|-->
+        <!--|   Barra de navegacion |menu |fin |  |-->
 
-        <!------------ Container |inicio| ------------>
+        <!--|   Container |inicio|   |-->
         <div class="container">
 
-            <!------------ Bienvenida ------------>
-            <h1 id="greeting">Bienvenido crack</h1>
+            <!--|   Perfil   |-->
+            <h1 id="greeting">Perfil</h1>
 
-            <!------------ Nuevo ------------>
-            <div class="first">
-                <p class="ppro">Nuevo</p>
+            <!--|   Ver perfil   |-->
+            <div class="seeprofile">
+                <p class="ppro">Ver perfil</p>
             </div>
 
-            <!------------ Pendiente ------------>
-            <div class="second">
-                <p class="ppro">Pendiente</p>
+            <!--|   Editar perfil   |-->
+            <div class="editprofile">
+                <p class="ppro">Editar perfil</p>
             </div>
 
-            <!------------ Completado ------------>
-            <div class="third">
-                <p class="ppro">Completado</p>
+            <!--|   Conocer equipo   |-->
+            <div class="knowteam">
+                <p class="ppro">Conocer equipo</p>
             </div>
 
         </div>
-        <!------------ Container |fin| ------------>
+        <!--|   Container |fin|   |-->
 
     </body>
 </html>
