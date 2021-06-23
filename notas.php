@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Home</title>
+        <title>Perfil</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <!-- Bootstrap CSS -->
@@ -57,6 +57,12 @@
         }
 
         #greeting{
+            margin-top: 1em;
+            margin-bottom: 1em;
+        }
+
+        #grito{
+            font-size: 5em;
             margin-top: 1em;
             margin-bottom: 1em;
         }
@@ -135,8 +141,8 @@
 
         <!--|===| Barra de navegacion | menu | inicio |===|-->
         <div class="topnav" id="myTopnav">
-            <a href="home.php" class="active">Inicio</a>
-            <a href="notas.php">Notas</a>
+            <a href="home.php">Inicio</a>
+            <a href="notas.php" class="active">Notas</a>
             <a href="perfil.php">Perfil</a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
               <i class="fa fa-bars"></i>
@@ -157,23 +163,9 @@
         <!------------ Container |inicio| ------------>
         <div class="container">
 
-            <!------------ Bienvenida ------------>
-            <h1 id="greeting">Bienvenido crack</h1>
+            <!--|      Notas      |-->
+            <h1 id="greeting">Notas</h1>
 
-            <!------------ Nuevo ------------>
-            <div class="first">
-                <p class="ppro">Nuevo</p>
-            </div>
-
-            <!------------ Pendiente ------------>
-            <div class="second">
-                <p class="ppro">Pendiente</p>
-            </div>
-
-            <!------------ Completado ------------>
-            <div class="third">
-                <p class="ppro">Completado</p>
-            </div>
 
         </div>
         <!------------ Container |fin| ------------>
