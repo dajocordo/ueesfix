@@ -132,17 +132,16 @@
         </style>
     </head>
     <body>
-        <!------------ Barra de navegacion ------------>
-        <div class="topnav" id="myTopnav">
-          <a href="home.php" class="active">ueesfix</a>
-          <a href="#news">News</a>
-          <a href="#contact">Contact</a>
-          <a href="#about">About</a>
-          <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-            <i class="fa fa-bars"></i>
-          </a>
-        </div>
 
+        <!--|===| Barra de navegacion | menu | inicio | ↓ |===|-->
+        <div class="topnav" id="myTopnav">
+            <a href="home.php" class="active">Inicio</a>
+            <a href="notas.php">Notas</a>
+            <a href="perfil.php">Perfil</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+              <i class="fa fa-bars"></i>
+            </a>
+        </div>
         <script>
             function myFunction() {
               var x = document.getElementById("myTopnav");
@@ -153,30 +152,26 @@
               }
             }
         </script>
+        <!--|===| Barra de navegacion | menu | fin | ↑ |===|-->
 
-        <!------------ Container |inicio| ------------>
+        <!--|===| Container | inicio | ↓ |===|-->
         <div class="container">
-
-            <!------------ Bienvenida ------------>
+            <!--|===| Bienvenida | ↓ |===|-->
             <h1 id="greeting">Bienvenido crack</h1>
-
-            <!------------ Nuevo ------------>
+            <!--|===| _Nuevo | ↓ |===|-->
             <div class="first">
                 <p class="ppro">Nuevo</p>
             </div>
-
-            <!------------ Pendiente ------------>
+            <!--|===| Pendiente | ↓ |===|-->
             <div class="second">
                 <p class="ppro">Pendiente</p>
             </div>
-
-            <!------------ Completado ------------>
+            <!--|===| Completado | ↓ |===|-->
             <div class="third">
                 <p class="ppro">Completado</p>
             </div>
-
         </div>
-        <!------------ Container |fin| ------------>
+        <!--|===| Container | fin | ↑ |===|-->
 
     </body>
 </html>
