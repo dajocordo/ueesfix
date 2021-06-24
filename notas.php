@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Home</title>
+        <title>Notas</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <!-- Bootstrap CSS -->
@@ -25,39 +25,6 @@
             text-align: center;
             justify-content: center;
             align-items: center;
-        }
-  
-        .first {
-            margin: 0.9em;
-            height: 4em;
-            width: 25%;
-            font-weight: bold;
-            font-size: 1.25em;
-            color: #22293D;
-            display: inline-block;
-            background-color: #F8BBD0;
-        }
-  
-        .second {
-            margin: 0.9em;
-            height: 4em;
-            width: 25%;
-            font-weight: bold;
-            font-size: 1.25em;
-            color: #22293D;
-            display: inline-block;
-            background-color: #FFF176;
-        }
-  
-        .third {
-            margin: 0.9em;
-            height: 4em;
-            width: 25%;
-            font-weight: bold;
-            font-size: 1.25em;
-            color: #22293D;
-            display: inline-block;
-            background-color: #81D4FA;
         }
 
         #greeting{
@@ -113,6 +80,10 @@
           display: none;
         }
 
+        .topnav .tophome {
+            margin-left: 0.7em;
+        }
+
         @media screen and (max-width: 600px) {
           .topnav a:not(:first-child) {display: none;}
           .topnav a.icon {
@@ -128,6 +99,7 @@
             right: 0;
             top: 0;
           }
+
           .topnav.responsive a {
             float: none;
             display: block;
@@ -147,16 +119,15 @@
             }
         }
         </style>
-
     </head>
     <body>
 
         <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
         <div class="topnav" id="myTopnav">
-            <a href="home.php" class="active">Inicio</a>
-            <a href="notas.php">Notas</a>
+            <a href="home.php" class="tophome">Inicio</a>
+            <a href="notas.php" class="active">Notas</a>
             <a href="perfil.php">Perfil</a>
-            <a href="#CerrarSesion" data-bs-toggle="modal" title="Salir">Salir</a>
+            <a href="#CerrarSesion" data-bs-toggle="modal" title="Salir" data-bs-target="#CerrarSesion">Salir</a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
               <i class="fa fa-bars"></i>
             </a>
@@ -175,22 +146,8 @@
 
         <!--|==========| Container | ↓ | inicio |==========|-->
         <div class="container">
-
-            <!--|==========| Bienvenida | ↓ |==========|-->
-            <h1 id="greeting">Bienvenido crack</h1>
-
-            <!--|==========| Nuevo | ↓ |==========|-->
-            <div class="first">
-                <p class="ppro">Nuevo</p>
-            </div>
-            <!--|==========| Pendiente | ↓ |==========|-->
-            <div class="second">
-                <p class="ppro">Pendiente</p>
-            </div>
-            <!--|==========| Completado | ↓ |==========|-->
-            <div class="third">
-                <p class="ppro">Completado</p>
-            </div>
+            <!--|==========| Notas | ↓ | titulo |==========|-->
+            <h1 id="greeting">Notas</h1>
         </div>
         <!--|==========| Container | fin | ↑ |==========|-->
 

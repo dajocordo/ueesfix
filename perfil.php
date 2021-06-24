@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Home</title>
+        <title>Perfil</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <!-- Bootstrap CSS -->
@@ -27,37 +27,34 @@
             align-items: center;
         }
   
-        .first {
+        .seeprofile {
             margin: 0.9em;
             height: 4em;
             width: 25%;
             font-weight: bold;
-            font-size: 1.25em;
             color: #22293D;
             display: inline-block;
-            background-color: #F8BBD0;
+            background-color: #ddd;
         }
   
-        .second {
+        .editprofile {
             margin: 0.9em;
             height: 4em;
             width: 25%;
             font-weight: bold;
-            font-size: 1.25em;
             color: #22293D;
             display: inline-block;
-            background-color: #FFF176;
+            background-color: #ddd;
         }
   
-        .third {
+        .knowteam {
             margin: 0.9em;
             height: 4em;
             width: 25%;
             font-weight: bold;
-            font-size: 1.25em;
             color: #22293D;
             display: inline-block;
-            background-color: #81D4FA;
+            background-color: #ddd;
         }
 
         #greeting{
@@ -113,6 +110,10 @@
           display: none;
         }
 
+        .topnav .tophome {
+            margin-left: 0.7em;
+        }
+
         @media screen and (max-width: 600px) {
           .topnav a:not(:first-child) {display: none;}
           .topnav a.icon {
@@ -136,9 +137,9 @@
         }
           
         @media screen and (max-width: 600px) {
-            .first,
-            .second,
-            .third {
+            .seeprofile,
+            .editprofile,
+            .knowteam {
                 width: 70%;
                 height: 5em;
             }
@@ -147,16 +148,15 @@
             }
         }
         </style>
-
     </head>
     <body>
 
         <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
         <div class="topnav" id="myTopnav">
-            <a href="home.php" class="active">Inicio</a>
+            <a href="home.php">Inicio</a>
             <a href="notas.php">Notas</a>
-            <a href="perfil.php">Perfil</a>
-            <a href="#CerrarSesion" data-bs-toggle="modal" title="Salir">Salir</a>
+            <a href="perfil.php" class="active">Perfil</a>
+            <a href="#CerrarSesion" data-bs-toggle="modal" title="Salir" data-bs-target="#CerrarSesion">Salir</a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
               <i class="fa fa-bars"></i>
             </a>
@@ -175,21 +175,20 @@
 
         <!--|==========| Container | ↓ | inicio |==========|-->
         <div class="container">
+            <!--|==========| Perfil | ↓ |==========|-->
+            <h1 id="greeting">Perfil</h1>
 
-            <!--|==========| Bienvenida | ↓ |==========|-->
-            <h1 id="greeting">Bienvenido crack</h1>
-
-            <!--|==========| Nuevo | ↓ |==========|-->
-            <div class="first">
-                <p class="ppro">Nuevo</p>
+            <!--|==========| Ver perfil | ↓ |==========|-->
+            <div class="seeprofile">
+                <p class="ppro">Ver perfil</p>
             </div>
-            <!--|==========| Pendiente | ↓ |==========|-->
-            <div class="second">
-                <p class="ppro">Pendiente</p>
+            <!--|==========| Editar perfil | ↓ |==========|-->
+            <div class="editprofile">
+                <p class="ppro">Editar perfil</p>
             </div>
-            <!--|==========| Completado | ↓ |==========|-->
-            <div class="third">
-                <p class="ppro">Completado</p>
+            <!--|==========| Conocer equipo | ↓ |==========|-->
+            <div class="knowteam">
+                <p class="ppro">Conocer equipo</p>
             </div>
         </div>
         <!--|==========| Container | fin | ↑ |==========|-->
