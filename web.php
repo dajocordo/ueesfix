@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,3 +38,17 @@ Route::get('/perfil.php', function(){
 Route::get('/notas.php', function(){
     return view('notas');
 });
+
+Route::get('/todo.php', function(){
+    return view('todo');
+});
+
+Route::get('/doing.php', function(){
+    return view('doing');
+});
+
+Route::get('/done.php', function(){
+    return view('done');
+});
+
+Route::get('/post', PostController::class)->name('index');
