@@ -22,7 +22,11 @@
       <i class="fa fa-bars"></i>
     </a>
   </div><!--|=========| Barra de navegacion | ← | fin |=========|-->
-
+  
+  @php
+    $ido = "Hola"; 
+    echo $ido;
+  @endphp
   <!--|==========| Container | ↓ | inicio |==========|-->
   <div class="container">
     <!--|==========| Boton | ir a izquierda |==========|-->
@@ -39,7 +43,6 @@
     <div class="third"> <p class="ppro">TKT # 4362: Mi Class Web no funciona...</p> </div>
   </div>
   <!--|==========| Container | fin | ↑ |==========|-->
-
   <!--|========| Modal - CerrarSesion |inicio| ↓ |========|-->
   <div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">

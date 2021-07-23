@@ -27,12 +27,12 @@
     <!--|==========| Bienvenida | ↓ |==========|-->
     <h1 id="greeting">Bienvenido crack</h1>
     <!--|==========| Nuevo | ↓ |==========|-->
-    <div class="first"> <p class="ppro"> <a href="todo.php" class="a1">Nuevo</a> </p> </div>
+    <div class="first"> <p class="ppro"> <a href="todo" class="a1">Nuevo</a> </p> </div>
     <!--|==========| Pendiente | ↓ |==========|-->
-    <div class="second"> <p class="ppro"> <a href="doing.php" class="a2">Pendiente</a> </p> </div>
+    <div class="second"> <p class="ppro"> <a href="doing" class="a2">Pendiente</a> </p> </div>
     <!--|==========| Completado | ↓ |==========|-->
-    <div class="third"> <p class="ppro"> <a href="done.php" class="a3">Completado</a> </p> </div>
-  </div><!--|==========| Container | fin | ← | ↑ |==========|-->
+    <div class="third"> <p class="ppro"> <a href="done" class="a3">Completado</a> </p> </div>
+  <!--|==========| Container | fin | ← | ↑ |==========|--></div>
 
   <!--|========| Modal - CerrarSesion |inicio| ↓ |========|-->
   <div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
