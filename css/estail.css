@@ -18,6 +18,11 @@ a.aarrooww:visited {color: white;}
 a.aarrooww:hover {color: yellow;}
 a.aarrooww {text-decoration: none;}
 
+a.optionsu:link {color: white;}
+a.optionsu:visited {color: white;}
+a.optionsu:hover {color: yellow;}
+a.optionsu {text-decoration: none;}
+
 body{
   background-color: #22293D;
   color: white;
@@ -194,6 +199,21 @@ body{
   background-color: #22293D;
   font-weight: bold;
   overflow: hidden;
+}
+
+.table-bordered{
+  color: white;
+  font-size: 1.35em;
+  margin-bottom: 3em;
+  border-color: #424967;
+  letter-spacing: 0.05em;
+}
+
+thead{
+  background-color: #424967;
+  border-color: #22293D;
+  color: white;
+  letter-spacing: 0.05em;
 }
 
 .topnav a {
