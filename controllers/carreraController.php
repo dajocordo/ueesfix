@@ -30,27 +30,24 @@ class carreraController extends Controller
         // return view('contact');
         // dd($request->all());
 
-        if (isset($_POST['btnEnviar'])) {
+        if (isset($_POST['btnEnviarCarrera'])) {
 
-            $Nombre = $_POST['txtNombre'];
-            $Apellido = $_POST['txtApellido'];
-            $Correo = $_POST['txtCorreo'];
-            $Contra = md5($_POST['txtPassword']);
+            $NombreCarrera = $_POST['txtNombreCarrera'];
             $Creado = date("Y-m-d H:i:s");
             $Actual = date("Y-m-d H:i:s");
 
-            DB::INSERT("INSERT INTO usuarios (unombre, uapellido, umail, upassword, created_at, updated_at) VALUES(?,?,?,?)",[$Nombre,$Apellido,$Correo,$Contra,$Creado,$Actual]);
+            DB::INSERT("INSERT INTO carrera (carrera_name, created_at, updated_at) VALUES(?,?,?)",[$NombreCarrera,$Creado,$Actual]);
 
             echo '<script language="javascript">';
             echo 'alert("Datos ingresados correctamente")';
             echo '</script>';
-            return view("/home");
+            return redirect('/c');
         
         } else {
             echo '<script language="javascript">';
             echo 'alert("Hubo un error, favor intentarlo de nuevo")';
             echo '</script>';
-            return view("/usuarionuevo");
+            return redirect('/carreranueva');
         }
     }
 
@@ -94,13 +91,14 @@ class carreraController extends Controller
     public function show($id)
     {
         // $id = $_REQUEST['id'];
-        $resul = DB::SELECT('SELECT * FROM usuario WHERE usuariocif = ?',[$id]);
+        $resul = DB::SELECT('SELECT * FROM carrera WHERE carreraid = ?',[$id]);
 
         foreach($resul as $quer){
-            $name = $quer->unombre;
-            $apellido = $quer->uapellido;
-            $correo = $quer->umail;
-            return view('usuarioinfo')->with('id',$id)->with('name',$name)->with('apellido',$apellido)->with('correo',$correo);
+            $id = $quer->carreraid;
+            $name = $quer->carrera_name;
+            $creado1 = $quer->created_at;
+            $actual1 = $quer->updated_at;
+            return view('carrerainfo')->with('id',$id)->with('name',$name)->with('creado1',$creado1)->with('actual1',$actual1);
         }
 
         // $tipous = DB::SELECT('SELECT * FROM usuario WHERE usuariocif = ?',[$id]);
@@ -121,14 +119,13 @@ class carreraController extends Controller
      */
     public function edit($id)
     {
-        $result = DB::SELECT('SELECT * FROM usuario WHERE usuariocif = ?',[$id]);
+        $result = DB::SELECT('SELECT * FROM carrera WHERE carreraid = ?',[$id]);
 
         foreach($result as $query){
-            $ii = $query->usuariocif;
-            $name = $query->unombre;
-            $apellido = $query->uapellido;
-            $correo = $query->umail;
-            return view('usuarioedita')->with('ii',$ii)->with('name',$name)->with('apellido',$apellido)->with('correo',$correo);
+            $ii = $query->carreraid;
+            $name = $query->carrera_name;
+
+            return view('carreraedita')->with('ii',$ii)->with('name',$name);
         }
     }
 
@@ -139,23 +136,22 @@ class carreraController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $ii)
     {
         // $io=$_POST['ii'];
         if (isset($_POST['btnActualizar'])) {
             $ii = $_REQUEST['ii'];
             $nuevoNombre = $_POST['txtEditNombre'];
-            $nuevoApellido = $_POST['txtEditApellido'];
-            $nuevoCorreo = $_POST['txtEditCorreo'];
+            $Actual = date("Y-m-d H:i:s");
 
-            $affected = DB::table('usuario')
-              ->where('usuariocif', $ii)
-              ->update(['unombre' => $nuevoNombre,'uapellido' => $nuevoApellido,'umail' => $nuevoCorreo]);
+            $affected = DB::table('carrera')
+              ->where('carreraid', $ii)
+              ->update(['carrera_name' => $nuevoNombre,'updated_at' => $Actual]);
 
             echo '<script language="javascript">';
             echo 'alert("EXITO: Los datos ya fueron actualizados")';
             echo '</script>';
-            return view('/usuarios');
+            return redirect('/carreras');
             // return redirect('/dale')->with('var');
 
             // DB::UPDATE('UPDATE USSERS SET unombre=?, upellido=?, umail=? WHERE id = ?',[$nuevoNombre],[$nuevoApellido],[$nuevoCorreo],[$ii]);
