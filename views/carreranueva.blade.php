@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-  <title>Nuevo Usuario</title>
+  <title>Nueva Carrera</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -25,40 +25,17 @@
 
   <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
     <!--|==========| Bienvenida | ↓ |==========|-->
-    <h1 id="greeting">Nuevo Usuario</h1>
+    <h1 id="greeting">Nueva Carrera</h1>
     <!--|==========| Formulario | ↓ | inicio |==========|-->
-    <form action="{{url('/u/create')}}" method="post">
+    <form action="{{url('/c/create')}}" method="post">
       @csrf
-      <label class="lblformuser">Nombre</label>
-      <input type="text" class="form-control form-control-lg" name="txtNombre" autocomplete="off" required>
-      <label class="lblformuser">Apellido</label>
-      <input type="text" class="form-control form-control-lg" name="txtApellido" autocomplete="off" required>
-      <label class="lblformuser">Correo</label>
-      <input type="mail" class="form-control form-control-lg" name="txtCorreo" autocomplete="off" required>
-      <label class="lblformuser">Contraseña</label>
-      <input type="password" class="form-control form-control-lg" name="txtPassword" autocomplete="off" required>
-      <select class="form-select" aria-label="Default select example">
-        <option selected>Open this select menu</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
-      <select class="form-select" aria-label="Default select example">
-        <option selected>Open this select menu</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
-      <select class="form-select" aria-label="Default select example">
-        <option selected>Open this select menu</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
+      <label class="lblformuser">Nombre de la Carrera</label>
+      <input type="text" class="form-control form-control-lg" name="txtNombreCarrera" autocomplete="off" required>
       <div class="d-grid gap-2">
-        <input type="submit" class="btn btn-primary btn-lg" name="btnEnviar" value="Enviar">
+        <input type="submit" class="btn btn-primary btn-lg" name="btnEnviarCarrera" value="Enviar">
       </div>
-    </form><!--|==========| Formulario | ↑ | fin |==========|-->
+    </form>
+    <!--|==========| Formulario | ↑ | fin |==========|-->
   <!--|==========| Container | fin | ← | ↑ |==========|--></div>
 
   <!--|========| Modal - CerrarSesion |inicio| ↓ |========|-->
@@ -79,4 +56,3 @@
   </div><!--|======| Modal - CerrarSesion |fin| ↑ |======|--> 
 </body>
 </html>
-

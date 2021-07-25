@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-  <title>Info Usuario</title>
+  <title>Informacion de Carrera</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -27,29 +27,30 @@
 
   <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
     <!--|==========| Bienvenida | ↓ |==========|-->
-    <h1 id="greeting">Info Usuario</h1>
-      @csrf
-      
-<!--  <label class="lblformuser" name="txtViewNombre">@php echo $id; @endphp</label><br>
-      <label class="lblformuser" name="txtViewNombre">@php echo $name; @endphp</label><br>
-      <label class="lblformuser" name="txtViewApellido">@php echo $apellido; @endphp</label><br>
-      <label class="lblformuser" name="txtViewCorreo">@php echo $correo; @endphp</label><br> -->
+    <h1 id="greeting">Informacion de Carrera</h1>
 
-      <!--|==========| Tabla Usuarios | ↓ | inicio |==========|-->
-      <table class="table table-bordered">
-        <thead>
-          <tr>ID</tr>
-          <tr>Nombre</tr>
-          <tr>Apellido</tr>
-          <tr>Correo</tr>
-        </thead>
-        <tbody><tr>@php echo $id; @endphp</tr>
-          <tr>@php echo $name; @endphp</tr>
-          <tr>@php echo $apellido; @endphp</tr>
-          <tr>@php echo $correo; @endphp</tr> 
-        </tbody>  
-      </table> <!--|==========| Tabla Usuarios | ↑ | fin |==========|-->
-      
+    <table class="table table-bordered"> 
+<tr> 
+</tr> <tr> 
+<thead>
+ <th>No. </th>
+    <td>@php echo $id; @endphp</td>
+</tr> 
+<tr> 
+ <th>Nombre Carrera</th>
+    <td>@php echo $name; @endphp </td>
+</tr>
+<tr> 
+ <th>Fecha Creación</th>
+ <td>@php echo $creado1; @endphp</td>
+</tr>
+<tr>
+<th>Ultima Modificación</th>
+ <td>@php echo $actual1; @endphp</td>
+
+</tr>
+</table>
+    
   <!--|==========| Container | fin | ← | ↑ |==========|--></div>
 
   <!--|========| Modal - CerrarSesion |inicio| ↓ |========|-->

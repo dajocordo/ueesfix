@@ -30,7 +30,7 @@
     <!--|==========| Nuevo | ↓ | titulo |==========|-->
     <div class="middle-pro"> <p>Carreras</p> </div>
     <!--|==========| Boton | ir a derecha |==========|-->
-    <div class="btn-right-pro"> <a href="/nuevousuario" title="Nuevo" class="aarrooww">+</a> </div>
+    <div class="btn-right-pro"> <a href="/carreranueva" title="Nuevo" class="aarrooww">+</a> </div>
     <!--|==========| Nuevo | ↓ |==========|-->
     
     <!--|==========| Tabla Usuarios | ↓ | inicio |==========|-->
@@ -38,7 +38,7 @@
       <thead>
         <th>No.</th>
         <th>Nombre</th>
-        
+        <th>Ultima Modificación</th>
         <th colspan="2">Opciones</th>
       </thead>
       @php
@@ -54,8 +54,8 @@
         <td>@php echo $fechaActual; @endphp</td>
         
        
-        <td><a class="optionsu" href="/u/@php echo $id; @endphp/edit">Editar</a></td>
-        <td><a class="optionsu" href="/u/@php echo $id; @endphp">Info</a></td> 
+        <td><a class="optionsu" href="/c/@php echo $id; @endphp/edit">Editar</a></td>
+        <td><a class="optionsu" href="/c/@php echo $id; @endphp">Info</a></td> 
       </tbody>  
      @php } @endphp  
     </table> <!--|==========| Tabla Usuarios | ↑ | fin |==========|-->

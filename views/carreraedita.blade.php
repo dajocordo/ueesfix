@@ -27,18 +27,14 @@
 
   <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
     <!--|==========| Bienvenida | ↓ |==========|-->
-    <h1 id="greeting">Editar Usuario</h1>
+    <h1 id="greeting">Editar Carrera</h1>
     
     <!--|==========| Formulario | ↓ | inicio |==========|-->
-    <form action="{{url('/u/update/')}}" method="post">
+    <form action="{{url('/c/update/')}}" method="post">
       @csrf
       <input type="hidden" class="form-control form-control-lg" name="ii" value="@php echo $ii; @endphp" autocomplete="off" required>
       <label class="lblformuser">Nombre</label>
       <input type="text" class="form-control form-control-lg" name="txtEditNombre" value="@php echo $name; @endphp" autocomplete="off" required>
-      <label class="lblformuser">Apellido</label>
-      <input type="text" class="form-control form-control-lg" name="txtEditApellido" value="@php echo $apellido; @endphp" autocomplete="off" required>
-      <label class="lblformuser">Correo</label>
-      <input type="mail" class="form-control form-control-lg" name="txtEditCorreo" value="@php echo $correo; @endphp" autocomplete="off" required>
       <div class="d-grid gap-2">
         <input type="submit" class="btn btn-primary btn-lg" name="btnActualizar" value="Actualizar">
       </div>
