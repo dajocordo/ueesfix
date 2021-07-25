@@ -27,24 +27,24 @@ class FacultadController extends Controller
      
     public function create()
     {
-        if (isset($_POST['btnEnviar'])) {
+        if (isset($_POST['btnEnviarFacultad'])) {
 
-            $Nombre = $_POST['txtNombre'];
+            $NombreFacultad = $_POST['txtNombreFacultad'];
             $Creado = date("Y-m-d H:i:s");
             $Actual = date("Y-m-d H:i:s");
 
-            DB::INSERT("INSERT INTO facultad (facultad_name, created_at, updated_at) VALUES(?,?,?,?)",[$Nombre,$Creado,$Actual]);
+            DB::INSERT("INSERT INTO facultad (facultad_name, created_at, updated_at) VALUES(?,?,?)",[$NombreFacultad,$Creado,$Actual]);
 
             echo '<script language="javascript">';
             echo 'alert("Datos ingresados correctamente")';
             echo '</script>';
-            return view("/facultad");
+            return redirect("/f");
         
         } else {
             echo '<script language="javascript">';
             echo 'alert("Hubo un error, favor intentarlo de nuevo")';
             echo '</script>';
-            return view("/facultadnuevo");
+            return redirect("/facultadnuevo");
         }
     }
 
@@ -71,9 +71,10 @@ class FacultadController extends Controller
 
         foreach($resul as $quer){
             $id = $quer->facultadid;
-            $name = $quer->facultad_name;
+            $name = $quer->facultad_name; 
         
-            return view('facultadinfo')->with('id',$id);
+            return view('facultadinfo')->with('id',$id)->with('name',$name);}
+
     }
 
     /*
@@ -83,17 +84,17 @@ class FacultadController extends Controller
      * @return \Illuminate\Http\Response
      */
      
-    // public function edit($id) 
-    // {
-    //     $resolt = DB::SELECT('SELECT * FROM facultad WHERE facultadid = ?',[$id]);
+    public function edit($id) 
+    {
+        $resolt = DB::SELECT('SELECT * FROM facultad WHERE facultadid = ?',[$id]);
 
-    //     foreach($resolt as $query){
-    //         $ii = $query->facultadid;
-    //         $name = $query->facultad_name;
+        foreach($resolt as $query){
+            $ii = $query->facultadid;
+            $name = $query->facultad_name;
             
-    //         return view('facultadedita')->with('ii',$ii)->with('name',$name);
-    //     }
-    // }
+            return view('facultadedita')->with('ii',$ii)->with('name',$name);
+        }
+    }
 
     /**
      * Update the specified resource in storage.
@@ -112,18 +113,18 @@ class FacultadController extends Controller
 
             $affected = DB::table('facultad')
               ->where('facultadid', $ii)
-              ->update(['facultad_name' => $nuevoNombre,'updated_at' => $Actual]);
+            ->update(['facultad_name' => $nuevoNombre,'updated_at' => $Actual]);
 
             echo '<script language="javascript">';
             echo 'alert("EXITO: Los datos ya fueron actualizados")';
             echo '</script>';
-            return view('/usuarios');
+            return redirect('/facultad');
 
               } else {
             echo '<script language="javascript">';
             echo 'alert("ERROR: favor intentarlo de nuevo")';
             echo '</script>';
-            return view('/usuarios');
+            return redirect('/facultad');
             // return redirect('/dale')->with('var');
 
         }
