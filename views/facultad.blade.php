@@ -37,9 +37,8 @@
     <table class="table table-bordered">
       <thead>
         <th>No.</th>
-        <th>ID</th>
         <th>Nombre</th>
-
+        <th>Ultima Modificacion</th>
         <th colspan="2">Opciones</th>
       </thead>
       @php
@@ -47,13 +46,13 @@
       foreach ($facultad1 as $facul) {
         $id = $facul->facultadid;
         $nombref = $facul->facultad_name;
-      
+       $actualf = $facul->updated_at;
       @endphp
       <tbody><td>@php echo $num++; @endphp</td>
         <td>@php echo $nombref; @endphp</td>
-   
-        <td><a class="optionsu" href="/u/@php echo $id; @endphp/edit">Editar</a></td>
-        <td><a class="optionsu" href="/u/@php echo $id; @endphp">Info</a></td> 
+           <td>@php echo $actualf; @endphp</td>
+        <td><a class="optionsu" href="/f/@php echo $id; @endphp/edit">Editar</a></td>
+        <td><a class="optionsu" href="/f/@php echo $id; @endphp">Info</a></td> 
       </tbody>  
      @php } @endphp  
     </table> <!--|==========| Tabla Usuarios | ↑ | fin |==========|-->
