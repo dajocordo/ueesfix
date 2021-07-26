@@ -14,17 +14,15 @@ class FacultadController extends Controller
      */
     public function index()
     {
-         $facultad1 = DB::table('facultad')->get();
+        $facultad1 = DB::table('facultad')->get();
         return view('facultad')->with('facultad1',$facultad1);
-
     }
 
-    /*
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-     
     public function create()
     {
         if (isset($_POST['btnEnviarFacultad'])) {
@@ -67,31 +65,28 @@ class FacultadController extends Controller
      */
     public function show($id)
     {
-          $resul = DB::SELECT('SELECT * FROM facultad WHERE facultadid = ?',[$id]);
+        $resul = DB::SELECT('SELECT * FROM facultad WHERE facultadid = ?',[$id]);
 
         foreach($resul as $quer){
             $id = $quer->facultadid;
             $name = $quer->facultad_name; 
-        
-            return view('facultadinfo')->with('id',$id)->with('name',$name);}
-
+            return view('facultadinfo')->with('id',$id)->with('name',$name);
+        }
     }
 
-    /*
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-     
-    public function edit($id) 
+    public function edit($id)
     {
         $resolt = DB::SELECT('SELECT * FROM facultad WHERE facultadid = ?',[$id]);
 
         foreach($resolt as $query){
             $ii = $query->facultadid;
-            $name = $query->facultad_name;
-            
+            $name = $query->facultad_name;    
             return view('facultadedita')->with('ii',$ii)->with('name',$name);
         }
     }
@@ -103,13 +98,13 @@ class FacultadController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $ii)
+    public function update(Request $id)
     {
-          if (isset($_POST['btnActualizar'])) {
+        if (isset($_POST['btnActualizar'])) {
+
             $ii = $_REQUEST['ii'];
             $nuevoNombre = $_POST['txtEditNombre'];
             $Actual = date("Y-m-d H:i:s");
-           
 
             $affected = DB::table('facultad')
               ->where('facultadid', $ii)
@@ -120,15 +115,12 @@ class FacultadController extends Controller
             echo '</script>';
             return redirect('/facultad');
 
-              } else {
+        } else {
             echo '<script language="javascript">';
             echo 'alert("ERROR: favor intentarlo de nuevo")';
             echo '</script>';
             return redirect('/facultad');
-            // return redirect('/dale')->with('var');
-
         }
-
     }
 
     /**
@@ -141,6 +133,4 @@ class FacultadController extends Controller
     {
         //
     }
-
-
 }
