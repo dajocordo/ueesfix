@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class SoportetipoController extends Controller
+class PrioridadController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class SoportetipoController extends Controller
      */
     public function index()
     {
-        $sopotipo = DB::table('soportetipo')->get();
-        return view('soportetipos')->with('sopotipo',$sopotipo);
+        $priori = DB::table('prioridad')->get();
+        return view('prioridad')->with('priori',$priori);
     }
 
     /**
@@ -25,24 +25,24 @@ class SoportetipoController extends Controller
      */
     public function create()
     {
-        if (isset($_POST['btnEnviarSoporteTipo'])) {
+        if (isset($_POST['btnEnviarPriori'])) {
 
-            $SoporteTipoNombre = $_POST['txtSoporteTipoNombre'];
+            $PrioridaNombre = $_POST['txtNombrePrioridad'];
             $Creado = date("Y-m-d H:i:s");
             $Actual = date("Y-m-d H:i:s");
 
-            DB::INSERT("INSERT INTO soportetipo (soportetipo_name, created_at, updated_at) VALUES(?,?,?)",[$SoporteTipoNombre, $Creado, $Actual]);
+            DB::INSERT("INSERT INTO prioridad (prioridad_name, created_at, updated_at) VALUES(?,?,?)",[$PrioridaNombre, $Creado, $Actual]);
 
             echo '<script language="javascript">';
-            echo 'alert("El Soporte Tipo, ha sido creado con éxito")';
+            echo 'alert("La Prioridad, ha sido creada con éxito")';
             echo '</script>';
-            return view("/soportetipos");
+            return view("/prioridad");
         
         } else {
             echo '<script language="javascript">';
             echo 'alert("Hubo un error, favor intentarlo de nuevo")';
             echo '</script>';
-            return view("/soportetiponuevo");
+            return view("/prioridadnueva");
         }
     }
 
@@ -86,28 +86,9 @@ class SoportetipoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $ii)
+    public function update(Request $request, $id)
     {
-        if (isset($_POST['btnActualizarSopoTipo'])) {
-            $ii = $_REQUEST['ii'];
-            $nuevoNombreSoporteTipo = $_POST['txtEditNombreSoporteTipo'];
-            $Actualizado = date("Y-m-d H:i:s");
-
-            $affected = DB::table('soportetipo')
-              ->where('soportetipoid', $ii)
-              ->update(['soportetipo_name' => $nuevoNombreSoporteTipo,'updated_at' => $Actualizado]);
-
-            echo '<script language="javascript">';
-            echo 'alert("EXITO: Los datos ya fueron actualizados")';
-            echo '</script>';
-            return view('/usuarios');
-            
-        } else {
-            echo '<script language="javascript">';
-            echo 'alert("ERROR: favor intentarlo de nuevo")';
-            echo '</script>';
-            return view('/usuarios');
-        }
+        //
     }
 
     /**

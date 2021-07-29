@@ -65,12 +65,12 @@ class FacultadController extends Controller
      */
     public function show($id)
     {
-        $resul = DB::SELECT('SELECT * FROM facultad WHERE facultadid = ?',[$id]);
+        $facultadShow = DB::SELECT('SELECT * FROM facultad WHERE facultadid = ?',[$id]);
 
-        foreach($resul as $quer){
-            $id = $quer->facultadid;
-            $name = $quer->facultad_name; 
-            return view('facultadinfo')->with('id',$id)->with('name',$name);
+        foreach($facultadShow as $facultadQueri){
+            $id = $facultadQueri->facultadid;
+            $name = $facultadQueri->facultad_name; 
+            return view('/facultadinfo')->with('id',$id)->with('name',$name);
         }
     }
 
@@ -82,12 +82,12 @@ class FacultadController extends Controller
      */
     public function edit($id)
     {
-        $resolt = DB::SELECT('SELECT * FROM facultad WHERE facultadid = ?',[$id]);
+        $facultadEdit = DB::SELECT('SELECT * FROM facultad WHERE facultadid = ?',[$id]);
 
-        foreach($resolt as $query){
-            $ii = $query->facultadid;
-            $name = $query->facultad_name;    
-            return view('facultadedita')->with('ii',$ii)->with('name',$name);
+        foreach($resolt as $facultadQuery){
+            $ii = $facultadQuery->facultadid;
+            $name = $facultadQuery->facultad_name;    
+            return view('/facultadedita')->with('ii',$ii)->with('name',$name);
         }
     }
 
@@ -98,7 +98,7 @@ class FacultadController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $id)
+    public function update(Request $ii)
     {
         if (isset($_POST['btnActualizar'])) {
 
