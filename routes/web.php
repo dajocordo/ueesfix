@@ -52,10 +52,10 @@ Route::get('/prioridadnueva', function() {return view('prioridadnueva');});
 Route::get('/prioridadedita', function() {return view('prioridadedita');});
 Route::resource('/p', PrioridadController::class);
 Route::get('/p', [PrioridadController::class, 'index']);
-Route::get('p/{id}', [FacultadController::class, 'show']);
-Route::get('p/{id}/edit', [FacultadController::class, 'edit']);
+Route::get('p/{id}', [PrioridadController::class, 'show']);
+Route::get('p/{id}/edit', [PrioridadController::class, 'edit']);
 Route::post('/p/create', [PrioridadController::class, 'create']);
-Route::post('/p/update', [FacultadController::class, 'update']);
+Route::post('/p/update', [PrioridadController::class, 'update']);
 
 
 //  ROLES
