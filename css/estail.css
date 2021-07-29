@@ -82,6 +82,21 @@ body{
   align-items: center;
   justify-content: center;
   text-align: center;
+  margin-bottom: 3em;
+}
+
+.col{
+  background-color: #F8BBD0;
+  color: #22293D;
+  height: 4em;
+  width: 50%;
+  font-size: 1.25em;
+  font-weight: bold;
+  margin: 0.3em;
+}
+
+.btndelete{
+  color: #FF9EA4;
 }
 
 .editprofile {
@@ -96,7 +111,6 @@ body{
 }
 
 .first {
-  /*background-color: rgba(255, 180, 95, 0.85);*/
   background-color: #F8BBD0;
   color: #22293D;
   display: inline-block;
