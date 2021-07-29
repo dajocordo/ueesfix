@@ -27,7 +27,7 @@
     <!--|==========| Bienvenida | ↓ |==========|-->
     <h1 id="greeting">Nuevo Usuario</h1>
     <!--|==========| Formulario | ↓ | inicio |==========|-->
-    <form action="{{url('/u/create')}}" method="post">
+    <form action="{{url('/u/create')}}" name="frmUsuarioCreate" method="post">
       @csrf
       <label class="lblformuser">Nombre</label>
       <input type="text" class="form-control form-control-lg" name="txtNombre" autocomplete="off" required>
@@ -37,26 +37,40 @@
       <input type="mail" class="form-control form-control-lg" name="txtCorreo" autocomplete="off" required>
       <label class="lblformuser">Contraseña</label>
       <input type="password" class="form-control form-control-lg" name="txtPassword" autocomplete="off" required>
-      <select class="form-select" aria-label="Default select example">
-        <option selected>Open this select menu</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
-      <select class="form-select" aria-label="Default select example">
-        <option selected>Open this select menu</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
-      <select class="form-select" aria-label="Default select example">
-        <option selected>Open this select menu</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
+      <!--|==========| Select Tipo | ↓ | inicio |==========|-->
+      <label class="lblformuser">Tipo</label>
+      <select name="selTipoUsuario" class="form-control form-control-lg" aria-label="Default select example">
+      @php foreach ($usertypee as $selsoptipo) {
+             $tipoid = $selsoptipo->usuariotipoid;
+            $tiponame = $selsoptipo->usuariotipo_name;
+      @endphp
+        <option value="@php echo $tipoid; @endphp">@php echo $tiponame; @endphp</option>
+      @php } @endphp
+      </select><!--|==========| Select Tipo | ↑ | fin |==========|-->
+      
+      <!--|==========| Select Facultad | ↓ | inicio |==========|-->
+      <label class="lblformuser">Facultad</label>
+      <select name="selFacultad" class="form-control form-control-lg" aria-label="Default select example">
+      @php  foreach ($facultaad as $facul) {
+              $facuid = $facul->facultadid;
+              $facuname = $facul->facultad_name;
+      @endphp
+        <option value="@php echo $facuid; @endphp">@php echo $facuname; @endphp</option>
+      @php } @endphp
+      </select><!--|==========| Select Tipo | ↑ | fin |==========|-->
+      
+      <!--|==========| Select Carrera | ↓ | inicio |==========|-->
+      <label class="lblformuser">Carrera</label>
+      <select name="selCarrera" class="form-control form-control-lg" aria-label="Default select example">
+      @php foreach ($carreraa as $carrer) {
+            $carreid = $carrer->carreraid;
+            $carrename = $carrer->carrera_name;
+      @endphp
+        <option value="@php echo $carreid; @endphp">@php echo $carrename; @endphp</option>
+      @php } @endphp
+      </select><!--|==========| Select Tipo | ↑ | fin |==========|-->
       <div class="d-grid gap-2">
-        <input type="submit" class="btn btn-primary btn-lg" name="btnEnviar" value="Enviar">
+        <input type="submit" class="btn btn-primary btn-lg" name="btnCrearUsuario" value="Enviar">
       </div>
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
   <!--|==========| Container | fin | ← | ↑ |==========|--></div>

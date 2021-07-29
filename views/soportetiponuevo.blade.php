@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-  <title>Nueva SoporteTipo</title>
+  <title>Nuevo Soporte Tipo</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -25,17 +25,16 @@
 
   <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
     <!--|==========| Bienvenida | ↓ |==========|-->
-    <h1 id="greeting">Nuevo Tipo de Soporte</h1>
+    <h1 id="greeting">Nuevo Soporte Tipo</h1>
     <!--|==========| Formulario | ↓ | inicio |==========|-->
-    <form action="{{url('/st/create')}}" method="post">
+    <form action="{{url('/st/create')}}" name="frmSoporteTipoCreate" method="post">
       @csrf
-      <label class="lblformuser">Nombre del Soporte</label>
-      <input type="text" class="form-control form-control-lg" name="txtNombreSoporte" autocomplete="off" required>
+      <label class="lblformuser">Nombre de soporte tipo</label>
+      <input type="text" class="form-control form-control-lg" name="txtSoporteTipoNombre" autocomplete="off" required>
       <div class="d-grid gap-2">
-        <input type="submit" class="btn btn-primary btn-lg" name="btnEnviarSoporte" value="Enviar">
+        <input type="submit" class="btn btn-primary btn-lg" name="btnEnviarSoporteTipo" value="Enviar">
       </div>
-    </form>
-    <!--|==========| Formulario | ↑ | fin |==========|-->
+    </form><!--|==========| Formulario | ↑ | fin |==========|-->
   <!--|==========| Container | fin | ← | ↑ |==========|--></div>
 
   <!--|========| Modal - CerrarSesion |inicio| ↓ |========|-->

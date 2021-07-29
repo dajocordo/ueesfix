@@ -30,8 +30,7 @@
     <!--|==========| Nuevo | ↓ | titulo |==========|-->
     <div class="middle-pro"> <p>Usuarios</p> </div>
     <!--|==========| Boton | ir a derecha |==========|-->
-    <div class="btn-right-pro"> <a href="/nuevousuario" title="Nuevo" class="aarrooww">+</a> </div>
-    <!--|==========| Nuevo | ↓ |==========|-->
+    <div class="btn-right-pro"> <a href="{{ url('/usuarionuevo' )}}" title="Nuevo" class="aarrooww">+</a> </div>
     
     <!--|==========| Tabla Usuarios | ↓ | inicio |==========|-->
     <table class="table table-bordered">
@@ -45,9 +44,9 @@
       @php
       $num=1;
       foreach ($users as $user) {
-        $id = $user->id;
+        $id = $user->usuariocif;
         $nombreu = $user->unombre;
-        $apellidou = $user->upellido;
+        $apellidou = $user->uapellido;
         $correou = $user->umail;
       @endphp
       <tbody><td>@php echo $num++; @endphp</td>

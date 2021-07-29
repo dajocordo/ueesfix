@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-  <title>Nueva Facultad</title>
+  <title>Nuevo Usuario</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -25,15 +25,52 @@
 
   <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
     <!--|==========| Bienvenida | ↓ |==========|-->
-    <h1 id="greeting">Nueva Facultad</h1>
+    <h1 id="greeting">Nuevo Usuario</h1>
     <!--|==========| Formulario | ↓ | inicio |==========|-->
-    <form action="{{url('/f/create')}}" method="post">
+    <form action="{{url('/u/create')}}" name="frmUsuarioCreate" method="post">
       @csrf
       <label class="lblformuser">Nombre</label>
-      <input type="text" class="form-control form-control-lg" name="txtNombreFacultad" autocomplete="off" required>
+      <input type="text" class="form-control form-control-lg" name="txtNombre" autocomplete="off" required>
+      <label class="lblformuser">Apellido</label>
+      <input type="text" class="form-control form-control-lg" name="txtApellido" autocomplete="off" required>
+      <label class="lblformuser">Correo</label>
+      <input type="mail" class="form-control form-control-lg" name="txtCorreo" autocomplete="off" required>
+      <label class="lblformuser">Contraseña</label>
+      <input type="password" class="form-control form-control-lg" name="txtPassword" autocomplete="off" required>
+      <!--|==========| Select Tipo | ↓ | inicio |==========|-->
+      <label class="lblformuser">Tipo</label>
+      <select name="selTipoUsuario" class="form-control form-control-lg" aria-label="Default select example">
+      @php foreach ($usertypee as $selsoptipo) {
+             $tipoid = $soptipo->usuariotipoid;
+            $tiponame = $soptipo->usuariotipo_name;
+      @endphp
+        <option value="@php echo $tipoid; @endphp">@php echo $tiponame; @endphp</option>
+      @php } @endphp
+      </select><!--|==========| Select Tipo | ↑ | fin |==========|-->
       
+      <!--|==========| Select Facultad | ↓ | inicio |==========|-->
+      <label class="lblformuser">Facultad</label>
+      <select name="selFacultad" class="form-control form-control-lg" aria-label="Default select example">
+      @php  foreach ($facultaad as $facul) {
+              $facuid = $facul->facultadid;
+              $facuname = $facul->facultad_name;
+      @endphp
+        <option value="@php echo $facuid; @endphp">@php echo $facuname; @endphp</option>
+      @php } @endphp
+      </select><!--|==========| Select Tipo | ↑ | fin |==========|-->
+      
+      <!--|==========| Select Carrera | ↓ | inicio |==========|-->
+      <label class="lblformuser">Carrera</label>
+      <select name="selCarrera" class="form-control form-control-lg" aria-label="Default select example">
+      @php foreach ($carreraa as $carrer) {
+            $carreid = $carrer->carreraid;
+            $carrename = $carrer->carrera_name;
+      @endphp
+        <option value="@php echo $carreid; @endphp">@php echo $carrename; @endphp</option>
+      @php } @endphp
+      </select><!--|==========| Select Tipo | ↑ | fin |==========|-->
       <div class="d-grid gap-2">
-        <input type="submit" class="btn btn-primary btn-lg" name="btnEnviarFacultad" value="Enviar">
+        <input type="submit" class="btn btn-primary btn-lg" name="btnCrearUsuario" value="Enviar">
       </div>
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
   <!--|==========| Container | fin | ← | ↑ |==========|--></div>
@@ -47,7 +84,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
           <div class="modal-body"> ¿Desea salir de la plataforma? </div>
-        <!-- <div class="modal-footer"> -->
+        <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
           <a href="welcome" type="button" class="btn btn-primary">Si</a>
         </div>

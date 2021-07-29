@@ -23,8 +23,6 @@
     </a>
   </div> <!--|==========| Barra de navegacion | ↑ | fin |==========|-->
 
-  <!-- {{ $id=3 }} -->
-
   <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
     <!--|==========| Bienvenida | ↓ |==========|-->
     <h1 id="greeting">Editar Carrera</h1>

@@ -23,16 +23,12 @@
     </a>
   </div> <!--|==========| Barra de navegacion | ↑ | fin |==========|-->
 
-  <!-- {{ $id=3 }} -->
-
   <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
     <!--|==========| Bienvenida | ↓ |==========|-->
     <h1 id="greeting">Informacion de Facultad</h1>
-    
-    <label > @php echo $id; @endphp </label>
-    <label > @php echo $name; @endphp </label>
 
-
+    <label> @php echo $id; @endphp </label>
+    <label> @php echo $name; @endphp </label>
   <!--|==========| Container | fin | ← | ↑ |==========|--></div>
 
   <!--|========| Modal - CerrarSesion |inicio| ↓ |========|-->

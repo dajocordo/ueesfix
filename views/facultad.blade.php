@@ -46,7 +46,7 @@
       foreach ($facultad1 as $facul) {
         $id = $facul->facultadid;
         $nombref = $facul->facultad_name;
-       $actualf = $facul->updated_at;
+        $actualf = $facul->updated_at;
       @endphp
       <tbody><td>@php echo $num++; @endphp</td>
         <td>@php echo $nombref; @endphp</td>

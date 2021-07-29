@@ -23,34 +23,28 @@
     </a>
   </div> <!--|==========| Barra de navegacion | ↑ | fin |==========|-->
 
-  <!-- {{ $id=3 }} -->
-
   <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
     <!--|==========| Bienvenida | ↓ |==========|-->
     <h1 id="greeting">Informacion de Carrera</h1>
 
-    <table class="table table-bordered"> 
-<tr> 
-</tr> <tr> 
-<thead>
- <th>No. </th>
-    <td>@php echo $id; @endphp</td>
-</tr> 
-<tr> 
- <th>Nombre Carrera</th>
-    <td>@php echo $name; @endphp </td>
-</tr>
-<tr> 
- <th>Fecha Creación</th>
- <td>@php echo $creado1; @endphp</td>
-</tr>
-<tr>
-<th>Ultima Modificación</th>
- <td>@php echo $actual1; @endphp</td>
-
-</tr>
-</table>
-    
+    <table class="table table-bordered">  
+    <tr>
+      <th class="table-primary">No. </th>
+      <td>@php echo $id; @endphp</td>
+    </tr> 
+    <tr> 
+      <th class="table-primary">Nombre Carrera</th>
+      <td>@php echo $name; @endphp </td>
+    </tr>
+    <tr> 
+      <th class="table-primary">Fecha Creación</th>
+      <td>@php echo $creado1; @endphp</td>
+    </tr>
+    <tr>
+      <th class="table-primary">Ultima Modificación</th>
+      <td>@php echo $actual1; @endphp</td>
+    </tr>
+    </table>
   <!--|==========| Container | fin | ← | ↑ |==========|--></div>
 
   <!--|========| Modal - CerrarSesion |inicio| ↓ |========|-->

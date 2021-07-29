@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-  <title>Nueva Facultad</title>
+  <title>Info Usuario</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -23,19 +23,28 @@
     </a>
   </div> <!--|==========| Barra de navegacion | ↑ | fin |==========|-->
 
-  <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
+    <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
     <!--|==========| Bienvenida | ↓ |==========|-->
-    <h1 id="greeting">Nueva Facultad</h1>
-    <!--|==========| Formulario | ↓ | inicio |==========|-->
-    <form action="{{url('/f/create')}}" method="post">
-      @csrf
-      <label class="lblformuser">Nombre</label>
-      <input type="text" class="form-control form-control-lg" name="txtNombreFacultad" autocomplete="off" required>
-      
-      <div class="d-grid gap-2">
-        <input type="submit" class="btn btn-primary btn-lg" name="btnEnviarFacultad" value="Enviar">
-      </div>
-    </form><!--|==========| Formulario | ↑ | fin |==========|-->
+    <h1 id="greeting">Informacion de Carrera</h1>
+
+    <table class="table table-bordered">  
+    <tr>
+      <th class="table-primary">No. </th>
+      <td>@php echo $id; @endphp</td>
+    </tr> 
+    <tr> 
+      <th class="table-primary">Nombre</th>
+      <td>@php echo $name; @endphp </td>
+    </tr>
+    <tr> 
+      <th class="table-primary">Apellidon</th>
+      <td>@php echo $apellido; @endphp</td>
+    </tr>
+    <tr>
+      <th class="table-primary">Correo</th>
+      <td>@php echo $correo; @endphp</td>
+    </tr>
+    </table>
   <!--|==========| Container | fin | ← | ↑ |==========|--></div>
 
   <!--|========| Modal - CerrarSesion |inicio| ↓ |========|-->
@@ -47,7 +56,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
           <div class="modal-body"> ¿Desea salir de la plataforma? </div>
-        <!-- <div class="modal-footer"> -->
+        <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
           <a href="welcome" type="button" class="btn btn-primary">Si</a>
         </div>

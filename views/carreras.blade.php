@@ -47,13 +47,10 @@
         $id = $rac->carreraid;
         $nombrec = $rac->carrera_name;
         $fechaActual = $rac->updated_at;
-
       @endphp
       <tbody><td>@php echo $num++; @endphp</td>
         <td>@php echo $nombrec; @endphp</td>
         <td>@php echo $fechaActual; @endphp</td>
-        
-       
         <td><a class="optionsu" href="/c/@php echo $id; @endphp/edit">Editar</a></td>
         <td><a class="optionsu" href="/c/@php echo $id; @endphp">Info</a></td> 
       </tbody>  

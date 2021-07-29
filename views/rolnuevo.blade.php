@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-  <title>Nueva Facultad</title>
+  <title>Nuevo Rol</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -25,15 +25,15 @@
 
   <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
     <!--|==========| Bienvenida | ↓ |==========|-->
-    <h1 id="greeting">Nueva Facultad</h1>
+    <h1 id="greeting">Nuevo Rol</h1>
     <!--|==========| Formulario | ↓ | inicio |==========|-->
-    <form action="{{url('/f/create')}}" method="post">
+    <form action="{{ url('/r/create') }}" method="post">
       @csrf
       <label class="lblformuser">Nombre</label>
-      <input type="text" class="form-control form-control-lg" name="txtNombreFacultad" autocomplete="off" required>
+      <input type="text" class="form-control form-control-lg" name="txtNombreRol" autocomplete="off" required>
       
       <div class="d-grid gap-2">
-        <input type="submit" class="btn btn-primary btn-lg" name="btnEnviarFacultad" value="Enviar">
+        <input type="submit" class="btn btn-primary btn-lg" name="btnEnviarRol" value="Enviar">
       </div>
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
   <!--|==========| Container | fin | ← | ↑ |==========|--></div>
