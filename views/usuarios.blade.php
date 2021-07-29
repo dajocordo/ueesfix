@@ -39,7 +39,7 @@
         <th>Nombre</th>
         <th>Apellido</th>
         <th>Correo</th>
-        <th colspan="2">Opciones</th>
+        <th colspan="3">Opciones</th>
       </thead>
       @php
       $num=1;
@@ -53,8 +53,9 @@
         <td>@php echo $nombreu; @endphp</td>
         <td>@php echo $apellidou; @endphp</td>
         <td>@php echo $correou; @endphp</td> 
-        <td><a class="optionsu" href="/u/@php echo $id; @endphp/edit">Editar</a></td>
-        <td><a class="optionsu" href="/u/@php echo $id; @endphp">Info</a></td> 
+        <td><a class="optionsu" href="/u/@php echo $id; @endphp/edit"><img src="img/edit.png"></a></td>
+        <td><a class="optionsu" href="/u/@php echo $id; @endphp"><img src="img/info.png"></a></td> 
+        <td><a class="optionsu" href="/u/delete"><p class="btndelete">X</p></a></td> 
       </tbody>  
      @php } @endphp  
     </table> <!--|==========| Tabla Usuarios | ↑ | fin |==========|-->
