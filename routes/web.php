@@ -35,6 +35,29 @@ Route::post('/c/update', [CarreraController::class, 'update']);
 Route::get('/carreras', function () {return redirect('/c');});
 
 
+//  CHATBOT
+Route::get('/chatbotnuevo', function() {return view('chatbotnuevo');});
+Route::get('/chatbot', [ChatbotController::class, 'index']);
+Route::get('/chatbotedit', function() {return view('chatbotedit');});
+Route::resource('/ch', ChatbotController::class);
+Route::get('/ch', [ChatbotController::class, 'index']);
+Route::get('/ch/{id}', [ChatbotController::class, 'show']);
+Route::get('ch/{id}/edit', [ChatbotController::class, 'edit']);
+Route::post('/ch/create', [ChatbotController::class, 'create']);
+Route::post('/ch/update', [ChatbotController::class, 'update']);
+
+
+//  ESTADO
+Route::get('/estadonuevo', function() {return view('estadonuevo');});
+Route::get('/estadoedit', function() {return view('estadoedit');});
+Route::resource('/e', FacultadController::class);
+Route::get('/e', [FacultadController::class, 'index']);
+Route::get('e/{id}', [FacultadController::class, 'show']);
+Route::get('e/{id}/edit', [FacultadController::class, 'edit']);
+Route::post('/e/create', [FacultadController::class, 'create']);
+Route::post('/e/update', [FacultadController::class, 'update']);
+
+
 //  FACULTAD
 Route::get('/facultad', [FacultadController::class, 'index']);
 Route::get('/facultadnuevo', function() {return view('facultadnuevo');});
@@ -45,6 +68,54 @@ Route::get('f/{id}', [FacultadController::class, 'show']);
 Route::get('f/{id}/edit', [FacultadController::class, 'edit']);
 Route::post('/f/create', [FacultadController::class, 'create']);
 Route::post('/f/update', [FacultadController::class, 'update']);
+
+
+//  GESTION
+Route::get('/gestionnuevo', function() {return view('gestionnuevo');});
+Route::get('/gestion', [GestionController::class, 'index']);
+Route::get('/gestionedit', function() {return view('gestionedit');});
+Route::resource('/g', GestionController::class);
+Route::get('/g', [GestionController::class, 'index']);
+Route::get('/g/{id}', [GestionController::class, 'show']);
+Route::get('g/{id}/edit', [GestionController::class, 'edit']);
+Route::post('/g/create', [GestionController::class, 'create']);
+Route::post('/g/update', [GestionController::class, 'update']);
+
+
+//  GESTION TIPO
+Route::get('/gestiontiponuevo', function() {return view('gestiontiponuevo');});
+Route::get('/gestiontipo', [GestionTipoController::class, 'index']);
+Route::get('/gestiontipoedit', function() {return view('gestiontipoedit');});
+Route::resource('/gt', GestionTipoController::class);
+Route::get('/gt', [GestionTipoController::class, 'index']);
+Route::get('/gt/{id}', [GestionTipoController::class, 'show']);
+Route::get('gt/{id}/edit', [GestionTipoController::class, 'edit']);
+Route::post('/gt/create', [GestionTipoController::class, 'create']);
+Route::post('/gt/update', [GestionTipoController::class, 'update']);
+
+
+//  HISTORIAL
+Route::get('/historialnuevo', function() {return view('historialnuevo');});
+Route::get('/historial', [HistorialController::class, 'index']);
+Route::get('/historialedit', function() {return view('historialedit');});
+Route::resource('/h', HistorialController::class);
+Route::get('/h', [HistorialController::class, 'index']);
+Route::get('/h/{id}', [HistorialController::class, 'show']);
+Route::get('h/{id}/edit', [HistorialController::class, 'edit']);
+Route::post('/h/create', [HistorialController::class, 'create']);
+Route::post('/h/update', [HistorialController::class, 'update']);
+
+
+//  NOTAS
+Route::get('/notasnuevo', function() {return view('notasnuevo');});
+Route::get('/notas', [NotasController::class, 'index']);
+Route::get('/notasedit', function() {return view('notasedit');});
+Route::resource('/n', NotasController::class);
+Route::get('/n', [NotasController::class, 'index']);
+Route::get('/n/{id}', [NotasController::class, 'show']);
+Route::get('n/{id}/edit', [NotasController::class, 'edit']);
+Route::post('/n/create', [NotasController::class, 'create']);
+Route::post('/n/update', [NotasController::class, 'update']);
 
 
 //  PRIORIDAD
@@ -129,7 +200,6 @@ Route::get('/ut/{id}', [UsuarioTipoController::class, 'show']);
 Route::get('ut/{id}/edit', [UsuarioTipoController::class, 'edit']);
 Route::post('/ut/create', [UsuarioTipoController::class, 'create']);
 Route::post('/ut/update', [UsuarioTipoController::class, 'update']);
-
 
 
 // Route::resource('post', PostController::class);
