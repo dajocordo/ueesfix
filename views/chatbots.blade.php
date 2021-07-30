@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-  <title>Gestion</title>
+  <title>Chatbot</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -28,9 +28,9 @@
     <!--|==========| Boton | ir a izquierda |==========|-->
     <div class="btn-left-pro"> <a href="home" title="Inicio" class="aarrooww"><</a> </div>
     <!--|==========| Nuevo | ↓ | titulo |==========|-->
-    <div class="middle-pro"> <p>Gestion</p> </div>
+    <div class="middle-pro"> <p>Chatbot</p> </div>
     <!--|==========| Boton | ir a derecha |==========|-->
-    <div class="btn-right-pro"> <a href="{{ url('/gestionnuevo' )}}" title="Nuevo" class="aarrooww">+</a> </div>
+    <div class="btn-right-pro"> <a href="{{ url('/chatbotnuevo' )}}" title="Nuevo" class="aarrooww">+</a> </div>
     
     <!--|==========| Tabla Usuarios | ↓ | inicio |==========|-->
     <table class="table table-bordered">
@@ -53,9 +53,9 @@
         <td>@php echo $nombreu; @endphp</td>
         <td>@php echo $apellidou; @endphp</td>
         <td>@php echo $correou; @endphp</td> 
-        <td><a class="optionsu" href="/g/@php echo $id; @endphp/edit"><img src="img/edit.png"></a></td>
-        <td><a class="optionsu" href="/g/@php echo $id; @endphp"><img src="img/info.png"></a></td> 
-        <td><a class="optionsu" href="/g/delete"><p class="btndelete">X</p></a></td>
+        <td><a class="optionsu" href="/ch/@php echo $id; @endphp/edit"><img src="img/edit.png"></a></td>
+        <td><a class="optionsu" href="/ch/@php echo $id; @endphp"><img src="img/info.png"></a></td> 
+        <td><a class="optionsu" href="/ch/delete"><p class="btndelete">X</p></a></td>
       </tbody>  
      @php } @endphp  
     </table> <!--|==========| Tabla Usuarios | ↑ | fin |==========|-->
