@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-  <title>Historial</title>
+  <title>Estado </title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -15,7 +15,7 @@
   <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
   <div class="topnav" id="myTopnav">
     <a href="home">Inicio</a>
-    <a href="notas">Historial</a>
+    <a href="notas">Notas</a>
     <a href="perfil">Perfil</a>
     <a href="#CerrarSesion" data-bs-toggle="modal" title="Salir">Salir</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -28,9 +28,9 @@
     <!--|==========| Boton | ir a izquierda |==========|-->
     <div class="btn-left-pro"> <a href="home" title="Inicio" class="aarrooww"><</a> </div>
     <!--|==========| Nuevo | ↓ | titulo |==========|-->
-    <div class="middle-pro"> <p>Historial</p> </div>
+    <div class="middle-pro"> <p>Estado</p> </div>
     <!--|==========| Boton | ir a derecha |==========|-->
-    <div class="btn-right-pro"> <a href="{{ url('/historialnuevo' )}}" title="Nuevo" class="aarrooww">+</a> </div>
+    <div class="btn-right-pro"> <a href="{{ url('/estadonuevo' )}}" title="Nuevo" class="aarrooww">+</a> </div>
     
     <!--|==========| Tabla Usuarios | ↓ | inicio |==========|-->
     <table class="table table-bordered">
@@ -53,8 +53,9 @@
         <td>@php echo $nombreu; @endphp</td>
         <td>@php echo $apellidou; @endphp</td>
         <td>@php echo $correou; @endphp</td> 
-        <td><a class="optionsu" href="/u/@php echo $id; @endphp/edit">Editar</a></td>
-        <td><a class="optionsu" href="/u/@php echo $id; @endphp">Info</a></td> 
+        <td><a class="optionsu" href="/h/@php echo $id; @endphp/edit"><img src="img/edit.png"></a></td>
+        <td><a class="optionsu" href="/h/@php echo $id; @endphp"><img src="img/info.png"></a></td> 
+        <td><a class="optionsu" href="/h/delete"><p class="btndelete">X</p></a></td>
       </tbody>  
      @php } @endphp  
     </table> <!--|==========| Tabla Usuarios | ↑ | fin |==========|-->
