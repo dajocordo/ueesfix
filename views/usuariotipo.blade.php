@@ -51,8 +51,9 @@
       <tbody><td>@php echo $num++; @endphp</td>
         <td>@php echo $nombreut; @endphp</td>
            <td>@php echo $actualut; @endphp</td>
-        <td><a class="optionsu" href="/ut/@php echo $id; @endphp/edit">Editar</a></td>
-        <td><a class="optionsu" href="/ut/@php echo $id; @endphp">Info</a></td> 
+           <td><a class="optionsu" href="/ut/@php echo $id; @endphp/edit"><img src="img/edit.png"></a></td>
+        <td><a class="optionsu" href="/ut/@php echo $id; @endphp"><img src="img/info.png"></a></td> 
+        <td><a class="optionsu" href="/ut/delete"><p class="btndelete">X</p></a></td>
       </tbody>  
      @php } @endphp  
     </table> <!--|==========| Tabla Usuarios | ↑ | fin |==========|-->

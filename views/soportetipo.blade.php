@@ -52,10 +52,9 @@
       <tbody><td>@php echo $num++; @endphp</td>
         <td>@php echo $nombrest; @endphp</td>
         <td>@php echo $fechaActual; @endphp</td>
-        
-       
-        <td><a class="optionsu" href="/st/@php echo $id; @endphp/edit">Editar</a></td>
-        <td><a class="optionsu" href="/st/@php echo $id; @endphp">Info</a></td> 
+        <td><a class="optionsu" href="/st/@php echo $id; @endphp/edit"><img src="img/edit.png"></a></td>
+        <td><a class="optionsu" href="/st/@php echo $id; @endphp"><img src="img/info.png"></a></td> 
+        <td><a class="optionsu" href="/st/delete"><p class="btndelete">X</p></a></td> 
       </tbody>  
      @php } @endphp  
     </table> <!--|==========| Tabla Usuarios | ↑ | fin |==========|-->
