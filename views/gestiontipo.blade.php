@@ -53,8 +53,9 @@
         <td>@php echo $nombreu; @endphp</td>
         <td>@php echo $apellidou; @endphp</td>
         <td>@php echo $correou; @endphp</td> 
-        <td><a class="optionsu" href="/u/@php echo $id; @endphp/edit">Editar</a></td>
-        <td><a class="optionsu" href="/u/@php echo $id; @endphp">Info</a></td> 
+        <td><a class="optionsu" href="/gt/@php echo $id; @endphp/edit"><img src="img/edit.png"></a></td>
+        <td><a class="optionsu" href="/gt/@php echo $id; @endphp"><img src="img/info.png"></a></td> 
+        <td><a class="optionsu" href="/gt/delete"><p class="btndelete">X</p></a></td>
       </tbody>  
      @php } @endphp  
     </table> <!--|==========| Tabla Usuarios | ↑ | fin |==========|-->
