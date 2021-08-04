@@ -32,20 +32,12 @@
     <!--|====| Tabla Usuario [info ]| ↓ | inicio |====|-->
     <table class="table table-bordered">  
     <tr>
-      <th class="table-primary">No. </th>
+     <th class="table-primary">ID</th>
       <td>@php echo $id; @endphp</td>
     </tr> 
     <tr> 
       <th class="table-primary">Nombre</th>
       <td>@php echo $name; @endphp </td>
-    </tr>
-    <tr> 
-      <th class="table-primary">Apellidon</th>
-      <td>@php echo $apellido; @endphp</td>
-    </tr>
-    <tr>
-      <th class="table-primary">Correo</th>
-      <td>@php echo $correo; @endphp</td>
     </tr>
     <tr> 
       <th class="table-primary">Creado</th>

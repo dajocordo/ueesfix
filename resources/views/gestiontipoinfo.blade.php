@@ -29,23 +29,15 @@
     <!--|==========| Roles | ↓ | titulo |==========|-->
     <div class="middle-pro"> <p>Gestion Tipo [info]</p> </div>
 
-    <!--|====| Tabla Usuario [info ]| ↓ | inicio |====|-->
+    <!--|====| Tabla Gestion Tipo [info ]| ↓ | inicio |====|-->
     <table class="table table-bordered">  
     <tr>
-      <th class="table-primary">No. </th>
+     <th class="table-primary">ID</th>
       <td>@php echo $id; @endphp</td>
     </tr> 
     <tr> 
       <th class="table-primary">Nombre</th>
       <td>@php echo $name; @endphp </td>
-    </tr>
-    <tr> 
-      <th class="table-primary">Apellidon</th>
-      <td>@php echo $apellido; @endphp</td>
-    </tr>
-    <tr>
-      <th class="table-primary">Correo</th>
-      <td>@php echo $correo; @endphp</td>
     </tr>
     <tr> 
       <th class="table-primary">Creado</th>
@@ -54,8 +46,9 @@
     <tr>
       <th class="table-primary">Modificado</th>
       <td>@php echo $modificado; @endphp</td>
+
     </tr>
-  </table><!--|======| Tabla Usuario [info] | ↑ | fin |======|-->
+  </table><!--|======| Tabla Gestion Tipo [info] | ↑ | fin |======|-->
   <!--|==========| Container | fin | ← | ↑ |==========|--></div>
 
   <!--|========| Modal - CerrarSesion |inicio| ↓ |========|-->

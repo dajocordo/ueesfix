@@ -27,38 +27,36 @@
   <div class="container">
     <!--|==========| Boton | ir a izquierda |==========|-->
     <div class="btn-left-pro"> <a href="home" title="Inicio" class="aarrooww"><</a> </div>
-    <!--|==========| Nuevo | ↓ | titulo |==========|-->
+    <!--|==========| GestionTipo | ↓ | titulo |==========|-->
     <div class="middle-pro"> <p>Gestion Tipo</p> </div>
     <!--|==========| Boton | ir a derecha |==========|-->
-    <div class="btn-right-pro"> <a href="{{ url('/gestiontiponuevo' )}}" title="Nuevo" class="aarrooww">+</a> </div>
+    <div class="btn-right-pro"> <a href="/gestiontiponuevo" title="Nuevo" class="aarrooww">+</a> </div>
     
-    <!--|==========| Tabla Usuarios | ↓ | inicio |==========|-->
+    <!--|==========| Tabla Gestion Tipo | ↓ | inicio |==========|-->
     <table class="table table-bordered">
       <thead>
         <th>No.</th>
+        <th>ID</th>
         <th>Nombre</th>
-        <th>Apellido</th>
-        <th>Correo</th>
+        <th>Ultima Modificacion</th>
         <th colspan="2">Opciones</th>
       </thead>
-      @php
-      $num=1;
-      foreach ($users as $user) {
-        $id = $user->usuariocif;
-        $nombreu = $user->unombre;
-        $apellidou = $user->uapellido;
-        $correou = $user->umail;
+      @php $num=1;
+        foreach ($gestiont as $gestionti) {
+          $id = $gestionti->gestiontipoid;
+          $gestiontipo_Nombre = $gestionti->gestiontipo_name;
+          $gestiontipo_Fecha_Actual = $gestionti->updated_at;
       @endphp
-      <tbody><td>@php echo $num++; @endphp</td>
-        <td>@php echo $nombreu; @endphp</td>
-        <td>@php echo $apellidou; @endphp</td>
-        <td>@php echo $correou; @endphp</td> 
-        <td><a class="optionsu" href="/gt/@php echo $id; @endphp/edit"><img src="img/edit.png"></a></td>
-        <td><a class="optionsu" href="/gt/@php echo $id; @endphp"><img src="img/info.png"></a></td> 
-        <td><a class="optionsu" href="/gt/delete"><p class="btndelete">X</p></a></td>
+      <tbody>
+        <td>@php echo $num++; @endphp</td>
+        <td>@php echo $id; @endphp</td>
+        <td>@php echo $rol_Nombre; @endphp</td> 
+        <td>@php echo $rol_Fecha_Actual; @endphp</td>
+        <td><a class="optionsu" href="/gt/@php echo $id; @endphp/edit">Editar</a></td>
+        <td><a class="optionsu" href="/gt/@php echo $id; @endphp">Info</a></td> 
       </tbody>  
      @php } @endphp  
-    </table> <!--|==========| Tabla Usuarios | ↑ | fin |==========|-->
+    </table> <!--|==========| Tabla Gestion Tipo | ↑ | fin |==========|-->
   </div>
   <!--|==========| Container | fin | ↑ |==========|-->
 
