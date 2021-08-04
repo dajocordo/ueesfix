@@ -114,7 +114,7 @@ class GestionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $ii)
     {
         if (isset($_POST['btnActualizarR'])) {
             $ii = $_REQUEST['ii'];
