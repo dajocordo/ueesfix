@@ -32,7 +32,7 @@
     <!--|==========| Boton | ir a derecha |==========|-->
     <div class="btn-right-pro"> <a href="/gestionnuevo" title="Nuevo" class="aarrooww">+</a> </div>
     
-    <!--|==========| Tabla Usuarios | ↓ | inicio |==========|-->
+    <!--|==========| Tabla Gestion | ↓ | inicio |==========|-->
     <table class="table table-bordered">
       <thead>
         <th>No.</th>
@@ -42,39 +42,39 @@
         <th colspan="2">Opciones</th>
       </thead>
      @php $num=1;
-        foreach ($gest as $gesti) {
-          $id = $gestii->gestionid;
+        foreach ($gestion1 as $gesti) {
+          $id = $gesti->gestionid;
           $gest_Nombre = $gesti->gestion_name;
           $gest_Fecha_Actual = $gesti->updated_at;
       @endphp
       <tbody>
         <td>@php echo $num++; @endphp</td>
         <td>@php echo $id; @endphp</td>
-        <td>@php echo $rol_Nombre; @endphp</td> 
-        <td>@php echo $rol_Fecha_Actual; @endphp</td>
+        <td>@php echo $gestionname; @endphp</td> 
+        <td>@php echo $gestion_Fecha_Actual; @endphp</td>
         <td><a class="optionsu" href="/g/@php echo $id; @endphp/edit">Editar</a></td>
         <td><a class="optionsu" href="/g/@php echo $id; @endphp">Info</a></td> 
       </tbody>  
      @php } @endphp  
-    </table> <!--|==========| Tabla Usuarios | ↑ | fin |==========|-->
+    </table> <!--|==========| Tabla Gestion | ↑ | fin |==========|-->
   </div>
   <!--|==========| Container | fin | ↑ |==========|-->
 
-  <!--|========| Modal - CerrarSesion |inicio| ↓ |========|-->
+  <!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
   <div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="staticBackdropLabel">Cerrar Sesion</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <a class="modal-btn-closee" data-bs-dismiss="modal" aria-label="Close">X</a>
         </div>
           <div class="modal-body"> ¿Desea salir de la plataforma? </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-          <a href="welcome" type="button" class="btn btn-primary">Si</a>
+            <a class="modal-btn-cerrar" data-bs-dismiss="modal">No</a>
+            <a href="logout" type="button" class="modal-btn-cerrar">Si</a>
         </div>
       </div>
     </div>
-  </div><!--|======| Modal - CerrarSesion |fin| ↑ |======|--> 
+  </div><!--|======| Modal - CerrarSesion |fin| ↑ |======|-->
 </body>
 </html>
