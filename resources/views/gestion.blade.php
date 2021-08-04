@@ -52,7 +52,7 @@
         <td>@php echo $gestion_Fecha_Actual; @endphp</td>
         <td><a class="optionsu" href="/g/@php echo $id; @endphp/edit">Editar</a></td>
         <td><a class="optionsu" href="/g/@php echo $id; @endphp">Info</a></td>
-        <td><a class="optionsu" href="/u/delete"><p class="btndelete">X</p></a></td>
+        <td><a class="optionsu" href="/g/delete"><p class="btndelete">X</p></a></td>
       </tbody>  
      @php } @endphp  
     </table> <!--|==========| Tabla Gestion | ↑ | fin |==========|-->
