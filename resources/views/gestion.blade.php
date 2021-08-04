@@ -36,10 +36,9 @@
     <table class="table table-bordered">
       <thead>
         <th>No.</th>
-        <th>ID</th>
         <th>Nombre</th>
-        <th>Ultima Modificacion</th>
-        <th colspan="2">Opciones</th>
+        <th>Modificado</th>
+        <th colspan="3">Opciones</th>
       </thead>
      @php $num=1;
         foreach ($gestion1 as $gesti) {
@@ -49,11 +48,11 @@
       @endphp
       <tbody>
         <td>@php echo $num++; @endphp</td>
-        <td>@php echo $id; @endphp</td>
         <td>@php echo $gestionname; @endphp</td> 
         <td>@php echo $gestion_Fecha_Actual; @endphp</td>
         <td><a class="optionsu" href="/g/@php echo $id; @endphp/edit">Editar</a></td>
-        <td><a class="optionsu" href="/g/@php echo $id; @endphp">Info</a></td> 
+        <td><a class="optionsu" href="/g/@php echo $id; @endphp">Info</a></td>
+        <td><a class="optionsu" href="/u/delete"><p class="btndelete">X</p></a></td>
       </tbody>  
      @php } @endphp  
     </table> <!--|==========| Tabla Gestion | ↑ | fin |==========|-->
