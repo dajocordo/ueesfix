@@ -15,7 +15,6 @@
   <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
   <div class="topnav" id="myTopnav">
     <a href="home">Inicio</a>
-    <a href="notas">Notas</a>
     <a href="perfil">Perfil</a>
     <a href="#CerrarSesion" data-bs-toggle="modal" title="Salir">Salir</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -43,16 +42,16 @@
      @php $num=1;
         foreach ($gestion1 as $gesti) {
           $id = $gesti->gestionid;
-          $gest_Nombre = $gesti->gestion_name;
-          $gest_Fecha_Actual = $gesti->updated_at;
+          $gestionname = $gesti->gestion_name;
+          $gestion_Fecha_Actual = $gesti->updated_at;
       @endphp
       <tbody>
         <td>@php echo $num++; @endphp</td>
         <td>@php echo $gestionname; @endphp</td> 
         <td>@php echo $gestion_Fecha_Actual; @endphp</td>
-        <td><a class="optionsu" href="/g/@php echo $id; @endphp/edit">Editar</a></td>
-        <td><a class="optionsu" href="/g/@php echo $id; @endphp">Info</a></td>
-        <td><a class="optionsu" href="/g/delete"><p class="btndelete">X</p></a></td>
+        <td><a class="optionsu" href="/g/@php echo $id; @endphp/edit" title="Editar"><img src="img/edit.png"></a></td>
+        <td><a class="optionsu" href="/g/@php echo $id; @endphp" title="Ver"><img src="img/info.png"></a></td> 
+        <td><a class="optionsu" href="/g/delete" title="Eliminar"><p class="btndelete">X</p></a></td>
       </tbody>  
      @php } @endphp  
     </table> <!--|==========| Tabla Gestion | ↑ | fin |==========|-->
