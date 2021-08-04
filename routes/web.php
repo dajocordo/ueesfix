@@ -10,15 +10,28 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!*/
 
-Route::get('/', function () {return view('login');});
+Route::get('/', function () {return view('index');});
 Route::get('/home', function() {return view('home');});
+Route::get('/index', function() {return view('index');});
 Route::get('/login', function() {return view('login');});
+Route::get('/logout', function() {return view('logout');});
 Route::get('/perfil', function() {return view('perfil');});
 Route::get('/notas', function() {return view('notas');});
 Route::get('/contact', function() {return view('contact');});
 Route::get('/todo', function() {return view('todo');});
 Route::get('/doing', function() {return view('doing');});
 Route::get('/done', function() {return view('done');});
+
+// LOGIN
+Route::get('/loginui', function() {return view('loginui');});
+Route::get('/loginuii', function() {return view('loginuii');});
+Route::get('/loginsi', function() {return view('loginsi');});
+Route::get('/loginsii', function() {return view('loginsii');});
+Route::resource('/l', LoginnController::class);
+Route::post('/lu', [LoginnController::class, 'index']);
+Route::post('/ls', [LoginnController::class, 'indux']);
+Route::post('/loginu', [LoginnController::class, 'store']);
+Route::post('/logins', [LoginnController::class, 'sture']);
 
 
 // 	CARRERA
