@@ -40,16 +40,15 @@ class UsuarioController extends Controller
 
             DB::INSERT("INSERT INTO usuario (unombre, uapellido, umail, upassword, usuariotti, facultadtti, carreratti, created_at, updated_at) VALUES(?,?,?,?,?,?,?,?,?)",[$Nombre,$Apellido,$Correo,$Contra,$Tipo,$Facultad,$Carrera,$Creado,$Actual]);
 
-            echo '<script language="javascript">';
-            echo 'alert("Datos ingresados correctamente")';
-            echo '</script>';
-            return redirect('/u');
-        
+            echo "<script>
+                  alert('EXITO. Usuario creado correctamente');
+                  window.location.href='/u';
+                  </script>";
         } else {
-            echo '<script language="javascript">';
-            echo 'alert("Hubo un error, favor intentarlo de nuevo")';
-            echo '</script>';
-            return redirect('/usuarionuevo');
+            echo "<script>
+                  alert('Hubo un error, favor intentarlo de nuevo');
+                  window.location.href='/usuarionuevo';
+                  </script>";
         }
     }
     /**
