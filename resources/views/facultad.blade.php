@@ -1,3 +1,7 @@
+@php
+  session_start();
+    if(isset($_SESSION['admin'])){
+@endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -15,7 +19,6 @@
   <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
   <div class="topnav" id="myTopnav">
     <a href="home">Inicio</a>
-    <a href="notas">Notas</a>
     <a href="perfil">Perfil</a>
     <a href="#CerrarSesion" data-bs-toggle="modal" title="Salir">Salir</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -38,8 +41,8 @@
       <thead>
         <th>No.</th>
         <th>Nombre</th>
-        <th>Ultima Modificacion</th>
-        <th colspan="2">Opciones</th>
+        <th>Modificado</th>
+        <th colspan="3">Opciones</th>
       </thead>
       @php
       $num=1;
@@ -48,9 +51,10 @@
         $nombref = $facul->facultad_name;
         $actualf = $facul->updated_at;
       @endphp
-      <tbody><td>@php echo $num++; @endphp</td>
+      <tbody>
+        <td>@php echo $num++; @endphp</td>
         <td>@php echo $nombref; @endphp</td>
-           <td>@php echo $actualf; @endphp</td>
+        <td>@php echo $actualf; @endphp</td>
         <td><a class="optionsu" href="/f/@php echo $id; @endphp/edit"><img src="img/edit.png"></a></td>
         <td><a class="optionsu" href="/f/@php echo $id; @endphp"><img src="img/info.png"></a></td> 
         <td><a class="optionsu" href="/f/delete"><p class="btndelete">X</p></a></td>
@@ -60,21 +64,27 @@
   </div>
   <!--|==========| Container | fin | ↑ |==========|-->
 
-  <!--|========| Modal - CerrarSesion |inicio| ↓ |========|-->
+  <!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
   <div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="staticBackdropLabel">Cerrar Sesion</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <a class="modal-btn-closee" data-bs-dismiss="modal" aria-label="Close">X</a>
         </div>
           <div class="modal-body"> ¿Desea salir de la plataforma? </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-          <a href="welcome" type="button" class="btn btn-primary">Si</a>
+            <a class="modal-btn-cerrar" data-bs-dismiss="modal">No</a>
+            <a href="logout" type="button" class="modal-btn-cerrar">Si</a>
         </div>
       </div>
     </div>
-  </div><!--|======| Modal - CerrarSesion |fin| ↑ |======|--> 
+  </div><!--|======| New Modal - CerrarSesion |fin| ↑ |======|-->
 </body>
 </html>
+@php  } else{
+      echo "<script>
+            alert('Debes iniciar sesión primero');
+            window.location.href='/index';
+          </script>";
+}  @endphp
