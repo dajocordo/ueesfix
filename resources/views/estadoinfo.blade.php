@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-  <title>Info Estado</title>
+  <title>Estado Info</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -15,64 +15,55 @@
   <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
   <div class="topnav" id="myTopnav">
     <a href="home" class="active">Inicio</a>
-    <a href="notas">Notas</a>
     <a href="perfil">Perfil</a>
     <a href="#CerrarSesion" data-bs-toggle="modal" title="Salir">Salir</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
       <i class="fa fa-bars"></i>
     </a>
-  </div><!--|==========| Barra de navegacion | ↑ | fin |==========|-->
+  </div> <!--|==========| Barra de navegacion | ↑ | fin |==========|-->
 
-    <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
+ <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
     <!--|==========| Boton | Regresar |==========|-->
     <div class="btn-left-pro"> <a href="{{ url('/e') }}" title="Regresar" class="aarrooww"><</a> </div>
     <!--|==========| Roles | ↓ | titulo |==========|-->
-    <div class="middle-pro"> <p>Estado [info]</p> </div>
-
-    <!--|====| Tabla Usuario [info ]| ↓ | inicio |====|-->
+    <div class="middle-pro"> <p><img src="/img/info.png"> Estado [info]</p> </div>
     <table class="table table-bordered">  
     <tr>
-      <th class="table-primary">No. </th>
+      <th class="table-primary">ID </th>
       <td>@php echo $id; @endphp</td>
     </tr> 
     <tr> 
-      <th class="table-primary">Nombre</th>
-      <td>@php echo $name; @endphp </td>
+      <th class="table-primary">Nombre Carrera</th>
+      <td>@php echo $name; @endphp</td>
     </tr>
     <tr> 
-      <th class="table-primary">Apellidon</th>
-      <td>@php echo $apellido; @endphp</td>
-    </tr>
-    <tr>
-      <th class="table-primary">Correo</th>
-      <td>@php echo $correo; @endphp</td>
-    </tr>
-    <tr> 
-      <th class="table-primary">Creado</th>
+      <th class="table-primary">Fecha de Creación</th>
       <td>@php echo $creado; @endphp</td>
     </tr>
     <tr>
-      <th class="table-primary">Modificado</th>
+      <th class="table-primary">Ultima Modificación</th>
       <td>@php echo $modificado; @endphp</td>
     </tr>
-  </table><!--|======| Tabla Usuario [info] | ↑ | fin |======|-->
-  <!--|==========| Container | fin | ← | ↑ |==========|--></div>
+  </table>    
+    <!--|=======| Tabla Roles [info]  | ↑ | fin |=======|-->
+    <!--|==========| Container | fin | ← | ↑ |==========|--></div>
 
-  <!--|========| Modal - CerrarSesion |inicio| ↓ |========|-->
-  <div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+
+   <!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
+   <div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="staticBackdropLabel">Cerrar Sesion</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <a class="modal-btn-closee" data-bs-dismiss="modal" aria-label="Close">X</a>
         </div>
           <div class="modal-body"> ¿Desea salir de la plataforma? </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-          <a href="welcome" type="button" class="btn btn-primary">Si</a>
+            <a class="modal-btn-cerrar" data-bs-dismiss="modal">No</a>
+            <a href="logout" type="button" class="modal-btn-cerrar">Si</a>
         </div>
       </div>
     </div>
-  </div><!--|======| Modal - CerrarSesion |fin| ↑ |======|--> 
+  </div><!--|======| New Modal - CerrarSesion |fin| ↑ |======|-->
 </body>
 </html>

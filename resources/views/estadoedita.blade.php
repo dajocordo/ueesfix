@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-  <title>Nuevo Estado</title>
+  <title>Editar Estado</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -24,21 +24,22 @@
 
   <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
     <!--|==========| Bienvenida | ↓ |==========|-->
-    <h1 id="greeting">Nuevo Estado</h1>
+    <h1 id="greeting">Editar Estado</h1>
+    
     <!--|==========| Formulario | ↓ | inicio |==========|-->
-    <form action="{{ url('/e/create') }}" method="post">
+    <form action="{{ url('/e/update/') }}" method="post">
       @csrf
+      <input type="hidden" class="form-control form-control-lg" name="ii" value="@php echo $ii; @endphp" autocomplete="off" required>
       <label class="lblformuser">Nombre</label>
-      <input type="text" class="form-control form-control-lg" name="txtNombreEstado" autocomplete="off" required>
-      
+      <input type="text" class="form-control form-control-lg" name="txtEditEstado" value="@php echo $name; @endphp" autocomplete="off" required>
       <div class="d-grid gap-2">
-        <input type="submit" class="btn btn-primary btn-lg" name="btnEnviarEstado" value="Enviar">
+        <input type="submit" class="btn btn-primary btn-lg" name="btnActualizarR" value="Actualizar">
       </div>
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
   <!--|==========| Container | fin | ← | ↑ |==========|--></div>
 
- <!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
- <div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
+  <div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
