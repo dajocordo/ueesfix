@@ -26,30 +26,30 @@ class SoporteController extends Controller
     public function create()
     {
 
-        if (isset($_POST['btnCrearUsuario'])) {
+        if (isset($_POST['btnCrearSoporte'])) {
 
             $Nombre = $_POST['txtNombre'];
             $Apellido = $_POST['txtApellido'];
             $Correo = $_POST['txtCorreo'];
             $Contra = $_POST['txtPassword'];
-            $Tipo = $_POST['selTipoUsuario'];
-            $Facultad = $_POST['selFacultad'];
-            $Carrera = $_POST['selCarrera'];
+            $Telefono = $_POST['txtTelefono'];
+            $Tipo = $_POST['selTipoSoporte'];
+            $Roles = $_POST['selRoles'];
             $Creado = date("Y-m-d H:i:s");
             $Actual = date("Y-m-d H:i:s");
 
-            DB::INSERT("INSERT INTO usuario (unombre, uapellido, umail, upassword, usuariotti, facultadtti, carreratti, created_at, updated_at) VALUES(?,?,?,?,?,?,?,?,?)",[$Nombre,$Apellido,$Correo,$Contra,$Tipo,$Facultad,$Carrera,$Creado,$Actual]);
+            DB::INSERT("INSERT INTO soporte (snombre, sapellido, smail, spassword, stelefono, soportetti, roltti, created_at, updated_at) VALUES(?,?,?,?,?,?,?,?,?)",[$Nombre,$Apellido,$Correo,$Contra,$Telefono,$Tipo,$Roles,$Creado,$Actual]);
 
-            echo '<script language="javascript">';
-            echo 'alert("Datos ingresados correctamente")';
-            echo '</script>';
-            return redirect('/u');
+            echo "<script>
+            alert('Exito. El soporte fue ingresado correctamente');
+            window.location.href='/s';
+            </script>";
         
         } else {
-            echo '<script language="javascript">';
-            echo 'alert("Hubo un error, favor intentarlo de nuevo")';
-            echo '</script>';
-            return redirect('/usuarionuevo');
+            echo "<script>
+                  alert('Error. Vuelva a intentarlo de nuevo');
+                  window.location.href='/soportenuevo';
+                  </script>";
         }
     }
     /**
@@ -93,13 +93,13 @@ class SoporteController extends Controller
     public function show($id)
     {
         // $id = $_REQUEST['id'];
-        $resul = DB::SELECT('SELECT * FROM usuario WHERE usuariocif = ?',[$id]);
+        $resul = DB::SELECT('SELECT * FROM soporte WHERE soportecif = ?',[$id]);
 
         foreach($resul as $quer){
-            $name = $quer->unombre;
-            $apellido = $quer->uapellido;
-            $correo = $quer->umail;
-            return view('usuarioinfo')->with('id',$id)->with('name',$name)->with('apellido',$apellido)->with('correo',$correo);
+            $name = $quer->snombre;
+            $apellido = $quer->sapellido;
+            $correo = $quer->smail;
+            return view('soporteinfo')->with('id',$id)->with('name',$name)->with('apellido',$apellido)->with('correo',$correo);
         }
     }
 
@@ -109,14 +109,14 @@ class SoporteController extends Controller
      */
     public function edit($id)
     {
-        $result = DB::SELECT('SELECT * FROM usuario WHERE usuariocif = ?',[$id]);
+        $result = DB::SELECT('SELECT * FROM soporte WHERE soportecif = ?',[$id]);
 
         foreach($result as $query){
-            $ii = $query->usuariocif;
-            $name = $query->unombre;
-            $apellido = $query->uapellido;
-            $correo = $query->umail;
-            return view('usuarioedita')->with('ii',$ii)->with('name',$name)->with('apellido',$apellido)->with('correo',$correo);
+            $ii = $query->soportecif;
+            $name = $query->snombre;
+            $apellido = $query->sapellido;
+            $correo = $query->smail;
+            return view('soporteedit')->with('ii',$ii)->with('name',$name)->with('apellido',$apellido)->with('correo',$correo);
         }
     }
 
@@ -136,20 +136,20 @@ class SoporteController extends Controller
             $nuevoApellido = $_POST['txtEditApellido'];
             $nuevoCorreo = $_POST['txtEditCorreo'];
 
-            $affected = DB::table('usuario')
-              ->where('usuariocif', $ii)
-              ->update(['unombre' => $nuevoNombre,'uapellido' => $nuevoApellido,'umail' => $nuevoCorreo]);
+            $affected = DB::table('soporte')
+              ->where('soportecif', $ii)
+              ->update(['snombre' => $nuevoNombre,'sapellido' => $nuevoApellido,'smail' => $nuevoCorreo]);
 
-            echo '<script language="javascript">';
-            echo 'alert("EXITO: Los datos ya fueron actualizados")';
-            echo '</script>';
-            return direct('/u');
+            echo "<script>
+            alert('Exito. El soporte fue actualizado correctamente');
+            window.location.href='/s';
+            </script>";
   
         } else {
-            echo '<script language="javascript">';
-            echo 'alert("ERROR: favor intentarlo de nuevo")';
-            echo '</script>';
-            return view('/usuarios');
+            echo "<script>
+                  alert('Error. Vuelva a intentarlo de nuevo');
+                  window.location.href='/soporte';
+                  </script>";
         }
     }
 
@@ -166,10 +166,9 @@ class SoporteController extends Controller
 
     public function sopnewtii()
     {
-        $usertypee = DB::table('usuariotipo')->get();
-        $facultaad = DB::table('facultad')->get();
-        $carreraa = DB::table('carrera')->get();
-        return view('usuarionuevo')->with('usertypee',$usertypee)->with('facultaad',$facultaad)->with('carreraa',$carreraa);
+        $sopotypee = DB::table('soportetipo')->get();
+        $rolee = DB::table('roles')->get();
+        return view('soportenuevo')->with('sopotypee',$sopotypee)->with('rolee',$rolee);
     }
 
 }
