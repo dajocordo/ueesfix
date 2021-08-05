@@ -23,29 +23,75 @@ a.optionsu:visited {color: white;}
 a.optionsu:hover {color: yellow;}
 a.optionsu {text-decoration: none;}
 
+a.modal-btn-cerrar:link {color: #22293D;}
+a.modal-btn-cerrar:visited {color: #22293D;}
+a.modal-btn-cerrar:hover {color: #315D99;}
+a.modal-btn-cerrar {text-decoration: none;}
+
+a.modal-btn-closee:link {color: white;}
+a.modal-btn-closee:visited {color: #white;}
+a.modal-btn-closee:hover {color: #FCE0DF;}
+a.modal-btn-closee {text-decoration: none;}
+
 body{
   background-color: #22293D;
   color: white;
   font-family: 'Open Sans', sans-serif;
 }
 
-.btn-enviar-form{
+#bsaludo{
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  letter-spacing: 0.07em;
+  color: #FCF0F5 ;
+  font-weight: bold;
+  font-size: 2.75em;
+}
+
+.btndelete{
+  color: #FF9EA4;
+}
+
+.btn-entrur{
+  background-color: #FFB0D1 ;
+  border-radius: 3em;
+  color: #22293D;
+  font-weight: bold;
+  font-size: 1.50em;
+  letter-spacing: 0.07em;
+  margin-top: 1.5em;
+  height: 3em;
+  width: 35%;
+}
+
+/*.btn-enviar-form-login{
   background-color: white;
+  border-radius: 3em;
   color: #22293D;
   display: inline-block;
   height: 2.50em;
   width: 100%;
   font-size: 1.25em;
   font-weight: bold;
-  margin-top: 1.2em;
+}*/
 
+.btn-enviar-form{
+  background-color: white;
+  border-radius: 3em;
+  color: #22293D;
+  display: inline-block;
+  height: 2.75em;
+  width: 100%;
+  font-size: 1.25em;
+  font-weight: bold;
+  margin-top: 1.40em;
 }
 
 .btn-left-pro {
   background-color: #22293D;
   color: white;
   display: inline-block;
-  height: 2.15em;
+  height: 2.5em;
   width: 5%;
   font-size: 2.15em;
   font-weight: bold;
@@ -97,6 +143,7 @@ body{
 
 .col{
   background-color: #F8BBD0;
+  border-radius: 0.2em;
   color: #22293D;
   height: 4em;
   width: 50%;
@@ -105,8 +152,17 @@ body{
   margin: 0.3em;
 }
 
-.btndelete{
-  color: #FF9EA4;
+.colin{
+  background-color: #F8BBD0;
+  border-radius: 3em;
+  color: #22293D;
+  height: 4em;
+  width: 50%;
+  font-size: 1.25em;
+  font-weight: bold;
+  margin: auto;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
 }
 
 .editprofile {
@@ -131,9 +187,22 @@ body{
   margin: 0.9em;
 }
 
+.farm-cantral {
+  color: #22293D;
+  font-size: 1.50em;
+  font-weight: bold;
+  letter-spacing: 0.07em;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  text-align: center;
+  height: 3em;
+  width: 60%;
+}
+
 .form-control{
   background-color: #22293D;
   color: white;
+  font-size: 1.50em;
   font-weight: bold;
   letter-spacing: 0.10em;
   margin-bottom: 1.25em;
@@ -156,6 +225,12 @@ body{
   margin: 0.9em;
 }
 
+.lbl1 {
+  font-size: 1.50em;
+  letter-spacing: 0.07em;
+  margin-bottom: 1em;
+}
+
 .lblformuser{
   float: left;
   font-weight: bold;
@@ -172,18 +247,49 @@ body{
   height: 2.15em;
   width: 64%;
   letter-spacing: 0.07em;
-  margin-top: 1em; 
+  margin-top: 1em;
+  margin-top: 1em;
 }
 
-.modal-body, .modal-title, .modal-header, .modal-footer {
-  background-color: #36344b;
+.modal-content{
+  background-color: #2D3750;
+  border-color: #2D3750;
   color: white;
   font-weight: bold;
   letter-spacing: 0.10em;
+  text-align: center;
+}
+
+.modal-btn-cerrar{
+  background-color: #CFD7FF;
+  border-radius: 3em;
+  color: #22293D;
+  font-size: 1em;
+  font-weight: bold;
+  letter-spacing: 0.10em;
+  padding-top: 0.25em;
+  text-align: center;
+  height: 2em;
+  width: 25%;
+}
+
+.modal-btn-closee{
+  background-color: #2D3750;
+  border-color: #2D3750;
+  color: white;
+}
+
+.modal-header, .modal-body, .modal-footer{
+  border-color: #2D3750;
 }
 
 .ppro{
   padding-top: 1em;
+}
+
+.ppro2{
+  margin-top: 4em;
+  margin-bottom: 4em;
 }
 
 .second {
@@ -290,6 +396,12 @@ thead{
     text-align: left;
   }
 }
+
+@media screen and (max-width: 840px) {
+  .farm-cantral {
+    width: 100%;
+  }
+}
     
 @media screen and (max-width: 600px) {
   .first,
@@ -300,5 +412,8 @@ thead{
   }
   .ppro{
     padding-top: 1.7em;
+  }
+  .farm-cantral {
+    width: 100%;
   }
 }
