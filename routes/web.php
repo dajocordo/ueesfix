@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!*/
 
 Route::get('/', function () {return view('index');});
+Route::get('/dashboard', function() {return view('dashboard');});
 Route::get('/home', function() {return view('home');});
 Route::get('/index', function() {return view('index');});
 Route::get('/login', function() {return view('login');});
@@ -22,16 +23,21 @@ Route::get('/todo', function() {return view('todo');});
 Route::get('/doing', function() {return view('doing');});
 Route::get('/done', function() {return view('done');});
 
+
 // LOGIN
 Route::get('/loginui', function() {return view('loginui');});
 Route::get('/loginuii', function() {return view('loginuii');});
 Route::get('/loginsi', function() {return view('loginsi');});
 Route::get('/loginsii', function() {return view('loginsii');});
+Route::get('/loginai', function() {return view('loginai');});
+Route::get('/loginaii', function() {return view('loginaii');});
 Route::resource('/l', LoginnController::class);
-Route::post('/lu', [LoginnController::class, 'index']);
-Route::post('/ls', [LoginnController::class, 'indux']);
-Route::post('/loginu', [LoginnController::class, 'store']);
-Route::post('/logins', [LoginnController::class, 'sture']);
+Route::post('/lu', [LoginnController::class, 'firstusuario']);
+Route::post('/ls', [LoginnController::class, 'firstsoporte']);
+Route::post('/la', [LoginnController::class, 'firstadmin']);
+Route::post('/loginu', [LoginnController::class, 'stepusu']);
+Route::post('/logins', [LoginnController::class, 'stepsop']);
+Route::post('/logina', [LoginnController::class, 'stepadm']);
 
 
 // 	CARRERA
@@ -63,12 +69,12 @@ Route::post('/ch/update', [ChatbotController::class, 'update']);
 //  ESTADO
 Route::get('/estadonuevo', function() {return view('estadonuevo');});
 Route::get('/estadoedit', function() {return view('estadoedit');});
-Route::resource('/e', FacultadController::class);
-Route::get('/e', [FacultadController::class, 'index']);
-Route::get('e/{id}', [FacultadController::class, 'show']);
-Route::get('e/{id}/edit', [FacultadController::class, 'edit']);
-Route::post('/e/create', [FacultadController::class, 'create']);
-Route::post('/e/update', [FacultadController::class, 'update']);
+Route::resource('/e', EstadoController::class);
+Route::get('/e', [EstadoController::class, 'index']);
+Route::get('e/{id}', [EstadoController::class, 'show']);
+Route::get('e/{id}/edit', [EstadoController::class, 'edit']);
+Route::post('/e/create', [EstadoController::class, 'create']);
+Route::post('/e/update', [EstadoController::class, 'update']);
 
 
 //  FACULTAD
@@ -171,10 +177,10 @@ Route::get('/soportetipoedit', function() {return view('soportetipoedit');});
 Route::get('/soportetiponuevo', function() {return view('soportetiponuevo');});
 Route::resource('/st', SoportetipoController::class);
 Route::get('/st', [SoportetipoController::class, 'index']);
-Route::get('/st/{id}', [UserController::class, 'show']);
-Route::get('/st/{id}/edit', [UserController::class, 'edit']);
+Route::get('/st/{id}', [SoportetipoController::class, 'show']);
+Route::get('/st/{id}/edit', [SoportetipoController::class, 'edit']);
 Route::post('/st/create', [SoportetipoController::class, 'create']);
-Route::post('/st/update', [UserController::class, 'update']);
+Route::post('/st/update', [SoportetipoController::class, 'update']);
 
 
 //  TICKET
