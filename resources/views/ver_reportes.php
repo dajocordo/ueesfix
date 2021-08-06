@@ -1,3 +1,9 @@
+@php
+  session_start();
+  if(isset($_SESSION['admin'])){
+    echo '<script> window.location="home"; </script>';
+  } else {
+@endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -182,7 +188,6 @@
 <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
 <div class="topnav" id="myTopnav">
     <a href="home.php" class="active">Inicio</a>
-    <a href="notas.php">Notas</a>
     <a href="perfil.php">Perfil</a>
     <a href="#CerrarSesion" data-bs-toggle="modal" title="Salir">Salir</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -480,34 +485,27 @@ $(document).ready(function() {
 
 
 <!--|==========| Container | fin | ↑ |==========|-->
-<!--|==========| Modal | inicio | ↓ | Cerrar Sesion |==========|-->
+<!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
 <div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Cerrar Sesion</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                ¿Desea salir de la plataforma?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                <a href="welcome.blade.php" type="button" class="btn btn-primary">Si</a>
-            </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Cerrar Sesion</h5>
+          <a class="modal-btn-closee" data-bs-dismiss="modal" aria-label="Close">X</a>
         </div>
+          <div class="modal-body"> ¿Desea salir de la plataforma? </div>
+        <div class="modal-footer">
+            <a class="modal-btn-cerrar" data-bs-dismiss="modal">No</a>
+            <a href="logout" type="button" class="modal-btn-cerrar">Si</a>
+        </div>
+      </div>
     </div>
-</div>
-
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
-
-<!--|==========| Modal | fin | ↓ | Cerrar Sesion |==========|-->
+  </div><!--|======| New Modal - CerrarSesion |fin| ↑ |======|--> 
 </body>
 </html>
+@php  } else{
+      echo "<script>
+            alert('Debes iniciar sesión primero');
+            window.location.href='/index';
+          </script>";
+}  @endphp

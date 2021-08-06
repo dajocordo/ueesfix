@@ -1,4 +1,10 @@
-  <!DOCTYPE html>
+@php
+  session_start();
+  if(isset($_SESSION['admin'])){
+    echo '<script> window.location="home"; </script>';
+  } else {
+@endphp
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
   <title>Editar Usuario</title>
@@ -44,8 +50,8 @@
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
   <!--|==========| Container | fin | ← | ↑ |==========|--></div>
 
-  <!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
-  <div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
+<div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -62,3 +68,9 @@
   </div><!--|======| New Modal - CerrarSesion |fin| ↑ |======|--> 
 </body>
 </html>
+@php  } else{
+      echo "<script>
+            alert('Debes iniciar sesión primero');
+            window.location.href='/index';
+          </script>";
+}  @endphp

@@ -1,3 +1,9 @@
+@php
+  session_start();
+  if(isset($_SESSION['admin'])){
+    echo '<script> window.location="home"; </script>';
+  } else {
+@endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -15,7 +21,6 @@
   <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
   <div class="topnav" id="myTopnav">
     <a href="home">Inicio</a>
-    <a href="notas">Notas</a>
     <a href="perfil">Perfil</a>
     <a href="#CerrarSesion" data-bs-toggle="modal" title="Salir">Salir</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -58,3 +63,9 @@
   </div><!--|======| Modal - CerrarSesion |fin| ↑ |======|-->
 </body>
 </html>
+@php  } else{
+      echo "<script>
+            alert('Debes iniciar sesión primero');
+            window.location.href='/index';
+          </script>";
+}  @endphp
