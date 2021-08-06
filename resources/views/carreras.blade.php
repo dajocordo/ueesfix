@@ -15,7 +15,6 @@
   <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
   <div class="topnav" id="myTopnav">
     <a href="home">Inicio</a>
-    <a href="notas">Notas</a>
     <a href="perfil">Perfil</a>
     <a href="#CerrarSesion" data-bs-toggle="modal" title="Salir">Salir</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -51,30 +50,29 @@
       <tbody><td>@php echo $num++; @endphp</td>
         <td>@php echo $nombrec; @endphp</td>
         <td>@php echo $fechaActual; @endphp</td>
-        <td><a class="optionsu" href="//@php echo $id; @endphp/edit"><img src="img/edit.png"></a></td>
-        <td><a class="optionsu" href="/c/@php echo $id; @endphp"><img src="img/info.png"></a></td> 
-        <td><a class="optionsu" href="/c/delete"><p class="btndelete">X</p></a></td>
+        <td><a class="optionsu" href="/c/@php echo $id; @endphp/edit">Editar</a></td>
+        <td><a class="optionsu" href="/c/@php echo $id; @endphp">Info</a></td> 
       </tbody>  
      @php } @endphp  
     </table> <!--|==========| Tabla Usuarios | ↑ | fin |==========|-->
   </div>
   <!--|==========| Container | fin | ↑ |==========|-->
 
-  <!--|========| Modal - CerrarSesion |inicio| ↓ |========|-->
+  <!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
   <div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="staticBackdropLabel">Cerrar Sesion</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <a class="modal-btn-closee" data-bs-dismiss="modal" aria-label="Close">X</a>
         </div>
           <div class="modal-body"> ¿Desea salir de la plataforma? </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-          <a href="welcome" type="button" class="btn btn-primary">Si</a>
+            <a class="modal-btn-cerrar" data-bs-dismiss="modal">No</a>
+            <a href="logout" type="button" class="modal-btn-cerrar">Si</a>
         </div>
       </div>
     </div>
-  </div><!--|======| Modal - CerrarSesion |fin| ↑ |======|--> 
+  </div><!--|======| Modal - CerrarSesion |fin| ↑ |======|-->
 </body>
 </html>

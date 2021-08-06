@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-  <title>Info Usuario</title>
+  <title>Soporte Info</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -14,8 +14,7 @@
 <body>
   <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
   <div class="topnav" id="myTopnav">
-    <a href="home" class="active">Inicio</a>
-    <a href="notas">Notas</a>
+    <a href="home">Inicio</a>
     <a href="perfil">Perfil</a>
     <a href="#CerrarSesion" data-bs-toggle="modal" title="Salir">Salir</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -24,8 +23,10 @@
   </div> <!--|==========| Barra de navegacion | ↑ | fin |==========|-->
 
     <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
-    <!--|==========| Bienvenida | ↓ |==========|-->
-    <h1 id="greeting">Informacion de Carrera</h1>
+    <!--|==========| Boton | Regresar |==========|-->
+    <div class="btn-left-pro"> <a href="{{ url('/s') }}" title="Regresar" class="aarrooww"><</a> </div>
+    <!--|==========| Usuario | ↓ | titulo |==========|-->
+    <div class="middle-pro"> <p><img src="/img/info.png"> Soporte [info]</p> </div>
 
     <table class="table table-bordered">  
     <tr>
@@ -43,6 +44,18 @@
     <tr>
       <th class="table-primary">Correo</th>
       <td>@php echo $correo; @endphp</td>
+    </tr>
+    <tr>
+      <th class="table-primary">Tel</th>
+      <td>@php echo $telefono; @endphp</td>
+    </tr>
+    <tr> 
+      <th class="table-primary">Creado</th>
+      <td>@php echo $creado; @endphp</td>
+    </tr>
+    <tr>
+      <th class="table-primary">Modificado</th>
+      <td>@php echo $modificado; @endphp</td>
     </tr>
     </table>
   <!--|==========| Container | fin | ← | ↑ |==========|--></div>

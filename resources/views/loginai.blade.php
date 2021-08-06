@@ -1,13 +1,13 @@
 @php
   session_start();
   if(isset($_SESSION['admin'])){
-    echo '<script> window.location="/home"; </script>';
+    echo '<script> window.location="home"; </script>';
   } else {
 @endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-  <title>UEESFIX</title>
+  <title>Login</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -20,20 +20,20 @@
 <body>
   <!--|==========| Container | ↓ | inicio |==========|-->
   <div class="container">
+    <!--|==========| Boton | Regresar |==========|-->
+    <div class="btn-left-pro"> <a href="{{ url('/index') }}" title="Regresar" class="aarrooww"><img src="img/back.png"></a> </div>
     <!--|==========| Perfil | ↓ |==========|-->
     <div class="middle-pro"><p>UEES FIX<p></div>
 
-    <div class="row"><!--|==========| Div | Row I | ↓ |==========|-->
-      <div class="colin"> <p class="ppro"> <a href="{{ url('/loginui') }}" class="a1">Estudiante / Empleado</a> </p> </div>
-    <!--|==========| Div | Row I | ↑ |==========|--></div>
-
-    <div class="row"><!--|==========| Div | Row II | ↓ |==========|-->
-      <div class="colin"> <p class="ppro"> <a href="{{ url('/loginsi') }}" class="a2">Soporte</a> </p> </div>
-    <!--|==========| Div | Row II | ↑ |==========|--></div>
-
-    <div class="row"><!--|==========| Div | Row II | ↓ |==========|-->
-      <div class="colin"> <p class="ppro"> <a href="{{ url('/loginai') }}" class="a3">Administrador</a> </p> </div>
-    <!--|==========| Div | Row II | ↑ |==========|--></div>
+    <!--|==========| Formulario | ↓ | inicio |==========|-->
+    <form action="{{ url('/la') }}" name="step-ai-login" method="post">
+      @csrf
+        <label class="lbl1">1.  Ingrese su CIF</label>
+      <div class="form-group">
+        <input type="number" class="farm-cantral" name="txtCIF" autocomplete="off" required>
+      </div>
+      <input type="submit"  class="btn-entrur"  name="btnLoginStepIAdmin" value="Siguiente">
+    </form><!--|==========| Formulario | ↑ | fin |==========|-->
 
   <!--|==========| Container | fin | ← | ↑ |==========|--></div>    
 </body>

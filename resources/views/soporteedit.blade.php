@@ -14,8 +14,7 @@
 <body>
   <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
   <div class="topnav" id="myTopnav">
-    <a href="home" class="active">Inicio</a>
-    <a href="notas">Notas</a>
+    <a href="home">Inicio</a>
     <a href="perfil">Perfil</a>
     <a href="#CerrarSesion" data-bs-toggle="modal" title="Salir">Salir</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -38,9 +37,11 @@
       <label class="lblformuser">Apellido</label>
       <input type="text" class="form-control form-control-lg" name="txtEditApellido" value="@php echo $apellido; @endphp" autocomplete="off" required>
       <label class="lblformuser">Correo</label>
-      <input type="mail" class="form-control form-control-lg" name="txtEditCorreo" value="@php echo $correo; @endphp" autocomplete="off" required>
+      <input type="email" class="form-control form-control-lg" name="txtEditCorreo" value="@php echo $correo; @endphp" autocomplete="off" required>
+      <label class="lblformuser">Telefono</label>
+      <input type="number" class="form-control form-control-lg" name="txtEditTelefono" value="@php echo $telefono; @endphp" autocomplete="off" required>     
       <div class="d-grid gap-2">
-        <input type="submit" class="btn btn-primary btn-lg" name="btnActualizar" value="Actualizar">
+        <input type="submit" class="btn btn-primary btn-lg" name="btnActualizarSoporte" value="Actualizar">
       </div>
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
   <!--|==========| Container | fin | ← | ↑ |==========|--></div>

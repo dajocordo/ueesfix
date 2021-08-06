@@ -1,7 +1,11 @@
-  <!DOCTYPE html>
+@php
+  session_start();
+  if(isset($_SESSION['support'])){
+@endphp
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-  <title>Editar Usuario</title>
+  <title>Home</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -23,39 +27,38 @@
     </a>
   </div> <!--|==========| Barra de navegacion | ↑ | fin |==========|-->
 
-  <!-- {{ $id=3 }} -->
-
   <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
     <!--|==========| Bienvenida | ↓ |==========|-->
-    <h1 id="greeting">Editar Usuario</h1>
-    
-    <!--|==========| Formulario | ↓ | inicio |==========|-->
-    <form action="{{url('/st/update/')}}" name="frmSoporteTipoEdit" method="post">
-      @csrf
-      <input type="hidden" class="form-control form-control-lg" name="ii" value="@php echo $ii; @endphp" autocomplete="off" required>
-      <label class="lblformuser">Nombre de Soporte Tipo</label>
-      <input type="text" class="form-control form-control-lg" name="txtEditNombreSoporteTipo" value="@php echo $name; @endphp" autocomplete="off" required>
-      <div class="d-grid gap-2">
-        <input type="submit" class="btn btn-primary btn-lg" name="btnActualizarSopoTipo" value="Actualizar">
-      </div>
-    </form><!--|==========| Formulario | ↑ | fin |==========|-->
+    <h1 id="greeting">Bienvenido crack</h1>
+    <!--|==========| Nuevo | ↓ |==========|-->
+    <div class="first"> <p class="ppro"> <a href="todo" class="a1">Nuevo</a> </p> </div>
+    <!--|==========| Pendiente | ↓ |==========|-->
+    <div class="second"> <p class="ppro"> <a href="doing" class="a2">Pendiente</a> </p> </div>
+    <!--|==========| Completado | ↓ |==========|-->
+    <div class="third"> <p class="ppro"> <a href="done" class="a3">Completado</a> </p> </div>
   <!--|==========| Container | fin | ← | ↑ |==========|--></div>
 
-  <!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
+  <!--|========| Modal - CerrarSesion |inicio| ↓ |========|-->
   <div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="staticBackdropLabel">Cerrar Sesion</h5>
-          <a class="modal-btn-closee" data-bs-dismiss="modal" aria-label="Close">X</a>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
           <div class="modal-body"> ¿Desea salir de la plataforma? </div>
         <div class="modal-footer">
-            <a class="modal-btn-cerrar" data-bs-dismiss="modal">No</a>
-            <a href="logout" type="button" class="modal-btn-cerrar">Si</a>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+          <a href="welcome" type="button" class="btn btn-primary">Si</a>
         </div>
       </div>
     </div>
-  </div><!--|======| New Modal - CerrarSesion |fin| ↑ |======|--> 
+  </div><!--|======| Modal - CerrarSesion |fin| ↑ |======|--> 
 </body>
 </html>
+@php  } else{
+      echo "<script>
+            alert('Debes iniciar sesión primero');
+            window.location.href='/index';
+          </script>";
+}  @endphp

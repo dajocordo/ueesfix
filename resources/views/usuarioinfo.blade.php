@@ -25,7 +25,7 @@
     <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
     <!--|==========| Boton | Regresar |==========|-->
     <div class="btn-left-pro"> <a href="{{ url('/u') }}" title="Regresar" class="aarrooww"><</a> </div>
-    <!--|==========| Roles | ↓ | titulo |==========|-->
+    <!--|==========| Usuario | ↓ | titulo |==========|-->
     <div class="middle-pro"> <p><img src="/img/info.png"> Usuario [info]</p> </div>
 
     <!--|====| Tabla Usuario [info ]| ↓ | inicio |====|-->
