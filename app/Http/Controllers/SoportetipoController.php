@@ -15,7 +15,7 @@ class SoportetipoController extends Controller
     public function index()
     {
         $sopotipo = DB::table('soportetipo')->get();
-        return view('soportetipos')->with('sopotipo',$sopotipo);
+        return view('soportetipo')->with('sopotipo',$sopotipo);
     }
 
     /**
@@ -33,16 +33,15 @@ class SoportetipoController extends Controller
 
             DB::INSERT("INSERT INTO soportetipo (soportetipo_name, created_at, updated_at) VALUES(?,?,?)",[$SoporteTipoNombre, $Creado, $Actual]);
 
-            echo '<script language="javascript">';
-            echo 'alert("El Soporte Tipo, ha sido creado con éxito")';
-            echo '</script>';
-            return view("/soportetipos");
-        
+            echo "<script>
+                 alert('El Soporte Tipo, ha sido creado con éxito');
+                 window.location.href='/st';
+                 </script>";
         } else {
-            echo '<script language="javascript">';
-            echo 'alert("Hubo un error, favor intentarlo de nuevo")';
-            echo '</script>';
-            return view("/soportetiponuevo");
+            echo "<script>
+                 alert('Hubo un error, favor intentarlo de nuevo');
+                 window.location.href='/soportetiponuevo';
+                 </script>";
         }
     }
 
@@ -65,7 +64,21 @@ class SoportetipoController extends Controller
      */
     public function show($id)
     {
-        //
+        $soportetipo_show = DB::SELECT('SELECT * FROM soportetipo WHERE soportetipoid = ?',[$id]);
+
+        if ($soportetipo_show == null) {
+            echo "<script>
+                  alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
+                  window.location.href='/st';
+                  </script>";
+        } else{
+            foreach($soportetipo_show as $soportetipo_queri){
+                $name = $soportetipo_queri->soportetipo_name;
+                $creado = $soportetipo_queri->created_at;
+                $modificado = $soportetipo_queri->updated_at;
+                return view('soportetipoinfo')->with('id',$id)->with('name',$name)->with('creado',$creado)->with('modificado',$modificado);
+            }
+        }
     }
 
     /**
@@ -76,7 +89,22 @@ class SoportetipoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $soportetipo_edit = DB::SELECT('SELECT * FROM soportetipo WHERE soportetipoid = ?',[$id]);
+
+        if ($soportetipo_edit == null) {
+            echo "<script>
+                  alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
+                  window.location.href='/st';
+                  </script>";
+        } else{
+            foreach($soportetipo_edit as $soportetipo_query){
+                $ii = $soportetipo_query->soportetipoid;
+                $name = $soportetipo_query->soportetipo_name;
+                $creado = $soportetipo_query->created_at;
+                $modificado = $soportetipo_query->updated_at;
+                return view('soportetipoedit')->with('ii',$ii)->with('name',$name)->with('creado',$creado)->with('modificado',$modificado);
+            }
+        }
     }
 
     /**
@@ -97,16 +125,15 @@ class SoportetipoController extends Controller
               ->where('soportetipoid', $ii)
               ->update(['soportetipo_name' => $nuevoNombreSoporteTipo,'updated_at' => $Actualizado]);
 
-            echo '<script language="javascript">';
-            echo 'alert("EXITO: Los datos ya fueron actualizados")';
-            echo '</script>';
-            return view('/usuarios');
-            
+            echo "<script>
+                  alert('EXITO: Los datos ya fueron actualizados');
+                  window.location.href='/st';
+                  </script>";  
         } else {
-            echo '<script language="javascript">';
-            echo 'alert("ERROR: favor intentarlo de nuevo")';
-            echo '</script>';
-            return view('/usuarios');
+            echo "<script>
+                  alert('ERROR: favor intentarlo de nuevo');
+                  window.location.href='/st';
+                  </script>";
         }
     }
 

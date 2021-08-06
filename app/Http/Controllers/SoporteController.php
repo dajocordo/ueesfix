@@ -25,7 +25,6 @@ class SoporteController extends Controller
      */
     public function create()
     {
-
         if (isset($_POST['btnCrearSoporte'])) {
 
             $Nombre = $_POST['txtNombre'];
@@ -60,29 +59,6 @@ class SoporteController extends Controller
      */
     public function store(Request $request)
     {
-    //     if (isset($_POST['btnEnviar'])) {
-
-    //         $addUser = new addUser();
-    //         $addUser->txtNombre = $request->get('txtNombre');
-    //         $addUser->txtApellido = $request->get('txtApellido');
-    //         $addUser->txtCorreo = $request->get('txtCorreo');
-    //         $addUser->txtPassword = $request->get('txtPassword');
-    //         $addUser->save();
-
-    //         DB::INSERT("INSERT INTO USSERS (unombre, upellido, umail, upassword) VALUES(?,?,?,?)",[$addUser->txtNombre,$addUser->txtApellido,$addUser->txtCorreo,$Contra]);
-
-    //         echo '<script language="javascript">';
-    //         echo 'alert("Datos ingresados correctamente")';
-    //         echo '</script>';
-    //         return view("../home");
-        
-    //     } else {
-    //         echo '<script language="javascript">';
-    //         echo 'alert("Hubo un error, favor intentarlo de nuevo")';
-    //         echo '</script>';
-    //         return view("../nuevousuario");
-    //     }
-    // }
 
     }
 
@@ -92,14 +68,23 @@ class SoporteController extends Controller
      */
     public function show($id)
     {
-        // $id = $_REQUEST['id'];
-        $resul = DB::SELECT('SELECT * FROM soporte WHERE soportecif = ?',[$id]);
+        $soporte_show = DB::SELECT('SELECT * FROM soporte WHERE soportecif = ?',[$id]);
 
-        foreach($resul as $quer){
-            $name = $quer->snombre;
-            $apellido = $quer->sapellido;
-            $correo = $quer->smail;
-            return view('soporteinfo')->with('id',$id)->with('name',$name)->with('apellido',$apellido)->with('correo',$correo);
+        if ($soporte_show == null) {
+            echo "<script>
+                  alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
+                  window.location.href='/s';
+                  </script>";
+        } else{
+            foreach($soporte_show as $soporte_queri){
+                $name = $soporte_queri->snombre;
+                $apellido = $soporte_queri->sapellido;
+                $correo = $soporte_queri->smail;
+                $telefono = $soporte_queri->stelefono;
+                $creado = $soporte_queri->created_at;
+                $modificado = $soporte_queri->updated_at;
+                return view('soporteinfo')->with('id',$id)->with('name',$name)->with('apellido',$apellido)->with('correo',$correo)->with('telefono',$telefono)->with('creado',$creado)->with('modificado',$modificado);
+            }
         }
     }
 
@@ -109,14 +94,22 @@ class SoporteController extends Controller
      */
     public function edit($id)
     {
-        $result = DB::SELECT('SELECT * FROM soporte WHERE soportecif = ?',[$id]);
+        $soporte_edit = DB::SELECT('SELECT * FROM soporte WHERE soportecif = ?',[$id]);
 
-        foreach($result as $query){
-            $ii = $query->soportecif;
-            $name = $query->snombre;
-            $apellido = $query->sapellido;
-            $correo = $query->smail;
-            return view('soporteedit')->with('ii',$ii)->with('name',$name)->with('apellido',$apellido)->with('correo',$correo);
+        if ($soporte_edit == null) {
+            echo "<script>
+                  alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
+                  window.location.href='/s';
+                  </script>";
+        } else{
+            foreach($soporte_edit as $soporte_query){
+                $ii = $soporte_query->soportecif;
+                $name = $soporte_query->snombre;
+                $apellido = $soporte_query->sapellido;
+                $correo = $soporte_query->smail;
+                $telefono = $soporte_query->stelefono;
+                return view('soporteedit')->with('ii',$ii)->with('name',$name)->with('apellido',$apellido)->with('correo',$correo)->with('telefono',$telefono);
+            }
         }
     }
 
@@ -130,25 +123,26 @@ class SoporteController extends Controller
     public function update(Request $ii)
     {
         // $io=$_POST['ii'];
-        if (isset($_POST['btnActualizar'])) {
+        if (isset($_POST['btnActualizarSoporte'])) {
             $ii = $_REQUEST['ii'];
             $nuevoNombre = $_POST['txtEditNombre'];
             $nuevoApellido = $_POST['txtEditApellido'];
             $nuevoCorreo = $_POST['txtEditCorreo'];
+            $nuevoTelefono = $_POST['txtEditTelefono'];
+            $nuevoCambio = date("Y-m-d H:i:s");
 
             $affected = DB::table('soporte')
               ->where('soportecif', $ii)
-              ->update(['snombre' => $nuevoNombre,'sapellido' => $nuevoApellido,'smail' => $nuevoCorreo]);
+              ->update(['snombre' => $nuevoNombre,'sapellido' => $nuevoApellido, 'smail' => $nuevoCorreo,'stelefono' => $nuevoTelefono, 'updated_at' => $nuevoCambio]);
 
             echo "<script>
-            alert('Exito. El soporte fue actualizado correctamente');
-            window.location.href='/s';
-            </script>";
-  
+                  alert('Exito. El soporte fue actualizado correctamente');
+                  window.location.href='/s';
+                  </script>";
         } else {
             echo "<script>
                   alert('Error. Vuelva a intentarlo de nuevo');
-                  window.location.href='/soporte';
+                  window.location.href='/s';
                   </script>";
         }
     }
