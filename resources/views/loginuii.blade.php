@@ -28,7 +28,7 @@
     <!--|==========| Formulario | ↓ | inicio |==========|-->
     <form action="{{ url('/loginu') }}" name="step-uii-login" method="post">
       @csrf
-      <input type="hidden" class="form-control form-control-lg" name="iii" value="@php echo $id; @endphp" autocomplete="off" required>
+      <input type="hidden" class="form-control form-control-lg" name="usucif" value="@php echo $id; @endphp" autocomplete="off" required>
         <label class="lbl1">2.  Ingrese su contraseña</label>
       <div class="form-group">
         <input type="password" class="farm-cantral" name="txtContra" autocomplete="off" required>

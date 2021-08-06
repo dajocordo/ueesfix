@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-  <title>Nueva Gestión Tipo</title>
+  <title>Editar Usuario</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -15,6 +15,7 @@
   <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
   <div class="topnav" id="myTopnav">
     <a href="home" class="active">Inicio</a>
+    <a href="notas">Notas</a>
     <a href="perfil">Perfil</a>
     <a href="#CerrarSesion" data-bs-toggle="modal" title="Salir">Salir</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -23,38 +24,36 @@
   </div> <!--|==========| Barra de navegacion | ↑ | fin |==========|-->
 
   <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
-    <!--|==========| Boton | Regresar |==========|-->
-    <div class="btn-left-pro"> <a href="{{ url('/gt') }}" title="Regresar" class="aarrooww"><</a> </div>
-    <!--|==========| Roles | ↓ | titulo |==========|-->
-    <div class="middle-pro"> <p> Gestion Tipo [nuevo]</p> </div>
-
+    <!--|==========| Bienvenida | ↓ |==========|-->
+    <h1 id="greeting">Editar Carrera</h1>
+    
     <!--|==========| Formulario | ↓ | inicio |==========|-->
-    <form action="{{ url('/gt/create') }}" method="post">
+    <form action="{{url('/c/update/')}}" method="post">
       @csrf
+      <input type="hidden" class="form-control form-control-lg" name="ii" value="@php echo $ii; @endphp" autocomplete="off" required>
       <label class="lblformuser">Nombre</label>
-      <input type="text" class="form-control form-control-lg" name="txtNombreGestionTipo" autocomplete="off" required>
-      
+      <input type="text" class="form-control form-control-lg" name="txtEditNombre" value="@php echo $name; @endphp" autocomplete="off" required>
       <div class="d-grid gap-2">
-        <input type="submit" class="btn btn-primary btn-lg" name="btnEnviarGestionTipo" value="Enviar">
+        <input type="submit" class="btn btn-primary btn-lg" name="btnActualizar" value="Actualizar">
       </div>
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
   <!--|==========| Container | fin | ← | ↑ |==========|--></div>
 
-  <!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
+  <!--|========| Modal - CerrarSesion |inicio| ↓ |========|-->
   <div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="staticBackdropLabel">Cerrar Sesion</h5>
-          <a class="modal-btn-closee" data-bs-dismiss="modal" aria-label="Close">X</a>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
           <div class="modal-body"> ¿Desea salir de la plataforma? </div>
         <div class="modal-footer">
-            <a class="modal-btn-cerrar" data-bs-dismiss="modal">No</a>
-            <a href="logout" type="button" class="modal-btn-cerrar">Si</a>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+          <a href="welcome" type="button" class="btn btn-primary">Si</a>
         </div>
       </div>
     </div>
-  </div><!--|======| New Modal - CerrarSesion |fin| ↑ |======|-->
+  </div><!--|======| Modal - CerrarSesion |fin| ↑ |======|--> 
 </body>
 </html>
