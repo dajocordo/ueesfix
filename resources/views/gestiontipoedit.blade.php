@@ -1,7 +1,6 @@
-session_start();
+@php
+  session_start();
   if(isset($_SESSION['admin'])){
-    echo '<script> window.location="home"; </script>';
-  } else {
 @endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
