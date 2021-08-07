@@ -1,7 +1,6 @@
 @php
   session_start();
   if(isset($_SESSION['admin'])){
-   
 @endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
