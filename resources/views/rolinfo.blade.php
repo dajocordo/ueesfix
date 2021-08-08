@@ -18,7 +18,7 @@
 <body>
   <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
   <div class="topnav" id="myTopnav">
-    <a href="home" class="active">Inicio</a>
+    <a href="home">Inicio</a>
     <a href="perfil">Perfil</a>
     <a href="#CerrarSesion" data-bs-toggle="modal" title="Salir">Salir</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -26,12 +26,11 @@
     </a>
   </div> <!--|==========| Barra de navegacion | ↑ | fin |==========|-->
 
-  <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
+ <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
     <!--|==========| Boton | Regresar |==========|-->
     <div class="btn-left-pro"> <a href="{{ url('/r') }}" title="Regresar" class="aarrooww"><</a> </div>
     <!--|==========| Roles | ↓ | titulo |==========|-->
-    <div class="middle-pro"> <p>Rol [info]</p> </div>
-
+    <div class="middle-pro"> <p><img src="/img/info.png"> Rol [ info ]</p> </div>
     <!--|=======| Tabla Roles [info]  | ↓ | inicio |=======|-->
     <table class="table table-bordered">  
     <tr>
@@ -53,9 +52,8 @@
     </table><!--|=======| Tabla Roles [info]  | ↑ | fin |=======|-->
     <!--|==========| Container | fin | ← | ↑ |==========|--></div>
 
-
-<!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
-<div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
+  <div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
