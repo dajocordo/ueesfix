@@ -38,23 +38,21 @@
     <!--|==========| Tabla Roles | ↓ | inicio |==========|-->
     <table class="table table-bordered">
       <thead>
-        <th>No.</th>
         <th>ID</th>
-        <th>Nombre</th>
-        <th>Ultima Modificacion</th>
+        <th>Estado</th>
+        <th>Modificado</th>
         <th colspan="3">Opciones</th>
       </thead>
-      @php $num=1;
-        foreach ($estado as $estados) {
-          $id = $estados->estadoid;
-          $rol_Nombre = $estados->estado_name;
-          $rol_Fecha_Actual = $estados->updated_at;
+      @php
+        foreach ($state as $queryState) {
+          $id = $queryState->estadoid;
+          $name = $queryState->estado_name;
+          $fecha = $queryState->updated_at;
       @endphp
       <tbody>
-        <td>@php echo $num++; @endphp</td>
         <td>@php echo $id; @endphp</td>
-        <td>@php echo $rol_Nombre; @endphp</td> 
-        <td>@php echo $rol_Fecha_Actual; @endphp</td>
+        <td>@php echo $name; @endphp</td> 
+        <td>@php echo $fecha; @endphp</td>
         <td><a class="optionsu" href="/e/@php echo $id; @endphp/edit"><img src="img/edit.png"></a></td>
         <td><a class="optionsu" href="/e/@php echo $id; @endphp"><img src="img/info.png"></a></td> 
         <td><a class="optionsu" href="/e/delete"><p class="btndelete">X</p></a></td>

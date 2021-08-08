@@ -25,10 +25,12 @@
       <i class="fa fa-bars"></i>
     </a>
   </div> <!--|==========| Barra de navegacion | ↑ | fin |==========|-->
-
+ 
   <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
-    <!--|==========| Bienvenida | ↓ |==========|-->
-    <h1 id="greeting">Nuevo Estado</h1>
+    <!--|==========| Boton | Regresar |==========|-->
+    <div class="btn-left-pro"> <a href="{{ url('/e') }}" title="Regresar" class="aarrooww"><</a> </div>
+    <!--|==========| Estado | ↓ | titulo |==========|-->
+    <div class="middle-pro"> <p><img src="/img/add.png"> Estado [ nuevo ]</p> </div>
     <!--|==========| Formulario | ↓ | inicio |==========|-->
     <form action="{{ url('/e/create') }}" method="post">
       @csrf
@@ -41,8 +43,8 @@
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
   <!--|==========| Container | fin | ← | ↑ |==========|--></div>
 
-<!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
-<div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
+  <div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
