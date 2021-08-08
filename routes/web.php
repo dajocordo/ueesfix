@@ -14,6 +14,7 @@ Route::get('/', function () {return view('index');});
 Route::get('/dashboard', function() {return view('dashboard');});
 Route::get('/home', function() {return view('home');});
 Route::get('/index', function() {return view('index');});
+Route::get('/inicio', function() {return view('inicio');});
 Route::get('/login', function() {return view('login');});
 Route::get('/logout', function() {return view('logout');});
 Route::get('/perfil', function() {return view('perfil');});
@@ -193,6 +194,14 @@ Route::post('/t/create', [TicketController::class, 'create']);
 Route::post('/t/update', [TicketController::class, 'update']);
 Route::get('/ticketnuevo', [TicketController::class, 'tktnewtii']);
 
+//  TICKET NUEVO SESION DE USUARIO
+Route::resource('/tu', UTicketController::class);
+Route::get('/tu', [UTicketController::class, 'index']);
+Route::get('/tu/{id}', [UTicketController::class, 'show']);
+Route::get('/tu/{id}/edit', [UTicketController::class, 'edit']);
+Route::post('/tu/create', [UTicketController::class, 'create']);
+Route::post('/tu/update', [UTicketController::class, 'update']);
+Route::get('/ticketn', [UTicketController::class, 'utktnewtii']);
 
 //  USUARIO
 // Route::get('/usuarionuevo', function() {return view('usuarionuevo');});
