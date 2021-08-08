@@ -25,16 +25,6 @@
         <i class="fa fa-bars"></i>
     </a>
 </div>
-<script>
-    function myFunction() {
-        var x = document.getElementById("myTopnav");
-        if (x.className === "topnav") {
-            x.className += " responsive";
-        } else {
-            x.className = "topnav";
-        }
-    }
-</script>
 <!--|==========| Barra de navegacion | ↑ | fin |==========|-->
 <!--|==========| Container | ↓ | inicio |==========|-->
 <div class="container">
@@ -42,48 +32,10 @@
     <h1 id="greeting">Bienvenido UEES-FIX</h1>
     <!--|==========| Nuevo | ↓ |==========|-->
 
-        <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#CrearTicketModal" data-bs-whatever="@mdo">Crear Ticket</button>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Ver Tickets</button>
-</div>
-
-<div class="modal fade" id="CrearTicketModal" tabindex="-1" aria-labelledby="CrearTicketLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="CrearTicketLabel">Nuevo Ticket</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label">ID:</label>
-                        <input type="text" class="form-control" id="recipient-name" placeholder="ID Autoincrementable">
-                    </div>
-                    <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label">Titulo:</label>
-                        <input type="text" class="form-control" id="recipient-name" placeholder="Ingrese el Titulo">
-                    </div>
-                    <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label">Categoria:</label>
-                        <input type="text" class="form-control" id="recipient-name" placeholder="Selecciona categoria">
-                    </div>
-                    <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label">Categorias:</label>
-                        <input type="text" class="form-control" id="recipient-name" placeholder="Selecciona categoria">
-                    </div>
-                    <div class="mb-3">
-                        <label for="message-text" class="col-form-label">Descripcion de gestion:</label>
-                        <textarea class="form-control" id="message-text" placeholder="Descricion de la gestion solicitada"></textarea>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-secondaryy">Crear</button>
-            </div>
-        </div>
-    </div>
-</div>
+    <div class="row"><!--|==========| Div | Row I | ↓ |==========|-->
+      <div class="col"> <p class="ppro"> <a href="{{ url('/ticketn') }}" class="a1">Crear Ticket</a> </p> </div>
+      <div class="col"> <p class="ppro"> <a href="{{ url('/') }}" class="a2">Mis Tickets</a> </p> </div>
+    <!--|==========| Div | Row I | ↑ |==========|--></div>
 
 <!--|==========| Container | fin | ↑ |==========|-->
 <!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
