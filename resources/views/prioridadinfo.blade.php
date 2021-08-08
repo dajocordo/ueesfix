@@ -1,7 +1,11 @@
-  <!DOCTYPE html>
+@php
+  session_start();
+  if(isset($_SESSION['admin'])){
+@endphp
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-  <title>Editar Usuario</title>
+  <title>Prioridad Info</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -14,35 +18,39 @@
 <body>
   <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
   <div class="topnav" id="myTopnav">
-    <a href="home" class="active">Inicio</a>
+    <a href="home">Inicio</a>
     <a href="perfil">Perfil</a>
     <a href="#CerrarSesion" data-bs-toggle="modal" title="Salir">Salir</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
       <i class="fa fa-bars"></i>
     </a>
   </div> <!--|==========| Barra de navegacion | ↑ | fin |==========|-->
-
-  <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
+  
+ <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
     <!--|==========| Boton | Regresar |==========|-->
-    <div class="btn-left-pro"> <a href="{{ url('/u') }}" title="Regresar" class="aarrooww"><</a> </div>
-    <!--|==========| Roles | ↓ | titulo |==========|-->
-    <div class="middle-pro"> <p><img src="/img/edit.png"> Editar Usuario</p> </div>
-    
-    <!--|==========| Formulario | ↓ | inicio |==========|-->
-    <form action="{{url('/u/update/')}}" method="post">
-      @csrf
-      <input type="hidden" class="form-control form-control-lg" name="ii" value="@php echo $ii; @endphp" autocomplete="off" required>
-      <label class="lblformuser">Nombre</label>
-      <input type="text" class="form-control form-control-lg" name="txtEditNombre" value="@php echo $name; @endphp" autocomplete="off" required>
-      <label class="lblformuser">Apellido</label>
-      <input type="text" class="form-control form-control-lg" name="txtEditApellido" value="@php echo $apellido; @endphp" autocomplete="off" required>
-      <label class="lblformuser">Correo</label>
-      <input type="mail" class="form-control form-control-lg" name="txtEditCorreo" value="@php echo $correo; @endphp" autocomplete="off" required>
-      <div class="d-grid gap-2">
-        <input type="submit" class="btn btn-primary btn-lg" name="btnActualizarU" value="Actualizar">
-      </div>
-    </form><!--|==========| Formulario | ↑ | fin |==========|-->
-  <!--|==========| Container | fin | ← | ↑ |==========|--></div>
+    <div class="btn-left-pro"> <a href="{{ url('/p') }}" title="Regresar" class="aarrooww"><</a> </div>
+    <!--|==========| Roles | ↓ | Prioridad |==========|-->
+    <div class="middle-pro"> <p><img src="/img/info.png"> Prioridad [ info ]</p> </div>
+    <!--|=======| Tabla Prioridad [info]  | ↓ | inicio |=======|-->
+    <table class="table table-bordered">  
+    <tr>
+      <th class="table-primary">ID</th>
+      <td>@php echo $id; @endphp</td>
+    </tr> 
+    <tr> 
+      <th class="table-primary">Nombre</th>
+      <td>@php echo $name; @endphp </td>
+    </tr>
+    <tr> 
+      <th class="table-primary">Creado</th>
+      <td>@php echo $creado; @endphp</td>
+    </tr>
+    <tr>
+      <th class="table-primary">Modificado</th>
+      <td>@php echo $modificado; @endphp</td>
+    </tr>
+    </table><!--|=======| Tabla Prioridad [info]  | ↑ | fin |=======|-->
+    <!--|==========| Container | fin | ← | ↑ |==========|--></div>
 
   <!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
   <div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -62,3 +70,9 @@
   </div><!--|======| New Modal - CerrarSesion |fin| ↑ |======|--> 
 </body>
 </html>
+@php  } else{
+      echo "<script>
+            alert('Debes iniciar sesión primero');
+            window.location.href='/index';
+          </script>";
+}  @endphp

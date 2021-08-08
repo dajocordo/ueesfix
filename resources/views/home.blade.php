@@ -29,7 +29,7 @@
   <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
     <!--|==========| Bienvenida | ↓ |==========|-->
     <h3 id="greeting">Administrador</h3>
-
+    
     <div class="row"><!--|==========| Div | Row I | ↓ |==========|-->
       <div class="col"> <p class="ppro"> <a href="{{ url('/c') }}" class="a1">Carrera</a> </p> </div>
       <div class="col"> <p class="ppro"> <a href="{{ url('/ch') }}" class="a2">Chatbots</a> </p> </div>
@@ -45,7 +45,7 @@
     <div class="row"><!--|==========| Div | Row II | ↓ |==========|-->
       <div class="col"> <p class="ppro"> <a href="{{ url('/h') }}" class="a2">Historial</a> </p> </div>
       <div class="col"> <p class="ppro"> <a href="{{ url('/n') }}" class="a2">Notas</a> </p> </div>
-      <div class="col"> <p class="ppro"> <a href="{{ url('/c') }}" class="a1">Prioridad</a> </p> </div>
+      <div class="col"> <p class="ppro"> <a href="{{ url('/p') }}" class="a1">Prioridad</a> </p> </div>
     <!--|==========| Div | Row II | ↑ |==========|--></div>
 
     <div class="row"><!--|==========| Div | Row III | ↓ |==========|-->
@@ -63,8 +63,8 @@
 
   <!--|==========| Container | fin | ← | ↑ |==========|--></div>
 
-<!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
-<div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
+  <div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -78,7 +78,7 @@
         </div>
       </div>
     </div>
-  </div><!--|======| New Modal - CerrarSesion |fin| ↑ |======|--> 
+  </div><!--|======| Modal - CerrarSesion |fin| ↑ |======|-->
 </body>
 </html>
 @php  } else{
