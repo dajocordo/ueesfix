@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-  <title>Info Usuario</title>
+  <title>Ticket Info</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -28,27 +28,31 @@
 
     <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
     <!--|==========| Boton | Regresar |==========|-->
-    <div class="btn-left-pro"> <a href="{{ url('/u') }}" title="Regresar" class="aarrooww"><</a> </div>
-    <!--|==========| Roles | ↓ | titulo |==========|-->
-    <div class="middle-pro"> <p>Usuario [info]</p> </div>
+    <div class="btn-left-pro"> <a href="{{ url('/t') }}" title="Regresar" class="aarrooww"><</a> </div>
+    <!--|==========| Ticket | ↓ | titulo |==========|-->
+    <div class="middle-pro"> <p><img src="/img/info.png"> Ticket [ info ]</p> </div>
 
-    <!--|====| Tabla Usuario [info ]| ↓ | inicio |====|-->
+    <!--|====| Tabla Ticket [info ] | ↓ | inicio |====|-->
     <table class="table table-bordered">  
     <tr>
-      <th class="table-primary">No. </th>
+      <th class="table-primary">Ticket</th>
       <td>@php echo $id; @endphp</td>
     </tr> 
     <tr> 
-      <th class="table-primary">Nombre</th>
-      <td>@php echo $name; @endphp </td>
+      <th class="table-primary">Titulo</th>
+      <td>@php echo $titulo; @endphp </td>
     </tr>
     <tr> 
-      <th class="table-primary">Apellidon</th>
-      <td>@php echo $apellido; @endphp</td>
+      <th class="table-primary">Detalles</th>
+      <td>@php echo $detalles; @endphp</td>
     </tr>
-    <tr>
-      <th class="table-primary">Correo</th>
-      <td>@php echo $correo; @endphp</td>
+    <tr> 
+      <th class="table-primary">Gestion</th>
+      <td>@php echo $gname; @endphp </td>
+    </tr>
+    <tr> 
+      <th class="table-primary">Gestion Tipo</th>
+      <td>@php echo $gtname; @endphp</td>
     </tr>
     <tr> 
       <th class="table-primary">Creado</th>
@@ -58,11 +62,11 @@
       <th class="table-primary">Modificado</th>
       <td>@php echo $modificado; @endphp</td>
     </tr>
-  </table><!--|======| Tabla Usuario [info] | ↑ | fin |======|-->
+  </table><!--|======| Tabla Ticket [info] | ↑ | fin |======|-->
   <!--|==========| Container | fin | ← | ↑ |==========|--></div>
 
-<!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
-<div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
+  <div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
