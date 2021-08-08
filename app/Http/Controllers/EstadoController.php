@@ -14,8 +14,8 @@ class EstadoController extends Controller
      */
     public function index()
     {
-        $estado = DB::table('estado')->get();
-        return view('estado')->with('estado',$estado);
+        $state = DB::table('estado')->get();
+        return view('estado')->with('state',$state);
     }
 
     /**
@@ -101,7 +101,7 @@ class EstadoController extends Controller
             foreach($estado_edit as $estado_query){
                 $ii = $estado_query->estadoid;
                 $name = $estado_query->estado_name;    
-                return view('/estadoedita')->with('ii',$ii)->with('name',$name);
+                return view('/estadoedit')->with('ii',$ii)->with('name',$name);
             }
         }
     }

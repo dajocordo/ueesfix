@@ -65,7 +65,23 @@ class PrioridadController extends Controller
      */
     public function show($id)
     {
-        //
+        $prioridad_show = DB::SELECT('SELECT * FROM prioridad WHERE prioridadid = ?',[$id]);
+
+        if ($prioridad_show == null) {
+            echo "<script>
+                  alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
+                  window.location.href='/g';
+                  </script>";
+        } else{
+            foreach($prioridad_show as $prioridad_queri){
+                $id = $prioridad_queri->prioridadid;
+                $name = $prioridad_queri->prioridad_name;
+                $creado = $prioridad_queri->created_at;
+                $modificado = $prioridad_queri->updated_at;
+                return view('/prioridadinfo')->with('id',$id)->with('name',$name)->with('creado',$creado)->with('modificado',$modificado);
+            }
+        }
+
     }
 
     /**
@@ -76,7 +92,22 @@ class PrioridadController extends Controller
      */
     public function edit($id)
     {
-        //
+        $prioridad_edit = DB::SELECT('SELECT * FROM prioridad WHERE prioridadid = ?',[$id]);
+
+        if ($prioridad_edit == null) {
+            echo "<script>
+                  alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
+                  window.location.href='/g';
+                  </script>";
+        } else{
+            foreach($prioridad_edit as $prioridad_query){
+                $id = $prioridad_query->prioridadid;
+                $name = $prioridad_query->prioridad_name;
+                $creado = $prioridad_query->created_at;
+                $modificado = $prioridad_query->updated_at;
+                return view('/prioridadedit')->with('id',$id)->with('name',$name)->with('creado',$creado)->with('modificado',$modificado);
+            }
+        }
     }
 
     /**

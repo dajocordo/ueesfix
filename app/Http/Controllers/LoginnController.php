@@ -198,11 +198,11 @@ class LoginnController extends Controller
                      </script>";
             } else {
                 session_start();
-                $_SESSION['support'] = $adcif;
-            echo "<script>
-                 alert('Bienvenido crack');
-                 window.location.href='/home';
-                 </script>";
+                $_SESSION['admin'] = $adcif;
+                echo "<script>
+                        alert('Bienvenido crack');
+                        window.location.href='/home';
+                      </script>";
             }
         // IF fin: este valida si el el CIF coincide con alguno de la base de datos
 

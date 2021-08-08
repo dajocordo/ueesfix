@@ -101,7 +101,7 @@ class RolController extends Controller
             foreach($rol_edit as $rol_query){
                 $ii = $rol_query->rolesid;
                 $name = $rol_query->roles_name;    
-                return view('/roledita')->with('ii',$ii)->with('name',$name);
+                return view('/roledit')->with('ii',$ii)->with('name',$name);
             }
         }
     }
