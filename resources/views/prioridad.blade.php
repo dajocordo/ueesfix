@@ -34,9 +34,7 @@
     <div class="middle-pro"> <p>Prioridad</p> </div>
     <!--|==========| Boton | ir a derecha |==========|-->
     <div class="btn-right-pro"> <a href="/prioridadnueva" title="Nueva Prioridad" class="aarrooww">+</a> </div>
-    <!--|==========| Nuevo | ↓ |==========|-->
-    
-    <!--|==========| Tabla Usuarios | ↓ | inicio |==========|-->
+    <!--|==========| Tabla Prioridad | ↓ | inicio |==========|-->
     <table class="table table-bordered">
       <thead>
         <th>ID</th>

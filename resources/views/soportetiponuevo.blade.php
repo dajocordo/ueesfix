@@ -1,7 +1,3 @@
-@php
-  session_start();
-  if(isset($_SESSION['admin'])){
-@endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -27,8 +23,10 @@
   </div> <!--|==========| Barra de navegacion | ↑ | fin |==========|-->
 
   <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
-    <!--|==========| Bienvenida | ↓ |==========|-->
-    <h1 id="greeting">Nuevo Soporte Tipo</h1>
+    <!--|==========| Boton | Regresar |==========|-->
+    <div class="btn-left-pro"> <a href="{{ url('/st') }}" title="Regresar" class="aarrooww"><</a> </div>
+    <!--|==========| Soporte Tipo | ↓ | titulo |==========|-->
+    <div class="middle-pro"> <p><img src="/img/add.png"> Soporte Tipo [ nuevo ]</p> </div>
     <!--|==========| Formulario | ↓ | inicio |==========|-->
     <form action="{{url('/st/create')}}" name="frmSoporteTipoCreate" method="post">
       @csrf
@@ -40,8 +38,8 @@
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
   <!--|==========| Container | fin | ← | ↑ |==========|--></div>
 
-<!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
-<div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
+  <div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -58,9 +56,3 @@
   </div><!--|======| New Modal - CerrarSesion |fin| ↑ |======|--> 
 </body>
 </html>
-@php  } else{
-      echo "<script>
-            alert('Debes iniciar sesión primero');
-            window.location.href='/index';
-          </script>";
-}  @endphp

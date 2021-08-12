@@ -1,7 +1,3 @@
-@php
-  session_start();
-  if(isset($_SESSION['admin'])){
-@endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -40,8 +36,8 @@
     <table class="table table-bordered">
       <thead>
         <th>No.</th>
-        <th>Nombre</th>
-        <th>Ultima Modificación</th>
+        <th>Soporte Tipo</th>
+        <th>Modificado</th>
         <th colspan="3">Opciones</th>
       </thead>
       @php
@@ -62,8 +58,8 @@
     </table><!--|=======| Tabla Soporte Tipo | ↑ | fin |=======|-->
   <!--|==========| Container | fin | ↑ |==========|--></div>
 
-<!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
-<div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
+  <div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -77,12 +73,6 @@
         </div>
       </div>
     </div>
-  </div><!--|======| New Modal - CerrarSesion |fin| ↑ |======|-->
+  </div><!--|======| New Modal - CerrarSesion |fin| ↑ |======|--> 
 </body>
 </html>
-@php  } else{
-      echo "<script>
-            alert('Debes iniciar sesión primero');
-            window.location.href='/index';
-          </script>";
-}  @endphp

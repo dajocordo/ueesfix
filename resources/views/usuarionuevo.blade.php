@@ -1,7 +1,3 @@
-@php
-  session_start();
-  if(isset($_SESSION['admin'])){
-@endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -18,7 +14,7 @@
 <body>
   <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
   <div class="topnav" id="myTopnav">
-    <a href="home" class="active">Inicio</a>
+    <a href="home">Inicio</a>
     <a href="perfil">Perfil</a>
     <a href="#CerrarSesion" data-bs-toggle="modal" title="Salir">Salir</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -27,8 +23,10 @@
   </div> <!--|==========| Barra de navegacion | ↑ | fin |==========|-->
 
   <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
-    <!--|==========| Bienvenida | ↓ |==========|-->
-    <h2 id="greeting">Nuevo Usuario</h2>
+    <!--|==========| Boton | Regresar |==========|-->
+    <div class="btn-left-pro"> <a href="{{ url('/u') }}" title="Regresar" class="aarrooww"><</a> </div>
+    <!--|==========| Rol | ↓ | titulo |==========|-->
+    <div class="middle-pro"> <p><img src="/img/add.png"> Usuario [ nuevo ]</p> </div>
     <!--|==========| Formulario | ↓ | inicio |==========|-->
     <form action="{{url('/u/create')}}" name="frmUsuarioCreate" method="post">
       @csrf
@@ -50,9 +48,13 @@
         <div class="col-6">
           <label class="lblformuser">Contraseña</label>
           <input type="password" class="form-control form-control-lg" name="txtPassword" autocomplete="off" required>
-      </div><!--|==========| Div | Row I | ↑ |==========|--></div>
+      </div><!--|==========| Div | Row II | ↑ |==========|--></div>
 
       <div class="row"><!--|==========| Div | Row III | ↓ |==========|-->
+        <div class="col-6">
+          <label class="lblformuser">Telefono</label>
+          <input type="number" class="form-control form-control-lg" name="txtTelefono" autocomplete="off" required>
+        </div>
         <div class="col-6">
           <!--|==========| Select Tipo | ↓ | inicio |==========|-->
           <label class="lblformuser">Tipo</label>
@@ -63,7 +65,10 @@
           @endphp
             <option value="@php echo $tipoid; @endphp">@php echo $tiponame; @endphp</option>
           @php } @endphp
-          </select><!--|==========| Select Tipo | ↑ | fin |==========|--></div>
+          </select><!--|==========| Select Tipo | ↑ | fin |==========|-->
+      </div><!--|==========| Div | Row II | ↑ |==========|--></div>
+
+      <div class="row"><!--|==========| Div | Row IV | ↓ |==========|-->
         <div class="col-6">
           <!--|==========| Select Facultad | ↓ | inicio |==========|-->
           <label class="lblformuser">Facultad</label>
@@ -75,9 +80,7 @@
             <option value="@php echo $facuid; @endphp">@php echo $facuname; @endphp</option>
           @php } @endphp
           </select><!--|==========| Select Tipo | ↑ | fin |==========|--></div>
-      <!--|==========| Div | Row I | ↑ |==========|--></div>
-
-      <div class="row"><!--|==========| Div | Row III | ↓ |==========|-->
+      
         <div class="col-6">
           <!--|==========| Select Carrera | ↓ | inicio |==========|-->
           <label class="lblformuser">Carrera</label>
@@ -89,15 +92,14 @@
             <option value="@php echo $carreid; @endphp">@php echo $carrename; @endphp</option>
           @php } @endphp
           </select><!--|==========| Select Tipo | ↑ | fin |==========|--></div>
-        <div class="col-6">
+        <!--|==========| Div | Row IV | ↑ |==========|--></div>
           <input type="submit" class="btn-enviar-form" name="btnCrearUsuario" value="Enviar">
-      </div><!--|==========| Div | Row III | ↑ |==========|--></div>
 
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
   <!--|==========| Container | fin | ← | ↑ |==========|--></div>
 
-<!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
-<div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
+  <div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -114,9 +116,3 @@
   </div><!--|======| New Modal - CerrarSesion |fin| ↑ |======|--> 
 </body>
 </html>
-@php  } else{
-      echo "<script>
-            alert('Debes iniciar sesión primero');
-            window.location.href='/index';
-          </script>";
-}  @endphp

@@ -1,7 +1,3 @@
-@php
-  session_start();
-  if(isset($_SESSION['admin'])){
-@endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -27,8 +23,10 @@
   </div> <!--|==========| Barra de navegacion | ↑ | fin |==========|-->
 
   <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
-    <!--|==========| Bienvenida | ↓ |==========|-->
-    <h2 id="greeting">Soporte Nuevo</h2>
+    <!--|==========| Boton | Regresar |==========|-->
+    <div class="btn-left-pro"> <a href="{{ url('/s') }}" title="Regresar" class="aarrooww"><</a> </div>
+    <!--|==========| Rol | ↓ | titulo |==========|-->
+    <div class="middle-pro"> <p><img src="/img/add.png"> Soporte [ nuevo ]</p> </div>
     <!--|==========| Formulario | ↓ | inicio |==========|-->
     <form action="{{url('/s/create')}}" name="frmUsuarioCreate" method="post">
       @csrf
@@ -69,7 +67,7 @@
           <label class="lblformuser">Rol</label>
           <select name="selRoles" class="form-control form-control-lg" aria-label="Default select example">
           @php  foreach ($rolee as $roless) {
-                  $rolid = $roless->rolesid;
+                  $rolid = $roless->roles_id;
                   $rolname = $roless->roles_name;
           @endphp
             <option value="@php echo $rolid; @endphp">@php echo $rolname; @endphp</option>
@@ -89,8 +87,8 @@
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
   <!--|==========| Container | fin | ← | ↑ |==========|--></div>
 
-<!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
-<div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
+  <div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -107,9 +105,3 @@
   </div><!--|======| New Modal - CerrarSesion |fin| ↑ |======|--> 
 </body>
 </html>
-@php  } else{
-      echo "<script>
-            alert('Debes iniciar sesión primero');
-            window.location.href='/index';
-          </script>";
-}  @endphp

@@ -33,7 +33,7 @@
     <!--|==========| Tickets | ↓ | titulo |==========|-->
     <div class="middle-pro"> <p>Tickets</p> </div>
     <!--|==========| Boton | ir a derecha |==========|-->
-    <div class="btn-right-pro"> <a href="{{ url('/ticketnuevo' )}}" title="Nuevo" class="aarrooww">+</a> </div>
+    <div class="btn-right-pro"> <a href="{{ url('/ticketnuevo' )}}" title="Nuevo" class="aarrooww">+</a></div>
     
     <!--|==========| Tabla Ticket | ↓ | inicio |==========|-->
     <table class="table table-bordered">

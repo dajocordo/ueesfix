@@ -45,7 +45,7 @@
       </thead>
       @php
         foreach ($roll as $roli) {
-          $id = $roli->rolesid;
+          $id = $roli->roles_id;
           $rol_Nombre = $roli->roles_name;
           $rol_Fecha_Actual = $roli->updated_at;
       @endphp

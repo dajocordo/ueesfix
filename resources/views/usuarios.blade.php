@@ -1,7 +1,3 @@
-@php
-  session_start();
-  if(isset($_SESSION['admin'])){
-@endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -38,7 +34,7 @@
     <!--|==========| Tabla Usuarios | ↓ | inicio |==========|-->
     <table class="table table-bordered">
       <thead>
-        <th>No.</th>
+        <th>CIF</th>
         <th>Nombre</th>
         <th>Apellido</th>
         <th>Correo</th>
@@ -48,11 +44,11 @@
       $num=1;
       foreach ($users as $user) {
         $id = $user->usuariocif;
-        $nombreu = $user->unombre;
-        $apellidou = $user->uapellido;
-        $correou = $user->umail;
+        $nombreu = $user->usuario_name;
+        $apellidou = $user->usuario_apellido;
+        $correou = $user->usuario_correo;
       @endphp
-      <tbody><td>@php echo $num++; @endphp</td>
+      <tbody><td>@php echo $id; @endphp</td>
         <td>@php echo $nombreu; @endphp</td>
         <td>@php echo $apellidou; @endphp</td>
         <td>@php echo $correou; @endphp</td> 
@@ -65,8 +61,8 @@
   </div>
   <!--|==========| Container | fin | ↑ |==========|-->
 
-<!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
-<div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
+  <div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -83,9 +79,3 @@
   </div><!--|======| New Modal - CerrarSesion |fin| ↑ |======|--> 
 </body>
 </html>
-@php  } else{
-      echo "<script>
-            alert('Debes iniciar sesión primero');
-            window.location.href='/index';
-          </script>";
-}  @endphp

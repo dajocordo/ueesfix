@@ -1,8 +1,4 @@
-@php
-  session_start();
-  if(isset($_SESSION['admin'])){
-@endphp
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
   <title>Editar Gestion</title>
@@ -18,7 +14,7 @@
 <body>
   <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
   <div class="topnav" id="myTopnav">
-    <a href="home" class="active">Inicio</a>
+    <a href="home">Inicio</a>
     <a href="perfil">Perfil</a>
     <a href="#CerrarSesion" data-bs-toggle="modal" title="Salir">Salir</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -29,11 +25,10 @@
   <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
     <!--|==========| Boton | Regresar |==========|-->
     <div class="btn-left-pro"> <a href="{{ url('/g') }}" title="Regresar" class="aarrooww"><</a> </div>
-    <!--|==========| Roles | ↓ | titulo |==========|-->
-    <div class="middle-pro"> <p>Editar Gestion</p> </div>
-    
+    <!--|==========| Gestion | ↓ | titulo |==========|-->
+    <div class="middle-pro"> <p><img src="/img/edit.png"> Gestion [ edit ]</p> </div>    
     <!--|==========| Formulario | ↓ | inicio |==========|-->
-    <form action="{{url('/g/update/')}}" method="post">
+    <form action="{{url('/g/update/')}}" method="post" name="frmEditGestion">
       @csrf
       <input type="hidden" class="form-control form-control-lg" name="ii" value="@php echo $ii; @endphp" autocomplete="off" required>
       <label class="lblformuser">Nombre</label>
@@ -44,8 +39,8 @@
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
   <!--|==========| Container | fin | ← | ↑ |==========|--></div>
 
-<!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
-<div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
+  <div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -59,12 +54,6 @@
         </div>
       </div>
     </div>
-  </div><!--|======| New Modal - CerrarSesion |fin| ↑ |======|--> 
+  </div><!--|======| Modal - CerrarSesion |fin| ↑ |======|-->
 </body>
 </html>
-@php  } else{
-      echo "<script>
-            alert('Debes iniciar sesión primero');
-            window.location.href='/index';
-          </script>";
-}  @endphp

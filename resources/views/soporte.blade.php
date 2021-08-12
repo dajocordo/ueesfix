@@ -1,7 +1,3 @@
-@php
-  session_start();
-  if(isset($_SESSION['admin'])){
-@endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -49,9 +45,9 @@
       $num=1;
       foreach ($soport as $sopor) {
         $id = $sopor->soportecif;
-        $sopnombre = $sopor->snombre;
-        $sopapellido = $sopor->sapellido;
-        $sopcorreo = $sopor->smail;
+        $sopnombre = $sopor->soporte_name;
+        $sopapellido = $sopor->soporte_apellido;
+        $sopcorreo = $sopor->soporte_mail;
       @endphp
       <tbody><td>@php echo $num++; @endphp</td>
         <td>@php echo $sopnombre; @endphp</td>
@@ -66,8 +62,8 @@
   </div>
   <!--|==========| Container | fin | ↑ |==========|-->
 
-<!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
-<div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
+  <div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -81,12 +77,6 @@
         </div>
       </div>
     </div>
-  </div><!--|======| New Modal - CerrarSesion |fin| ↑ |======|-->
+  </div><!--|======| New Modal - CerrarSesion |fin| ↑ |======|--> 
 </body>
 </html>
-@php  } else{
-      echo "<script>
-            alert('Debes iniciar sesión primero');
-            window.location.href='/index';
-          </script>";
-}  @endphp
