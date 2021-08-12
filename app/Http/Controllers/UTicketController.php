@@ -15,8 +15,9 @@ class UTicketController extends Controller
      */
     public function index()
     {
-        $tickett = DB::table('ticket')->get();
-        return view('tickets')->with('tickett',$tickett);
+        // $tickett = DB::SELECT('SELECT * FROM ticket WHERE usuariolid = ?',[$_SESSION['student']]);
+        // $tickett = DB::table('ticket')->get();
+        // return view('ticketnv')->with('tickett',$tickett);
     }
 
     /**
@@ -43,7 +44,7 @@ class UTicketController extends Controller
 
             echo "<script>
                   alert('EXITO. El Ticket ha sido creado correctamente');
-                  window.location.href='/inicio';
+                  window.location.href='/ticketnv';
                   </script>";
         } else {
             echo "<script>
@@ -77,7 +78,7 @@ class UTicketController extends Controller
         if ($ticket_show == null) {
             echo "<script>
                   alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
-                  window.location.href='/t';
+                  window.location.href='/inicio';
                   </script>";
         } else{
             // FOREACH TABLA TICKET
@@ -87,6 +88,8 @@ class UTicketController extends Controller
                 $detalles = $ticket_queri->ticket_detalles;
                 $gestionid = $ticket_queri->gestionlid;
                 $tipogestionid = $ticket_queri->gestiontilid;
+                $prioridadid = $ticket_queri->prioridadlid;
+                $estadoid = $ticket_queri->estadolid;
                 $creado = $ticket_queri->created_at;
                 $modificado = $ticket_queri->updated_at;
                 $tgestion_show = DB::SELECT('SELECT * FROM gestion WHERE gestionid = ?',[$gestionid]);
@@ -99,8 +102,21 @@ class UTicketController extends Controller
                     // FOREACH TABLA GESTION_TIPO
                     foreach($tgestiontipo_show as $tgestiontipo_queri){
                         $gtname = $tgestiontipo_queri->gestiontipo_name;
+                        $prioridad_show= DB::SELECT('SELECT * FROM prioridad WHERE prioridadid = ?',[$prioridadid]);
 
-                        return view('ticketinfo')->with('id',$id)->with('titulo',$titulo)->with('detalles',$detalles)->with('gname',$gname)->with('gtname',$gtname)->with('creado',$creado)->with('modificado',$modificado);
+                //FOREACH TABLA PRIORIDAD 
+                foreach($prioridad_show as $prioridad_queri){
+                $pname = $prioridad_queri->prioridad_name;
+                $estado_show= DB::SELECT('SELECT * FROM estado WHERE estadoid = ?',[$estadoid]);
+                        
+                        
+                //FOREACH TABLA ESTADO 
+                foreach($estado_show as $estado_queri){
+                $ename = $estado_queri->estado_name;
+
+                return view('ticketnvi')->with('id',$id)->with('titulo',$titulo)->with('detalles',$detalles)->with('gname',$gname)->with('gtname',$gtname)->with('creado',$creado)->with('modificado',$modificado)->With('pname',$pname)->With('ename',$ename);        
+                             }
+                         }         
                     }
                 }
             }
