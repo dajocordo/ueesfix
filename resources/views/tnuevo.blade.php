@@ -1,6 +1,6 @@
 @php
   session_start();
-  if(isset($_SESSION['admin'])){
+  if(isset($_SESSION['support'])){
 @endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -18,7 +18,7 @@
 <body>
   <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
   <div class="topnav" id="myTopnav">
-    <a href="home">Inicio</a>
+    <a href="dashboard">Inicio</a>
     <a href="perfil">Perfil</a>
     <a href="#CerrarSesion" data-bs-toggle="modal" title="Salir">Salir</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -28,11 +28,11 @@
 
   <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
     <!--|==========| Boton | Regresar |==========|-->
-    <div class="btn-left-pro"> <a href="{{ url('/t') }}" title="Regresar" class="aarrooww"><</a> </div>
+    <div class="btn-left-pro"> <a href="{{ url('/stinicio') }}" title="Regresar" class="aarrooww"><</a> </div>
     <!--|==========| Ticket | ↓ | titulo |==========|-->
     <div class="middle-pro"> <p><img src="/img/add.png"> Ticket [ nuevo ]</p> </div>
     <!--|==========| Formulario | ↓ | inicio |==========|-->
-    <form action="{{url('/t/create')}}" name="frmTicketCreateAdm" method="post">
+    <form action="{{url('/ts/create')}}" name="frmTicketCreateAdm" method="post">
       @csrf
       <div class="row"><!--|==========| Div | Row III | ↓ |==========|-->
         <div class="col-8">
@@ -79,7 +79,7 @@
           <div class="col-4">
           <!--|==========| Select Usuario | ↓ | inicio |==========|-->
           <label class="lblformuser">Usuario</label>
-          <select name="selUsuari" class="form-control form-control-lg" aria-label="Default select example">
+          <select name="selUsuario" class="form-control form-control-lg" aria-label="Default select example">
           @php foreach ($usuarioo as $selusuarioo) {
             $uid = $selusuarioo->usuariocif;
             $uname = $selusuarioo->unombre;

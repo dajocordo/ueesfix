@@ -18,8 +18,8 @@
 <body>
   <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
   <div class="topnav" id="myTopnav">
-    <a href="home" class="active">Inicio</a>
-    <a href="tnuevo">Ticket</a>
+    <a href="dashborad" class="active">Inicio</a>
+    <a href="stinicio">Ticket</a>
     <a href="notas">Notas</a>
     <a href="perfil">Perfil</a>
     <a href="#CerrarSesion" data-bs-toggle="modal" title="Salir">Salir</a>
