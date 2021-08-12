@@ -28,21 +28,21 @@ class CarreraController extends Controller
         if (isset($_POST['btnEnviarCarrera'])) {
 
             $NombreCarrera = $_POST['txtNombreCarrera'];
+            $Facultad = $_POST['selFacultad'];
             $Creado = date("Y-m-d H:i:s");
             $Actual = date("Y-m-d H:i:s");
 
-            DB::INSERT("INSERT INTO carrera (carrera_name, created_at, updated_at) VALUES(?,?,?)",[$NombreCarrera,$Creado,$Actual]);
+            DB::INSERT("INSERT INTO carrera (carrera_name, ffacultadid, created_at, updated_at) VALUES(?,?,?,?)",[$NombreCarrera,$Facultad,$Creado,$Actual]);
 
-            echo '<script language="javascript">';
-            echo 'alert("Datos ingresados correctamente")';
-            echo '</script>';
-            return redirect('/c');
-        
+            echo "<script>
+                  alert('EXITO. La Carrera ha sido creado correctamente');
+                  window.location.href='/c';
+                  </script>";
         } else {
-            echo '<script language="javascript">';
-            echo 'alert("Hubo un error, favor intentarlo de nuevo")';
-            echo '</script>';
-            return redirect('/carreranueva');
+            echo "<script>
+                  alert('Hubo un error, favor intentarlo de nuevo');
+                  window.location.href='/c';
+                  </script>";
         }
     }
 
@@ -135,4 +135,10 @@ class CarreraController extends Controller
     {
         //
     }
+
+    public function newcarreer(){
+        $facultaad = DB::table('facultad')->get();
+        return view('carreranueva')->with('facultaad',$facultaad);
+    }
+
 }

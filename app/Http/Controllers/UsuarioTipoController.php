@@ -33,16 +33,15 @@ class UsuarioTipoController extends Controller
 
             DB::INSERT("INSERT INTO usuariotipo (usuariotipo_name, created_at, updated_at) VALUES(?,?,?)",[$NombreUsuarioTipo,$Creado,$Actual]);
 
-            echo '<script language="javascript">';
-            echo 'alert("Datos ingresados correctamente")';
-            echo '</script>';
-            return redirect("/ut");
-        
+            echo "<script>
+                  alert('El Usuario Tipo, fue creado correctamente');
+                  window.location.href='/ut';
+                  </script>";        
         } else {
-            echo '<script language="javascript">';
-            echo 'alert("Hubo un error, favor intentarlo de nuevo")';
-            echo '</script>';
-            return redirect("/usuariotiponuevo");
+            echo "<script>
+                  alert('Hubo un error, favor intentarlo de nuevo');
+                  window.location.href='/usuariotiponuevo';
+                  </script>";
         }
     }
 
@@ -65,15 +64,21 @@ class UsuarioTipoController extends Controller
      */
     public function show($id)
     {
-        $resul = DB::SELECT('SELECT * FROM usuariotipo WHERE usuariotipoid = ?',[$id]);
+        $usuarioTipo_show = DB::SELECT('SELECT * FROM usuariotipo WHERE usuariotipoid = ?',[$id]);
 
-        foreach($resul as $quer){
-            $id = $quer->usuariotipoid;
-            $name = $quer->usuariotipo_name; 
-            $creado1 = $quer->created_at; 
-            $actual1 = $quer->updated_at; 
-        
-            return view('usuariotipoinfo')->with('id',$id)->with('name',$name)->with('creado1',$creado1)->with('actual1',$actual1);
+        if ($usuarioTipo_show == null) {
+            echo "<script>
+                  alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
+                  window.location.href='/ut';
+                  </script>";
+        } else {
+            foreach($usuarioTipo_show as $usuarioTipo_queri){
+                $id = $usuarioTipo_queri->usuariotipoid;
+                $name = $usuarioTipo_queri->usuariotipo_name; 
+                $creado = $usuarioTipo_queri->created_at; 
+                $modificado = $usuarioTipo_queri->updated_at; 
+                return view('usuariotipoinfo')->with('id',$id)->with('name',$name)->with('creado',$creado)->with('modificado',$modificado);
+            }
         }
     }
 
@@ -85,13 +90,19 @@ class UsuarioTipoController extends Controller
      */
     public function edit($id)
     {
-        $resolt = DB::SELECT('SELECT * FROM usuariotipo WHERE usuariotipoid = ?',[$id]);
+        $usuarioTipo_edit = DB::SELECT('SELECT * FROM usuariotipo WHERE usuariotipoid = ?',[$id]);
 
-        foreach($resolt as $query){
-            $ii = $query->usuariotipoid;
-            $name = $query->usuariotipo_name;
-            
-            return view('usuariotipoedita')->with('ii',$ii)->with('name',$name);
+        if ($usuarioTipo_edit == null) {
+            echo "<script>
+                  alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
+                  window.location.href='/ut';
+                  </script>";
+        } else {
+            foreach($usuarioTipo_edit as $usuarioTipo_query){
+                $ii = $usuarioTipo_query->usuariotipoid;
+                $name = $usuarioTipo_query->usuariotipo_name;
+                return view('usuariotipoedit')->with('ii',$ii)->with('name',$name);
+            }
         }
     }
 

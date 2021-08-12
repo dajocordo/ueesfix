@@ -75,9 +75,9 @@ class LoginnController extends Controller
     {
         if (isset($_POST['btnLoginStepIAdmin'])) {
         $esteCifff = $_POST['txtCIF'];
-        $sopoTip = 3;
+        $sopoTip = 2;
 
-        $valAdmin = DB::SELECT('SELECT * FROM soporte WHERE soportecif =  "'.$esteCifff.'" && soportetti= "'.$sopoTip.'"');
+        $valAdmin = DB::SELECT('SELECT * FROM soporte WHERE soportecif =  "'.$esteCifff.'" && fsoportetipoid= "'.$sopoTip.'"');
 
         // IF INICIO: este valida si el el CIF coincide con alguno de la base de datos
             if (!($valAdmin)) {
@@ -121,9 +121,9 @@ class LoginnController extends Controller
     {
         if (isset($_POST['btnLoginStepIIUsuario'])) {
         $usucif = $_REQUEST['usucif'];
-        $theUsrPasswd = $_POST['txtContra'];
+        $theUsrPasswd = md5($_POST['txtContra']);
 
-        $valUsuarioyPass = DB::SELECT('SELECT * FROM usuario WHERE usuariocif = "'.$usucif.'" && upassword = "'.$theUsrPasswd.'"');
+        $valUsuarioyPass = DB::SELECT('SELECT * FROM usuario WHERE usuariocif = "'.$usucif.'" && usuario_pass = "'.$theUsrPasswd.'"');
 
         // IF INICIO: este valida si el el CIF coincide con alguno de la base de datos
             if (!($valUsuarioyPass)) {
@@ -153,9 +153,9 @@ class LoginnController extends Controller
     {
         if (isset($_POST['btnLoginStepIISoporte'])) {
         $sopcif = $_REQUEST['sopcif'];
-        $theSopPasswd = $_POST['txtContra'];
+        $theSopPasswd = md5($_POST['txtContra']);
 
-        $valSoporteyPass = DB::SELECT('SELECT * FROM soporte WHERE soportecif = "'.$sopcif.'" && spassword = "'.$theSopPasswd.'"');
+        $valSoporteyPass = DB::SELECT('SELECT * FROM soporte WHERE soportecif = "'.$sopcif.'" && soporte_pass = "'.$theSopPasswd.'"');
 
         // IF INICIO: este valida si el el CIF coincide con alguno de la base de datos
             if (!($valSoporteyPass)) {
@@ -186,9 +186,9 @@ class LoginnController extends Controller
         if (isset($_POST['btnLoginStepIIAdmin'])) {
         $adcif = $_REQUEST['adcif'];
         $sopoTip = $_REQUEST['sopoTip'];
-        $theAdmnPasswd = $_POST['txtContraa'];
+        $theAdmnPasswd = md5($_POST['txtContraa']);
 
-        $valAdminyPass = DB::SELECT('SELECT * FROM soporte WHERE soportecif = "'.$adcif.'" && spassword = "'.$theAdmnPasswd.'" && soportetti = "'.$sopoTip.'"');
+        $valAdminyPass = DB::SELECT('SELECT * FROM soporte WHERE soportecif = "'.$adcif.'" && soporte_pass = "'.$theAdmnPasswd.'" && fsoportetipoid = "'.$sopoTip.'"');
 
         // IF INICIO: este valida si el el CIF coincide con alguno de la base de datos
             if (!($valAdminyPass)) {

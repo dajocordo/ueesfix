@@ -33,16 +33,15 @@ class PrioridadController extends Controller
 
             DB::INSERT("INSERT INTO prioridad (prioridad_name, created_at, updated_at) VALUES(?,?,?)",[$PrioridaNombre, $Creado, $Actual]);
 
-            echo '<script language="javascript">';
-            echo 'alert("La Prioridad, ha sido creada con éxito")';
-            echo '</script>';
-            return view("/prioridad");
-        
+            echo "<script>
+                  alert('El Usuario Tipo, fue creado correctamente');
+                  window.location.href='/p';
+                  </script>";        
         } else {
-            echo '<script language="javascript">';
-            echo 'alert("Hubo un error, favor intentarlo de nuevo")';
-            echo '</script>';
-            return view("/prioridadnueva");
+            echo "<script>
+                  alert('Hubo un error, favor intentarlo de nuevo');
+                  window.location.href='/prioridadnueva';
+                  </script>";
         }
     }
 
@@ -70,7 +69,7 @@ class PrioridadController extends Controller
         if ($prioridad_show == null) {
             echo "<script>
                   alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
-                  window.location.href='/g';
+                  window.location.href='/p';
                   </script>";
         } else{
             foreach($prioridad_show as $prioridad_queri){
@@ -97,15 +96,15 @@ class PrioridadController extends Controller
         if ($prioridad_edit == null) {
             echo "<script>
                   alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
-                  window.location.href='/g';
+                  window.location.href='/p';
                   </script>";
         } else{
             foreach($prioridad_edit as $prioridad_query){
-                $id = $prioridad_query->prioridadid;
+                $ii = $prioridad_query->prioridadid;
                 $name = $prioridad_query->prioridad_name;
                 $creado = $prioridad_query->created_at;
                 $modificado = $prioridad_query->updated_at;
-                return view('/prioridadedit')->with('id',$id)->with('name',$name)->with('creado',$creado)->with('modificado',$modificado);
+                return view('/prioridadedit')->with('ii',$ii)->with('name',$name)->with('creado',$creado)->with('modificado',$modificado);
             }
         }
     }
@@ -117,9 +116,28 @@ class PrioridadController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $ii)
     {
-        //
+        if (isset($_POST['btnActualizarP'])) {
+            $ii = $_REQUEST['ii'];
+            $nuevoNombre = $_POST['txtEditNombre'];
+            $nuevoCambio = date("Y-m-d H:i:s");
+            
+            $affected = DB::table('prioridad')
+              ->where('prioridadid', $ii)
+              ->update(['prioridad_name' => $nuevoNombre, 'updated_at' => $nuevoCambio]);
+
+            echo "<script>
+                  alert('Prioridad actualizada correctamente');
+                  window.location.href='/p';
+                  </script>";
+  
+        } else {
+            echo "<script>
+                  alert('ERROR: favor intentarlo de nuevo');
+                  window.location.href='/p';
+                  </script>";
+        }
     }
 
     /**

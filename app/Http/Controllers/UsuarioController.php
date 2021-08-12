@@ -31,14 +31,15 @@ class UsuarioController extends Controller
             $Nombre = $_POST['txtNombre'];
             $Apellido = $_POST['txtApellido'];
             $Correo = $_POST['txtCorreo'];
-            $Contra = $_POST['txtPassword'];
+            $Contra = md5($_POST['txtPassword']);
+            $Telefono = $_POST['txtTelefono'];
             $Tipo = $_POST['selTipoUsuario'];
             $Facultad = $_POST['selFacultad'];
             $Carrera = $_POST['selCarrera'];
             $Creado = date("Y-m-d H:i:s");
             $Actual = date("Y-m-d H:i:s");
 
-            DB::INSERT("INSERT INTO usuario (unombre, uapellido, umail, upassword, usuariotti, facultadtti, carreratti, created_at, updated_at) VALUES(?,?,?,?,?,?,?,?,?)",[$Nombre,$Apellido,$Correo,$Contra,$Tipo,$Facultad,$Carrera,$Creado,$Actual]);
+            DB::INSERT("INSERT INTO usuario (usuario_name, usuario_apellido, usuario_correo, usuario_pass, usuario_tel, fusuariotipoid, ffacultadid, fcarreraid, created_at, updated_at) VALUES(?,?,?,?,?,?,?,?,?,?)",[$Nombre,$Apellido,$Correo,$Contra,$Telefono,$Tipo,$Facultad,$Carrera,$Creado,$Actual]);
 
             echo "<script>
                   alert('EXITO. Usuario creado correctamente');

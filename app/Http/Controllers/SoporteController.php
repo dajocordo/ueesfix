@@ -30,20 +30,20 @@ class SoporteController extends Controller
             $Nombre = $_POST['txtNombre'];
             $Apellido = $_POST['txtApellido'];
             $Correo = $_POST['txtCorreo'];
-            $Contra = $_POST['txtPassword'];
+            $Contra = md5($_POST['txtPassword']);
             $Telefono = $_POST['txtTelefono'];
             $Tipo = $_POST['selTipoSoporte'];
             $Roles = $_POST['selRoles'];
             $Creado = date("Y-m-d H:i:s");
             $Actual = date("Y-m-d H:i:s");
 
-            DB::INSERT("INSERT INTO soporte (snombre, sapellido, smail, spassword, stelefono, soportetti, roltti, created_at, updated_at) VALUES(?,?,?,?,?,?,?,?,?)",[$Nombre,$Apellido,$Correo,$Contra,$Telefono,$Tipo,$Roles,$Creado,$Actual]);
+            DB::INSERT("INSERT INTO soporte (soporte_name, soporte_apellido, soporte_mail, soporte_pass, soporte_tel, fsoportetipoid, frolesid, created_at, updated_at) VALUES(?,?,?,?,?,?,?,?,?)",[$Nombre,$Apellido,$Correo,$Contra,$Telefono,$Tipo,$Roles,$Creado,$Actual]);
 
             echo "<script>
             alert('Exito. El soporte fue ingresado correctamente');
             window.location.href='/s';
             </script>";
-        
+        s
         } else {
             echo "<script>
                   alert('Error. Vuelva a intentarlo de nuevo');
