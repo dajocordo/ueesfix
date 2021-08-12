@@ -24,6 +24,7 @@ Route::get('/contact', function() {return view('contact');});
 Route::get('/todo', function() {return view('todo');});
 Route::get('/doing', function() {return view('doing');});
 Route::get('/done', function() {return view('done');});
+Route::get('/stinicio', function() {return view('stinicio');});
 
 
 // LOGIN
@@ -195,7 +196,14 @@ Route::post('/t/create', [TicketController::class, 'create']);
 Route::post('/t/update', [TicketController::class, 'update']);
 Route::get('/ticketnuevo', [TicketController::class, 'tktnewtii']);
 
-//  TICKET NUEVO SESION DE USUARIO
+
+//  TICKET NUEVO, PENDIENTE Y TERMINADO
+Route::get('/tn', [TicketController::class, 'Tickettnuevo']);
+Route::get('/tp', [TicketController::class, 'Tickettpendiente']);
+Route::get('/tt', [TicketController::class, 'Ticketterminado']);
+
+
+//  TICKET NUEVO [SESION DE USUARIO]
 Route::resource('/tu', UTicketController::class);
 Route::get('/tu', [UTicketController::class, 'index']);
 Route::get('/tu/{id}', [UTicketController::class, 'show']);
@@ -203,6 +211,17 @@ Route::get('/tu/{id}/edit', [UTicketController::class, 'edit']);
 Route::post('/tu/create', [UTicketController::class, 'create']);
 Route::post('/tu/update', [UTicketController::class, 'update']);
 Route::get('/ticketn', [UTicketController::class, 'utktnewtii']);
+
+
+//  TICKET SOPORTE
+Route::resource('/ts', STicketController::class);
+Route::get('/ts', [STicketController::class, 'index']);
+Route::get('/ts/{id}', [STicketController::class, 'show']);
+Route::get('/ts/{id}/edit', [STicketController::class, 'edit']);
+Route::post('/ts/create', [STicketController::class, 'create']);
+Route::post('/ts/update', [STicketController::class, 'update']);
+Route::get('/tnuevo', [STicketController::class, 'stktnewtii']);
+
 
 //  USUARIO
 // Route::get('/usuarionuevo', function() {return view('usuarionuevo');});
