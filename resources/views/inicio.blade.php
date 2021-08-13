@@ -19,7 +19,7 @@
 <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
 <div class="topnav" id="myTopnav">
     <a href="home.php" class="active">Inicio</a>
-    <a href="perfil.php">Perfil</a>
+    <a href="up">Perfil</a>
     <a href="#CerrarSesion" data-bs-toggle="modal" title="Salir">Salir</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"></i>
@@ -34,7 +34,7 @@
 
     <div class="row"><!--|==========| Div | Row I | ↓ |==========|-->
       <div class="col"> <p class="ppro"> <a href="{{ url('/ticketn') }}" class="a1">Crear Ticket</a> </p> </div>
-      <div class="col"> <p class="ppro"> <a href="{{ url('/') }}" class="a2">Mis Tickets</a> </p> </div>
+      <div class="col"> <p class="ppro"> <a href="{{ url('/ticketnv') }}" class="a2">Mis Tickets</a> </p> </div>
     <!--|==========| Div | Row I | ↑ |==========|--></div>
 
 <!--|==========| Container | fin | ↑ |==========|-->
