@@ -19,6 +19,11 @@ class GestionController extends Controller
         return view('gestion')->with('gestion1',$gestion1);
     }
 
+    public function newgestion(){
+        $gestiontipooid = DB::table('gestiontipo')->get();
+        return view('gestionnueva')->with('gestiontipooid',$gestiontipooid);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -29,10 +34,11 @@ class GestionController extends Controller
         if (isset($_POST['btnEnviarGestion'])) {
 
             $NombreGestion = $_POST['txtNombreGestion'];
+            $Tipo = $_POST['selGestionTipo'];
             $Creado = date("Y-m-d H:i:s");
             $Actual = date("Y-m-d H:i:s");
 
-            DB::INSERT("INSERT INTO gestion (gestion_name, created_at, updated_at) VALUES(?,?,?)",[$NombreGestion,$Creado,$Actual]);
+            DB::INSERT("INSERT INTO gestion (gestion_name, fgestiontipoid, created_at, updated_at) VALUES(?,?,?,?)",[$NombreGestion,$Tipo,$Creado,$Actual]);
 
             echo '<script language="javascript">';
             echo 'alert("Datos ingresados correctamente")';
@@ -148,4 +154,5 @@ class GestionController extends Controller
     {
         //
     }
+
 }
