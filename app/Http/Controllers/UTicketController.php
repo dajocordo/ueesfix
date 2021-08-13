@@ -40,7 +40,7 @@ class UTicketController extends Controller
             $Creado = date("Y-m-d H:i:s");
             $Actual = date("Y-m-d H:i:s");
 
-            DB::INSERT("INSERT INTO ticket (ticket_titulo,ticket_detalles,soportelid,usuariolid,gestionlid,gestiontilid,estadolid,prioridadlid,created_at,updated_at) VALUES(?,?,?,?,?,?,?,?,?,?)",[$Titulo,$Detalles,$Soporte,$Usuario,$Gestion,$GestionTipo,$Estado,$Prioridad,$Creado,$Actual]);
+            DB::INSERT("INSERT INTO ticket (ticket_titulo,ticket_detalles,soportelid,fusuarioid,gestionlid,gestiontilid,estadolid,prioridadlid,created_at,updated_at) VALUES(?,?,?,?,?,?,?,?,?,?)",[$Titulo,$Detalles,$Soporte,$Usuario,$Gestion,$GestionTipo,$Estado,$Prioridad,$Creado,$Actual]);
 
             echo "<script>
                   alert('EXITO. El Ticket ha sido creado correctamente');
@@ -86,10 +86,10 @@ class UTicketController extends Controller
                 $id = $ticket_queri->ticketid;
                 $titulo = $ticket_queri->ticket_titulo;
                 $detalles = $ticket_queri->ticket_detalles;
-                $gestionid = $ticket_queri->gestionlid;
-                $tipogestionid = $ticket_queri->gestiontilid;
-                $prioridadid = $ticket_queri->prioridadlid;
-                $estadoid = $ticket_queri->estadolid;
+                $gestionid = $ticket_queri->fgestionid;
+                $tipogestionid = $ticket_queri->fgestiontipoid;
+                $prioridadid = $ticket_queri->fprioridadid;
+                $estadoid = $ticket_queri->festadoid;
                 $creado = $ticket_queri->created_at;
                 $modificado = $ticket_queri->updated_at;
                 $tgestion_show = DB::SELECT('SELECT * FROM gestion WHERE gestionid = ?',[$gestionid]);
@@ -166,3 +166,4 @@ class UTicketController extends Controller
     }
 
 }
+
