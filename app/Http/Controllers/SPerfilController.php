@@ -15,7 +15,8 @@ class SPerfilController extends Controller
      */
     public function index()
     {
-        //
+        $soport = DB::table('soporte')->get();
+        return view('smiequipo')->with('soport',$soport);
     }
 
     /**
@@ -25,7 +26,31 @@ class SPerfilController extends Controller
      */
     public function create()
     {
-        //
+        if (isset($_POST['btnCrearSoporte'])) {
+
+            $Nombre = $_POST['txtNombre'];
+            $Apellido = $_POST['txtApellido'];
+            $Correo = $_POST['txtCorreo'];
+            $Contra = $_POST['txtPassword'];
+            $Telefono = $_POST['txtTelefono'];
+            $Tipo = $_POST['selTipoSoporte'];
+            $Roles = $_POST['selRoles'];
+            $Creado = date("Y-m-d H:i:s");
+            $Actual = date("Y-m-d H:i:s");
+
+            DB::INSERT("INSERT INTO soporte (snombre, sapellido, smail, spassword, stelefono, soportetti, roltti, created_at, updated_at) VALUES(?,?,?,?,?,?,?,?,?)",[$Nombre,$Apellido,$Correo,$Contra,$Telefono,$Tipo,$Roles,$Creado,$Actual]);
+
+            echo "<script>
+            alert('Exito. El soporte fue ingresado correctamente');
+            window.location.href='/sp';
+            </script>";
+        
+        } else {
+            echo "<script>
+                  alert('Error. Vuelva a intentarlo de nuevo');
+                  window.location.href='/sp';
+                  </script>";
+        }
     }
 
     /**
@@ -45,11 +70,28 @@ class SPerfilController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+   public function show($id)
     {
-        //
-    }
+        $soporte_show = DB::SELECT('SELECT * FROM soporte WHERE soportecif = ?',[$id]);
 
+        if ($soporte_show == null) {
+            echo "<script>
+                  alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
+                  window.location.href='/sp';
+                  </script>";
+        } else{
+            foreach($soporte_show as $soporte_queri){
+                 $id = $soporte_queri->soportecif;
+                $name = $soporte_queri->snombre;
+                $apellido = $soporte_queri->sapellido;
+                $correo = $soporte_queri->smail;
+                $telefono = $soporte_queri->stelefono;
+                $creado = $soporte_queri->created_at;
+                $modificado = $soporte_queri->updated_at;
+                return view('smicuenta')->with('id',$id)->with('name',$name)->with('apellido',$apellido)->with('correo',$correo)->with('telefono',$telefono)->with('creado',$creado)->with('modificado',$modificado);
+            }
+        }
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -121,4 +163,6 @@ class SPerfilController extends Controller
     {
         //
     }
+
+
 }
