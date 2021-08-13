@@ -25,22 +25,20 @@
       <i class="fa fa-bars"></i>
     </a>
   </div> <!--|==========| Barra de navegacion | ↑ | fin |==========|-->
-
   <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
     <!--|==========| Boton | Regresar |==========|-->
-    <div class="btn-left-pro"> <a href="{{ url('/t') }}" title="Regresar" class="aarrooww"><</a> </div>
+    <div class="btn-left-pro"> <a href="{{ url('/inicio') }}" title="Regresar" class="aarrooww"><</a> </div>
     <!--|==========| Ticket | ↓ | titulo |==========|-->
     <div class="middle-pro"> <p><img src="/img/add.png"> Ticket [ nuevo ]</p> </div>
     <!--|==========| Formulario | ↓ | inicio |==========|-->
-    <form action="{{url('/t/create')}}" name="frmTicketCreateAdm" method="post">
+    <form action="{{url('/tu/create')}}" name="frmTicketCreateAdm" method="post">
       @csrf
       @php   $user_show = DB::SELECT('SELECT * FROM usuario WHERE usuariocif = ?',[$_SESSION['student']]); 
             foreach ($user_show as $usershoow) {
-            $uid = $usershoow->usuariocif;
-            $uname = $usershoow->unombre;
-            echo '<input type="hidden" class="form-control form-control-lg" name="userid" value="@php echo $id; @endphp" autocomplete="off" required>';
+            $id = $usershoow->usuariocif;
+            $uname = $usershoow->usuario_name;
+            echo '<input type="hidden" class="form-control form-control-lg" name="userid" value="'.$id.'" autocomplete="off" required>';
           }
-            
           @endphp
       <div class="row"><!--|==========| Div | Row III | ↓ |==========|-->
         <div class="col-8">
@@ -88,7 +86,6 @@
       <input type="submit" class="btn-enviar-form" name="btnCrearTicketFromAdm" value="Enviar">
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
   <!--|==========| Container | fin | ← | ↑ |==========|--></div>
-
   <!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
   <div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">

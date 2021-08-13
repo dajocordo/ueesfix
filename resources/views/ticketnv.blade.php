@@ -44,7 +44,7 @@
         <th>Detalles</th>
       </thead>
       @php
-      $tickett = DB::SELECT('SELECT * FROM ticket WHERE usuariolid = ?',[$_SESSION['student']]);
+      $tickett = DB::SELECT('SELECT * FROM ticket WHERE fusuarioid = ?',[$_SESSION['student']]);
 
       foreach ($tickett as $tickt) {
         $id = $tickt->ticketid;
