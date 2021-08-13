@@ -15,15 +15,15 @@ class CreateSoporteTable extends Migration
     {
         Schema::create('soporte', function (Blueprint $table) {
             $table->id('soportecif');
-            $table->string('snombre', 35);
-            $table->string('sapellido', 50);
-            $table->string('smail', 65)->unique;
-            $table->string('spassword', 25);
-            $table->string('stelefono', 8);
-            $table->unsignedBigInteger('soportetti');
-            $table->unsignedBigInteger('roltti');
-            $table->foreign('roltti')->references('rolesid')->on('roles')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('soportetti')->references('soportetipoid')->on('soportetipo')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('soporte_name', 45);
+            $table->string('soporte_apellido', 65);
+            $table->string('soporte_mail', 65)->unique;
+            $table->string('soporte_pass', 45);
+            $table->string('soporte_tel', 8);
+            $table->unsignedBigInteger('fsoportetipoid');
+            $table->unsignedBigInteger('frolesid');
+            $table->foreign('frolesid')->references('roles_id')->on('roles')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('fsoportetipoid')->references('soportetipoid')->on('soportetipo')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

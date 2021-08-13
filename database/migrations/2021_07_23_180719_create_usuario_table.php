@@ -15,16 +15,17 @@ class CreateUsuarioTable extends Migration
     {
         Schema::create('usuario', function (Blueprint $table) {
             $table->id('usuariocif');
-            $table->string('unombre', 35);
-            $table->string('uapellido', 50);
-            $table->string('umail', 65)->unique;
-            $table->string('upassword', 25);
-            $table->unsignedBigInteger('usuariotti');
-            $table->unsignedBigInteger('facultadtti');
-            $table->unsignedBigInteger('carreratti');
-            $table->foreign('usuariotti')->references('usuariotipoid')->on('usuariotipo')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('facultadtti')->references('facultadid')->on('facultad')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('carreratti')->references('carreraid')->on('carrera')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('usuario_name', 45);
+            $table->string('usuario_apellido', 65);
+            $table->string('usuario_correo', 65)->unique;
+            $table->string('usuario_pass', 45);
+            $table->string('usuario_tel', 8);
+            $table->unsignedBigInteger('fusuariotipoid');
+            $table->unsignedBigInteger('ffacultadid');
+            $table->unsignedBigInteger('fcarreraid');
+            $table->foreign('fusuariotipoid')->references('usuariotipoid')->on('usuariotipo')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('ffacultadid')->references('facultadid')->on('facultad')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('fcarreraid')->references('carreraid')->on('carrera')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -15,7 +15,9 @@ class CreateGestionTable extends Migration
     {
         Schema::create('gestion', function (Blueprint $table) {
             $table->id('gestionid');
-            $table->string('gestion_name', 75);
+            $table->string('gestion_name', 55);
+            $table->unsignedBigInteger('fgestiontipoid');
+            $table->foreign('fgestiontipoid')->references('gestiontipoid')->on('gestiontipo')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
