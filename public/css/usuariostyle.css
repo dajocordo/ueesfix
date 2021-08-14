@@ -1,15 +1,15 @@
-a.a1:link {color: #22293D;}
-a.a1:visited {color: #22293D;}
+a.a1:link {color: #004D40;}
+a.a1:visited {color: #004D40;}
 a.a1:hover {color: #6A1B9A;}
 a.a1 {text-decoration: none;}
 
-a.a2:link {color: #22293D;}
-a.a2:visited {color: #22293D;}
+a.a2:link {color: #004D40;}
+a.a2:visited {color: #004D40;}
 a.a2:hover {color: #6A1B9A;}
 a.a2 {text-decoration: none;}
 
-a.a3:link {color: #22293D;}
-a.a3:visited {color: #22293D;}
+a.a3:link {color: #004D40;}
+a.a3:visited {color: #004D40;}
 a.a3:hover {color: #6A1B9A;}
 a.a3 {text-decoration: none;}
 
@@ -23,8 +23,8 @@ a.optionsu:visited {color: white;}
 a.optionsu:hover {color: yellow;}
 a.optionsu {text-decoration: none;}
 
-a.modal-btn-cerrar:link {color: #22293D;}
-a.modal-btn-cerrar:visited {color: #22293D;}
+a.modal-btn-cerrar:link {color: #004D40;}
+a.modal-btn-cerrar:visited {color: #004D40;}
 a.modal-btn-cerrar:hover {color: #315D99;}
 a.modal-btn-cerrar {text-decoration: none;}
 
@@ -34,7 +34,7 @@ a.modal-btn-closee:hover {color: #FCE0DF;}
 a.modal-btn-closee {text-decoration: none;}
 
 body{
-  background-color: #22293D;
+  background-color: #004D40;
   color: white;
   font-family: 'Open Sans', sans-serif;
 }
@@ -55,10 +55,10 @@ body{
 .btn-entrur{
   background-color: #FFB0D1 ;
   border-radius: 3em;
-  color: #22293D;
+  color: #004D40;
   font-weight: bold;
   font-size: 1.50em;
-  letter-spacing: 0.07em;
+  letter-spacing: 0.05em;
   margin-top: 1.5em;
   height: 3em;
   width: 35%;
@@ -78,7 +78,7 @@ body{
 .btn-enviar-form{
   background-color: white;
   border-radius: 3em;
-  color: #22293D;
+  color: #004D40;
   display: inline-block;
   height: 2.75em;
   width: 100%;
@@ -88,7 +88,7 @@ body{
 }
 
 .btn-left-pro {
-  background-color: #22293D;
+  background-color: #004D40;
   color: white;
   display: inline-block;
   height: 2.5em;
@@ -100,7 +100,7 @@ body{
 
 .btn-primary{
   background-color: #CFD7FF;
-  color: #22293D;
+  color: #07074C;
   font-size: 1.25em;
   font-weight: bold;
   height: 3em; 
@@ -110,7 +110,7 @@ body{
 }
 
 .btn-right-pro {
-  background-color: #22293D;
+  background-color: #004D40;
   color: white;
   display: inline-block;
   height: 2.15em;
@@ -128,7 +128,7 @@ body{
 }
 
 .btn-secondaryy{
-  background-color: #3538ee;
+  background-color: #004D40;
   color: #FFFFFF;
   font-weight: bold;
   letter-spacing: 0.10em;
@@ -144,7 +144,7 @@ body{
 .col{
   background-color: #F8BBD0;
   border-radius: 0.2em;
-  color: #22293D;
+  color: #0B7962;
   height: 4em;
   width: 50%;
   font-size: 1.25em;
@@ -155,7 +155,7 @@ body{
 .colin{
   background-color: #F8BBD0;
   border-radius: 3em;
-  color: #22293D;
+  color: #004D40;
   height: 4em;
   width: 50%;
   font-size: 1.25em;
@@ -167,7 +167,7 @@ body{
 
 .editprofile {
   background-color: #B2EBF2;
-  color: #22293D;
+  color: #004D40;
   display: inline-block;
   height: 4em;
   width: 25%;
@@ -178,7 +178,7 @@ body{
 
 .first {
   background-color: #F8BBD0;
-  color: #22293D;
+  color: #004D40;
   display: inline-block;
   height: 3em;
   width: 80%;
@@ -188,7 +188,7 @@ body{
 }
 
 .farm-cantral {
-  color: #22293D;
+  color: #004D40;
   font-size: 1.50em;
   font-weight: bold;
   letter-spacing: 0.07em;
@@ -200,7 +200,7 @@ body{
 }
 
 .texbox-pro-cool {
-  background-color: #22293D;
+  background-color: #004D40;
   border-color: #424967;
   color: white;
   outline-color: #424967;
@@ -215,22 +215,21 @@ body{
 }
 
 .texbox-pro-cool:focus{
-  background-color: #22293D;
+  background-color: #07074C;
   border-color: white;
   color: white;
   outline-color: white;
 }
 
 .textbox-pro-cool:after{
-background-color: #22293D;
+background-color: #07074C;
   border-color: white;
   color: white;
   outline-color: white;  
 }
 
-
 .form-control{
-  background-color: #22293D;
+  background-color: #004D40;
   color: white;
   font-size: 1.50em;
   font-weight: bold;
@@ -246,7 +245,7 @@ background-color: #22293D;
 
 .knowteam {
   background-color: #DCEDC8;
-  color: #22293D;
+  color: #07074C;
   display: inline-block;
   font-size: 1.25em;
   font-weight: bold;
@@ -269,7 +268,7 @@ background-color: #22293D;
 }
 
 .middle-pro {
-  background-color: #22293D;
+  background-color: #004D40;
   color: white;
   display: inline-block;
   font-size: 2.15em;
@@ -282,8 +281,8 @@ background-color: #22293D;
 }
 
 .modal-content{
-  background-color: #2D3750;
-  border-color: #2D3750;
+  background-color: #0B7962;
+  border-color: #0B7962;
   color: white;
   font-weight: bold;
   letter-spacing: 0.10em;
@@ -293,7 +292,7 @@ background-color: #22293D;
 .modal-btn-cerrar{
   background-color: #CFD7FF;
   border-radius: 3em;
-  color: #22293D;
+  color: #0B7962;
   font-size: 1em;
   font-weight: bold;
   letter-spacing: 0.10em;
@@ -304,13 +303,13 @@ background-color: #22293D;
 }
 
 .modal-btn-closee{
-  background-color: #2D3750;
-  border-color: #2D3750;
+  background-color: #0B7962;
+  border-color: #0B7962;
   color: white;
 }
 
 .modal-header, .modal-body, .modal-footer{
-  border-color: #2D3750;
+  border-color: #0B7962;
 }
 
 .ppro{
@@ -324,7 +323,7 @@ background-color: #22293D;
 
 .second {
   background-color: #FFF176;
-  color: #22293D;
+  color: #004D40;
   display: inline-block;
   font-size: 1.25em;
   font-weight: bold;
@@ -335,7 +334,7 @@ background-color: #22293D;
 
 .seeprofile {
   background-color: #FFCCBC;
-  color: #22293D;
+  color: #004D40;
   display: inline-block;
   font-size: 1.25em;
   font-weight: bold;
@@ -346,7 +345,7 @@ background-color: #22293D;
 
 .third {
   background-color: #81D4FA;
-  color: #22293D;
+  color: #07074C;
   display: inline-block;
   font-size: 1.25em;
   font-weight: bold;
@@ -356,7 +355,7 @@ background-color: #22293D;
 }
 
 .topnav {
-  background-color: #22293D;
+  background-color: #004D40;
   font-weight: bold;
   overflow: hidden;
 }
@@ -365,16 +364,34 @@ background-color: #22293D;
   color: white;
   font-size: 1.35em;
   margin-bottom: 3em;
-  border-color: #424967;
+  border-color: #4CC3B1;
   letter-spacing: 0.05em;
 }
 
+.table-ticket-nuevo{
+  background-color: #FFCCBC;
+  color: #07074C;
+  font-weight: bold;
+}
+
+.table-ticket-pendiente{
+  background-color: #FFF176;
+  color: #004D40;
+}
+
+.table-ticket-terminado{
+  background-color: #81D4FA;
+  color: #004D40;
+  font-weight: bold;
+}
+
 thead{
-  background-color: #424967;
-  border-color: #22293D;
-  color: white;
+  background-color: #4CC3B1;
+  border-color: #004D40;;
+  color: #004D40;
   letter-spacing: 0.05em;
 }
+
 
 .topnav a {
   display: block;
@@ -393,12 +410,12 @@ thead{
 
 .topnav a:hover {
   background-color: #ddd;
-  color: black;
+  color: #004D40;
 }
 
 .topnav a.active {
   background-color: #ddd;
-  color: #22293D;
+  color: #004D40;
 }
 
 .topnav .icon {
