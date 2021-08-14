@@ -38,7 +38,7 @@ class SPerfilController extends Controller
             $Creado = date("Y-m-d H:i:s");
             $Actual = date("Y-m-d H:i:s");
 
-            DB::INSERT("INSERT INTO soporte (snombre, sapellido, smail, spassword, stelefono, soportetti, roltti, created_at, updated_at) VALUES(?,?,?,?,?,?,?,?,?)",[$Nombre,$Apellido,$Correo,$Contra,$Telefono,$Tipo,$Roles,$Creado,$Actual]);
+            DB::INSERT("INSERT INTO soporte (soporte_name, soporte_apellido, soporte_mail, soporte_pass, soporte_tel, fsoportetipoid, frolesid, created_at, updated_at) VALUES(?,?,?,?,?,?,?,?,?)",[$Nombre,$Apellido,$Correo,$Contra,$Telefono,$Tipo,$Roles,$Creado,$Actual]);
 
             echo "<script>
             alert('Exito. El soporte fue ingresado correctamente');
@@ -82,10 +82,10 @@ class SPerfilController extends Controller
         } else{
             foreach($soporte_show as $soporte_queri){
                  $id = $soporte_queri->soportecif;
-                $name = $soporte_queri->snombre;
-                $apellido = $soporte_queri->sapellido;
-                $correo = $soporte_queri->smail;
-                $telefono = $soporte_queri->stelefono;
+                $name = $soporte_queri->soporte_name;
+                $apellido = $soporte_queri->soporte_apellido;
+                $correo = $soporte_queri->soporte_mail;
+                $telefono = $soporte_queri->soporte_tel;
                 $creado = $soporte_queri->created_at;
                 $modificado = $soporte_queri->updated_at;
                 return view('smicuenta')->with('id',$id)->with('name',$name)->with('apellido',$apellido)->with('correo',$correo)->with('telefono',$telefono)->with('creado',$creado)->with('modificado',$modificado);
@@ -110,10 +110,10 @@ class SPerfilController extends Controller
         } else{
             foreach($soporte_edit as $soporte_query){
                 $ii = $soporte_query->soportecif;
-                $name = $soporte_query->snombre;
-                $apellido = $soporte_query->sapellido;
-                $correo = $soporte_query->smail;
-                $telefono = $soporte_query->stelefono;
+                $name = $soporte_query->soporte_name;
+                $apellido = $soporte_query->soporte_apellido;
+                $correo = $soporte_query->soporte_mail;
+                $telefono = $soporte_query->soporte_tel;
                 return view('seditarperfil')->with('ii',$ii)->with('name',$name)->with('apellido',$apellido)->with('correo',$correo)->with('telefono',$telefono);
             }
         }
@@ -139,7 +139,7 @@ class SPerfilController extends Controller
 
             $affected = DB::table('soporte')
               ->where('soportecif', $ii)
-              ->update(['snombre' => $nuevoNombre,'sapellido' => $nuevoApellido, 'smail' => $nuevoCorreo,'stelefono' => $nuevoTelefono, 'updated_at' => $nuevoCambio]);
+              ->update(['soporte_name' => $nuevoNombre,'soporte_apellido' => $nuevoApellido, 'soporte_mail' => $nuevoCorreo,'soporte_tel' => $nuevoTelefono, 'updated_at' => $nuevoCambio]);
 
             echo "<script>
                   alert('Exito. El soporte fue actualizado correctamente');
