@@ -1,8 +1,12 @@
 @php
   session_start();
   if(isset($_SESSION['admin'])){
-    echo '<script> window.location="home"; </script>';
-  } else {
+    echo '<script> window.location="/home"; </script>';
+  } else if(isset($_SESSION['support'])){
+      echo '<script> window.location="/dashboard"; </script>';
+    } else if(isset($_SESSION['student'])){
+        echo '<script> window.location="/inicio"; </script>';
+      } else {
 @endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">

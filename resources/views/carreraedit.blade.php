@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-  <title>Editar Usuario</title>
+  <title>Carrera Edit</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -18,7 +18,7 @@
 <body>
   <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
   <div class="topnav" id="myTopnav">
-    <a href="home" class="active">Inicio</a>
+    <a href="{{ url('/home') }}">Inicio</a>
     <a href="perfil">Perfil</a>
     <a href="#CerrarSesion" data-bs-toggle="modal" title="Salir">Salir</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -27,23 +27,44 @@
   </div> <!--|==========| Barra de navegacion | ↑ | fin |==========|-->
 
   <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
-    <!--|==========| Bienvenida | ↓ |==========|-->
-    <h1 id="greeting">Editar Carrera</h1>
+    <!--|==========| Boton | Regresar |==========|-->
+    <div class="btn-left-pro"> <a href="{{ url('/c') }}" title="Regresar" class="aarrooww"><</a> </div>
+    <!--|==========| Estado | ↓ | titulo |==========|-->
+    <div class="middle-pro"> <p><img src="/img/edit.png"> Carrera [edit]</p> </div>
     
     <!--|==========| Formulario | ↓ | inicio |==========|-->
     <form action="{{url('/c/update/')}}" method="post">
       @csrf
       <input type="hidden" class="form-control form-control-lg" name="ii" value="@php echo $ii; @endphp" autocomplete="off" required>
-      <label class="lblformuser">Nombre</label>
-      <input type="text" class="form-control form-control-lg" name="txtEditNombre" value="@php echo $name; @endphp" autocomplete="off" required>
+
+      <div class="row"><!--|==========| Div | Row I | ↓ |==========|-->
+        <div class="col-6">
+          <label class="lblformuser">Nombre</label>
+          <input type="text" class="form-control form-control-lg" name="txtEditNombre" value="@php echo $name; @endphp" autocomplete="off" required>
+        </div>
+        <div class="col-6">
+          <!--|==========| Select Tipo | ↓ | inicio |==========|-->
+          <label class="lblformuser">Facultad</label>
+          <select name="selFacultadCa" class="form-control form-control-lg" aria-label="Default select example">
+            <option value="@php echo $facuid; @endphp">@php echo $facuname; @endphp</option>
+          @php foreach ($facultad_diferent as $selfacultadSelectt) {
+                $facultadid = $selfacultadSelectt->facultadid;
+                $facultadname = $selfacultadSelectt->facultad_name;
+          @endphp
+            <option value="@php echo $facultadid; @endphp">@php echo $facultadname; @endphp</option>
+          @php } @endphp
+          </select><!--|==========| Select Tipo | ↑ | fin |==========|-->
+      </div><!--|==========| Div | Row I | ↑ |==========|--></div>
+
+
       <div class="d-grid gap-2">
         <input type="submit" class="btn btn-primary btn-lg" name="btnActualizar" value="Actualizar">
       </div>
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
   <!--|==========| Container | fin | ← | ↑ |==========|--></div>
 
-<!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
-<div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
+  <div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -53,7 +74,7 @@
           <div class="modal-body"> ¿Desea salir de la plataforma? </div>
         <div class="modal-footer">
             <a class="modal-btn-cerrar" data-bs-dismiss="modal">No</a>
-            <a href="logout" type="button" class="modal-btn-cerrar">Si</a>
+            <a href="{{ url('/logout') }}" type="button" class="modal-btn-cerrar">Si</a>
         </div>
       </div>
     </div>

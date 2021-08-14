@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-  <title>Nuevo Estado</title>
+  <title>Estado Nuevo</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -30,15 +30,14 @@
     <!--|==========| Boton | Regresar |==========|-->
     <div class="btn-left-pro"> <a href="{{ url('/e') }}" title="Regresar" class="aarrooww"><</a> </div>
     <!--|==========| Estado | ↓ | titulo |==========|-->
-    <div class="middle-pro"> <p><img src="/img/add.png"> Estado [ nuevo ]</p> </div>
+    <div class="middle-pro"> <p><img src="/img/add.png"> Estado [nuevo]</p> </div>
     <!--|==========| Formulario | ↓ | inicio |==========|-->
     <form action="{{ url('/e/create') }}" method="post">
       @csrf
       <label class="lblformuser">Nombre</label>
       <input type="text" class="form-control form-control-lg" name="txtNombreEstado" autocomplete="off" required>
-      
       <div class="d-grid gap-2">
-        <input type="submit" class="btn btn-primary btn-lg" name="btnEnviarEstado" value="Enviar">
+        <input type="submit" class="btn btn-primary btn-lg" name="btnEnviarEstado" value="Crear">
       </div>
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
   <!--|==========| Container | fin | ← | ↑ |==========|--></div>
@@ -54,7 +53,7 @@
           <div class="modal-body"> ¿Desea salir de la plataforma? </div>
         <div class="modal-footer">
             <a class="modal-btn-cerrar" data-bs-dismiss="modal">No</a>
-            <a href="logout" type="button" class="modal-btn-cerrar">Si</a>
+            <a href="{{ url('/logout') }}" type="button" class="modal-btn-cerrar">Si</a>
         </div>
       </div>
     </div>

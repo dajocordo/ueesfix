@@ -2,6 +2,7 @@
   session_start();
   if(isset($_SESSION['admin'])){
 @endphp
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
   <title>Facultad</title>
@@ -32,10 +33,8 @@
     <!--|==========| Nuevo | ↓ | titulo |==========|-->
     <div class="middle-pro"> <p>Facultad</p> </div>
     <!--|==========| Boton | ir a derecha |==========|-->
-    <div class="btn-right-pro"> <a href="/facultadnuevo" title="Nuevo" class="aarrooww">+</a> </div>
-    <!--|==========| Nuevo | ↓ |==========|-->
-    
-    <!--|==========| Tabla Usuarios | ↓ | inicio |==========|-->
+    <div class="btn-right-pro"> <a href="/facultadnuevo" title="Nuevo" class="aarrooww">+</a> </div>    
+    <!--|==========| Tabla Facultad | ↓ | inicio |==========|-->
     <table class="table table-bordered">
       <thead>
         <th>No.</th>
@@ -60,11 +59,10 @@
       </tbody>  
      @php } @endphp  
     </table> <!--|==========| Tabla Usuarios | ↑ | fin |==========|-->
-  </div>
-  <!--|==========| Container | fin | ↑ |==========|-->
+  </div><!--|==========| Container | fin | ↑ |==========|-->
 
-<!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
-<div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
+  <div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -74,7 +72,7 @@
           <div class="modal-body"> ¿Desea salir de la plataforma? </div>
         <div class="modal-footer">
             <a class="modal-btn-cerrar" data-bs-dismiss="modal">No</a>
-            <a href="logout" type="button" class="modal-btn-cerrar">Si</a>
+            <a href="{{ url('/logout') }}" type="button" class="modal-btn-cerrar">Si</a>
         </div>
       </div>
     </div>

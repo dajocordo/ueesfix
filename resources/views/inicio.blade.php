@@ -13,33 +13,42 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script type="text/javascript" src="/js/barra.js"></script>
-  <link rel="stylesheet" type="text/css" href="/css/estail.css">
+  <link rel="stylesheet" type="text/css" href="/css/usuariostyle.css">
 </head>
 <body>
-<!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
-<div class="topnav" id="myTopnav">
-    <a href="home.php" class="active">Inicio</a>
-    <a href="up">Perfil</a>
+  <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
+  <div class="topnav" id="myTopnav">
+    <a href="{{ url('/inicio') }}" class="active">Inicio</a>
     <a href="#CerrarSesion" data-bs-toggle="modal" title="Salir">Salir</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-        <i class="fa fa-bars"></i>
+      <i class="fa fa-bars"></i>
     </a>
-</div>
-<!--|==========| Barra de navegacion | ↑ | fin |==========|-->
-<!--|==========| Container | ↓ | inicio |==========|-->
-<div class="container">
-    <!--|==========| Bienvenida | ↓ |==========|-->
-    <h1 id="greeting">Bienvenido UEES-FIX</h1>
-    <!--|==========| Nuevo | ↓ |==========|-->
+  </div>
+  <!--|==========| Barra de navegacion | ↑ | fin |==========|-->
+
+  <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
+    @php  $usuarioo = DB::SELECT('SELECT * FROM usuario WHERE usuariocif = ?',[$_SESSION['student']]); 
+            foreach ($usuarioo as $usser) {
+              $cif = $usser->usuariocif;
+              $name = $usser->usuario_name;
+    @endphp
+    <!--|==========| Bienvenido | ↓ | titulo |==========|-->
+    <div class="middle-pro"> <p>Bienvenido @php echo $name; @endphp</p> </div>@php } @endphp
 
     <div class="row"><!--|==========| Div | Row I | ↓ |==========|-->
-      <div class="col"> <p class="ppro"> <a href="{{ url('/ticketn') }}" class="a1">Crear Ticket</a> </p> </div>
-      <div class="col"> <p class="ppro"> <a href="{{ url('/ticketnv') }}" class="a2">Mis Tickets</a> </p> </div>
+    <div class="col"> <p class="ppro"> <a href="{{ url('/ticketn') }}" class="a1">Crear Ticket</a> </p> </div>
+    <div class="col"> <p class="ppro"> <a href="{{ url('/ticketnv') }}" class="a2">Mis Tickets</a> </p> </div>
     <!--|==========| Div | Row I | ↑ |==========|--></div>
 
-<!--|==========| Container | fin | ↑ |==========|-->
-<!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
-<div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="row"><!--|==========| Div | Row II | ↓ |==========|-->
+    <div class="col"> <p class="ppro"> <a href="{{ url('/cuenta') }}" class="a1">Ver Cuenta</a> </p> </div>
+    <div class="col"> <p class="ppro"> <a href="{{ url('/cuentaedit') }}" class="a2">Editar Cuenta</a> </p> </div>
+    <!--|==========| Div | Row II | ↑ |==========|--></div>
+
+  </div><!--|==========| Container | fin | ↑ |==========|-->
+  
+  <!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
+  <div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -49,7 +58,7 @@
           <div class="modal-body"> ¿Desea salir de la plataforma? </div>
         <div class="modal-footer">
             <a class="modal-btn-cerrar" data-bs-dismiss="modal">No</a>
-            <a href="logout" type="button" class="modal-btn-cerrar">Si</a>
+            <a href="{{ url('/logout') }}" type="button" class="modal-btn-cerrar">Si</a>
         </div>
       </div>
     </div>

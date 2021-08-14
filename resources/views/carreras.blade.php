@@ -1,3 +1,7 @@
+@php
+  session_start();
+  if(isset($_SESSION['admin'])){
+@endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -30,31 +34,35 @@
     <div class="middle-pro"> <p>Carreras</p> </div>
     <!--|==========| Boton | ir a derecha |==========|-->
     <div class="btn-right-pro"> <a href="/carreranueva" title="Nuevo" class="aarrooww">+</a> </div>
-    
-    <!--|==========| Tabla Usuarios | ↓ | inicio |==========|-->
+    <!--|==========| Tabla Carreras | ↓ | inicio |==========|-->
     <table class="table table-bordered">
       <thead>
         <th>ID</th>
         <th>Carrera</th>
-        <th>Modificado</th>
+        <th>Facultad</th>
         <th colspan="3">Opciones</th>
       </thead>
       @php foreach ($race as $rac) {
             $id = $rac->carreraid;
             $nombrec = $rac->carrera_name;
             $fechaActual = $rac->updated_at;
+            $facultadid = $rac->ffacultadid;
+            $facultad_in_carrera = DB::SELECT('SELECT * FROM facultad WHERE facultadid = ?',[$facultadid]);
+
+            foreach($facultad_in_carrera as $facultad_in_carrera_queri){
+                $fid = $facultad_in_carrera_queri->facultadid;
+                $nombref = $facultad_in_carrera_queri->facultad_name;
       @endphp
       <tbody><td>@php echo $id; @endphp</td>
         <td>@php echo $nombrec; @endphp</td>
-        <td>@php echo $fechaActual; @endphp</td>
+      <td>@php echo $nombref; @endphp</td>
         <td><a class="optionsu" href="/c/@php echo $id; @endphp/edit"><img src="img/edit.png"></a></td>
         <td><a class="optionsu" href="/c/@php echo $id; @endphp"><img src="img/info.png"></a></td> 
         <td><a class="optionsu" href="/c/delete"><p class="btndelete">X</p></a></td>
       </tbody>  
-     @php } @endphp  
-    </table> <!--|==========| Tabla Usuarios | ↑ | fin |==========|-->
-  </div>
-  <!--|==========| Container | fin | ↑ |==========|-->
+     @php } } @endphp  
+    </table> <!--|==========| Tabla Carreras | ↑ | fin |==========|-->
+  </div><!--|==========| Container | fin | ↑ |==========|-->
 
   <!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
   <div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -67,10 +75,16 @@
           <div class="modal-body"> ¿Desea salir de la plataforma? </div>
         <div class="modal-footer">
             <a class="modal-btn-cerrar" data-bs-dismiss="modal">No</a>
-            <a href="logout" type="button" class="modal-btn-cerrar">Si</a>
+            <a href="{{ url('/logout') }}" type="button" class="modal-btn-cerrar">Si</a>
         </div>
       </div>
     </div>
-  </div><!--|======| Modal - CerrarSesion |fin| ↑ |======|-->
+  </div><!--|======| New Modal - CerrarSesion |fin| ↑ |======|--> 
 </body>
 </html>
+@php  } else{
+      echo "<script>
+            alert('Debes iniciar sesión primero');
+            window.location.href='/index';
+          </script>";
+}  @endphp

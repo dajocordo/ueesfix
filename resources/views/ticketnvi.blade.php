@@ -31,7 +31,7 @@
     <div class="btn-left-pro"> <a href="{{ url('/ticketnv') }}" title="Regresar" class="aarrooww"><</a> </div>
     <!--|==========| Ticket | ↓ | titulo |==========|-->
     <div class="middle-pro"> <p><img src="/img/info.png"> Ticket [ info ]</p> </div>
-    <div class="btn-right-pro"> <a href="/not/@php echo $id; @endphp" title="Agregar Nota" class="aarrooww"><img src="/img/note.png"></a> </div>
+    <div class="btn-right-pro"> <a href="/toto/@php echo $id; @endphp" title="Agregar Nota" class="aarrooww"><img src="/img/note.png"></a> </div>
     <!--|====| Tabla Ticket [info ] | ↓ | inicio |====|-->
     <table class="table table-bordered">  
     <tr>

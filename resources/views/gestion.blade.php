@@ -2,6 +2,7 @@
   session_start();
   if(isset($_SESSION['admin'])){
 @endphp
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
   <title>Gestion</title>
@@ -32,24 +33,22 @@
     <!--|==========| Gestion | ↓ | titulo |==========|-->
     <div class="middle-pro"> <p>Gestion</p> </div>
     <!--|==========| Boton | ir a derecha |==========|-->
-    <div class="btn-right-pro"> <a href="/gestionnuevo" title="Nuevo" class="aarrooww">+</a> </div>
-    
+    <div class="btn-right-pro"> <a href="/gtn" title="Nuevo" class="aarrooww">+</a> </div>
     <!--|==========| Tabla Gestion | ↓ | inicio |==========|-->
     <table class="table table-bordered">
       <thead>
-        <th>No.</th>
+        <th>ID</th>
         <th>Nombre</th>
         <th>Modificado</th>
         <th colspan="3">Opciones</th>
       </thead>
-     @php $num=1;
-        foreach ($gestion1 as $gesti) {
+     @php foreach ($gestion1 as $gesti) {
           $id = $gesti->gestionid;
           $gestionname = $gesti->gestion_name;
           $gestion_Fecha_Actual = $gesti->updated_at;
       @endphp
       <tbody>
-        <td>@php echo $num++; @endphp</td>
+        <td>@php echo $id; @endphp</td>
         <td>@php echo $gestionname; @endphp</td> 
         <td>@php echo $gestion_Fecha_Actual; @endphp</td>
         <td><a class="optionsu" href="/g/@php echo $id; @endphp/edit" title="Editar"><img src="img/edit.png"></a></td>
@@ -58,11 +57,10 @@
       </tbody>  
      @php } @endphp  
     </table> <!--|==========| Tabla Gestion | ↑ | fin |==========|-->
-  </div>
-  <!--|==========| Container | fin | ↑ |==========|-->
+  </div>  <!--|==========| Container | fin | ↑ |==========|-->
 
-<!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
-<div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
+  <div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -76,7 +74,7 @@
         </div>
       </div>
     </div>
-  </div><!--|======| New Modal - CerrarSesion |fin| ↑ |======|--> 
+  </div><!--|======| New Modal - CerrarSesion |fin| ↑ |======|-->
 </body>
 </html>
 @php  } else{

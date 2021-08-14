@@ -1,7 +1,11 @@
-  <!DOCTYPE html>
+@php
+  session_start();
+  if(isset($_SESSION['admin'])){
+@endphp
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-  <title>Editar Gestion</title>
+  <title>Gestion Edit</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -14,7 +18,7 @@
 <body>
   <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
   <div class="topnav" id="myTopnav">
-    <a href="home">Inicio</a>
+    <a href="{{ url('/home') }}">Inicio</a>
     <a href="perfil">Perfil</a>
     <a href="#CerrarSesion" data-bs-toggle="modal" title="Salir">Salir</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -26,7 +30,7 @@
     <!--|==========| Boton | Regresar |==========|-->
     <div class="btn-left-pro"> <a href="{{ url('/g') }}" title="Regresar" class="aarrooww"><</a> </div>
     <!--|==========| Gestion | ↓ | titulo |==========|-->
-    <div class="middle-pro"> <p><img src="/img/edit.png"> Gestion [ edit ]</p> </div>    
+    <div class="middle-pro"> <p><img src="/img/edit.png"> Gestion [edit]</p> </div>    
     <!--|==========| Formulario | ↓ | inicio |==========|-->
     <form action="{{url('/g/update/')}}" method="post" name="frmEditGestion">
       @csrf
@@ -50,10 +54,16 @@
           <div class="modal-body"> ¿Desea salir de la plataforma? </div>
         <div class="modal-footer">
             <a class="modal-btn-cerrar" data-bs-dismiss="modal">No</a>
-            <a href="logout" type="button" class="modal-btn-cerrar">Si</a>
+            <a href="{{ url('/logout') }}" type="button" class="modal-btn-cerrar">Si</a>
         </div>
       </div>
     </div>
-  </div><!--|======| Modal - CerrarSesion |fin| ↑ |======|-->
+  </div><!--|======| New Modal - CerrarSesion |fin| ↑ |======|--> 
 </body>
 </html>
+@php  } else{
+      echo "<script>
+            alert('Debes iniciar sesión primero');
+            window.location.href='/index';
+          </script>";
+}  @endphp

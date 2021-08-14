@@ -18,7 +18,7 @@
 <body>
   <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
   <div class="topnav" id="myTopnav">
-    <a href="home">Inicio</a>
+    <a href="{{ url('/home') }}">Inicio</a>
     <a href="perfil">Perfil</a>
     <a href="#CerrarSesion" data-bs-toggle="modal" title="Salir">Salir</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -41,7 +41,7 @@
         <th>ID</th>
         <th>Estado</th>
         <th>Modificado</th>
-        <th colspan="3">Opciones</th>
+        <th colspan="2">Opciones</th>
       </thead>
       @php
         foreach ($state as $queryState) {
@@ -55,7 +55,6 @@
         <td>@php echo $fecha; @endphp</td>
         <td><a class="optionsu" href="/e/@php echo $id; @endphp/edit"><img src="img/edit.png"></a></td>
         <td><a class="optionsu" href="/e/@php echo $id; @endphp"><img src="img/info.png"></a></td> 
-        <td><a class="optionsu" href="/e/delete"><p class="btndelete">X</p></a></td>
       </tbody>  
      @php } @endphp  
     <!--|==========| Tabla Roles | ↑ | fin |==========|--></table>

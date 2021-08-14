@@ -18,7 +18,7 @@
 <body>
   <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
   <div class="topnav" id="myTopnav">
-    <a href="home">Inicio</a>
+    <a href="{{ url('/home') }}">Inicio</a>
     <a href="perfil">Perfil</a>
     <a href="#CerrarSesion" data-bs-toggle="modal" title="Salir">Salir</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -30,7 +30,7 @@
     <!--|==========| Boton | Regresar |==========|-->
     <div class="btn-left-pro"> <a href="{{ url('/e') }}" title="Regresar" class="aarrooww"><</a> </div>
     <!--|==========| Estado | ↓ | titulo |==========|-->
-    <div class="middle-pro"> <p><img src="/img/info.png"> Estado [ info ]</p> </div>
+    <div class="middle-pro"> <p><img src="/img/info.png"> Estado [info]</p> </div>
     <!--|=======| Tabla Estado [info] | ↓ | fin |=======|-->
     <table class="table table-bordered">  
     <tr>
@@ -64,7 +64,7 @@
           <div class="modal-body"> ¿Desea salir de la plataforma? </div>
         <div class="modal-footer">
             <a class="modal-btn-cerrar" data-bs-dismiss="modal">No</a>
-            <a href="logout" type="button" class="modal-btn-cerrar">Si</a>
+            <a href="{{ url('/logout') }}" type="button" class="modal-btn-cerrar">Si</a>
         </div>
       </div>
     </div>

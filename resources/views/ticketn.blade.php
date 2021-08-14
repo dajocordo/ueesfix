@@ -13,7 +13,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script type="text/javascript" src="/js/barra.js"></script>
-  <link rel="stylesheet" type="text/css" href="/css/estail.css"> 
+  <link rel="stylesheet" type="text/css" href="/css/usuariostyle.css"> 
 </head>
 <body>
   <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
@@ -33,29 +33,30 @@
     <!--|==========| Formulario | ↓ | inicio |==========|-->
     <form action="{{url('/tu/create')}}" name="frmTicketCreateAdm" method="post">
       @csrf
-      @php   $user_show = DB::SELECT('SELECT * FROM usuario WHERE usuariocif = ?',[$_SESSION['student']]); 
-            foreach ($user_show as $usershoow) {
-            $id = $usershoow->usuariocif;
-            $uname = $usershoow->usuario_name;
-            echo '<input type="hidden" class="form-control form-control-lg" name="userid" value="'.$id.'" autocomplete="off" required>';
-          }
-          @endphp
+      @php
+      $user_show = DB::SELECT('SELECT * FROM usuario WHERE usuariocif = ?',[$_SESSION['student']]); 
+        foreach ($user_show as $usershoow) {
+          $id = $usershoow->usuariocif;
+          $uname = $usershoow->usuario_name;
+          echo '<input type="hidden" class="form-control form-control-lg" name="userid" value="'.$id.'" autocomplete="off" required>';
+        }
+      @endphp
       <div class="row"><!--|==========| Div | Row III | ↓ |==========|-->
         <div class="col-8">
           <label class="lblformuser">Título</label>
           <input type="text" class="form-control form-control-lg" name="txtTitulo" autocomplete="off" required>
         </div>
         <div class="col-4">
-          <!--|==========| Select Prioridad | ↓ | inicio |==========|-->
-          <label class="lblformuser">Prioridad</label>
-          <select name="selPriori" class="form-control form-control-lg" aria-label="Default select example">
-          @php foreach ($prioridaad as $selprioridaad) {
-            $pid = $selprioridaad->prioridadid;
-            $pname = $selprioridaad->prioridad_name;
-          @endphp
-            <option value="@php echo $pid; @endphp">@php echo $pname; @endphp</option>
-          @php } @endphp
-          </select><!--|==========| Select Prioridad | ↑ | fin |==========|--></div>
+        <!--|==========| Select Prioridad | ↓ | inicio |==========|-->
+        <label class="lblformuser">Prioridad</label>
+        <select name="selPriori" class="form-control form-control-lg" aria-label="Default select example">
+        @php foreach ($prioridaad as $selprioridaad) {
+          $pid = $selprioridaad->prioridadid;
+          $pname = $selprioridaad->prioridad_name;
+        @endphp
+          <option value="@php echo $pid; @endphp">@php echo $pname; @endphp</option>
+        @php } @endphp
+        </select><!--|==========| Select Prioridad | ↑ | fin |==========|--></div>
       <!--|==========| Div | Row I | ↑ |==========|--></div>
       <label class="lblformuser">Detalles</label>
       <input type="text" class="form-control form-control-lg" name="txtDetalles" autocomplete="off" required>
@@ -86,6 +87,7 @@
       <input type="submit" class="btn-enviar-form" name="btnCrearTicketFromAdm" value="Enviar">
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
   <!--|==========| Container | fin | ← | ↑ |==========|--></div>
+  
   <!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
   <div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">

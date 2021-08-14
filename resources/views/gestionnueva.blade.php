@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-  <title>Facultad</title>
+  <title>Gestion nueva</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -28,18 +28,31 @@
 
   <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
     <!--|==========| Boton | Regresar |==========|-->
-    <div class="btn-left-pro"> <a href="{{ url('/f') }}" title="Regresar" class="aarrooww"><</a> </div>
-    <!--|==========| Facultad | ↓ | titulo |==========|-->
-    <div class="middle-pro"> <p><img src="/img/add.png"> Facultad [new]</p> </div>
+    <div class="btn-left-pro"> <a href="{{ url('/g') }}" title="Regresar" class="aarrooww"><</a> </div>
+    <!--|==========| Gestion | ↓ | titulo |==========|-->
+    <div class="middle-pro"> <p><img src="/img/add.png"> Gestion [ nueva ]</p> </div>
     <!--|==========| Formulario | ↓ | inicio |==========|-->
-    <form action="{{url('/f/create')}}" method="post" name="frmCrearFacultad">
+    <form action="{{ url('/g/create') }}" method="post">
       @csrf
-      <label class="lblformuser">Nombre</label>
-      <input type="text" class="form-control form-control-lg" name="txtNombreFacultad" autocomplete="off" required>
-      <div class="d-grid gap-2">
-        <input type="submit" class="btn btn-primary btn-lg" name="btnEnviarFacultad" value="Enviar">
-      </div>
-    </form><!--|==========| Formulario | ↑ | fin |==========|-->
+      <div class="row"><!--|==========| Div | Row I | ↓ |==========|-->
+        <div class="col-6">
+          <label class="lblformuser">Nombre</label>
+          <input type="text" class="form-control form-control-lg" name="txtNombreGestion" autocomplete="off" required>
+        </div>
+        <div class="col-6">
+          <!--|==========| Select Gestion Tipo | ↓ | inicio |==========|-->
+          <label class="lblformuser">Gestion Tipo</label>
+          <select name="selGestionTipo" class="form-control form-control-lg" aria-label="Default select example">
+          @php foreach ($gestiontipooid as $selgestiontipoid) {
+            $gestiontipoid = $selgestiontipoid->gestiontipoid;
+            $gestiontiponame = $selgestiontipoid->gestiontipo_name;
+          @endphp
+              <option value="@php echo $gestiontipoid; @endphp">@php echo $gestiontiponame; @endphp</option>
+          @php } @endphp
+          </select><!--|==========| Select Tipo | ↑ | fin |==========|-->
+          </div><!--|==========| Div | Row I | ↑ |==========|--></div>
+          <input type="submit" class="btn-enviar-form" name="btnEnviarGestion" value="Enviar">
+        </div></form><!--|==========| Formulario | ↑ | fin |==========|-->
   <!--|==========| Container | fin | ← | ↑ |==========|--></div>
 
   <!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
@@ -57,12 +70,10 @@
         </div>
       </div>
     </div>
-  </div><!--|======| New Modal - CerrarSesion |fin| ↑ |======|-->
+  </div><!--|======| Modal - CerrarSesion |fin| ↑ |======|-->
 </body>
 </html>
-@php  } else{
-      echo "<script>
-            alert('Debes iniciar sesión primero');
-            window.location.href='/index';
-          </script>";
-}  @endphp
+@php
+  session_start();
+  if(isset($_SESSION['admin'])){
+@endphp

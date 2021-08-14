@@ -1,7 +1,12 @@
+@php
+  session_start();
+  if(isset($_SESSION['admin'])){
+@endphp
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-  <title>Editar Facultad</title>
+  <title>Facultad Edit</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -14,7 +19,7 @@
 <body>
   <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
   <div class="topnav" id="myTopnav">
-    <a href="home">Inicio</a>
+    <a href="{{ url('/home') }}">Inicio</a>
     <a href="perfil">Perfil</a>
     <a href="#CerrarSesion" data-bs-toggle="modal" title="Salir">Salir</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -25,16 +30,14 @@
   <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
     <!--|==========| Boton | Regresar |==========|-->
     <div class="btn-left-pro"> <a href="{{ url('/f') }}" title="Regresar" class="aarrooww"><</a> </div>
-    <!--|==========| Roles | ↓ | titulo |==========|-->
-    <div class="middle-pro"> <p><img src="/img/edit.png"> Editar Facultad</p> </div>
-    
+    <!--|==========| Facultad | ↓ | titulo |==========|-->
+    <div class="middle-pro"> <p><img src="/img/edit.png"> Facultad [edit]</p> </div>
     <!--|==========| Formulario | ↓ | inicio |==========|-->
-    <form action="{{url('/f/update/')}}" method="post">
+    <form action="{{url('/f/update/')}}" method="post" name="frmFacultadEdit">
       @csrf
       <input type="hidden" class="form-control form-control-lg" name="ii" value="@php echo $ii; @endphp" autocomplete="off" required>
       <label class="lblformuser">Nombre</label>
       <input type="text" class="form-control form-control-lg" name="txtEditNombre" value="@php echo $name; @endphp" autocomplete="off" required>
-    
       <div class="d-grid gap-2">
         <input type="submit" class="btn btn-primary btn-lg" name="btnActualizar" value="Actualizar">
       </div>
@@ -59,3 +62,9 @@
   </div><!--|======| New Modal - CerrarSesion |fin| ↑ |======|-->
 </body>
 </html>
+@php  } else{
+      echo "<script>
+            alert('Debes iniciar sesión primero');
+            window.location.href='/index';
+          </script>";
+}  @endphp

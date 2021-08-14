@@ -18,8 +18,8 @@
 <body>
   <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
   <div class="topnav" id="myTopnav">
-    <a href="home">Inicio</a>
-    <a href="perfil">Perfil</a>
+    <a href="dashboard">Inicio</a>
+    <a href="">Perfil</a>
     <a href="#CerrarSesion" data-bs-toggle="modal" title="Salir">Salir</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
       <i class="fa fa-bars"></i>
@@ -28,13 +28,20 @@
 
   <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
     <!--|==========| Boton | Regresar |==========|-->
-    <div class="btn-left-pro"> <a href="{{ url('/t') }}" title="Regresar" class="aarrooww"><</a> </div>
+    <div class="btn-left-pro"> <a href="{{ url('/home') }}" title="Regresar" class="aarrooww"><</a> </div>
     <!--|==========| Ticket | ↓ | titulo |==========|-->
-    <div class="middle-pro"> <p><img src="/img/add.png"> Ticket [ nuevo ]</p> </div>
+    <div class="middle-pro"> <p><img src="/img/add.png"> Ticket [new]</p> </div>
     <!--|==========| Formulario | ↓ | inicio |==========|-->
     <form action="{{url('/t/create')}}" name="frmTicketCreateAdm" method="post">
       @csrf
-      <div class="row"><!--|==========| Div | Row III | ↓ |==========|-->
+        @php
+          $admini = DB::SELECT('SELECT * FROM soporte WHERE soportecif = ?',[$_SESSION['admin']]); 
+          foreach ($admini as $adminq) {
+            $id = $adminq->soportecif;
+            echo '<input type="hidden" class="form-control form-control-lg" name="adminid" value="'.$id.'" autocomplete="off" required>';
+          }
+        @endphp
+      <div class="row"><!--|==========| Div | Row I | ↓ |==========|-->
         <div class="col-8">
           <label class="lblformuser">Título</label>
           <input type="text" class="form-control form-control-lg" name="txtTitulo" autocomplete="off" required>
@@ -51,10 +58,26 @@
           @php } @endphp
           </select><!--|==========| Select Prioridad | ↑ | fin |==========|--></div>
       <!--|==========| Div | Row I | ↑ |==========|--></div>
-      <label class="lblformuser">Detalles</label>
-      <input type="text" class="form-control form-control-lg" name="txtDetalles" autocomplete="off" required>
+      <div class="row"><!--|==========| Div | Row II | ↓ |==========|-->
+        <div class="col-9">
+        <label class="lblformuser">Detalles</label>
+        <input type="text" class="form-control form-control-lg" name="txtDetalles" autocomplete="off" required>
+      </div>
+      <div class="col-3">
+        <!--|==========| Select Usuarios | ↓ | inicio |==========|-->
+        <label class="lblformuser">Usuario</label>
+         <select name="selUsuario" class="form-control form-control-lg" aria-label="Default select example">
+          @php foreach ($usuarioo as $selusuarioo) {
+            $uid = $selusuarioo->usuariocif;
+            $uname = $selusuarioo->usuario_name;
+            $uapellido = $selusuarioo->usuario_apellido;
+          @endphp
+          <option value="@php echo $uid; @endphp">@php echo $uname." ".$uapellido; @endphp</option>
+          @php  }  @endphp
+        </select><!--|==========| Select Prioridad | ↑ | fin |==========|--></div>
+        <!--|==========| Div | Row II | ↑ |==========|--></div>
       <div class="row"><!--|==========| Div | Row III | ↓ |==========|-->
-        <div class="col-6">
+        <div class="col-8">
           <!--|==========| Select Gestion | ↓ | inicio |==========|-->
           <label class="lblformuser">Gestion</label>
           <select name="selGestion" class="form-control form-control-lg" aria-label="Default select example">
@@ -65,7 +88,7 @@
             <option value="@php echo $gid; @endphp">@php echo $gname; @endphp</option>
           @php } @endphp
           </select><!--|==========| Select Gestion | ↑ | fin |==========|--></div>
-          <div class="col-6">
+          <div class="col-4">
           <!--|==========| Select GestionTipo | ↓ | inicio |==========|-->
           <label class="lblformuser">Gestion Tipo</label>
           <select name="selGestionTipo" class="form-control form-control-lg" aria-label="Default select example">
@@ -76,7 +99,8 @@
             <option value="@php echo $gtid; @endphp">@php echo $gtname; @endphp</option>
           @php } @endphp
           </select><!--|==========| Select GestionTipo | ↑ | fin |==========|--></div>
-      <!--|==========| Div | Row I | ↑ |==========|--></div>
+      <!--|==========| Div | Row III | ↑ |==========|--></div>
+
       <input type="submit" class="btn-enviar-form" name="btnCrearTicketFromAdm" value="Enviar">
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
   <!--|==========| Container | fin | ← | ↑ |==========|--></div>
@@ -92,7 +116,7 @@
           <div class="modal-body"> ¿Desea salir de la plataforma? </div>
         <div class="modal-footer">
             <a class="modal-btn-cerrar" data-bs-dismiss="modal">No</a>
-            <a href="logout" type="button" class="modal-btn-cerrar">Si</a>
+            <a href="{{ url('/logout') }}" type="button" class="modal-btn-cerrar">Si</a>
         </div>
       </div>
     </div>
