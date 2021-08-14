@@ -25,7 +25,7 @@
   <!--|==========| Container | ↓ | inicio |==========|-->
   <div class="container">
     <!--|==========| Perfil | ↓ |==========|-->
-    <div class="middle-pro"><p>UEES FIX<p></div>
+    <div class="middle-pro"><p><img src="/img/logo.png">  UEES FIX<p></div>
 
     <div class="row"><!--|==========| Div | Row I | ↓ |==========|-->
       <div class="colin"> <p class="ppro"> <a href="{{ url('/loginui') }}" class="a1">Estudiante / Empleado</a> </p> </div>

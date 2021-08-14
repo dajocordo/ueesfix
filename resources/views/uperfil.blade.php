@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-  <title>Usuario</title>
+  <title>Perfil</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -18,43 +18,44 @@
 <body>
   <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
   <div class="topnav" id="myTopnav">
-    <a href="{{ url('/inicio') }}" class="active">Inicio</a>
-    <a href="#CerrarSesion" data-bs-toggle="modal" title="Salir">Salir</a>
+    <a href="dashboard">Inicio</a>
+    <a href="perfil" class="active">Perfil</a>
+    <a href="#CerrarSesion" data-bs-toggle="modal" title="Salir" data-bs-target="#CerrarSesion">Salir</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
       <i class="fa fa-bars"></i>
     </a>
-  </div>
-  <!--|==========| Barra de navegacion | ↑ | fin |==========|-->
+  </div><!--|==========| Barra de navegacion | ↑ | fin |==========|-->
 
-  <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
-    @php  $usuarioo = DB::SELECT('SELECT * FROM usuario WHERE usuariocif = ?',[$_SESSION['student']]); 
-            foreach ($usuarioo as $usser) {
-              $cif = $usser->usuariocif;
-              $name = $usser->usuario_name;
-    @endphp
-    <!--|==========| Bienvenido | ↓ | titulo |==========|-->
-    <div class="middle-pro"> <p>Bienvenido <img src="/img/user.png"> @php echo $name; @endphp</p> </div>@php } @endphp
+<!--|====| Container | ↓ | → | inicio |====|--><div class="container">
+    <!--|==========| Boton | Regresar |==========|-->
+    <div class="btn-left-pro"> <a href="{{ url('/inicio') }}" title="Regresar" class="aarrooww"><</a> </div>
+    <!--|==========| Ticket | ↓ | titulo |==========|-->
+    <div class="middle-pro"> <p><img src="/img/add.png"> Perfil [ Usuario ]</p> </div>
+ 
+    <div class="container">
+    @csrf
+      @php   $soporte_show = DB::SELECT('SELECT * FROM usuario WHERE usuariocif = ?',[$_SESSION['student']]); 
+            foreach ($soporte_show as $soporteshoow) {
+            $id = $soporteshoow->usuariocif;
+            $sname = $soporteshoow->usuario_name;
+            
+          @endphp
+           <!--|==========| Editar perfil | ↓ |==========|-->
+    <div class="editprofile"> <p class="ppro"> <a href="/up/@php echo $id; @endphp/edit" class="a2">Editar perfil</a> </p> </div>
+    @php
+      }
+      @endphp
+    <!--|==========| Ver perfil | ↓ |==========|-->
+      <div class="seeprofile"> <p class="ppro"> <a href="/up/@php echo $id; @endphp" class="a1">Mi cuenta</a> </p> </div>
+   
+    </div>
 
-    <div class="row"><!--|==========| Div | Row I | ↓ |==========|-->
-    <div class="col"> <p class="ppro"> <a href="{{ url('/ticketn') }}" class="a1">Crear Ticket</a> </p> </div>
-    <div class="col"> <p class="ppro"> <a href="{{ url('/ticketnv') }}" class="a2">Mis Tickets</a> </p> </div>
-    <!--|==========| Div | Row I | ↑ |==========|--></div>
+  <!--|==========| Container | fin | ← | ↑ |==========|--></div>
 
-  </div><!--|==========| Container | fin | ↑ |==========|-->
-
-  <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
-    <!--|==========| Bienvenido | ↓ | titulo |==========|-->
-    <div class="middle-pro"> <p>Mi Cuenta <img src="/img/ajustes.png"></p> </div>
-
-    <div class="row"><!--|==========| Div | Row II | ↓ |==========|-->
-    <div class="col"> <p class="ppro"> <a href="{{ url('/up') }}" class="a1">Ver Cuenta</a> </p> </div>
-    <div class="col"> <p class="ppro"> <a href="{{ url('/psw') }}" class="a2">Editar Cuenta</a> </p> </div>
-    <!--|==========| Div | Row II | ↑ |==========|--></div>
-
-  </div><!--|==========| Container | fin | ↑ |==========|-->
   
-  <!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
-  <div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+
+<!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
+<div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -64,7 +65,7 @@
           <div class="modal-body"> ¿Desea salir de la plataforma? </div>
         <div class="modal-footer">
             <a class="modal-btn-cerrar" data-bs-dismiss="modal">No</a>
-            <a href="{{ url('/logout') }}" type="button" class="modal-btn-cerrar">Si</a>
+            <a href="logout" type="button" class="modal-btn-cerrar">Si</a>
         </div>
       </div>
     </div>
