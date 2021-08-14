@@ -13,13 +13,12 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script type="text/javascript" src="/js/barra.js"></script>
-  <link rel="stylesheet" type="text/css" href="/css/estail.css">    
+  <link rel="stylesheet" type="text/css" href="/css/soportestyle.css">    
 </head>
 <body>
   <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
   <div class="topnav" id="myTopnav">
     <a href="dashboard">Inicio</a>
-    <a href="sperfil">Perfil</a>
     <a href="#CerrarSesion" data-bs-toggle="modal" title="Salir">Salir</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
       <i class="fa fa-bars"></i>
@@ -28,13 +27,21 @@
 
   <!--|==========| Container | ↓ | inicio |==========|-->
   <div class="container">
+      @php  $supportt = DB::SELECT('SELECT * FROM soporte WHERE soportecif = ?',[$_SESSION['support']]); 
+            foreach ($supportt as $suporte) {
+              $id = $suporte->soportecif;
+              $name = $suporte->soporte_name;
+
+    @endphp
     <!--|==========| Boton | ir a izquierda |==========|-->
-    <div class="btn-left-pro"> <a href="sperfil" title="Inicio" class="aarrooww"><</a> </div>
+     <div class="btn-left-pro"> <a href="/sperfil" title="Regresar" class="aarrooww"><img src="/img/back.png"></a> </div>
     <!--|==========| Nuevo | ↓ | titulo |==========|-->
-    <div class="middle-pro"> <p>Soporte</p> </div>
-      xq
-    <!--|==========| Nuevo | ↓ |==========|-->
-    
+    <div class="middle-pro"> <p>Mi Equipo</p> </div>
+    <!--|==========| Boton | ir a derecha |==========|-->
+    <div class="btn-right-pro"> <a href="/sp/@php echo $id; @endphp/edit" title="Nuevo" class="aarrooww">></a></div>
+ @php
+      }
+      @endphp
     <!--|==========| Tabla Usuarios | ↓ | inicio |==========|-->
     <table class="table table-bordered">
       <thead>
@@ -42,24 +49,22 @@
         <th>Nombre</th>
         <th>Apellido</th>
         <th>Correo</th>
-        <th colspan="3">Opciones</th>
+        <th colspan="1">Opcion</th>
       </thead>
       @php
       $num=1;
       foreach ($soport as $sopor) {
         $id = $sopor->soportecif;
-        $sopnombre = $sopor->snombre;
-        $sopapellido = $sopor->sapellido;
-        $sopcorreo = $sopor->smail;
+        $sopnombre = $sopor->soporte_name;
+        $sopapellido = $sopor->soporte_apellido;
+        $sopcorreo = $sopor->soporte_mail;
 
       @endphp
       <tbody><td>@php echo $num++; @endphp</td>
         <td>@php echo $sopnombre; @endphp</td>
         <td>@php echo $sopapellido; @endphp</td>
         <td>@php echo $sopcorreo; @endphp</td> 
-        <td><a class="optionsu" href="/sp/@php echo $id; @endphp;"><img src="img/edit.png"></a></td>
         <td><a class="optionsu" href="/sp/@php echo $id; @endphp;"><img src="img/info.png"></a></td> 
-        <td><a class="optionsu" href="/sp/delete"><p class="btndelete">X</p></a></td> 
       </tbody>  
      @php } @endphp  
     </table> <!--|==========| Tabla Usuarios | ↑ | fin |==========|-->
