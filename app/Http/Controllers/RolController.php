@@ -33,16 +33,15 @@ class RolController extends Controller
 
             DB::INSERT("INSERT INTO roles (roles_name, created_at, updated_at) VALUES(?,?,?)",[$NombreRol,$Creado,$Actual]);
 
-            echo '<script language="javascript">';
-            echo 'alert("Datos ingresados correctamente")';
-            echo '</script>';
-            return redirect("/r");
-        
+            echo "<script>
+                  alert('EXITO. El Rol ha sido creado correctamente');
+                  window.location.href='/r';
+                  </script>";
         } else {
-            echo '<script language="javascript">';
-            echo 'alert("Hubo un error, favor intentarlo de nuevo")';
-            echo '</script>';
-            return redirect("/rolnuevo");
+            echo "<script>
+                  alert('Hubo un error, favor intentarlo de nuevo');
+                  window.location.href='/rolnuevo';
+                  </script>";
         }
     }
 
@@ -65,7 +64,7 @@ class RolController extends Controller
      */
     public function show($id)
     {
-        $rol_show = DB::SELECT('SELECT * FROM roles WHERE rolesid = ?',[$id]);
+        $rol_show = DB::SELECT('SELECT * FROM roles WHERE roles_id = ?',[$id]);
         if ($rol_show == null) {
             echo "<script>
                   alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
@@ -90,7 +89,7 @@ class RolController extends Controller
      */
     public function edit($id)
     {
-        $rol_edit = DB::SELECT('SELECT * FROM roles WHERE rolesid = ?',[$id]);
+        $rol_edit = DB::SELECT('SELECT * FROM roles WHERE roles_id = ?',[$id]);
 
         if ($rol_edit == null) {
             echo "<script>
@@ -117,12 +116,12 @@ class RolController extends Controller
     {
         if (isset($_POST['btnActualizarR'])) {
             $ii = $_REQUEST['ii'];
-            $nuevoNombre = $_POST['txtEditNombre'];
+            $nuevoRol = $_POST['txtEditNombre'];
             $nuevoCambio = date("Y-m-d H:i:s");
 
             $affected = DB::table('roles')
               ->where('rolesid', $ii)
-              ->update(['roles_name' => $nuevoNombre,'updated_at' => $nuevoCambio]);
+              ->update(['roles_name' => $nuevoRol,'updated_at' => $nuevoCambio]);
 
             echo "<script>
                   alert('EXITO: Los datos ya fueron actualizados');

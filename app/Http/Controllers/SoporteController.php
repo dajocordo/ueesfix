@@ -43,7 +43,6 @@ class SoporteController extends Controller
             alert('Exito. El soporte fue ingresado correctamente');
             window.location.href='/s';
             </script>";
-        s
         } else {
             echo "<script>
                   alert('Error. Vuelva a intentarlo de nuevo');

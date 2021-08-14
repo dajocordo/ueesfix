@@ -65,14 +65,28 @@ class CarreraController extends Controller
      */
     public function show($id)
     {
-        $resul = DB::SELECT('SELECT * FROM carrera WHERE carreraid = ?',[$id]);
+        $carrera_show = DB::SELECT('SELECT * FROM carrera WHERE carreraid = ?',[$id]);
+        
+        if ($carrera_show == null) {
+            echo "<script>
+                  alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
+                  window.location.href='/g';
+                  </script>";
+        } else{
+            foreach($carrera_show as $carrera_queri){
+                $carreraid = $carrera_queri->carreraid;
+                $cname = $carrera_queri->carrera_name;
+                $facultadid = $carrera_queri->ffacultadid;
+                $creado = $carrera_queri->created_at;
+                $modificado = $carrera_queri->updated_at;
+                $facultad_in_carrera = DB::SELECT('SELECT * FROM facultad WHERE facultadid = ?',[$facultadid]);
 
-        foreach($resul as $quer){
-            $id = $quer->carreraid;
-            $name = $quer->carrera_name;
-            $creado1 = $quer->created_at;
-            $actual1 = $quer->updated_at;
-            return view('carrerainfo')->with('id',$id)->with('name',$name)->with('creado1',$creado1)->with('actual1',$actual1);
+                foreach($facultad_in_carrera as $facultad_in_carrera_queri){
+                    $fid = $facultad_in_carrera_queri->facultadid;
+                    $fname = $facultad_in_carrera_queri->facultad_name;
+                    return view('carrerainfo')->with('carreraid',$carreraid)->with('cname',$cname)->with('fname',$fname)->with('creado',$creado)->with('modificado',$modificado);
+                }
+            }
         }
     }
 
@@ -84,13 +98,28 @@ class CarreraController extends Controller
      */
     public function edit($id)
     {
-        $result = DB::SELECT('SELECT * FROM carrera WHERE carreraid = ?',[$id]);
+        $carrera_edit = DB::SELECT('SELECT * FROM carrera WHERE carreraid = ?',[$id]);
 
-        foreach($result as $query){
-            $ii = $query->carreraid;
-            $name = $query->carrera_name;
+        if ($carrera_edit == null) {
+            echo "<script>
+                  alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
+                  window.location.href='/c';
+                  </script>";
+        } else{
+            foreach($carrera_edit as $carrera_query){
+                $ii = $carrera_query->carreraid;
+                $name = $carrera_query->carrera_name;
+                $facultadid = $carrera_query->ffacultadid;
+                $facultadSelectt = DB::SELECT('SELECT * FROM facultad WHERE facultadid = ?',[$facultadid]);
+                $facultad_diferent = DB::SELECT('SELECT * FROM facultad WHERE facultadid != ?',[$facultadid]);
+                
+                foreach($facultadSelectt as $facultad_in_carrera_query){
+                    $facuid = $facultad_in_carrera_query->facultadid;
+                    $facuname = $facultad_in_carrera_query->facultad_name;
 
-            return view('carreraedita')->with('ii',$ii)->with('name',$name);
+                    return view('carreraedit')->with('ii',$ii)->with('name',$name)->with('facuid',$facuid)->with('facuname',$facuname)->with('facultad_diferent',$facultad_diferent);
+                }
+            }
         }
     }
 
@@ -106,22 +135,23 @@ class CarreraController extends Controller
         if (isset($_POST['btnActualizar'])) {
             $ii = $_REQUEST['ii'];
             $nuevoNombre = $_POST['txtEditNombre'];
+            $nuevaFacultad = $_POST['selFacultadCa'];
             $Actual = date("Y-m-d H:i:s");
 
             $affected = DB::table('carrera')
               ->where('carreraid', $ii)
-              ->update(['carrera_name' => $nuevoNombre,'updated_at' => $Actual]);
+              ->update(['carrera_name' => $nuevoNombre,'ffacultadid' => $nuevaFacultad,'updated_at' => $Actual]);
 
-            echo '<script language="javascript">';
-            echo 'alert("EXITO: Los datos ya fueron actualizados")';
-            echo '</script>';
-            return redirect('/carreras');
+            echo "<script>
+                  alert('EXITO: Los datos ya fueron actualizados');
+                  window.location.href='/c';
+                  </script>";
             
         } else {
-            echo '<script language="javascript">';
-            echo 'alert("ERROR: favor intentarlo de nuevo")';
-            echo '</script>';
-            return view('/usuarios');
+            echo "<script>
+                  alert('ERROR: favor intentarlo de nuevo');
+                  window.location.href='/c';
+                  </script>";
         }
     }
 

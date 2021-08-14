@@ -73,6 +73,7 @@ class GestionController extends Controller
     public function show($id)
     {
         $gestion_show = DB::SELECT('SELECT * FROM gestion WHERE gestionid = ?',[$id]);
+        
         if ($gestion_show == null) {
             echo "<script>
                   alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
