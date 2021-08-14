@@ -31,8 +31,10 @@
     <div class="btn-left-pro"> <a href="{{ url('/t') }}" title="Regresar" class="aarrooww"><</a> </div>
     <!--|==========| Ticket | ↓ | titulo |==========|-->
     <div class="middle-pro"> <p><img src="/img/info.png"> Ticket [ info ]</p> </div>
+    <input type="button" class="btn-danger" value="PDF" id="btPrint" onclick="createPDF()" />
 
     <!--|====| Tabla Ticket [info ] | ↓ | inicio |====|-->
+    <div id="tab">
     <table class="table table-bordered">  
     <tr>
       <th class="table-primary">Ticket</th>
@@ -63,7 +65,7 @@
       <td>@php echo $modificado; @endphp</td>
     </tr>
   </table><!--|======| Tabla Ticket [info] | ↑ | fin |======|-->
-  <!--|==========| Container | fin | ← | ↑ |==========|--></div>
+  <!--|==========| Container | fin | ← | ↑ |==========|--></div></div>
 
   <!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
   <div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -82,6 +84,32 @@
     </div>
   </div><!--|======| New Modal - CerrarSesion |fin| ↑ |======|--> 
 </body>
+<script>
+    function createPDF() {
+        var sTable = document.getElementById('tab').innerHTML;
+
+        var style = "<style>";
+        style = style + "table {width: 100%;font: 17px Calibri;}";
+        style = style + "table, th, td {border: solid 1px #DDD; border-collapse: collapse;";
+          style = style + "padding: 2px 3px;text-align: center;}";
+        style = style + "</style>";
+
+        // CREATE A WINDOW OBJECT.
+        var win = window.open('', '', 'height=700,width=1000' );
+
+        win.document.write('<html><head>');
+        win.document.write('<title>Detalle Ticket UEESFIX</title>');   // <title> FOR PDF HEADER.
+        win.document.write(style);          // ADD STYLE INSIDE THE HEAD TAG.
+        win.document.write('</head>');
+        win.document.write('<body>');
+        win.document.write(sTable);         // THE TABLE CONTENTS INSIDE THE BODY TAG.
+        win.document.write('</body></html>');
+
+        win.document.close(); 	// CLOSE THE CURRENT WINDOW.
+
+        win.print();    // PRINT THE CONTENTS.
+    }
+</script>
 </html>
 @php  } else{
       echo "<script>
