@@ -32,7 +32,7 @@
               $name = $suporte->soporte_name;
     @endphp
     <!--|==========| Boton | Tareas |==========|-->
-    <div class="btn-left-pro"> <a href="/tareas" title="Inicio" class="aarrooww"><</a> </div>
+    <div class="btn-left-pro"> <a href="/sperfil" title="Inicio" class="aarrooww"><img src="/img/user.png"></a> </div>
     <!--|==========| Bienvenido | ↓ | titulo |==========|-->
     <div class="middle-pro"> <p>Bienvenido @php echo $name; @endphp</p> </div>
     <!--|==========| Boton | Tareas |==========|-->
