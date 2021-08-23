@@ -21,12 +21,12 @@
   <!--|==========| Container | ↓ | inicio |==========|-->
   <div class="container">
     <!--|==========| Boton | Regresar |==========|-->
-    <div class="btn-left-pro"> <a href="{{ url('/index') }}" title="Regresar" class="aarrooww"><img src="img/back.png"></a> </div>
+    <div class="btn-left-pro"> <a href="{{ url('/index') }}" title="Regresar" class="aarrooww"><img src="/img/back.png"></a> </div>
     <!--|==========| Perfil | ↓ |==========|-->
     <div class="middle-pro"><p>UEES FIX<p></div>
 
     <!--|==========| Formulario | ↓ | inicio |==========|-->
-    <form action="{{ url('/lu') }}" name="step-ii-login" method="post">
+    <form action="{{ url('/loginuii') }}" name="step-ii-login" method="post">
       @csrf
         <label class="lbl1">1.  Ingrese su CIF</label>
       <div class="form-group">

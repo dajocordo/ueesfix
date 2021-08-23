@@ -21,7 +21,7 @@
   <!--|==========| Container | ↓ | inicio |==========|-->
   <div class="container">
     <!--|==========| Boton | Regresar |==========|-->
-    <div class="btn-left-pro"> <a href="{{ url('/loginui') }}" title="Regresar" class="aarrooww"><img src="img/back.png"></a> </div>
+    <div class="btn-left-pro"> <a href="{{ url('/loginui') }}" title="Regresar" class="aarrooww"><img src="/img/back.png"></a> </div>
     <!--|==========| Perfil | ↓ |==========|-->
     <div class="middle-pro"><p>UEES FIX<p></div>
 
