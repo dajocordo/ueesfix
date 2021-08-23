@@ -29,15 +29,12 @@ Route::get('/stinicio', function() {return view('stinicio');});
 
 // LOGIN
 Route::get('/loginui', function() {return view('loginui');});
-Route::get('/loginuii', function() {return view('loginuii');});
 Route::get('/loginsi', function() {return view('loginsi');});
-Route::get('/loginsii', function() {return view('loginsii');});
 Route::get('/loginai', function() {return view('loginai');});
-Route::get('/loginaii', function() {return view('loginaii');});
 Route::resource('/l', LoginnController::class);
-Route::post('/lu', [LoginnController::class, 'firstusuario']);
-Route::post('/ls', [LoginnController::class, 'firstsoporte']);
-Route::post('/la', [LoginnController::class, 'firstadmin']);
+Route::post('/loginuii', [LoginnController::class, 'firstusuario']);
+Route::post('/loginsii', [LoginnController::class, 'firstsoporte']);
+Route::post('/loginaii', [LoginnController::class, 'firstadmin']);
 Route::post('/loginu', [LoginnController::class, 'stepusu']);
 Route::post('/logins', [LoginnController::class, 'stepsop']);
 Route::post('/logina', [LoginnController::class, 'stepadm']);
@@ -252,7 +249,7 @@ Route::get('/nt', [NotasController::class, 'index']);
 Route::get('/nt/{id}/edit', [NotasController::class, 'edit']);
 Route::post('/nt/create', [NotasController::class, 'create']);
 Route::post('/nt/update', [NotasController::class, 'update']);
-Route::get('/toto/{id}', [NotasController::class, 'newnote']);
+Route::get('/nt/{id}/{usuarioid}/{soporteid}', [NotasController::class, 'newnote']);
 
 
 // USUARIO TICKET NUEVO
@@ -276,6 +273,37 @@ Route::get('/ut/{id}', [UsuarioTipoController::class, 'show']);
 Route::get('ut/{id}/edit', [UsuarioTipoController::class, 'edit']);
 Route::post('/ut/create', [UsuarioTipoController::class, 'create']);
 Route::post('/ut/update', [UsuarioTipoController::class, 'update']);
+
+
+//  UP (PERFIL USUARIO)
+Route::resource('/up', UPerfilController::class);
+Route::get('/up', [UPerfilController::class, 'index']);
+Route::get('/up/{id}', [UPerfilController::class, 'newnote']);
+Route::get('/up/{id}/edit', [UPerfilController::class, 'edit']);
+Route::post('/up/create', [UPerfilController::class, 'create']);
+Route::post('/up/update', [UPerfilController::class, 'update']);
+
+
+//  SOPORTE PERFIL
+Route::get('/seditarperfil', function() {return view('seditarperfil');});
+Route::get('/sperfil', function() {return view('sperfil');});
+Route::resource('/sp', SPerfilController::class);
+Route::get('/sp', [SPerfilController::class, 'index']);
+Route::get('/sp/{id}', [SPerfilController::class, 'show']);
+Route::get('/sp/{id}/edit', [SPerfilController::class, 'edit']);
+Route::post('/sp/create', [SPerfilController::class, 'create']);
+Route::post('/sp/update', [SPerfilController::class, 'update']);
+
+
+// SOPORTE TICKET INFO
+Route::resource('/stt', STicketController::class);
+// Route::get('/ticketnv', function() {return view('ticketnv');});
+// Route::get('/tu', [UTicketController::class, 'index']);
+Route::get('/stt/{id}', [STicketController::class, 'showticketensoporte']);
+// Route::get('/tu/{id}/edit', [UTicketController::class, 'edit']);
+// Route::post('/tu/create', [UTicketController::class, 'create']);
+// Route::post('/tu/update', [UTicketController::class, 'update']);
+// Route::get('/ticketn', [UTicketController::class, 'utktnewtii']);
 
 
 // Route::resource('post', PostController::class);
