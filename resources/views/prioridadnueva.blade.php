@@ -1,18 +1,15 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-  <title>Nueva Prioridad</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
- 
-  <link rel="stylesheet" type="text/css" href="/css/estail.css"> 
-</head>
-<body>
+{{--| admin |--}}
+
+@extends('building')
+
+@section('title', 'Nueva prioridad')
+
+@section('content')
+
  @include('tool.topnav')
 
   <!--|====| Container | ↓ | → | inicio |====|-->
-<div class="container">
+  <div class="container">
     <!--|==========| Boton | Regresar |==========|-->
     <div class="btn-left-pro"> <a href="{{ url('/p') }}" title="Regresar" class="aarrooww"><</a> </div>
     <!--|==========| Prioridad | ↓ | titulo |==========|-->
@@ -27,10 +24,6 @@
       </div>
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
   <!--|==========| Container | fin | ← | ↑ |==========|-->
-</div>
+  </div>
 
-  
-
-   
-</body>
-</html>
+@endsection

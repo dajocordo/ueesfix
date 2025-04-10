@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-  <title>Perfil</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
- 
-  <link rel="stylesheet" type="text/css" href="/css/estail.css">
-</head>
-<body>
+{{--| admin |--}}
+
+@extends('building')
+
+@section('title', 'Perfil')
+
+@section('content')
+
   <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
   <div class="topnav" id="myTopnav">
     <a href="home">Inicio</a>
@@ -31,8 +28,4 @@
     <div class="knowteam"><p class="ppro">Mi equipo</p></div>
   </div><!--|=====| Container | fin | ← | ↑ |======|-->
 
-  
-
-   
-</body>
-</html>
+@endsection

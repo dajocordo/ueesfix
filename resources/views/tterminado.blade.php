@@ -1,21 +1,12 @@
-@php
-  session_start();
-  if(isset($_SESSION['admin'])){
-@endphp
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-  <title>Ticket Terminado</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
- 
-  <link rel="stylesheet" type="text/css" href="/css/estail.css">    
-</head>
-<body>
-  <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
+{{--| admin |--}}
+
+@extends('building')
+
+@section('title', 'Ticket terminado')
+
+@section('content')
+
   @include('tool.topnav')
-<!--|=========| Barra de navegacion | ← | fin |=========|-->
 
   <!--|==========| Container | ↓ | inicio |==========|-->
   <div class="container">
@@ -68,11 +59,4 @@
   <!--|==========| Container | fin | ↑ |==========|--></div>
 
   
-</body>
-</html>
-@php  } else{
-      echo "<script>
-            alert('Debes iniciar sesión primero');
-            window.location.href='/index';
-          </script>";
-}  @endphp
+@endsection
