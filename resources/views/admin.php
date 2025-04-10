@@ -231,3 +231,4 @@
             window.location.href='/index';
           </script>";
 }  @endphp
+
