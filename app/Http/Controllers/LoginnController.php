@@ -12,7 +12,7 @@ class LoginnController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function firstusuario()
+    public function firstusuario(Request $request)
     {
         if (isset($_POST['btnLoginStepIUsuario'])) {
         $esteCif = $_POST['txtCIF'];

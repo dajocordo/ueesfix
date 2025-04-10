@@ -28,9 +28,13 @@
     <!--|==========| Formulario | ↓ | inicio |==========|-->
     <form action="{{ url('/loginuii') }}" name="step-ii-login" method="post">
       @csrf
-        <label class="lbl1">1.  Ingrese su CIF</label>
+        <label class="lbl1">1.  Ingrese su correo</label>
       <div class="form-group">
-        <input type="number" class="farm-cantral" name="txtCIF" autocomplete="off" required>
+        <input type="email" class="farm-cantral" name="email" autocomplete="off" required>
+      </div>
+      <label class="lbl1">2.  Ingrese su contraseña</label>
+      <div class="form-group">
+        <input type="password" class="farm-cantral" name="password" autocomplete="off" required>
       </div>
       <input type="submit"  class="btn-entrur"  name="btnLoginStepIUsuario" value="Siguiente">
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
