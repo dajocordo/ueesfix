@@ -7,10 +7,22 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Casts\Hash;
+
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    protected $connection = 'mysql';
+    protected $table = 'users';  // Nombre de tu tabla personalizada
+    protected $primaryKey = 'id';  // Si tu clave primaria es diferente
+
+
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = Hash::make($value);
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -30,7 +42,7 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
+        // 'remember_token',
     ];
 
     /**
@@ -38,8 +50,8 @@ class User extends Authenticatable
      *
      * @var array<string, string>
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
-    ];
+    // protected $casts = [
+    //     // 'email_verified_at' => 'datetime',
+    //     'password' => Hash::class
+    // ];
 }
