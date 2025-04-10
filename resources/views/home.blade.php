@@ -65,7 +65,7 @@
           <div class="modal-body"> ¿Desea salir de la plataforma? </div>
         <div class="modal-footer">
             <a class="modal-btn-cerrar" data-bs-dismiss="modal">No</a>
-            <a href="{{ url('/logout') }}" type="button" class="modal-btn-cerrar">Si</a>
+            <a href="{{ route('logout') }}" type="button" class="modal-btn-cerrar">Si</a>
         </div>
       </div>
     </div>
