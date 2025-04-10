@@ -50,7 +50,8 @@
       </tbody>  
      @php } @endphp  
     <!--|==========| Tabla Roles | ↑ | fin |==========|--></table>
-    <!--|==========| Container | fin | ← | ↑ |==========|--></div>
+    <!--|==========| Container | fin | ← | ↑ |==========|-->
+</div>
 
   
 </body>

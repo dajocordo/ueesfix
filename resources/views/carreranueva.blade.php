@@ -1,21 +1,15 @@
-@php
-  session_start();
-  if(isset($_SESSION['admin'])){
-@endphp
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-  <title>Carrera Nueva</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
- 
-  <link rel="stylesheet" type="text/css" href="/css/estail.css"> 
-</head>
-<body>
- @include('tool.topnav')
+{{--| admin |--}}
 
-  <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
+@extends('building')
+
+@section('title', 'Carrera nueva')
+
+@section('content')
+
+  @include('tool.topnav')
+
+  <!--|====| Container | ↓ | → | inicio |====|-->
+  <div class="container">
     <!--|==========| Boton | Regresar |==========|-->
     <div class="btn-left-pro"> <a href="{{ url('/c') }}" title="Regresar" class="aarrooww"><</a> </div>
     <!--|==========| Carrera | ↓ | titulo |==========|-->
@@ -42,15 +36,7 @@
       </div><!--|==========| Div | Row I | ↑ |==========|--></div>
       <input type="submit" class="btn-enviar-form" name="btnEnviarCarrera" value="Crear">
     <!--|==========| Formulario | ↑ | fin |==========|--></form>
-  <!--|==========| Container | fin | ← | ↑ |==========|--></div>
-
-
+  <!--|==========| Container | fin | ← | ↑ |==========|-->
   </div>
-</body>
-</html>
-@php  } else{
-      echo "<script>
-            alert('Debes iniciar sesión primero');
-            window.location.href='/index';
-          </script>";
-}  @endphp
+
+@endsection

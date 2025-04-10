@@ -24,7 +24,8 @@
     </a>
   </div><!--|==========| Barra de navegacion | ↑ | fin |==========|-->
 
-    <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
+    <!--|====| Container | ↓ | → | inicio |====|-->
+<div class="container">
     <!--|==========| Boton | Regresar |==========|-->
     <div class="btn-left-pro"> <a href="{{ url('/n') }}" title="Regresar" class="aarrooww"><</a> </div>
     <!--|==========| Roles | ↓ | titulo |==========|-->
@@ -57,7 +58,8 @@
       <td>@php echo $modificado; @endphp</td>
     </tr>
   </table><!--|======| Tabla Usuario [info] | ↑ | fin |======|-->
-  <!--|==========| Container | fin | ← | ↑ |==========|--></div>
+  <!--|==========| Container | fin | ← | ↑ |==========|-->
+</div>
 
 </body>
 </html>

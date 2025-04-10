@@ -24,7 +24,8 @@
     </a>
   </div> <!--|==========| Barra de navegacion | ↑ | fin |==========|-->
 
-  <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
+  <!--|====| Container | ↓ | → | inicio |====|-->
+<div class="container">
     <!--|==========| Bienvenida | ↓ |==========|-->
     <h1 id="greeting">Nuevas Notas</h1>
     <!--|==========| Formulario | ↓ | inicio |==========|-->
@@ -74,7 +75,8 @@
         <input type="submit" class="btn btn-primary btn-lg" name="btnCrearUsuario" value="Enviar">
       </div>
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
-  <!--|==========| Container | fin | ← | ↑ |==========|--></div>
+  <!--|==========| Container | fin | ← | ↑ |==========|-->
+</div>
 
 </body>
 </html>

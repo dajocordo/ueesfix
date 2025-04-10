@@ -8,7 +8,8 @@
 
   @include('tool.topnav') <!--|==========| Barra de navegacion | ↑ | fin |==========|-->
 
-  <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
+  <!--|====| Container | ↓ | → | inicio |====|-->
+<div class="container">
       <!--|==========| Boton | Regresar |==========|-->
       <div class="btn-left-pro"> <a href="{{ url('/e') }}" title="Regresar" class="aarrooww"><</a> </div>
       <!--|==========| Estado | ↓ | titulo |==========|-->
@@ -33,6 +34,7 @@
       </tr>
       </table>    
       <!--|=======| Tabla Estado [info] | ↑ | fin |=======|-->
-    <!--|==========| Container | fin | ← | ↑ |==========|--></div>
+    <!--|==========| Container | fin | ← | ↑ |==========|-->
+</div>
 
 @endsection

@@ -32,7 +32,8 @@
       <input type="submit"  class="btn-entrur"  name="btnLoginStepIAdmin" value="Siguiente">
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
 
-  <!--|==========| Container | fin | ← | ↑ |==========|--></div>    
+  <!--|==========| Container | fin | ← | ↑ |==========|-->
+</div>    
 </body>
 </html>
 @php } @endphp

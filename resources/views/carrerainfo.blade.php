@@ -15,7 +15,8 @@
 <body>
 @include('tool.topnav') <!--|==========| Barra de navegacion | ↑ | fin |==========|-->
 
-<!--|====| Container | ↓ | → | inicio |====|--><div class="container">
+<!--|====| Container | ↓ | → | inicio |====|-->
+<div class="container">
     <!--|==========| Boton | Regresar |==========|-->
     <div class="btn-left-pro"> <a href="{{ url('/c') }}" title="Regresar" class="aarrooww"><</a> </div>
     <!--|==========| Estado | ↓ | titulo |==========|-->
@@ -43,7 +44,8 @@
       <td>@php echo $modificado; @endphp</td>
     </tr>
     </table>
-  <!--|==========| Container | fin | ← | ↑ |==========|--></div>
+  <!--|==========| Container | fin | ← | ↑ |==========|-->
+</div>
 
 
   </div>

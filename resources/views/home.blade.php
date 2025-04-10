@@ -17,7 +17,8 @@
   @include('tool.topnav')
 <!--|==========| Barra de navegacion | ↑ | fin |==========|-->
 
-  <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
+  <!--|====| Container | ↓ | → | inicio |====|-->
+<div class="container">
     <!--|==========| Bienvenida | ↓ |==========|-->
     <h3 id="greeting">Administrador</h3>
     
@@ -52,7 +53,8 @@
       <div class="col"> <p class="ppro"> <a href="{{ url('/ut') }}" class="a2">Usuario Tipo</a> </p> </div>
     <!--|==========| Div | Row IV | ↑ |==========|--></div>
 
-  <!--|==========| Container | fin | ← | ↑ |==========|--></div>
+  <!--|==========| Container | fin | ← | ↑ |==========|-->
+</div>
 
 </body>
 </html>

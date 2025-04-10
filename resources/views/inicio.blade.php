@@ -23,7 +23,8 @@
   </div>
   <!--|==========| Barra de navegacion | ↑ | fin |==========|-->
 
-  <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
+  <!--|====| Container | ↓ | → | inicio |====|-->
+<div class="container">
     @php  $usuarioo = DB::SELECT('SELECT * FROM usuario WHERE usuariocif = ?',[$_SESSION['student']]); 
             foreach ($usuarioo as $usser) {
               $cif = $usser->usuariocif;
@@ -39,7 +40,8 @@
 
   </div><!--|==========| Container | fin | ↑ |==========|-->
 
-  <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
+  <!--|====| Container | ↓ | → | inicio |====|-->
+<div class="container">
     <!--|==========| Bienvenido | ↓ | titulo |==========|-->
     <div class="middle-pro"> <p>Mi Cuenta <img src="/img/ajustes.png"></p> </div>
 

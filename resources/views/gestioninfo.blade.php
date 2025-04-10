@@ -23,7 +23,8 @@
     </a>
   </div><!--|==========| Barra de navegacion | ↑ | fin |==========|-->
 
- <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
+ <!--|====| Container | ↓ | → | inicio |====|-->
+<div class="container">
     <!--|==========| Boton | Regresar |==========|-->
     <div class="btn-left-pro"> <a href="{{ url('/g') }}" title="Regresar" class="aarrooww"><</a> </div>
     <!--|==========| Gestion | ↓ | titulo |==========|-->
@@ -47,7 +48,8 @@
       <td>@php echo $modificado; @endphp</td>
     </tr>
   </table><!--|======| Tabla Gestion [info] | ↑ | fin |======|-->
-  <!--|==========| Container | fin | ← | ↑ |==========|--></div>
+  <!--|==========| Container | fin | ← | ↑ |==========|-->
+</div>
 
 </body>
 </html>

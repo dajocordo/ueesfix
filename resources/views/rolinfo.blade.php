@@ -15,7 +15,8 @@
 <body>
  @include('tool.topnav')
 
- <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
+ <!--|====| Container | ↓ | → | inicio |====|-->
+<div class="container">
     <!--|==========| Boton | Regresar |==========|-->
     <div class="btn-left-pro"> <a href="{{ url('/r') }}" title="Regresar" class="aarrooww"><</a> </div>
     <!--|==========| Roles | ↓ | titulo |==========|-->
@@ -39,7 +40,8 @@
       <td>@php echo $modificado; @endphp</td>
     </tr>
     </table><!--|=======| Tabla Roles [info]  | ↑ | fin |=======|-->
-    <!--|==========| Container | fin | ← | ↑ |==========|--></div>
+    <!--|==========| Container | fin | ← | ↑ |==========|-->
+</div>
 
   
 </body>
