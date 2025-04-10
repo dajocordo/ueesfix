@@ -1,13 +1,11 @@
-  <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-  <title>Editar Soporte</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
- 
-  <link rel="stylesheet" type="text/css" href="/css/estail.css"> 
-</head>
+{{--| admin |--}}
+
+@extends('building')
+
+@section('title', 'Editar soporte')
+
+@section('content')
+
 <body>
  @include('tool.topnav')
 
@@ -37,6 +35,4 @@
   <!--|==========| Container | fin | ← | ↑ |==========|-->
 </div>
 
-  
-</body>
-</html>
+@endsection

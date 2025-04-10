@@ -1,20 +1,15 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-  <title>Nuevo Soporte</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
- 
-  <link rel="stylesheet" type="text/css" href="/css/estail.css"> 
-</head>
-<body>
-  <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
+{{--| admin |--}}
+
+@extends('building')
+
+@section('title', 'Nuevo soporte')
+
+@section('content')
+
   @include('tool.topnav')
-<!--|==========| Barra de navegacion | ↑ | fin |==========|-->
 
   <!--|====| Container | ↓ | → | inicio |====|-->
-<div class="container">
+  <div class="container">
     <!--|==========| Boton | Regresar |==========|-->
     <div class="btn-left-pro"> <a href="{{ url('/s') }}" title="Regresar" class="aarrooww"><</a> </div>
     <!--|==========| Rol | ↓ | titulo |==========|-->
@@ -78,8 +73,6 @@
 
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
   <!--|==========| Container | fin | ← | ↑ |==========|-->
-</div>
+  </div>
 
-  
-</body>
-</html>
+@endsection

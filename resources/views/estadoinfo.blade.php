@@ -6,7 +6,7 @@
 
 @section('content')
 
-  @include('tool.topnav') <!--|==========| Barra de navegacion | ↑ | fin |==========|-->
+  @include('tool.topnav')
 
   <!--|====| Container | ↓ | → | inicio |====|-->
 <div class="container">
