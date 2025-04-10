@@ -22,7 +22,8 @@
       <i class="fa fa-bars"></i>
     </a>
   </div> <!--|==========| Barra de navegacion | ↑ | fin |==========|-->
-  <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
+  <!--|====| Container | ↓ | → | inicio |====|-->
+<div class="container">
     <!--|==========| Boton | Regresar |==========|-->
     <div class="btn-left-pro"> <a href="{{ url('/inicio') }}" title="Regresar" class="aarrooww"><</a> </div>
     <!--|==========| Ticket | ↓ | titulo |==========|-->
@@ -83,7 +84,8 @@
       <!--|==========| Div | Row I | ↑ |==========|--></div>
       <input type="submit" class="btn-enviar-form" name="btnCrearTicketFromAdm" value="Enviar">
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
-  <!--|==========| Container | fin | ← | ↑ |==========|--></div>
+  <!--|==========| Container | fin | ← | ↑ |==========|-->
+</div>
   
   
 </body>

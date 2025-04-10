@@ -19,7 +19,8 @@
     </a>
   </div> <!--|==========| Barra de navegacion | ↑ | fin |==========|-->
 
-  <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
+  <!--|====| Container | ↓ | → | inicio |====|-->
+<div class="container">
     <!--|==========| Boton | Regresar |==========|-->
     <div class="btn-left-pro"> <a href="{{ url('/ut') }}" title="Regresar" class="aarrooww"><</a> </div>
     <!--|==========| Usuario Tipo | ↓ | titulo |==========|-->
@@ -35,23 +36,11 @@
         <input type="submit" class="btn btn-primary btn-lg" name="btnActualizar" value="Actualizar">
       </div>
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
-  <!--|==========| Container | fin | ← | ↑ |==========|--></div>
+  <!--|==========| Container | fin | ← | ↑ |==========|-->
+</div>
 
-  <!--|========| Modal - CerrarSesion |inicio| ↓ |========|-->
-  <div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Cerrar Sesion</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-          <div class="modal-body"> ¿Desea salir de la plataforma? </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-          <a href="welcome" type="button" class="btn btn-primary">Si</a>
-        </div>
-      </div>
-    </div>
-  </div><!--|======| Modal - CerrarSesion |fin| ↑ |======|--> 
+  
+
+   
 </body>
 </html>

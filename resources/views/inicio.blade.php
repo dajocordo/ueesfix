@@ -23,7 +23,8 @@
   </div>
   <!--|==========| Barra de navegacion | ↑ | fin |==========|-->
 
-  <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
+  <!--|====| Container | ↓ | → | inicio |====|-->
+<div class="container">
     @php  $usuarioo = DB::SELECT('SELECT * FROM usuario WHERE usuariocif = ?',[$_SESSION['student']]); 
             foreach ($usuarioo as $usser) {
               $cif = $usser->usuariocif;
@@ -39,7 +40,8 @@
 
   </div><!--|==========| Container | fin | ↑ |==========|-->
 
-  <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
+  <!--|====| Container | ↓ | → | inicio |====|-->
+<div class="container">
     <!--|==========| Bienvenido | ↓ | titulo |==========|-->
     <div class="middle-pro"> <p>Mi Cuenta <img src="/img/ajustes.png"></p> </div>
 
@@ -50,20 +52,7 @@
 
   </div><!--|==========| Container | fin | ↑ |==========|-->
   
-    <div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Cerrar Sesion</h5>
-          <a class="modal-btn-closee" data-bs-dismiss="modal" aria-label="Close">X</a>
-        </div>
-          <div class="modal-body"> ¿Desea salir de la plataforma? </div>
-        <div class="modal-footer">
-            <a class="modal-btn-cerrar" data-bs-dismiss="modal">No</a>
-            <a href="{{ url('/logout') }}" type="button" class="modal-btn-cerrar">Si</a>
-        </div>
-      </div>
-    </div>
+
   </div>
 </body>
 </html>

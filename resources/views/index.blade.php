@@ -18,7 +18,8 @@
       <div class="colin"> <p class="ppro"> <a href="{{ url('/loginai') }}" class="a3">Administrador</a> </p> </div>
     <!--|==========| Div | Row II | ↑ |==========|--></div>
 
-  <!--|==========| Container | fin | ← | ↑ |==========|--></div>    
+  <!--|==========| Container | fin | ← | ↑ |==========|-->
+</div>    
 </body>
 </html>
 @endsection

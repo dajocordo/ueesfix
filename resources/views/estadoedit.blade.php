@@ -1,58 +1,31 @@
-@php
-  session_start();
-  if(isset($_SESSION['admin'])){
-@endphp
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-  <title>Estado Edit</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
- 
-  <link rel="stylesheet" type="text/css" href="/css/estail.css"> 
-</head>
-<body>
-@include('tool.topnav') <!--|==========| Barra de navegacion | ↑ | fin |==========|-->
+{{--| admin |--}}
 
-  <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
-    <!--|==========| Boton | Regresar |==========|-->
-    <div class="btn-left-pro"> <a href="{{ url('/e') }}" title="Regresar" class="aarrooww"><</a> </div>
-    <!--|==========| Estado | ↓ | titulo |==========|-->
-    <div class="middle-pro"> <p><img src="/img/edit.png"> Estado [edit]</p> </div>
+@extends('building')
 
-    <!--|==========| Formulario | ↓ | inicio |==========|-->
-    <form action="{{ url('/e/update/') }}" method="post">
-      @csrf
-      <input type="hidden" class="form-control form-control-lg" name="ii" value="@php echo $ii; @endphp" autocomplete="off" required>
-      <label class="lblformuser">Nombre</label>
-      <input type="text" class="form-control form-control-lg" name="txtEditEstado" value="@php echo $name; @endphp" autocomplete="off" required>
-      <div class="d-grid gap-2">
-        <input type="submit" class="btn btn-primary btn-lg" name="btnActualizarR" value="Actualizar">
-      </div>
-    </form><!--|==========| Formulario | ↑ | fin |==========|-->
-  <!--|==========| Container | fin | ← | ↑ |==========|--></div>
+@section('title', 'Estado editar')
 
-    <div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Cerrar Sesion</h5>
-          <a class="modal-btn-closee" data-bs-dismiss="modal" aria-label="Close">X</a>
+@section('content')
+
+  @include('tool.topnav')
+
+  <!--|====| Container | ↓ | → | inicio |====|-->
+  <div class="container">
+      <!--|==========| Boton | Regresar |==========|-->
+      <div class="btn-left-pro"> <a href="{{ url('/e') }}" title="Regresar" class="aarrooww"><</a> </div>
+      <!--|==========| Estado | ↓ | titulo |==========|-->
+      <div class="middle-pro"> <p><img src="/img/edit.png"> Estado [edit]</p> </div>
+
+      <!--|==========| Formulario | ↓ | inicio |==========|-->
+      <form action="{{ url('/e/update/') }}" method="post">
+        @csrf
+        <input type="hidden" class="form-control form-control-lg" name="ii" value="@php echo $ii; @endphp" autocomplete="off" required>
+        <label class="lblformuser">Nombre</label>
+        <input type="text" class="form-control form-control-lg" name="txtEditEstado" value="@php echo $name; @endphp" autocomplete="off" required>
+        <div class="d-grid gap-2">
+          <input type="submit" class="btn btn-primary btn-lg" name="btnActualizarR" value="Actualizar">
         </div>
-          <div class="modal-body"> ¿Desea salir de la plataforma? </div>
-        <div class="modal-footer">
-            <a class="modal-btn-cerrar" data-bs-dismiss="modal">No</a>
-            <a href="{{ url('/logout') }}" type="button" class="modal-btn-cerrar">Si</a>
-        </div>
-      </div>
-    </div>
+      </form><!--|==========| Formulario | ↑ | fin |==========|-->
+    <!--|==========| Container | fin | ← | ↑ |==========|-->
   </div>
-</body>
-</html>
-@php  } else{
-      echo "<script>
-            alert('Debes iniciar sesión primero');
-            window.location.href='/index';
-          </script>";
-}  @endphp
+
+@endsection

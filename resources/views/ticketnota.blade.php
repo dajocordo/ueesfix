@@ -23,7 +23,8 @@
     </a>
   </div> <!--|==========| Barra de navegacion | ↑ | fin |==========|-->
 
-  <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
+  <!--|====| Container | ↓ | → | inicio |====|-->
+<div class="container">
     <!--|==========| Bienvenida | ↓ |==========|-->
     <h1 id="greeting">Agregar Nota</h1>
     
@@ -53,7 +54,8 @@
       <input type="text" class="form-control form-control-lg" name="txtNota" value="" autocomplete="off" required>
       <input type="submit" class="btn-enviar-form" name="btnCreaNotaUsr" value="Enviar">
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
-  <!--|==========| Container | fin | ← | ↑ |==========|--></div>
+  <!--|==========| Container | fin | ← | ↑ |==========|-->
+</div>
 
 </body>
 </html>

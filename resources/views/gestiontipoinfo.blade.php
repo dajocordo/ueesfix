@@ -17,7 +17,8 @@
   @include('tool.topnav')
 <!--|==========| Barra de navegacion | ↑ | fin |==========|-->
 
-    <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
+    <!--|====| Container | ↓ | → | inicio |====|-->
+<div class="container">
     <!--|==========| Boton | Regresar |==========|-->
     <div class="btn-left-pro"> <a href="{{ url('/gt') }}" title="Regresar" class="aarrooww"><</a> </div>
     <!--|==========| Roles | ↓ | titulo |==========|-->
@@ -43,7 +44,8 @@
 
     </tr>
   </table><!--|======| Tabla Gestion Tipo [info] | ↑ | fin |======|-->
-  <!--|==========| Container | fin | ← | ↑ |==========|--></div>
+  <!--|==========| Container | fin | ← | ↑ |==========|-->
+</div>
 
 </body>
 </html>

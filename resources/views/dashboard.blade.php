@@ -13,7 +13,8 @@
   </a>
   </div> <!--|==========| Barra de navegacion | ↑ | fin |==========|-->
 
-  <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
+  <!--|====| Container | ↓ | → | inicio |====|-->
+<div class="container">
   {{--
   @php  $supportt = DB::SELECT('SELECT * FROM soporte WHERE soportecif = ?',[$_SESSION['support']]); 
           foreach ($supportt as $suporte) {
@@ -36,7 +37,8 @@
   <div class="second"> <p class="ppro"> <a href="/stpendiente" class="a2">Pendiente</a> </p> </div>
   <!--|==========| Completado | ↓ |==========|-->
   <div class="third"> <p class="ppro"> <a href="/stterminado" class="a3">Terminado</a> </p> </div>
-  <!--|==========| Container | fin | ← | ↑ |==========|--></div>
+  <!--|==========| Container | fin | ← | ↑ |==========|-->
+</div>
 
   
 

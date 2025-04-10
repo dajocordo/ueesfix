@@ -17,7 +17,8 @@
   @include('tool.topnav')
 <!--|==========| Barra de navegacion | ↑ | fin |==========|-->
 
-  <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
+  <!--|====| Container | ↓ | → | inicio |====|-->
+<div class="container">
     <!--|==========| Bienvenida | ↓ |==========|-->
     <h1 id="greeting">Editar Rol</h1>
     
@@ -31,7 +32,8 @@
         <input type="submit" class="btn btn-primary btn-lg" name="btnActualizarR" value="Actualizar">
       </div>
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
-  <!--|==========| Container | fin | ← | ↑ |==========|--></div>
+  <!--|==========| Container | fin | ← | ↑ |==========|-->
+</div>
 
 </body>
 </html>

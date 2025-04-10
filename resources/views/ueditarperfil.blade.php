@@ -22,7 +22,8 @@
     </a>
   </div> <!--|==========| Barra de navegacion | ↑ | fin |==========|-->
   <!-- {{ $id=3 }} -->
-  <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
+  <!--|====| Container | ↓ | → | inicio |====|-->
+<div class="container">
     <!--|==========| Boton | Regresar |==========|-->
     <div class="btn-left-pro"> <a href="{{ url('/up') }}" title="Regresar" class="aarrooww"><</a> </div>
     <!--|==========| Ticket | ↓ | titulo |==========|-->
@@ -44,7 +45,8 @@
         <input type="submit" class="btn btn-primary btn-lg" name="btnActualizarSoporte" value="Actualizar" >
       </div>
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
-  <!--|==========| Container | fin | ← | ↑ |==========|--></div>
+  <!--|==========| Container | fin | ← | ↑ |==========|-->
+</div>
 </body>
 </html>
 @php  } else{

@@ -33,7 +33,8 @@
       <input type="submit"  class="btn-entrur"  name="btnLoginStepIISoporte" value="Ingresar">
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
 
-  <!--|==========| Container | fin | ← | ↑ |==========|--></div>    
+  <!--|==========| Container | fin | ← | ↑ |==========|-->
+</div>    
 </body>
 </html>
 @php } @endphp

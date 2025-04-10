@@ -26,7 +26,8 @@
 
   <!-- {{ $id=3 }} -->
 
-  <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
+  <!--|====| Container | ↓ | → | inicio |====|-->
+<div class="container">
     <!--|==========| Bienvenida | ↓ |==========|-->
     <h1 id="greeting">Editar Usuario</h1>
     
@@ -40,7 +41,8 @@
         <input type="submit" class="btn btn-primary btn-lg" name="btnActualizarSopoTipo" value="Actualizar">
       </div>
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
-  <!--|==========| Container | fin | ← | ↑ |==========|--></div>
+  <!--|==========| Container | fin | ← | ↑ |==========|-->
+</div>
 
 </body>
 </html>

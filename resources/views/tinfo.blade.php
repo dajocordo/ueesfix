@@ -1,18 +1,11 @@
-@php
-  session_start();
-  if(isset($_SESSION['support'])){
-@endphp
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-  <title>Ticket Info</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
- 
-  <link rel="stylesheet" type="text/css" href="/css/estail.css"> 
-</head>
-<body>
+{{--| support |--}}
+
+@extends('building')
+
+@section('title', 'Ticket Info')
+
+@section('content')
+
   <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
   <div class="topnav" id="myTopnav">
     <a href="dashboard" class="active">Inicio</a>
@@ -23,7 +16,8 @@
     </a>
   </div><!--|==========| Barra de navegacion | ↑ | fin |==========|-->
 
-    <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
+    <!--|====| Container | ↓ | → | inicio |====|-->
+<div class="container">
     <!--|==========| Boton | Regresar |==========|-->
     <div class="btn-left-pro"> <a href="{{ url('/ts') }}" title="Regresar" class="aarrooww"><</a> </div>
     <!--|==========| Ticket | ↓ | titulo |==========|-->
@@ -67,14 +61,7 @@
       <th class="table-primary">Modificado</th>
       <td>@php echo $modificado; @endphp</td>
   </table><!--|======| Tabla Ticket [info] | ↑ | fin |======|-->
-  <!--|==========| Container | fin | ← | ↑ |==========|--></div>
+  <!--|==========| Container | fin | ← | ↑ |==========|-->
+</div>
 
-  
-</body>
-</html>
-@php  } else{
-      echo "<script>
-            alert('Debes iniciar sesión primero');
-            window.location.href='/index';
-          </script>";
-}  @endphp
+@endsection

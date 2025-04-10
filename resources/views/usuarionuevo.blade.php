@@ -11,7 +11,8 @@
 <body>
  @include('tool.topnav')
 
-  <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
+  <!--|====| Container | ↓ | → | inicio |====|-->
+<div class="container">
     <!--|==========| Boton | Regresar |==========|-->
     <div class="btn-left-pro"> <a href="{{ url('/u') }}" title="Regresar" class="aarrooww"><</a> </div>
     <!--|==========| Rol | ↓ | titulo |==========|-->
@@ -85,7 +86,8 @@
           <input type="submit" class="btn-enviar-form" name="btnCrearUsuario" value="Enviar">
 
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
-  <!--|==========| Container | fin | ← | ↑ |==========|--></div>
+  <!--|==========| Container | fin | ← | ↑ |==========|-->
+</div>
 
   
 </body>

@@ -15,7 +15,8 @@
 <body>
  @include('tool.topnav')
 
-  <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
+  <!--|====| Container | ↓ | → | inicio |====|-->
+<div class="container">
     <!--|==========| Boton | Regresar |==========|-->
     <div class="btn-left-pro"> <a href="{{ url('/r') }}" title="Regresar" class="aarrooww"><</a> </div>
     <!--|==========| Estado | ↓ | titulo |==========|-->
@@ -31,7 +32,8 @@
         <input type="submit" class="btn btn-primary btn-lg" name="btnActualizarR" value="Actualizar">
       </div>
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
-  <!--|==========| Container | fin | ← | ↑ |==========|--></div>
+  <!--|==========| Container | fin | ← | ↑ |==========|-->
+</div>
 
   
 </body>

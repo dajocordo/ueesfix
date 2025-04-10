@@ -86,7 +86,8 @@
       <td>@php echo $modificado; @endphp</td>
     </tr>
     </table>
-  <!--|==========| Container | fin | ← | ↑ |==========|--></div>
+  <!--|==========| Container | fin | ← | ↑ |==========|-->
+</div>
 
 
 </body>

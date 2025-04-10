@@ -11,7 +11,8 @@
 <body>
  @include('tool.topnav')
 
-  <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
+  <!--|====| Container | ↓ | → | inicio |====|-->
+<div class="container">
     <!--|==========| Boton | Regresar |==========|-->
     <div class="btn-left-pro"> <a href="{{ url('/st') }}" title="Regresar" class="aarrooww"><</a> </div>
     <!--|==========| Soporte Tipo | ↓ | titulo |==========|-->
@@ -25,7 +26,8 @@
         <input type="submit" class="btn btn-primary btn-lg" name="btnEnviarSoporteTipo" value="Enviar">
       </div>
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
-  <!--|==========| Container | fin | ← | ↑ |==========|--></div>
+  <!--|==========| Container | fin | ← | ↑ |==========|-->
+</div>
 
   
 </body>

@@ -13,7 +13,8 @@
 
   <!-- {{ $id=3 }} -->
 
-  <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
+  <!--|====| Container | ↓ | → | inicio |====|-->
+<div class="container">
     <!--|==========| Bienvenida | ↓ |==========|-->
     <h1 id="greeting">Editar Soporte</h1>
     
@@ -33,7 +34,8 @@
         <input type="submit" class="btn btn-primary btn-lg" name="btnActualizarSoporte" value="Actualizar">
       </div>
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
-  <!--|==========| Container | fin | ← | ↑ |==========|--></div>
+  <!--|==========| Container | fin | ← | ↑ |==========|-->
+</div>
 
   
 </body>

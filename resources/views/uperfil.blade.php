@@ -22,7 +22,8 @@
     </a>
   </div><!--|==========| Barra de navegacion | ↑ | fin |==========|-->
 
-<!--|====| Container | ↓ | → | inicio |====|--><div class="container">
+<!--|====| Container | ↓ | → | inicio |====|-->
+<div class="container">
     <!--|==========| Boton | Regresar |==========|-->
     <div class="btn-left-pro"> <a href="{{ url('/inicio') }}" title="Regresar" class="aarrooww"><</a> </div>
     <!--|==========| Ticket | ↓ | titulo |==========|-->
@@ -46,7 +47,8 @@
    
     </div>
 
-  <!--|==========| Container | fin | ← | ↑ |==========|--></div>
+  <!--|==========| Container | fin | ← | ↑ |==========|-->
+</div>
 
   
 

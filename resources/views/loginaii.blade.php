@@ -1,20 +1,11 @@
-@php
-  session_start();
-  if(isset($_SESSION['admin'])){
-    echo '<script> window.location="home"; </script>';
-  } else {
-@endphp
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-  <title>Login</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
- 
-  <link rel="stylesheet" type="text/css" href="/css/estail.css"> 
-</head>
-<body>
+{{--| admin |--}}
+
+@extends('building')
+
+@section('title', 'login')
+
+@section('content')
+
   <!--|==========| Container | ↓ | inicio |==========|-->
   <div class="container">
     <!--|==========| Boton | Regresar |==========|-->
@@ -34,7 +25,7 @@
       <input type="submit"  class="btn-entrur"  name="btnLoginStepIIAdmin" value="Ingresar">
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
 
-  <!--|==========| Container | fin | ← | ↑ |==========|--></div>    
-</body>
-</html>
-@php } @endphp
+  <!--|==========| Container | fin | ← | ↑ |==========|-->
+  </div>    
+
+@endsection

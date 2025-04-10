@@ -15,7 +15,8 @@
 <body>
  @include('tool.topnav')
 
-  <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
+  <!--|====| Container | ↓ | → | inicio |====|-->
+<div class="container">
     <!--|==========| Boton | Regresar |==========|-->
     <div class="btn-left-pro"> <a href="{{ url('/g') }}" title="Regresar" class="aarrooww"><</a> </div>
     <!--|==========| Gestion | ↓ | titulo |==========|-->
@@ -42,9 +43,9 @@
           </div><!--|==========| Div | Row I | ↑ |==========|--></div>
           <input type="submit" class="btn-enviar-form" name="btnEnviarGestion" value="Enviar">
         </div></form><!--|==========| Formulario | ↑ | fin |==========|-->
-  <!--|==========| Container | fin | ← | ↑ |==========|--></div>
+  <!--|==========| Container | fin | ← | ↑ |==========|-->
+</div>
 
-    <!--|======| Modal - CerrarSesion |fin| ↑ |======|-->
 </body>
 </html>
 @php

@@ -13,7 +13,8 @@
   @include('tool.topnav')
 <!--|==========| Barra de navegacion | ↑ | fin |==========|-->
 
-  <!--|====| Container | ↓ | → | inicio |====|--><div class="container">
+  <!--|====| Container | ↓ | → | inicio |====|-->
+<div class="container">
     <!--|==========| Boton | Regresar |==========|-->
     <div class="btn-left-pro"> <a href="{{ url('/s') }}" title="Regresar" class="aarrooww"><</a> </div>
     <!--|==========| Rol | ↓ | titulo |==========|-->
@@ -76,7 +77,8 @@
       </div><!--|==========| Div | Row III | ↑ |==========|--></div>
 
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
-  <!--|==========| Container | fin | ← | ↑ |==========|--></div>
+  <!--|==========| Container | fin | ← | ↑ |==========|-->
+</div>
 
   
 </body>
