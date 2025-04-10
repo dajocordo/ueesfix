@@ -1,22 +1,19 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-  <title>Usuarios</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
- 
-  <link rel="stylesheet" type="text/css" href="/css/estail.css">    
-</head>
-<body>
-  <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
+{{--| admin |--}}
+
+@extends('building')
+
+@section('title', 'usuarios')
+
+@section('content')
+
   @include('tool.topnav')
-<!--|=========| Barra de navegacion | ← | fin |=========|-->
 
   <!--|==========| Container | ↓ | inicio |==========|-->
   <div class="container">
     <!--|==========| Boton | ir a izquierda |==========|-->
-    <div class="btn-left-pro"> <a href="home" title="Inicio" class="aarrooww"><</a> </div>
+    <div class="btn-left-pro"> 
+      <a href="home" title="Inicio" class="aarrooww"><</a>
+    </div>
     <!--|==========| Nuevo | ↓ | titulo |==========|-->
     <div class="middle-pro"> <p>Usuarios</p> </div>
     <!--|==========| Boton | ir a derecha |==========|-->
@@ -52,6 +49,4 @@
   </div>
   <!--|==========| Container | fin | ↑ |==========|-->
 
-  
-</body>
-</html>
+@endsection

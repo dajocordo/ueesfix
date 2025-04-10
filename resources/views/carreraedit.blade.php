@@ -1,28 +1,25 @@
-@php
-  session_start();
-  if(isset($_SESSION['admin'])){
-@endphp
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-  <title>Carrera Edit</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
- 
-  <link rel="stylesheet" type="text/css" href="/css/estail.css"> 
-</head>
-<body>
-@include('tool.topnav') <!--|==========| Barra de navegacion | ↑ | fin |==========|-->
+{{--| admin |--}}
 
-  <!--|====| Container | ↓ | → | inicio |====|-->
-<div class="container">
+@extends('building')
+
+@section('title', 'Carrera editar')
+
+@section('content')
+
+  @include('tool.topnav')
+
+    <!--|====| Container | ↓ | → | inicio |====|-->
+  <div class="container">
     <!--|==========| Boton | Regresar |==========|-->
-    <div class="btn-left-pro"> <a href="{{ url('/c') }}" title="Regresar" class="aarrooww"><</a> </div>
+    <div class="btn-left-pro">
+      <a href="{{ url('/c') }}" title="Regresar" class="aarrooww"><</a>
+    </div>
     <!--|==========| Estado | ↓ | titulo |==========|-->
-    <div class="middle-pro"> <p><img src="/img/edit.png"> Carrera [edit]</p> </div>
+    <div class="middle-pro">
+      <p><img src="/img/edit.png"> Carrera [edit]</p>
+    </div>
     
-    <!--|==========| Formulario | ↓ | inicio |==========|-->
+      <!--|==========| Formulario | ↓ | inicio |==========|-->
     <form action="{{url('/c/update/')}}" method="post">
       @csrf
       <input type="hidden" class="form-control form-control-lg" name="ii" value="@php echo $ii; @endphp" autocomplete="off" required>
@@ -44,23 +41,15 @@
             <option value="@php echo $facultadid; @endphp">@php echo $facultadname; @endphp</option>
           @php } @endphp
           </select><!--|==========| Select Tipo | ↑ | fin |==========|-->
-      </div><!--|==========| Div | Row I | ↑ |==========|--></div>
+        </div><!--|==========| Div | Row I | ↑ |==========|-->
+      </div>
 
 
       <div class="d-grid gap-2">
         <input type="submit" class="btn btn-primary btn-lg" name="btnActualizar" value="Actualizar">
       </div>
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
-  <!--|==========| Container | fin | ← | ↑ |==========|-->
-</div>
-
-
+    <!--|==========| Container | fin | ← | ↑ |==========|-->
   </div>
-</body>
-</html>
-@php  } else{
-      echo "<script>
-            alert('Debes iniciar sesión primero');
-            window.location.href='/index';
-          </script>";
-}  @endphp
+
+@endsection

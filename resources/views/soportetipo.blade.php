@@ -1,22 +1,17 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-  <title>Soporte Tipo</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
- 
-  <link rel="stylesheet" type="text/css" href="/css/estail.css">    
-</head>
-<body>
-  <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
+@extends('building')
+
+@section('title', 'soporte tipo')
+
+@section('content')
+
   @include('tool.topnav')
-<!--|=========| Barra de navegacion | ← | fin |=========|-->
 
   <!--|==========| Container | ↓ | inicio |==========|-->
   <div class="container">
     <!--|==========| Boton | ir a izquierda |==========|-->
-    <div class="btn-left-pro"> <a href="home" title="Inicio" class="aarrooww"><</a> </div>
+    <div class="btn-left-pro"> 
+      <a href="home" title="Inicio" class="aarrooww"><</a>
+    </div>
     <!--|==========| Nuevo | ↓ | titulo |==========|-->
     <div class="middle-pro"> <p>Soporte Tipo</p> </div>
     <!--|==========| Boton | ir a derecha |==========|-->
@@ -47,8 +42,8 @@
       </tbody>  
      @php } @endphp  
     </table><!--|=======| Tabla Soporte Tipo | ↑ | fin |=======|-->
-  <!--|==========| Container | fin | ↑ |==========|--></div>
+  <!--|==========| Container | fin | ↑ |==========|-->
+  </div>
 
   
-</body>
-</html>
+@endsection

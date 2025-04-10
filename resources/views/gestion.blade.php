@@ -1,26 +1,19 @@
-@php
-  session_start();
-  if(isset($_SESSION['admin'])){
-@endphp
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-  <title>Gestion</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
- 
-  <link rel="stylesheet" type="text/css" href="/css/estail.css">    
-</head>
-<body>
-  <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
+{{--| admin |--}}
+
+@extends('building')
+
+@section('title', 'Gestion')
+
+@section('content')
+
   @include('tool.topnav')
-<!--|=========| Barra de navegacion | ← | fin |=========|-->
 
   <!--|==========| Container | ↓ | inicio |==========|-->
   <div class="container">
     <!--|==========| Boton | ir a izquierda |==========|-->
-    <div class="btn-left-pro"> <a href="home" title="Inicio" class="aarrooww"><</a> </div>
+    <div class="btn-left-pro"> 
+      <a href="home" title="Inicio" class="aarrooww"><</a>
+    </div>
     <!--|==========| Gestion | ↓ | titulo |==========|-->
     <div class="middle-pro"> <p>Gestion</p> </div>
     <!--|==========| Boton | ir a derecha |==========|-->
@@ -51,11 +44,4 @@
   </div>  <!--|==========| Container | fin | ↑ |==========|-->
 
  
-</body>
-</html>
-@php  } else{
-      echo "<script>
-            alert('Debes iniciar sesión primero');
-            window.location.href='/index';
-          </script>";
-}  @endphp
+@endsection
