@@ -1,20 +1,11 @@
 {{--| support |--}}
 
-@php
-  session_start();
-  if(isset($_SESSION['support'])){
-@endphp
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-  <title>Ticket Nuevo</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
- 
-  <link rel="stylesheet" type="text/css" href="/css/estail.css"> 
-</head>
-<body>
+@extends('building')
+
+@section('title', 'Ticket Nuevo')
+
+@section('content')
+
   <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
   <div class="topnav" id="myTopnav">
     <a href="dashboard">Inicio</a>
@@ -91,27 +82,6 @@
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
   <!--|==========| Container | fin | ← | ↑ |==========|--></div>
 
-  <!--|========| New Modal - CerrarSesion |inicio| ↓ |========|-->
-  <div class="modal fade" id="CerrarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Cerrar Sesion</h5>
-          <a class="modal-btn-closee" data-bs-dismiss="modal" aria-label="Close">X</a>
-        </div>
-          <div class="modal-body"> ¿Desea salir de la plataforma? </div>
-        <div class="modal-footer">
-            <a class="modal-btn-cerrar" data-bs-dismiss="modal">No</a>
-            <a href="logout" type="button" class="modal-btn-cerrar">Si</a>
-        </div>
-      </div>
-    </div>
-  </div><!--|======| New Modal - CerrarSesion |fin| ↑ |======|--> 
-</body>
-</html>
-@php  } else{
-      echo "<script>
-            alert('Debes iniciar sesión primero');
-            window.location.href='/index';
-          </script>";
-}  @endphps
+  
+
+  @endsection
