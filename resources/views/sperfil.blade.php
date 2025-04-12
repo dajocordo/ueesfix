@@ -1,18 +1,8 @@
-@php
-  session_start();
-  if(isset($_SESSION['support'])){
-@endphp
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-  <title>Perfil</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
- 
-  <link rel="stylesheet" type="text/css" href="/css/estail.css">
-</head>
-<body>
+{{--| support |--}}
+@extends('building')
+@section('title', 'Perfil')
+@section('content')
+
   <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
   <div class="topnav" id="myTopnav">
     <a href="dashboard">Inicio</a>
@@ -45,11 +35,4 @@
     <div class="knowteam"> <p class="ppro"> <a href="{{ url('/sp') }}" class="a3">Mi equipo</a> </p> </div>
   </div><!--|=====| Container | fin | ← | ↑ |======|-->
 
-</body>
-</html>
-@php  } else{
-      echo "<script>
-            alert('Debes iniciar sesión primero');
-            window.location.href='/index';
-          </script>";
-}  @endphp
+@endsection
