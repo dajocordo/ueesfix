@@ -34,7 +34,7 @@ a.modal-btn-closee:hover {color: #FCE0DF;}
 a.modal-btn-closee {text-decoration: none;}
 
 body{
-  background-color: #07074C;
+  background-color: #07074C !important;
   color: white;
   font-family: 'Open Sans', sans-serif;
 }
