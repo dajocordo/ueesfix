@@ -13,7 +13,7 @@
     </a>
   </div><!--|==========| Barra de navegacion | ↑ | fin |==========|-->
 
-  <div class="container"><!--| Container | ← | ↓ |-->
+  <div class="container">
     <!--|==========| Perfil | ↓ |==========|-->
     <h1 id="greeting">Perfil</h1> 
     @csrf
@@ -33,6 +33,6 @@
    
     <!--|==========| Conocer equipo | ↓ |==========|-->
     <div class="knowteam"> <p class="ppro"> <a href="{{ url('/sp') }}" class="a3">Mi equipo</a> </p> </div>
-  </div><!--|=====| Container | fin | ← | ↑ |======|-->
+  </div>
 
 @endsection
