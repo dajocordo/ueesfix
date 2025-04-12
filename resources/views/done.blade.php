@@ -1,23 +1,12 @@
-@php
-  session_start();
-  if(isset($_SESSION['admin'])){
-    echo '<script> window.location="home"; </script>';
-  } else {
-@endphp
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-  <title>Completado</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
- 
-  <link rel="stylesheet" type="text/css" href="/css/estail.css">
-</head>
-<body>
-  <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
+{{--| admin |--}}
+
+@extends('building')
+
+@section('title', 'Completado')
+
+@section('content')
+
   @include('tool.topnav')
-<!--|=========| Barra de navegacion | ← | fin |=========|-->
   
   @php
     $ido = "Hola"; 
@@ -39,11 +28,5 @@
     <div class="third"> <p class="ppro">TKT # 4362: Mi Class Web no funciona...</p> </div>
   </div>
   <!--|==========| Container | fin | ↑ |==========|-->
-</body>
-</html>
-@php  } else{
-      echo "<script>
-            alert('Debes iniciar sesión primero');
-            window.location.href='/index';
-          </script>";
-}  @endphp
+
+@endsection

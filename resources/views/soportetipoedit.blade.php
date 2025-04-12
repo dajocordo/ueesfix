@@ -1,18 +1,9 @@
-@php
-  session_start();
-  if(isset($_SESSION['admin'])){
-@endphp
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-  <title>Editar Usuario</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
- 
-  <link rel="stylesheet" type="text/css" href="/css/estail.css"> 
-</head>
-<body>
+{{--| admin |--}}
+
+@extends('building')
+@section('title', 'Editar soporte tipo')
+@section('content')
+
   <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
   <div class="topnav" id="myTopnav">
     <a href="home" class="active">Inicio</a>
@@ -26,8 +17,7 @@
 
   <!-- {{ $id=3 }} -->
 
-  <!--|====| Container | ↓ | → | inicio |====|-->
-<div class="container">
+  <div class="container">
     <!--|==========| Bienvenida | ↓ |==========|-->
     <h1 id="greeting">Editar Usuario</h1>
     
@@ -40,15 +30,7 @@
       <div class="d-grid gap-2">
         <input type="submit" class="btn btn-primary btn-lg" name="btnActualizarSopoTipo" value="Actualizar">
       </div>
-    </form><!--|==========| Formulario | ↑ | fin |==========|-->
-  <!--|==========| Container | fin | ← | ↑ |==========|-->
-</div>
+    </form>
+  </div>
 
-</body>
-</html>
-@php  } else{
-      echo "<script>
-            alert('Debes iniciar sesión primero');
-            window.location.href='/index';
-          </script>";
-}  @endphp
+@endsection

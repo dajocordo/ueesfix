@@ -1,7 +1,5 @@
 @extends('building')
-
 @section('title', 'soporte tipo')
-
 @section('content')
 
   @include('tool.topnav')
@@ -42,8 +40,6 @@
       </tbody>  
      @php } @endphp  
     </table><!--|=======| Tabla Soporte Tipo | ↑ | fin |=======|-->
-  <!--|==========| Container | fin | ↑ |==========|-->
   </div>
-
   
 @endsection

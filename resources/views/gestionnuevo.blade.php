@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-  <title>Nueva Gestion</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
- 
-  <link rel="stylesheet" type="text/css" href="/css/estail.css"> 
-</head>
-<body>
+{{--| admin |--}}
+
+@extends('building')
+
+@section('title', 'Nueva gestion')
+
+@section('content')
+
  @include('tool.topnav')
 
   <!--|====| Container | ↓ | → | inicio |====|-->
@@ -29,5 +26,4 @@
   <!--|==========| Container | fin | ← | ↑ |==========|-->
 </div>
 
-</body>
-</html>
+@endsection

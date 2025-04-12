@@ -1,24 +1,15 @@
-@php
-  session_start();
-  if(isset($_SESSION['admin'])){
-@endphp
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-  <title>Ticket Info</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
- 
-  <link rel="stylesheet" type="text/css" href="/css/estail.css"> 
-</head>
-<body>
-  <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
+{{--| admin |--}}
+
+@extends('building')
+
+@section('title', 'Ticket info')
+
+@section('content')
+
   @include('tool.topnav')
-<!--|==========| Barra de navegacion | ↑ | fin |==========|-->
 
     <!--|====| Container | ↓ | → | inicio |====|-->
-<div class="container">
+  <div class="container">
     <!--|==========| Boton | Regresar |==========|-->
     <div class="btn-left-pro"> <a href="{{ url('/t') }}" title="Regresar" class="aarrooww"><</a> </div>
     <!--|==========| Ticket | ↓ | titulo |==========|-->
@@ -56,42 +47,35 @@
       <th class="table-primary">Modificado</th>
       <td>@php echo $modificado; @endphp</td>
     </tr>
-  </table><!--|======| Tabla Ticket [info] | ↑ | fin |======|-->
-  <!--|==========| Container | fin | ← | ↑ |==========|-->
-</div></div>
+    </table><!--|======| Tabla Ticket [info] | ↑ | fin |======|-->
+    <!--|==========| Container | fin | ← | ↑ |==========|-->
+  </div></div>
 
-  
-</body>
-<script>
-    function createPDF() {
-        var sTable = document.getElementById('tab').innerHTML;
+  <script>
+      function createPDF() {
+          var sTable = document.getElementById('tab').innerHTML;
 
-        var style = "<style>";
-        style = style + "table {width: 100%;font: 17px Calibri;}";
-        style = style + "table, th, td {border: solid 1px #DDD; border-collapse: collapse;";
-          style = style + "padding: 2px 3px;text-align: center;}";
-        style = style + "</style>";
+          var style = "<style>";
+          style = style + "table {width: 100%;font: 17px Calibri;}";
+          style = style + "table, th, td {border: solid 1px #DDD; border-collapse: collapse;";
+            style = style + "padding: 2px 3px;text-align: center;}";
+          style = style + "</style>";
 
-        // CREATE A WINDOW OBJECT.
-        var win = window.open('', '', 'height=700,width=1000' );
+          // CREATE A WINDOW OBJECT.
+          var win = window.open('', '', 'height=700,width=1000' );
 
-        win.document.write('<html><head>');
-        win.document.write('<title>Detalle Ticket UEESFIX</title>');   // <title> FOR PDF HEADER.
-        win.document.write(style);          // ADD STYLE INSIDE THE HEAD TAG.
-        win.document.write('</head>');
-        win.document.write('<body>');
-        win.document.write(sTable);         // THE TABLE CONTENTS INSIDE THE BODY TAG.
-        win.document.write('</body></html>');
+          win.document.write('<html><head>');
+          win.document.write('<title>Detalle Ticket UEESFIX</title>');   // <title> FOR PDF HEADER.
+          win.document.write(style);          // ADD STYLE INSIDE THE HEAD TAG.
+          win.document.write('</head>');
+          win.document.write('<body>');
+          win.document.write(sTable);         // THE TABLE CONTENTS INSIDE THE BODY TAG.
+          win.document.write('</body></html>');
 
-        win.document.close(); 	// CLOSE THE CURRENT WINDOW.
+          win.document.close(); 	// CLOSE THE CURRENT WINDOW.
 
-        win.print();    // PRINT THE CONTENTS.
-    }
-</script>
-</html>
-@php  } else{
-      echo "<script>
-            alert('Debes iniciar sesión primero');
-            window.location.href='/index';
-          </script>";
-}  @endphp
+          win.print();    // PRINT THE CONTENTS.
+      }
+  </script>
+
+@endsection
