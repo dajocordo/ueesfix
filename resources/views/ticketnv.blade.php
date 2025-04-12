@@ -1,23 +1,13 @@
-@php
-  session_start();
-  if(isset($_SESSION['student'])){
-@endphp
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-  <title>Tickets</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
- 
-  <link rel="stylesheet" type="text/css" href="/css/usuariostyle.css">    
-</head>
-<body>
+{{--| usuario |--}}
+
+@extends('building')
+@section('title', 'tickets')
+@section('content')
+
   <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
   @include('tool.topnav')
-<!--|=========| Barra de navegacion | ← | fin |=========|-->
+  <!--|=========| Barra de navegacion | ← | fin |=========|-->
 
-  <!--|==========| Container | ↓ | inicio |==========|-->
   <div class="container">
     <!--|==========| Boton | ir a izquierda |==========|-->
     <div class="btn-left-pro"> <a href="{{ url('/inicio' )}}" title="Inicio" class="aarrooww"><</a> </div>
@@ -50,14 +40,6 @@
       </tbody>  
      @php } @endphp  
     </table> <!--|==========| Tabla Ticket | ↑ | fin |==========|-->
-  </div><!--|==========| Container | fin | ↑ |==========|-->
+  </div>
 
-  
-</body>
-</html>
-@php  } else{
-      echo "<script>
-            alert('Debes iniciar sesión primero');
-            window.location.href='/inicio';
-          </script>";
-}  @endphp
+@endsection

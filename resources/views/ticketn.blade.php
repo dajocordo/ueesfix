@@ -1,18 +1,11 @@
-@php
-  session_start();
-  if(isset($_SESSION['student'])){
-@endphp
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-  <title>Ticket Nuevo</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
- 
+{{--| usuario |--}}
+
+@extends('building')
+@section('title', 'ticket nuevo')
+@section('content')
+
   <link rel="stylesheet" type="text/css" href="/css/usuariostyle.css"> 
-</head>
-<body>
+
   <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
   <div class="topnav" id="myTopnav">
     <a href="inicio">Inicio</a>
@@ -21,9 +14,9 @@
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
       <i class="fa fa-bars"></i>
     </a>
-  </div> <!--|==========| Barra de navegacion | ↑ | fin |==========|-->
-  <!--|====| Container | ↓ | → | inicio |====|-->
-<div class="container">
+  </div>
+
+  <div class="container">
     <!--|==========| Boton | Regresar |==========|-->
     <div class="btn-left-pro"> <a href="{{ url('/inicio') }}" title="Regresar" class="aarrooww"><</a> </div>
     <!--|==========| Ticket | ↓ | titulo |==========|-->
@@ -84,15 +77,6 @@
       <!--|==========| Div | Row I | ↑ |==========|--></div>
       <input type="submit" class="btn-enviar-form" name="btnCrearTicketFromAdm" value="Enviar">
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
-  <!--|==========| Container | fin | ← | ↑ |==========|-->
-</div>
+  </div>
   
-  
-</body>
-</html>
-@php  } else{
-      echo "<script>
-            alert('Debes iniciar sesión primero');
-            window.location.href='/index';
-          </script>";
-}  @endphps
+@endsection
