@@ -1,14 +1,9 @@
 {{--| admin |--}}
-
 @extends('building')
-
 @section('title', 'Ticket nuevo')
-
 @section('content')
 
-  <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
   @include('tool.topnav')
-  <!--|=========| Barra de navegacion | ← | fin |=========|-->
 
   <!--|==========| Container | ↓ | inicio |==========|-->
   <div class="container">
@@ -58,6 +53,6 @@
             } 
       @endphp  
     </table><!--|==========| Tabla Ticket (nuevo) | ↑ | fin |==========|-->
-  <!--|==========| Container | fin | ↑ |==========|--></div>
+  </div>
 
 @endsection

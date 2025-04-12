@@ -1,9 +1,7 @@
 {{--| admin |--}}
 
 @extends('building')
-
 @section('title', 'Editar soporte tipo')
-
 @section('content')
 
   <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
@@ -19,7 +17,6 @@
 
   <!-- {{ $id=3 }} -->
 
-  <!--|====| Container | ↓ | → | inicio |====|-->
   <div class="container">
     <!--|==========| Bienvenida | ↓ |==========|-->
     <h1 id="greeting">Editar Usuario</h1>
@@ -33,8 +30,7 @@
       <div class="d-grid gap-2">
         <input type="submit" class="btn btn-primary btn-lg" name="btnActualizarSopoTipo" value="Actualizar">
       </div>
-    </form><!--|==========| Formulario | ↑ | fin |==========|-->
-  <!--|==========| Container | fin | ← | ↑ |==========|-->
+    </form>
   </div>
 
 @endsection
