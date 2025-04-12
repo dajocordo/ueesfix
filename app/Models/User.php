@@ -15,8 +15,8 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $connection = 'mysql';
-    protected $table = 'users';  // Nombre de tu tabla personalizada
-    protected $primaryKey = 'id';  // Si tu clave primaria es diferente
+    protected $table = 'users';
+    protected $primaryKey = 'id';
 
 
     public function setPasswordAttribute($value)

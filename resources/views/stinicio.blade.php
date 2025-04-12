@@ -1,9 +1,7 @@
 {{--| admin |--}}
 
 @extends('building')
-
 @section('title', 'Opciones')
-
 @section('content')
 
   <div class="topnav" id="myTopnav">

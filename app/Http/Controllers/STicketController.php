@@ -15,31 +15,31 @@ class STicketController extends Controller
      */
     public function index()
     {
-        $tickett = DB::table('ticket')->get();
+        $tickett = Ticket::get();
         return view('mticket')->with('tickett',$tickett);
     }
 
     public function mistareas($cif)
     {
-        $tickeetpendiente = DB::table('ticket')->where('fsoporteid', $cif)->get();
+        $tickeetpendiente = Ticket::where('fsoporteid', $cif)->get();
         return view('tareas')->with('tickeetpendiente',$tickeetpendiente);
     }
 
     public function nuevoo()
     {
-        $tickeetnuevo = DB::table('ticket')->get();
+        $tickeetnuevo = Ticket::get();
         return view('stnuevo')->with('tickeetnuevo',$tickeetnuevo);
     }
 
     public function pendientee()
     {
-        $tickeetpendiente = DB::table('ticket')->get();
+        $tickeetpendiente = Ticket::get();
         return view('stpendiente')->with('tickeetpendiente',$tickeetpendiente);
     }
 
     public function terminadoo()
     {
-        $tickeetterminado = DB::table('ticket')->get();
+        $tickeetterminado = Ticket::get();
         return view('stterminado')->with('tickeetterminado',$tickeetterminado);
     }
 
@@ -98,7 +98,7 @@ class STicketController extends Controller
 
     public function show($id)
     {
-    //     $mticket_show = DB::SELECT('SELECT * FROM ticket WHERE ticketid = ?',[$id]);
+    //     $mticket_show = DB::SELECT('SELECT * FROM ticket WHERE id = ?',[$id]);
 
     //     if ($mticket_show == null) {
     //         echo "<script>
@@ -108,7 +108,7 @@ class STicketController extends Controller
     //     } else{
     //         // FOREACH TABLA TICKET
     //         foreach($mticket_show as $mticket_queri){
-    //             $id = $mticket_queri->ticketid;
+    //             $id = $mticket_queri->id;
     //             $titulo = $mticket_queri->ticket_titulo;
     //             $detalles = $mticket_queri->ticket_detalles;
     //             $gestionid = $mticket_queri->gestionlid;
@@ -164,7 +164,7 @@ class STicketController extends Controller
 
     public function agarrarticket($id, $cif)
     {
-        $ticket_probar = DB::SELECT('SELECT * FROM ticket WHERE ticketid = ?',[$id]);
+        $ticket_probar = DB::SELECT('SELECT * FROM ticket WHERE id = ?',[$id]);
         $cif_probar = DB::SELECT('SELECT * FROM soporte WHERE soportecif = ?',[$cif]);
 
         if ($ticket_probar == null) {
@@ -180,14 +180,13 @@ class STicketController extends Controller
         } else{
             // FOREACH TICKET
             foreach($ticket_probar as $qticket_probar){
-                $idd= $qticket_probar->ticketid;
+                $idd= $qticket_probar->id;
                 // $id = $_REQUEST['id'];
                 // $cif = $_REQUEST['cif'];
                 $estado = 2;
                 $nuevoCambio = date("Y-m-d H:i:s");
             
-                $update = DB::table('ticket')
-                          ->where('ticketid', $idd)
+                $update = Ticket::where('id', $idd)
                           ->update(['fsoporteid' => $cif, 'festadoid' => $estado, 'updated_at' => $nuevoCambio]);
 
                 echo "<script>
@@ -215,8 +214,7 @@ class STicketController extends Controller
             $estado = 2;
             $nuevoCambio = date("Y-m-d H:i:s");
             
-            $affected = DB::table('ticket')
-              ->where('ticketid', $ii)
+            $affected = Ticket::where('id', $ii)
               ->update(['estadolid' => $estado, 'updated_at' => $nuevoCambio]);
 
             echo "<script>

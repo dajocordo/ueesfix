@@ -1,28 +1,20 @@
-@php
-  session_start();
-  if(isset($_SESSION['support'])){
-@endphp
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-  <title>Tareas</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
- 
+{{--| support |--}}
+
+@extends('building')
+@section('title', 't. pendiente')
+@section('content')
+
   <link rel="stylesheet" type="text/css" href="/css/soportestyle.css">    
-</head>
-<body>
+
   <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
   <div class="topnav" id="myTopnav">
-    <a href="{{ url('/dashboard') }}">Inicio</a>
+    <a href="{{ url('/dashboard') }}">Tareas</a>
     <a href="#CerrarSesion" data-bs-toggle="modal" title="Salir">Salir</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
       <i class="fa fa-bars"></i>
     </a>
   </div><!--|=========| Barra de navegacion | ← | fin |=========|-->
 
-  <!--|==========| Container | ↓ | inicio |==========|-->
   <div class="container">
     <!--|==========| Boton | ir a izquierda |==========|-->
     <div class="btn-left-pro"> <a href="" title="Inicio" class="aarrooww"><</a> </div>
@@ -69,15 +61,7 @@
             } 
       @endphp  
     </table><!--|==========| Tabla Ticket (nuevo) | ↑ | fin |==========|-->
-  <!--|==========| Container | fin | ↑ |==========|--></div>
-
 
   </div>
-</body>
-</html>
-@php  } else{
-      echo "<script>
-            alert('Debes iniciar sesión primero');
-            window.location.href='/index';
-          </script>";
-}  @endphp
+
+@endsection

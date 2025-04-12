@@ -1,18 +1,11 @@
-@php
-  session_start();
-  if(isset($_SESSION['support'])){
-@endphp
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-  <title>T. Nuevo</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
- 
+{{--| support |--}}
+
+@extends('building')
+@section('title', 't. nuevo')
+@section('content')
+
   <link rel="stylesheet" type="text/css" href="/css/soportestyle.css">    
-</head>
-<body>
+
   <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
   <div class="topnav" id="myTopnav">
     <a href="{{ url('/dashboard') }}">Inicio</a>
@@ -42,7 +35,7 @@
       </thead>
       @php 
             foreach ($tickeetnuevo as $tickeetnuevoo) {
-              $id = $tickeetnuevoo->ticketid;
+              $id = $tickeetnuevoo->id;
               $titulo = $tickeetnuevoo->ticket_titulo;
               $estadoid = $tickeetnuevoo->festadoid;
               $fecha = $tickeetnuevoo->updated_at;
@@ -76,12 +69,4 @@
     </table><!--|==========| Tabla Ticket (nuevo) | ↑ | fin |==========|-->
   <!--|==========| Container | fin | ↑ |==========|--></div>
   
-  
-</body>
-</html>
-@php  } else{
-      echo "<script>
-            alert('Debes iniciar sesión primero');
-            window.location.href='/index';
-          </script>";
-}  @endphp
+@endsection
