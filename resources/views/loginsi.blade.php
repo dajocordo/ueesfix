@@ -1,21 +1,11 @@
-@php
-  session_start();
-  if(isset($_SESSION['admin'])){
-    echo '<script> window.location="home"; </script>';
-  } else {
-@endphp
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-  <title>Login</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+{{--| support |--}}
+
+@extends('building')
+@section('title', 'login')
+@section('content')
   
- 
-  <link rel="stylesheet" type="text/css" href="/css/soportestyle.css"> 
-</head>
-<body>
-  <!--|==========| Container | ↓ | inicio |==========|-->
+  <link rel="stylesheet" type="text/css" href="/css/soportestyle.css" />
+
   <div class="container">
     <!--|==========| Boton | Regresar |==========|-->
     <div class="btn-left-pro"> <a href="{{ url('/index') }}" title="Regresar" class="aarrooww"><img src="/img/back.png"></a> </div>
@@ -31,9 +21,6 @@
       </div>
       <input type="submit"  class="btn-entrur"  name="btnLoginStepISoporte" value="Siguiente">
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
+  </div>
 
-  <!--|==========| Container | fin | ← | ↑ |==========|-->
-</div>    
-</body>
-</html>
-@php } @endphp
+@endsection

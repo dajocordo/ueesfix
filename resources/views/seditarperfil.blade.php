@@ -1,18 +1,11 @@
-@php
-  session_start();
-  if(isset($_SESSION['support'])){
-@endphp
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-  <title>Editar Soporte</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+{{--| support |--}}
+
+@extends('building')
+@section('title', 'editar soporte')
+@section('content')
   
- 
-  <link rel="stylesheet" type="text/css" href="/css/soportestyle.css"> 
-</head>
-<body>
+  <link rel="stylesheet" type="text/css" href="/css/soportestyle.css" />
+
   <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
   <div class="topnav" id="myTopnav">
     <a href="dashboard">Inicio</a>
@@ -25,7 +18,7 @@
   <!-- {{ $id=3 }} -->
 
   <!--|====| Container | ↓ | → | inicio |====|-->
-<div class="container">
+  <div class="container">
 
     @php  $supportt = DB::SELECT('SELECT * FROM soporte WHERE soportecif = ?',[$_SESSION['support']]); 
             foreach ($supportt as $suporte) {
@@ -60,13 +53,6 @@
       </div>
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
   <!--|==========| Container | fin | ← | ↑ |==========|-->
-</div>
+  </div>
 
-</body>
-</html>
-@php  } else{
-      echo "<script>
-            alert('Debes iniciar sesión primero');
-            window.location.href='/index';
-          </script>";
-}  @endphp
+@endsection
