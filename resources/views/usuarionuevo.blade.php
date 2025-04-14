@@ -1,9 +1,7 @@
 {{--| admin |--}}
 
 @extends('building')
-
 @section('title', 'Usuario nuevo')
-
 @section('content')
 
  @include('tool.topnav')
@@ -37,50 +35,41 @@
           <input type="password" class="form-control form-control-lg" name="txtPassword" autocomplete="off" required>
       </div><!--|==========| Div | Row II | ↑ |==========|--></div>
 
-      <div class="row"><!--|==========| Div | Row III | ↓ |==========|-->
+      <div class="row">
         <div class="col-6">
           <label class="lblformuser">Telefono</label>
           <input type="number" class="form-control form-control-lg" name="txtTelefono" autocomplete="off" required>
         </div>
         <div class="col-6">
-          <!--|==========| Select Tipo | ↓ | inicio |==========|-->
           <label class="lblformuser">Tipo</label>
           <select name="selTipoUsuario" class="form-control form-control-lg" aria-label="Default select example">
-          @php foreach ($usertypee as $selsoptipo) {
-                 $tipoid = $selsoptipo->usuariotipoid;
-                $tiponame = $selsoptipo->usuariotipo_name;
-          @endphp
-            <option value="@php echo $tipoid; @endphp">@php echo $tiponame; @endphp</option>
-          @php } @endphp
-          </select><!--|==========| Select Tipo | ↑ | fin |==========|-->
-      </div><!--|==========| Div | Row II | ↑ |==========|--></div>
+            @foreach ($roles as $rol)
+            <option value="{{ $rol->id }}">{{ $rol->name }}</option>
+            @endforeach
+          </select>
+        </div>
+      </div>
 
-      <div class="row"><!--|==========| Div | Row IV | ↓ |==========|-->
+      <div class="row">
         <div class="col-6">
-          <!--|==========| Select Facultad | ↓ | inicio |==========|-->
           <label class="lblformuser">Facultad</label>
           <select name="selFacultad" class="form-control form-control-lg" aria-label="Default select example">
-          @php  foreach ($facultaad as $facul) {
-                  $facuid = $facul->facultadid;
-                  $facuname = $facul->facultad_name;
-          @endphp
-            <option value="@php echo $facuid; @endphp">@php echo $facuname; @endphp</option>
-          @php } @endphp
-          </select><!--|==========| Select Tipo | ↑ | fin |==========|--></div>
+            @foreach ($facultad as $fa)
+            <option value="{{ $fa->id }}">{{ $fa->name }}</option>
+            @endforeach
+          </select>
+        </div>
       
         <div class="col-6">
-          <!--|==========| Select Carrera | ↓ | inicio |==========|-->
           <label class="lblformuser">Carrera</label>
           <select name="selCarrera" class="form-control form-control-lg" aria-label="Default select example">
-          @php foreach ($carreraa as $carrer) {
-                $carreid = $carrer->carreraid;
-                $carrename = $carrer->carrera_name;
-          @endphp
-            <option value="@php echo $carreid; @endphp">@php echo $carrename; @endphp</option>
-          @php } @endphp
-          </select><!--|==========| Select Tipo | ↑ | fin |==========|--></div>
-        <!--|==========| Div | Row IV | ↑ |==========|--></div>
-          <input type="submit" class="btn-enviar-form" name="btnCrearUsuario" value="Enviar">
+            @foreach ($carrera as $ca)
+            <option value="{{ $ca->id }}">{{ $ca->name }}</option>
+            @endforeach
+          </select>
+        </div>
+      </div>
+      <input type="submit" class="btn-enviar-form" name="btnCrearUsuario" value="Enviar">
 
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
   <!--|==========| Container | fin | ← | ↑ |==========|-->
