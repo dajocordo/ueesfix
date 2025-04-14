@@ -15,17 +15,8 @@ class FacultadController extends Controller
      */
     public function index()
     {
-        $facultad = [];
-        $num = 1;
         $getFacultad = Listado::where('grupo', 'facultad')->get();
-        foreach ($getFacultad as $fa) {
-            $facl = new \stdClass();
-            $fa->num = $num++;
-            $facl->id = $fa->id;
-            $facl->name = $fa->valor;
-            $facl->fecha = "";
-            $facultad[] = $facul;
-        }
+        $facultad = formatLists($getFacultad);
         return view('facultad', compact('facultad'));
     }
 

@@ -15,15 +15,8 @@ class SoportetipoController extends Controller
      */
     public function index()
     {
-        $sopotipo = [];
         $getRoles = Listado::where('grupo', 'soporte_tipo')->get();
-        foreach ($getRoles as $role) {
-            $rol = new \stdClass();
-            $rol->id = $role->id;
-            $rol->name = $role->valor;
-            $rol->fecha = "";
-            $sopotipo[] = $rol;
-        }
+        $sopotipo = formatLists($getRoles);
         return view('soportetipo', compact('sopotipo'));
     }
 

@@ -199,26 +199,11 @@ class UsuarioController extends Controller
         $getRoles = Listado::where('grupo', 'user_rol')->get();
         $getFacul = Listado::where('grupo', 'facultad')->get();
         $data = [
-            'carrera' => $this->formatLists($getCarre),
-            'facultad' => $this->formatLists($getFacul),
-            'roles' => $this->formatLists($getRoles)
+            'carrera' => formatLists($getCarre),
+            'facultad' => formatLists($getFacul),
+            'roles' => formatLists($getRoles)
         ];
         return view('usuarionuevo', $data);
-    }
-
-    private function formatLists($listados): array
-    {
-        $list = [];
-        if ($listados) {
-            foreach ($listados as $listado) {
-                $lt = new \stdClass();
-                $lt->id = $listado->id;
-                $lt->name = $listado->valor;
-                $lt->fecha = "";
-                $list[] = $lt;
-            }
-        }
-        return $list;
     }
 
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Listado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,8 +15,9 @@ class EstadoController extends Controller
      */
     public function index()
     {
-        $state = DB::table('estado')->get();
-        return view('estado')->with('state',$state);
+        $getEstados = Listado::where('grupo', 'estado_ticket')->get();
+        $state = formatLists($getEstados);
+        return view('estado', compact('state'));
     }
 
     /**

@@ -26,13 +26,15 @@
       </thead>
       <tbody>
         @foreach($users as $value)
-        <td>{{ $value->id; }}</td>
-        <td>{{ $value->name; }}</td>
-        <td>{{ $value->correo; }}</td>
-        <td>{{ $value->fecha; }}</td> 
-        <td><a class="optionsu" href="/u/{{ $value->id; }}/edit"><img src="img/edit.png"></a></td>
-        <td><a class="optionsu" href="/u/{{ $value->id; }}"><img src="img/info.png"></a></td> 
-        <td><a class="optionsu" href="/u/delete"><p class="btndelete">X</p></a></td>
+        <tr>
+          <td>{{ $value->id }}</td>
+          <td>{{ $value->name }}</td>
+          <td>{{ $value->correo }}</td>
+          <td>{{ $value->fecha }}</td> 
+          <td><a class="optionsu" href="/u/{{ $value->id }}/edit"><img src="img/edit.png"></a></td>
+          <td><a class="optionsu" href="/u/{{ $value->id }}"><img src="img/info.png"></a></td> 
+          <td><a class="optionsu" href="/u/delete"><p class="btndelete">X</p></a></td>
+        </tr>
         @endforeach
       </tbody> 
     </table>
