@@ -1,9 +1,7 @@
 {{--| admin |--}}
 
 @extends('building')
-
 @section('title', 'roles')
-
 @section('content')
 
   @include('tool.topnav')
@@ -27,23 +25,19 @@
         <th>Modificado</th>
         <th colspan="3">Opciones</th>
       </thead>
-      @php
-        foreach ($roll as $roli) {
-          $id = $roli->roles_id;
-          $rol_Nombre = $roli->roles_name;
-          $rol_Fecha_Actual = $roli->updated_at;
-      @endphp
       <tbody>
-        <td>@php echo $id; @endphp</td>
-        <td>@php echo $rol_Nombre; @endphp</td> 
-        <td>@php echo $rol_Fecha_Actual; @endphp</td>
-        <td><a class="optionsu" href="/r/@php echo $id; @endphp/edit"><img src="img/edit.png"></a></td>
-        <td><a class="optionsu" href="/r/@php echo $id; @endphp"><img src="img/info.png"></a></td> 
-        <td><a class="optionsu" href="/r/delete"><p class="btndelete">X</p></a></td>
+        @foreach ($roles as $rol)
+        <tr>
+            <td>{{ $rol->id; }}</td>
+            <td>{{ $rol->name; }}</td> 
+            <td>{{ $rol->fecha; }}</td>
+            <td><a class="optionsu" href="/r/{{ $rol->id; }}/edit"><img src="img/edit.png"></a></td>
+            <td><a class="optionsu" href="/r/{{ $rol->name; }}"><img src="img/info.png"></a></td> 
+            <td><a class="optionsu" href="/r/delete"><p class="btndelete">X</p></a></td>
+        </tr>
+        @endforeach  
       </tbody>  
-     @php } @endphp  
-    <!--|==========| Tabla Roles | ↑ | fin |==========|--></table>
-    <!--|==========| Container | fin | ← | ↑ |==========|-->
+    </table>
   </div>
 
 @endsection

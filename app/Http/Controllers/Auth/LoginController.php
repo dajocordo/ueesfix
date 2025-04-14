@@ -23,7 +23,7 @@ class LoginController extends Controller
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $request->session()->regenerate(); // Evita ataques de sesión
             // dd(session()->all()); // Muestra todos los datos de la sesión
-            return redirect()->intended('/dashboard');
+            return redirect()->intended('/home');
         }
 
         return back()->withErrors([

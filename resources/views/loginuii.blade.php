@@ -1,14 +1,11 @@
-{{--| admin |--}}
+{{--| usuario |--}}
 
 @extends('building')
-
 @section('title', 'login')
-
 @section('content')
 
   <link rel="stylesheet" type="text/css" href="/css/usuariostyle.css"> 
 
-  <!--|==========| Container | ↓ | inicio |==========|-->
   <div class="container">
     <!--|==========| Boton | Regresar |==========|-->
     <div class="btn-left-pro"> <a href="{{ url('/loginui') }}" title="Regresar" class="aarrooww"><img src="/img/back.png"></a> </div>
@@ -26,7 +23,6 @@
       <input type="submit"  class="btn-entrur"  name="btnLoginStepIIUsuario" value="Ingresar">
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
 
-  <!--|==========| Container | fin | ← | ↑ |==========|-->
   </div>    
 
 @endsection

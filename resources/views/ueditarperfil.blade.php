@@ -1,18 +1,9 @@
-@php
-  session_start();
-  if(isset($_SESSION['student'])){
-@endphp
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-  <title>Editar Usuario</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
- 
-  <link rel="stylesheet" type="text/css" href="/css/usuariostyle.css">
-</head>
-<body>
+{{--| usuario |--}}
+
+@extends('building')
+@section('title', 'editar usuario')
+@section('content')
+
   <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
   <div class="topnav" id="myTopnav">
     <a href="dashboard">Inicio</a>
@@ -20,10 +11,11 @@
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
       <i class="fa fa-bars"></i>
     </a>
-  </div> <!--|==========| Barra de navegacion | ↑ | fin |==========|-->
+  </div>
+  
   <!-- {{ $id=3 }} -->
-  <!--|====| Container | ↓ | → | inicio |====|-->
-<div class="container">
+
+  <div class="container">
     <!--|==========| Boton | Regresar |==========|-->
     <div class="btn-left-pro"> <a href="{{ url('/up') }}" title="Regresar" class="aarrooww"><</a> </div>
     <!--|==========| Ticket | ↓ | titulo |==========|-->
@@ -45,13 +37,6 @@
         <input type="submit" class="btn btn-primary btn-lg" name="btnActualizarSoporte" value="Actualizar" >
       </div>
     </form><!--|==========| Formulario | ↑ | fin |==========|-->
-  <!--|==========| Container | fin | ← | ↑ |==========|-->
-</div>
-</body>
-</html>
-@php  } else{
-      echo "<script>
-            alert('Debes iniciar sesión primero');
-            window.location.href='/index';
-          </script>";
-}  @endphp
+  </div>
+
+@endsection

@@ -1,9 +1,7 @@
-{{--| admin |--}}
+{{--| usuario |--}}
 
 @extends('building')
-
 @section('title', 'login')
-
 @section('content')
 
   <link rel="stylesheet" type="text/css" href="/css/usuariostyle.css"> 
