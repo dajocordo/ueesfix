@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Listado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,8 +15,16 @@ class RolController extends Controller
      */
     public function index()
     {
-        $roll = DB::table('roles')->get();
-        return view('roles')->with('roll',$roll);
+        $roles = [];
+        $getRoles = Listado::where('grupo', 'user_rol')->get();
+        foreach ($getRoles as $role) {
+            $rol = new \stdClass();
+            $rol->id = $role->id;
+            $rol->name = $role->valor;
+            $rol->fecha = "";
+            $roles[] = $rol;
+        }
+        return view('roles', compact('roles'));
     }
 
     /**
