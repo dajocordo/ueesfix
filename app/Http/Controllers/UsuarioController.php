@@ -206,7 +206,7 @@ class UsuarioController extends Controller
         return view('usuarionuevo', $data);
     }
 
-    private function formatLists($listados) 
+    private function formatLists($listados): array
     {
         $list = [];
         if ($listados) {
