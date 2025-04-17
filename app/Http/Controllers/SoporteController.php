@@ -103,23 +103,19 @@ class SoporteController extends Controller
      */
     public function edit($id)
     {
-        $soporte_edit = DB::SELECT('SELECT * FROM soporte WHERE soportecif = ?',[$id]);
-
-        if ($soporte_edit == null) {
-            echo "<script>
-                  alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
-                  window.location.href='/s';
-                  </script>";
-        } else{
-            foreach($soporte_edit as $soporte_query){
-                $ii = $soporte_query->soportecif;
-                $name = $soporte_query->snombre;
-                $apellido = $soporte_query->sapellido;
-                $correo = $soporte_query->smail;
-                $telefono = $soporte_query->stelefono;
-                return view('soporteedit')->with('ii',$ii)->with('name',$name)->with('apellido',$apellido)->with('correo',$correo)->with('telefono',$telefono);
-            }
+        $getUser = User::find($id);
+        if ($getUser) {
+            $user = [
+                'id' => $getUser->id,
+                'name' => $getUser->name,
+                'correo' => $getUser->email,
+            ];
+            return view('usuarioedit')->with('user', $user);
         }
+        echo "<script>
+              alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
+              window.location.href='/s';
+              </script>";
     }
 
     /**

@@ -130,22 +130,19 @@ class UsuarioController extends Controller
      */
     public function edit($id)
     {
-        $user_edit = DB::SELECT('SELECT * FROM usuario WHERE usuariocif = ?',[$id]);
-
-        if ($user_edit == null) {
-            echo "<script>
-                  alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
-                  window.location.href='/u';
-                  </script>";
-        } else{
-            foreach($user_edit as $user_query){
-                $ii = $user_query->usuariocif;
-                $name = $user_query->unombre;
-                $apellido = $user_query->uapellido;
-                $correo = $user_query->umail;
-                return view('usuarioedit')->with('ii',$ii)->with('name',$name)->with('apellido',$apellido)->with('correo',$correo);
-            }
+        $getUser = User::find($id);
+        if ($getUser) {
+            $user = [
+                'id' => $getUser->id,
+                'name' => $getUser->name,
+                'correo' => $getUser->email,
+            ];
+            return view('usuarioedit')->with('user', $user);
         }
+        echo "<script>
+              alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
+              window.location.href='/u';
+              </script>";
     }
 
     /**
