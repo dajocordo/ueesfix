@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Listado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,8 +15,9 @@ class FacultadController extends Controller
      */
     public function index()
     {
-        $facultad1 = DB::table('facultad')->get();
-        return view('facultad')->with('facultad1',$facultad1);
+        $getFacultad = Listado::where('grupo', 'facultad')->get();
+        $facultad = formatLists($getFacultad);
+        return view('facultad', compact('facultad'));
     }
 
     /**

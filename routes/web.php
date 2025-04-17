@@ -1,6 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Auth\LoginController;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*------------------------------------------------------------------------
@@ -10,14 +14,31 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!*/
 
+
+Route::get('/db-test', function () {
+    try {
+        DB::connection()->getPdo();
+        return '✅ Conexión exitosa a la base de datos.';
+    } catch (\Exception $e) {
+        return '❌ Error de conexión: ' . $e->getMessage();
+    }
+});
+
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+
+Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+
+
+// Route::get('/logout', [LoginController::class, 'logout']);
+Route::get('/login', [LoginController::class, 'login']);
+
+
 Route::get('/', function () {return view('index');});
-Route::get('/dashboard', function() {return view('dashboard');});
 Route::get('/tnuevo', function() {return view('tnuevo');});
 Route::get('/home', function() {return view('home');});
 Route::get('/index', function() {return view('index');});
 Route::get('/inicio', function() {return view('inicio');});
-Route::get('/login', function() {return view('login');});
-Route::get('/logout', function() {return view('logout');});
 Route::get('/perfil', function() {return view('perfil');});
 Route::get('/notas', function() {return view('notas');});
 Route::get('/contact', function() {return view('contact');});
@@ -32,7 +53,8 @@ Route::get('/loginui', function() {return view('loginui');});
 Route::get('/loginsi', function() {return view('loginsi');});
 Route::get('/loginai', function() {return view('loginai');});
 Route::resource('/l', LoginnController::class);
-Route::post('/loginuii', [LoginnController::class, 'firstusuario']);
+Route::post('/loginuii', [LoginController::class, 'login']);
+
 Route::post('/loginsii', [LoginnController::class, 'firstsoporte']);
 Route::post('/loginaii', [LoginnController::class, 'firstadmin']);
 Route::post('/loginu', [LoginnController::class, 'stepusu']);
@@ -237,7 +259,7 @@ Route::get('/u/{id}', [UsuarioController::class, 'show']);
 Route::get('/u/{id}/edit', [UsuarioController::class, 'edit']);
 Route::post('/u/create', [UsuarioController::class, 'create']);
 Route::post('/u/update', [UsuarioController::class, 'update']);
-Route::get('/usuarionuevo', [UsuarioController::class, 'usenewtti']);
+Route::get('/usuarionuevo', [UsuarioController::class, 'prepararForNewUser']);
 // Route::get('/u/{id}', [UserController::class, 'show']);
 // Route::get('/usuarioedit', [UserController::class, 'edit']);
 // Route::get('/u/{id}', 'UserController@show')->name('showme');

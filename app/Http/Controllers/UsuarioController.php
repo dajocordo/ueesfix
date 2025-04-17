@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Listado;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,8 +16,17 @@ class UsuarioController extends Controller
      */
      public function index()
     {
-        $users = DB::table('usuario')->get();
-        return view('usuarios')->with('users',$users);
+        $users = [];
+        $getUsers = User::select('*')->get();
+        foreach ($getUsers as $role) {
+            $usr = new \stdClass();
+            $usr->id = $role->id;
+            $usr->name = $role->name;
+            $usr->correo = $role->email;
+            $usr->fecha = formatDate($role->created_at);
+            $users[] = $usr;
+        }
+        return view('usuarios', compact('users'));
     }
 
     /**
@@ -182,12 +193,17 @@ class UsuarioController extends Controller
         //
     }
 
-    public function usenewtti()
+    public function prepararForNewUser()
     {
-        $usertypee = DB::table('usuariotipo')->get();
-        $facultaad = DB::table('facultad')->get();
-        $carreraa = DB::table('carrera')->get();
-        return view('usuarionuevo')->with('usertypee',$usertypee)->with('facultaad',$facultaad)->with('carreraa',$carreraa);
+        $getCarre = Listado::where('grupo', 'carreras')->get();
+        $getRoles = Listado::where('grupo', 'user_rol')->get();
+        $getFacul = Listado::where('grupo', 'facultad')->get();
+        $data = [
+            'carrera' => formatLists($getCarre),
+            'facultad' => formatLists($getFacul),
+            'roles' => formatLists($getRoles)
+        ];
+        return view('usuarionuevo', $data);
     }
 
 }

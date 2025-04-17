@@ -13,24 +13,50 @@ class TicketController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
-        $tickett = DB::table('ticket')->get();
-        return view('tickets')->with('tickett',$tickett);
+    public function index()
+    {
+        $getTickets = Ticket::select('*')->get();
+        $tickets = $this->formatTicket($getTickets);
+        return view('tickets', compact('tickets'));
     }
 
-    public function Tickettnuevo() {
-      $tickeetnuevo = DB::table('ticket')->get();
-      return view('tktnuevo')->with('tickeetnuevo',$tickeetnuevo);
+    public function Tickettnuevo()
+    {
+        $getTickets = Ticket::select('*')->where('estado_ticket', 7)->get();
+        $tickets = $this->formatTicket($getTickets);
+        return view('tktnuevo', compact('tickets'));
     }
 
-    public function Tickettpendiente() {
-      $tickeetpendiente = DB::table('ticket')->get();
-      return view('tktpendiente')->with('tickeetpendiente',$tickeetpendiente);
+    public function Tickettpendiente()
+    {
+        $getTickets = Ticket::select('*')->where('estado_ticket', 8)->get();
+        $tickets = $this->formatTicket($getTickets);
+        return view('tktpendiente', compact('tickets'));
     }
 
-    public function Ticketterminado() {
-      $tickeetterminado = DB::table('ticket')->get();
-      return view('tktterminado')->with('tickeetterminado',$tickeetterminado);
+    public function Ticketterminado()
+    {
+        $getTickets = Ticket::select('*')->where('estado_ticket', 9)->get();
+        $tickets = $this->formatTicket($getTickets);
+        return view('tktterminado', compact('tickets'));
+    }
+
+    private function formatTicket($tickets): array
+    {
+        $ticket = [];
+        if ($tickets) {
+            foreach ($tickets as $value) {
+                $tk = new \stdClass();
+                $tk->id = $value->id;
+                $tk->titulo = $value->titulo;
+                $tk->detalle = $value->detalle;
+                $tk->estado_ticket = $value->estado_ticket;
+                $tk->estado = $value->listado->valor ?? '';
+                $tk->fecha = formatDate($value->created_at);
+                $ticket[] = $tk;
+            }
+        }
+        return $ticket;
     }
 
     /**

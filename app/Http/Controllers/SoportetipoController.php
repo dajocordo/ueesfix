@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Listado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,8 +15,9 @@ class SoportetipoController extends Controller
      */
     public function index()
     {
-        $sopotipo = DB::table('soportetipo')->get();
-        return view('soportetipo')->with('sopotipo',$sopotipo);
+        $getRoles = Listado::where('grupo', 'soporte_tipo')->get();
+        $sopotipo = formatLists($getRoles);
+        return view('soportetipo', compact('sopotipo'));
     }
 
     /**

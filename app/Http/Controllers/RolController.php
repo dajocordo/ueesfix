@@ -15,15 +15,8 @@ class RolController extends Controller
      */
     public function index()
     {
-        $roles = [];
         $getRoles = Listado::where('grupo', 'user_rol')->get();
-        foreach ($getRoles as $role) {
-            $rol = new \stdClass();
-            $rol->id = $role->id;
-            $rol->name = $role->valor;
-            $rol->fecha = "";
-            $roles[] = $rol;
-        }
+        $roles = formatLists($getRoles);
         return view('roles', compact('roles'));
     }
 
