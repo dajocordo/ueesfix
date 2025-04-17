@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,8 +15,17 @@ class SoporteController extends Controller
      */
      public function index()
     {
-        $soport = DB::table('soporte')->get();
-        return view('soporte')->with('soport',$soport);
+        $soporte = [];
+        $getUsers = User::select('*')->where('tipo', 2)->get();
+        foreach ($getUsers as $role) {
+            $usr = new \stdClass();
+            $usr->id = $role->id;
+            $usr->name = $role->name;
+            $usr->correo = $role->email;
+            $usr->fecha = formatDate($role->created_at);
+            $soporte[] = $usr;
+        }
+        return view('soporte')->with('soport', $soporte);
     }
 
     /**

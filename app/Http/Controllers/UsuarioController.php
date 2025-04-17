@@ -23,7 +23,7 @@ class UsuarioController extends Controller
             $usr->id = $role->id;
             $usr->name = $role->name;
             $usr->correo = $role->email;
-            $usr->fecha = "";
+            $usr->fecha = formatDate($role->created_at);
             $users[] = $usr;
         }
         return view('usuarios', compact('users'));
