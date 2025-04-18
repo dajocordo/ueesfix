@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Listado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,8 +15,9 @@ class PrioridadController extends Controller
      */
     public function index()
     {
-        $priori = DB::table('prioridad')->get();
-        return view('prioridad')->with('priori',$priori);
+        $getPriori = Listado::where('grupo', 'prioridad')->get();
+        $priori = formatLists($getPriori);
+        return view('prioridad')->with('priori', $priori);
     }
 
     /**
