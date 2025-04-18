@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Listado;
+use App\Models\Ticket;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Ticket;
 use Illuminate\Http\Request;
 
 class TicketController extends Controller
@@ -254,11 +257,19 @@ class TicketController extends Controller
 
     public function tktnewtii()
     {
-        $usuarioo = DB::table('usuario')->get();
-        $prioridaad = DB::table('prioridad')->get();
-        $gestioon = DB::table('gestion')->get();
-        $gestioontipoo = DB::table('gestiontipo')->get();
-        return view('ticketnuevo')->with('usuarioo',$usuarioo)->with('prioridaad',$prioridaad)->with('gestioon',$gestioon)->with('gestioontipoo',$gestioontipoo);
+        $usuarioo = User::select('*')->get();
+        $prioridaad = Listado::where('grupo', 'prioridad')->get();
+        $gestioon = Listado::where('grupo', 'gestion')->get();
+        $gestioontipoo = Listado::where('grupo', 'tipo_gestion')->get();
+
+        $data = [
+            'usuario' => formatUsers($usuarioo),
+            'prioridad' => formatLists($prioridaad),
+            'gestion' => formatLists($gestioon),
+            'gestionTipo' => formatLists($gestioontipoo)
+        ];
+
+        return view('ticketnuevo', compact('data'));
     }
 
 }

@@ -1,5 +1,23 @@
 <?php
 
+if (!function_exists('formatUsers')) {
+    function formatUsers($usuarios): array
+    {
+        $usuario = [];
+        $num = 1;
+        if ($usuarios) {
+            foreach ($usuarios as $user) {
+                $usr = new \stdClass();
+                $usr->id = $user->id;
+                $usr->name = $user->name;
+                $usr->correo = $user->email;
+                $usr->fecha = formatDate($user->created_at);
+                $usuario[] = $usr;
+            }
+        }
+        return $usuario;
+    }
+}
 
 if (!function_exists('formatLists')) {
     function formatLists($listados): array

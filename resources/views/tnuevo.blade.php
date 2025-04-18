@@ -1,12 +1,9 @@
 {{--| support |--}}
 
 @extends('building')
-
 @section('title', 'Ticket Nuevo')
-
 @section('content')
 
-  <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
   <div class="topnav" id="myTopnav">
     <a href="dashboard">Inicio</a>
     <a href="perfil">Perfil</a>
@@ -14,10 +11,9 @@
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
       <i class="fa fa-bars"></i>
     </a>
-  </div> <!--|==========| Barra de navegacion | ↑ | fin |==========|-->
+  </div>
 
-  <!--|====| Container | ↓ | → | inicio |====|-->
-<div class="container">
+  <div class="container">
     <!--|==========| Boton | Regresar |==========|-->
     <div class="btn-left-pro"> <a href="{{ url('/stinicio') }}" title="Regresar" class="aarrooww"><</a> </div>
     <!--|==========| Ticket | ↓ | titulo |==========|-->
@@ -25,7 +21,7 @@
     <!--|==========| Formulario | ↓ | inicio |==========|-->
     <form action="{{url('/ts/create')}}" name="frmTicketCreateAdm" method="post">
       @csrf
-      <div class="row"><!--|==========| Div | Row III | ↓ |==========|-->
+      <div class="row">
         <div class="col-8">
           <label class="lblformuser">Título</label>
           <input type="text" class="form-control form-control-lg" name="txtTitulo" autocomplete="off" required>
@@ -40,11 +36,12 @@
           @endphp
             <option value="@php echo $pid; @endphp">@php echo $pname; @endphp</option>
           @php } @endphp
-          </select><!--|==========| Select Prioridad | ↑ | fin |==========|--></div>
-      <!--|==========| Div | Row I | ↑ |==========|--></div>
+          </select>
+        </div>
+      </div>
       <label class="lblformuser">Detalles</label>
       <input type="text" class="form-control form-control-lg" name="txtDetalles" autocomplete="off" required>
-      <div class="row"><!--|==========| Div | Row III | ↓ |==========|-->
+      <div class="row">
         <div class="col-4">
           <!--|==========| Select Gestion | ↓ | inicio |==========|-->
           <label class="lblformuser">Gestion</label>
@@ -77,13 +74,13 @@
           @endphp
             <option value="@php echo $uid; @endphp">@php echo $uname; @endphp</option>
           @php } @endphp
-          </select><!--|==========| Select Usuario | ↑ | fin |==========|--></div>
-      <!--|==========| Div | Row I | ↑ |==========|--></div>
+          </select>
+        </div>
+      </div>
       <input type="submit" class="btn-enviar-form" name="btnCrearTicketFromAdm" value="Enviar">
-    </form><!--|==========| Formulario | ↑ | fin |==========|-->
-  <!--|==========| Container | fin | ← | ↑ |==========|-->
-</div>
+    </form>
+  </div>
 
-  
+
 
   @endsection
