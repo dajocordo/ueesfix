@@ -4,7 +4,6 @@
 @section('title', 'Ticket nuevo')
 @section('content')
 
-  <!--|==========| Barra de navegacion | ↓ | inicio |==========|-->
   <div class="topnav" id="myTopnav">
     <a href="dashboard">Inicio</a>
     <a href="">Perfil</a>
