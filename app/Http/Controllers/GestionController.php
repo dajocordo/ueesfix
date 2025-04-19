@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Listado;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
