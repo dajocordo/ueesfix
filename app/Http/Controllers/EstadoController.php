@@ -21,34 +21,6 @@ class EstadoController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        if (isset($_POST['btnEnviarEstado'])) {
-
-            $NombreEstado = $_POST['txtNombreEstado'];
-            $Creado = date("Y-m-d H:i:s");
-            $Actual = date("Y-m-d H:i:s");
-
-            DB::INSERT("INSERT INTO estado (estado_name, created_at, updated_at) VALUES(?,?,?)",[$NombreEstado,$Creado,$Actual]);
-
-            echo "<script>
-                  alert('Exito. El estado fue creado correctamente');
-                  window.location.href='/e';
-                  </script>";
-        
-        } else {
-            echo "<script>
-                  alert('Error. Vuelva a intentarlo de nuevo');
-                  window.location.href='/estadonuevo';
-                  </script>";
-        }
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -56,7 +28,21 @@ class EstadoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (isset($_POST['btnEnviarEstado'])) {
+            $estado = new Listado();
+            $estado->valor = $request->valor;
+            $estado->grupo = "estado_ticket";
+            $estado->save();
+            echo '<script language="javascript">';
+            echo 'alert("Datos ingresados correctamente")';
+            echo '</script>';
+            return redirect("/e");
+        } else {
+            echo "<script>
+                  alert('Error. Vuelva a intentarlo de nuevo');
+                  window.location.href='/estadonuevo';
+                  </script>";
+        }
     }
 
     /**
@@ -67,21 +53,14 @@ class EstadoController extends Controller
      */
     public function show($id)
     {
-        $estado_show = DB::SELECT('SELECT * FROM estado WHERE estadoid = ?',[$id]);
-        if ($estado_show == null) {
-            echo "<script>
-                  alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
-                  window.location.href='/e';
-                  </script>";
-        } else{
-            foreach($estado_show as $estado_queri){
-                $id = $estado_queri->estadoid;
-                $name = $estado_queri->estado_name;
-                $creado = $estado_queri->created_at;
-                $modificado = $estado_queri->updated_at;
-                return view('/estadoinfo')->with('id',$id)->with('name',$name)->with('creado',$creado)->with('modificado',$modificado);
-            }
+        $estado_show = Listado::find($id);
+        if ($estado_show) {
+            return view('/estadoinfo')->with('estado', $estado_show);
         }
+        echo "<script>
+                alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
+                window.location.href='/e';
+            </script>";
     }
 
     /**
@@ -112,18 +91,15 @@ class EstadoController extends Controller
     public function update(Request $request)
     {
         if (isset($_POST['btnActualizarR'])) {
-
             $estado = Listado::find($request->id);
             if ($estado) {
                 $estado->valor = $request->valor;
                 $estado->save();
             }
-
             echo "<script>
                   alert('EXITO: Los datos ya fueron actualizados');
                   window.location.href='/e';
                   </script>";
-  
         } else {
             echo "<script>
                   alert('ERROR: favor intentarlo de nuevo');
@@ -142,4 +118,5 @@ class EstadoController extends Controller
     {
         //
     }
+
 }
