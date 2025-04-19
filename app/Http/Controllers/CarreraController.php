@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Listado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,8 +15,9 @@ class CarreraController extends Controller
      */
     public function index()
     {
-        $race = DB::table('carrera')->get();
-        return view('carreras')->with('race',$race);
+        $getCarrera = Listado::where('grupo', 'carreras')->get();
+        $carrera = formatLists($getCarrera);
+        return view('carreras')->with('carrera', $carrera);
     }
 
     /**
