@@ -21,34 +21,6 @@ class FacultadController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        if (isset($_POST['btnEnviarFacultad'])) {
-
-            $NombreFacultad = $_POST['txtNombreFacultad'];
-            $Creado = date("Y-m-d H:i:s");
-            $Actual = date("Y-m-d H:i:s");
-
-            DB::INSERT("INSERT INTO facultad (facultad_name, created_at, updated_at) VALUES(?,?,?)",[$NombreFacultad,$Creado,$Actual]);
-
-            echo '<script language="javascript">';
-            echo 'alert("Datos ingresados correctamente")';
-            echo '</script>';
-            return redirect("/f");
-        
-        } else {
-            echo '<script language="javascript">';
-            echo 'alert("Hubo un error, favor intentarlo de nuevo")';
-            echo '</script>';
-            return redirect("/facultadnuevo");
-        }
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -56,7 +28,21 @@ class FacultadController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (isset($_POST['btnEnviarFacultad'])) {
+            $facultad = new Listado();
+            $facultad->valor = $request->valor;
+            $facultad->grupo = "facultad";
+            $facultad->save();
+            echo '<script language="javascript">';
+            echo 'alert("Datos ingresados correctamente")';
+            echo '</script>';
+            return redirect("/f");
+        } else {
+            echo '<script language="javascript">';
+            echo 'alert("Hubo un error, favor intentarlo de nuevo")';
+            echo '</script>';
+            return redirect("/facultadnuevo");
+        }
     }
 
     /**
@@ -93,13 +79,14 @@ class FacultadController extends Controller
      */
     public function edit($id)
     {
-        $facultadEdit = DB::SELECT('SELECT * FROM facultad WHERE facultadid = ?',[$id]);
-
-        foreach($facultadEdit as $facultadQuery){
-            $ii = $facultadQuery->facultadid;
-            $name = $facultadQuery->facultad_name;    
-            return view('/facultadedita')->with('ii',$ii)->with('name',$name);
+        $facultadEdit = Listado::find($id);
+        if ($facultadEdit) { 
+            return view('/facultadedita')->with('facultad', $facultadEdit);
         }
+        echo "<script>
+              alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
+              window.location.href='/e';
+              </script>";
     }
 
     /**
@@ -109,18 +96,14 @@ class FacultadController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $ii)
+    public function update(Request $request)
     {
         if (isset($_POST['btnActualizar'])) {
-
-            $ii = $_REQUEST['ii'];
-            $nuevoNombre = $_POST['txtEditNombre'];
-            $Actual = date("Y-m-d H:i:s");
-
-            $affected = DB::table('facultad')
-              ->where('facultadid', $ii)
-            ->update(['facultad_name' => $nuevoNombre,'updated_at' => $Actual]);
-
+            $facultad = Listado::find($request->id);
+            if ($facultad) {
+                $facultad->valor = $request->valor;
+                $facultad->save();
+            }
             echo '<script language="javascript">';
             echo 'alert("EXITO: Los datos ya fueron actualizados")';
             echo '</script>';

@@ -24,19 +24,18 @@
         <th colspan="3">Opciones</th>
       </thead>
       <tbody>
-        @foreach ($facultad as $fa)
+        @foreach ($facultad as $value)
         <tr>
-          <td>{{ $fa->num; }}</td>
-          <td>{{ $fa->name; }}</td>
-          <td>{{ $fa->fecha; }}</td>
-          <td><a class="optionsu" href="/f/{{ $fa->id; }}/edit"><img src="img/edit.png"></a></td>
-          <td><a class="optionsu" href="/f/{{ $fa->id; }}"><img src="img/info.png"></a></td> 
+          <td>{{ $value->num }}</td>
+          <td>{{ $value->name }}</td>
+          <td>{{ $value->fecha }}</td>
+          <td><a class="optionsu" href="/f/{{ $value->id }}/edit"><img src="img/edit.png"></a></td>
+          <td><a class="optionsu" href="/f/{{ $value->id }}"><img src="img/info.png"></a></td> 
           <td><a class="optionsu" href="/f/delete"><p class="btndelete">X</p></a></td>
         </tr>
         @endforeach
       </tbody>
     </table>
   </div>
-
 
 @endsection
