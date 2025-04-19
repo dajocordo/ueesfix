@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Listado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
 
 class GestionController extends Controller
 {
@@ -15,8 +15,9 @@ class GestionController extends Controller
      */
     public function index()
     {
-        $gestion1 = DB::table('gestion')->get();
-        return view('gestion')->with('gestion1',$gestion1);
+        $getGestion = Listado::where('grupo', 'gestion')->get();
+        $gestion = formatLists($getGestion);
+        return view('gestion')->with('gestion', $gestion);
     }
 
     public function newgestion(){
