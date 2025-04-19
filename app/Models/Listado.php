@@ -18,4 +18,15 @@ class Listado extends Model
         'grupo',
     ];
 
+    protected static function booted()
+    {
+        static::creating(function ($table) {
+            $table->created_at = date("Y-m-d H:i:s");
+        });
+
+        static::updating(function ($table) {
+            $table->updated_at = date("Y-m-d H:i:s");
+        });
+    }
+
 }

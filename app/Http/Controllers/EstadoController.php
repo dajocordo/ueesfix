@@ -92,20 +92,14 @@ class EstadoController extends Controller
      */
     public function edit($id)
     {
-        $estado_edit = DB::SELECT('SELECT * FROM estado WHERE estadoid = ?',[$id]);
-
-        if ($estado_edit == null) {
-            echo "<script>
-                  alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
-                  window.location.href='/e';
-                  </script>";
-        } else{
-            foreach($estado_edit as $estado_query){
-                $ii = $estado_query->estadoid;
-                $name = $estado_query->estado_name;    
-                return view('/estadoedit')->with('ii',$ii)->with('name',$name);
-            }
+        $estado_edit = Listado::find($id);
+        if ($estado_edit) { 
+            return view('/estadoedit')->with('estado', $estado_edit);
         }
+        echo "<script>
+              alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
+              window.location.href='/e';
+              </script>";
     }
 
     /**
@@ -115,16 +109,15 @@ class EstadoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $ii)
+    public function update(Request $request)
     {
         if (isset($_POST['btnActualizarR'])) {
-            $ii = $_REQUEST['ii'];
-            $nuevoNombre = $_POST['txtEditEstado'];
-            $nuevoCambio = date("Y-m-d H:i:s");
 
-            $affected = DB::table('estado')
-              ->where('estadoid', $ii)
-              ->update(['estado_name' => $nuevoNombre,'updated_at' => $nuevoCambio]);
+            $estado = Listado::find($request->id);
+            if ($estado) {
+                $estado->valor = $request->valor;
+                $estado->save();
+            }
 
             echo "<script>
                   alert('EXITO: Los datos ya fueron actualizados');
