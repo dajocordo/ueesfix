@@ -53,22 +53,14 @@ class FacultadController extends Controller
      */
     public function show($id)
     {
-        $facultad_show = DB::SELECT('SELECT * FROM facultad WHERE facultadid = ?',[$id]);
-
-        if ($facultad_show == NULL) {
-            echo "<script>
-                  alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
-                  window.location.href='/f';
-                  </script>";
-        } else {
-            foreach($facultad_show as $facultadQueri){
-                $id = $facultadQueri->facultadid;
-                $name = $facultadQueri->facultad_name;
-                $creado = $facultadQueri->created_at;
-                $modificado = $facultadQueri->updated_at;
-                return view('/facultadinfo')->with('id',$id)->with('name',$name)->with('creado',$creado)->with('modificado',$modificado);
-            }  
+        $facultad_show = Listado::find($id);
+        if ($facultad_show) { 
+            return view('/facultadinfo')->with('facultad', $facultad_show);
         }
+        echo "<script>
+              alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
+              window.location.href='/e';
+              </script>";
     }
 
     /**
