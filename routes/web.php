@@ -96,7 +96,7 @@ Route::resource('/e', EstadoController::class);
 Route::get('/e', [EstadoController::class, 'index']);
 Route::get('e/{id}', [EstadoController::class, 'show']);
 Route::get('e/{id}/edit', [EstadoController::class, 'edit']);
-Route::post('/e/create', [EstadoController::class, 'create']);
+Route::post('/e/create', [EstadoController::class, 'store']);
 Route::post('/e/update', [EstadoController::class, 'update']);
 
 
@@ -108,7 +108,7 @@ Route::resource('/f', FacultadController::class);
 Route::get('/f', [FacultadController::class, 'index']);
 Route::get('f/{id}', [FacultadController::class, 'show']);
 Route::get('f/{id}/edit', [FacultadController::class, 'edit']);
-Route::post('/f/create', [FacultadController::class, 'create']);
+Route::post('/f/create', [FacultadController::class, 'store']);
 Route::post('/f/update', [FacultadController::class, 'update']);
 
 

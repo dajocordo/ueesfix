@@ -103,25 +103,14 @@ class UsuarioController extends Controller
      */
     public function show($id)
     {
-        // $id = $_REQUEST['id'];
-        $user_show = DB::SELECT('SELECT * FROM usuario WHERE usuariocif = ?',[$id]);
-
-        if ($user_show == null) {
-            echo "<script>
-                  alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
-                  window.location.href='/u';
-                  </script>";
-        } else{
-            foreach($user_show as $user_queri){
-                $id = $user_queri->usuariocif;
-                $name = $user_queri->unombre;
-                $apellido = $user_queri->uapellido;
-                $correo = $user_queri->umail;
-                $creado = $user_queri->created_at;
-                $modificado = $user_queri->updated_at;
-                return view('usuarioinfo')->with('id',$id)->with('name',$name)->with('apellido',$apellido)->with('correo',$correo)->with('creado',$creado)->with('modificado',$modificado);
-            }
+        $user_show = User::find($id);
+        if ($user_show) {
+            return view('usuarioinfo')->with('user', $user_show);
         }
+        echo "<script>
+              alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
+              window.location.href='/u';
+              </script>";
     }
 
     /**Show the form for editing the specified resource.
@@ -130,14 +119,9 @@ class UsuarioController extends Controller
      */
     public function edit($id)
     {
-        $getUser = User::find($id);
-        if ($getUser) {
-            $user = [
-                'id' => $getUser->id,
-                'name' => $getUser->name,
-                'correo' => $getUser->email,
-            ];
-            return view('usuarioedit')->with('user', $user);
+        $user_edit = User::find($id);
+        if ($user_edit) {
+            return view('usuarioedit')->with('user', $user_edit);
         }
         echo "<script>
               alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
