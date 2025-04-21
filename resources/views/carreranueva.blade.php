@@ -6,7 +6,6 @@
 
   @include('tool.topnav')
 
-  <!--|====| Container | ↓ | → | inicio |====|-->
   <div class="container">
     <!--|==========| Boton | Regresar |==========|-->
     <div class="btn-left-pro"> <a href="{{ url('/c') }}" title="Regresar" class="aarrooww"><</a> </div>
