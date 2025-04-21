@@ -1,9 +1,7 @@
 {{--| admin |--}}
 
 @extends('building')
-
 @section('title', 'Carrera editar')
-
 @section('content')
 
   @include('tool.topnav')
@@ -19,37 +17,30 @@
       <p><img src="/img/edit.png"> Carrera [edit]</p>
     </div>
     
-      <!--|==========| Formulario | ↓ | inicio |==========|-->
     <form action="{{url('/c/update/')}}" method="post">
       @csrf
-      <input type="hidden" class="form-control form-control-lg" name="ii" value="@php echo $ii; @endphp" autocomplete="off" required>
+      <input type="hidden" class="form-control form-control-lg" name="id" value="{{ $carrera->id }}" autocomplete="off" required>
 
-      <div class="row"><!--|==========| Div | Row I | ↓ |==========|-->
+      <div class="row">
         <div class="col-6">
           <label class="lblformuser">Nombre</label>
-          <input type="text" class="form-control form-control-lg" name="txtEditNombre" value="@php echo $name; @endphp" autocomplete="off" required>
+          <input type="text" class="form-control form-control-lg" name="name" value="{{ $carrera->valor }}" autocomplete="off" required>
         </div>
         <div class="col-6">
-          <!--|==========| Select Tipo | ↓ | inicio |==========|-->
           <label class="lblformuser">Facultad</label>
-          <select name="selFacultadCa" class="form-control form-control-lg" aria-label="Default select example">
-            <option value="@php echo $facuid; @endphp">@php echo $facuname; @endphp</option>
-          @php foreach ($facultad_diferent as $selfacultadSelectt) {
-                $facultadid = $selfacultadSelectt->facultadid;
-                $facultadname = $selfacultadSelectt->facultad_name;
-          @endphp
-            <option value="@php echo $facultadid; @endphp">@php echo $facultadname; @endphp</option>
-          @php } @endphp
-          </select><!--|==========| Select Tipo | ↑ | fin |==========|-->
-        </div><!--|==========| Div | Row I | ↑ |==========|-->
+          <select name="facultad" class="form-control form-control-lg" required>
+            <option value=""></option>
+            @foreach ($facultad as $value)
+              <option value="{{ $value->id }}" {{ $value->id == $carrera->id_origin ? "selected" : "" }}>{{ $value->name }}</option>
+            @endforeach
+          </select>
+        </div>
       </div>
-
 
       <div class="d-grid gap-2">
         <input type="submit" class="btn btn-primary btn-lg" name="btnActualizar" value="Actualizar">
       </div>
-    </form><!--|==========| Formulario | ↑ | fin |==========|-->
-    <!--|==========| Container | fin | ← | ↑ |==========|-->
+    </form>
   </div>
 
 @endsection
