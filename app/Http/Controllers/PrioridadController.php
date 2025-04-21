@@ -16,8 +16,8 @@ class PrioridadController extends Controller
     public function index()
     {
         $getPriori = Listado::where('grupo', 'prioridad')->get();
-        $priori = formatLists($getPriori);
-        return view('prioridad')->with('priori', $priori);
+        $prioridad = formatLists($getPriori);
+        return view('prioridad', compact('prioridad'));
     }
 
     /**

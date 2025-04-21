@@ -35,6 +35,7 @@ if (!function_exists('formatLists')) {
                     $lt->origen = $listado->origen->valor ?? '';
                 }
                 $lt->fecha = formatDate($listado->created_at);
+                $lt->actualizado = formatDate($listado->updated_at);
                 $list[] = $lt;
             }
         }
