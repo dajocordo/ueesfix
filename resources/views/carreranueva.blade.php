@@ -1,9 +1,7 @@
 {{--| admin |--}}
 
 @extends('building')
-
 @section('title', 'Carrera nueva')
-
 @section('content')
 
   @include('tool.topnav')
@@ -14,29 +12,25 @@
     <div class="btn-left-pro"> <a href="{{ url('/c') }}" title="Regresar" class="aarrooww"><</a> </div>
     <!--|==========| Carrera | ↓ | titulo |==========|-->
     <div class="middle-pro"> <p><img src="/img/add.png"> Carrera [ nueva ]</p> </div>
-    <!--|==========| Formulario | ↓ | inicio |==========|-->
+
     <form action="{{url('/c/create')}}" method="post" name="frmCreateCarrera">
       @csrf
-      <div class="row"><!--|==========| Div | Row I | ↓ |==========|-->
+      <div class="row">
         <div class="col-6">
           <label class="lblformuser">Nombre de la Carrera</label>
-          <input type="text" class="form-control form-control-lg" name="txtNombreCarrera" autocomplete="off" required>
+          <input type="text" class="form-control form-control-lg" name="valor" autocomplete="off" required>
         </div>
         <div class="col-6">
-          <!--|==========| Select Tipo | ↓ | inicio |==========|-->
-          <label class="lblformuser">Tipo</label>
-          <select name="selFacultad" class="form-control form-control-lg" aria-label="Default select example">
-          @php foreach ($facultaad as $selfacultaad) {
-                $facultadid = $selfacultaad->facultadid;
-                $facultadname = $selfacultaad->facultad_name;
-          @endphp
-            <option value="@php echo $facultadid; @endphp">@php echo $facultadname; @endphp</option>
-          @php } @endphp
-          </select><!--|==========| Select Tipo | ↑ | fin |==========|-->
-      </div><!--|==========| Div | Row I | ↑ |==========|--></div>
+          <label class="lblformuser">Facultad</label>
+          <select name="facultad" class="form-control form-control-lg" required>
+            @foreach ($facultad as $value)
+              <option value="{{ $value->id }}">{{ $value->name }}</option>
+            @endforeach
+          </select>
+        </div>
+      </div>
       <input type="submit" class="btn-enviar-form" name="btnEnviarCarrera" value="Crear">
-    <!--|==========| Formulario | ↑ | fin |==========|--></form>
-  <!--|==========| Container | fin | ← | ↑ |==========|-->
+    </form>
   </div>
 
 @endsection

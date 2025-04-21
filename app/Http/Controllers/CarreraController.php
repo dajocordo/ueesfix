@@ -15,37 +15,9 @@ class CarreraController extends Controller
      */
     public function index()
     {
-        $getCarrera = Listado::where('grupo', 'carreras')->get();
+        $getCarrera = Listado::where('grupo', 'carrera')->get();
         $carrera = formatLists($getCarrera);
         return view('carreras')->with('carrera', $carrera);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        if (isset($_POST['btnEnviarCarrera'])) {
-
-            $NombreCarrera = $_POST['txtNombreCarrera'];
-            $Facultad = $_POST['selFacultad'];
-            $Creado = date("Y-m-d H:i:s");
-            $Actual = date("Y-m-d H:i:s");
-
-            DB::INSERT("INSERT INTO carrera (carrera_name, ffacultadid, created_at, updated_at) VALUES(?,?,?,?)",[$NombreCarrera,$Facultad,$Creado,$Actual]);
-
-            echo "<script>
-                  alert('EXITO. La Carrera ha sido creado correctamente');
-                  window.location.href='/c';
-                  </script>";
-        } else {
-            echo "<script>
-                  alert('Hubo un error, favor intentarlo de nuevo');
-                  window.location.href='/c';
-                  </script>";
-        }
     }
 
     /**
@@ -56,7 +28,22 @@ class CarreraController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (isset($_POST['btnEnviarCarrera'])) {
+            $carrera = new Listado();
+            $carrera->valor = $request->valor;
+            $carrera->id_origin = $request->facultad;
+            $carrera->grupo = "carrera";
+            $carrera->save();
+            echo "<script>
+                  alert('EXITO. La Carrera ha sido creado correctamente');
+                  window.location.href='/c';
+                  </script>";
+        } else {
+            echo "<script>
+                  alert('Hubo un error, favor intentarlo de nuevo');
+                  window.location.href='/c';
+                  </script>";
+        }
     }
 
     /**
@@ -168,9 +155,11 @@ class CarreraController extends Controller
         //
     }
 
-    public function newcarreer(){
-        $facultaad = DB::table('facultad')->get();
-        return view('carreranueva')->with('facultaad',$facultaad);
+    public function newcarreer()
+    {
+        $getLists = Listado::where('grupo', 'facultad')->get();
+        $facultad = formatLists($getLists);
+        return view('carreranueva')->with('facultad', $facultad);
     }
 
 }

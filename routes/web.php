@@ -69,7 +69,7 @@ Route::resource('/c', CarreraController::class);
 Route::get('/c', [CarreraController::class, 'index']);
 Route::get('/c/{id}', [CarreraController::class, 'show']);
 Route::get('/c/{id}/edit', [CarreraController::class, 'edit']);
-Route::post('/c/create', [CarreraController::class, 'create']);
+Route::post('/c/create', [CarreraController::class, 'store']);
 Route::post('/c/update', [CarreraController::class, 'update']);
 Route::get('/carreranueva', [CarreraController::class, 'newcarreer']);
 // // Route::get('/carreras', [carreraController::class, 'index']);
