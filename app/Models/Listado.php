@@ -16,6 +16,7 @@ class Listado extends Model
     protected $fillable = [
         'valor',
         'grupo',
+        'id_origin',
     ];
 
     protected static function booted()
