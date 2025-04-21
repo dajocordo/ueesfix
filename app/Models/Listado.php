@@ -30,4 +30,9 @@ class Listado extends Model
         });
     }
 
+    public function origen()
+    {
+        return $this->hasOne(Listado::class, 'id', 'id_origin');
+    }
+
 }

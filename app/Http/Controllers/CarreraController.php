@@ -54,29 +54,14 @@ class CarreraController extends Controller
      */
     public function show($id)
     {
-        $carrera_show = DB::SELECT('SELECT * FROM carrera WHERE carreraid = ?',[$id]);
-        
-        if ($carrera_show == null) {
-            echo "<script>
-                  alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
-                  window.location.href='/g';
-                  </script>";
-        } else{
-            foreach($carrera_show as $carrera_queri){
-                $carreraid = $carrera_queri->carreraid;
-                $cname = $carrera_queri->carrera_name;
-                $facultadid = $carrera_queri->ffacultadid;
-                $creado = $carrera_queri->created_at;
-                $modificado = $carrera_queri->updated_at;
-                $facultad_in_carrera = DB::SELECT('SELECT * FROM facultad WHERE facultadid = ?',[$facultadid]);
-
-                foreach($facultad_in_carrera as $facultad_in_carrera_queri){
-                    $fid = $facultad_in_carrera_queri->facultadid;
-                    $fname = $facultad_in_carrera_queri->facultad_name;
-                    return view('carrerainfo')->with('carreraid',$carreraid)->with('cname',$cname)->with('fname',$fname)->with('creado',$creado)->with('modificado',$modificado);
-                }
-            }
+        $carrera_show = Listado::find($id);
+        if ($carrera_show) {
+            return view('carrerainfo')->with('carrera', $carrera_show);
         }
+        echo "<script>
+              alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
+              window.location.href='/c';
+              </script>";
     }
 
     /**
@@ -95,7 +80,7 @@ class CarreraController extends Controller
         }
         echo "<script>
               alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
-              window.location.href='/e';
+              window.location.href='/c';
               </script>";
     }
 

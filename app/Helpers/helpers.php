@@ -30,6 +30,10 @@ if (!function_exists('formatLists')) {
                 $lt->num = $num++;
                 $lt->id = $listado->id;
                 $lt->name = $listado->valor;
+                $lt->origen = '';
+                if ($listado->id_origin) {
+                    $lt->origen = $listado->origen->valor ?? '';
+                }
                 $lt->fecha = formatDate($listado->created_at);
                 $list[] = $lt;
             }

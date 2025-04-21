@@ -30,7 +30,7 @@
           @foreach ($carrera as $value)
           <td>{{ $value->id }}</td>
           <td>{{ $value->name }}</td>
-          <td>{{ $value->facultad ?? '' }}</td>
+          <td>{{ $value->origen }}</td>
           <td><a class="optionsu" href="/c/{{ $value->id }}/edit"><img src="img/edit.png"></a></td>
           <td><a class="optionsu" href="/c/{{ $value->id }}"><img src="img/info.png"></a></td> 
           <td><a class="optionsu" href="/c/delete"><p class="btndelete">X</p></a></td>
