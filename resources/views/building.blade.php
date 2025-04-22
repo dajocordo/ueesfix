@@ -14,6 +14,7 @@
     @yield('content')
   </div>
   @include('tool.modal-logout')
+  @include('tool.modal-info')
 
 </body>
 </html>
