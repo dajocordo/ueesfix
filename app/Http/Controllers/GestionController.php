@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Listado;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Throwable;
 
 class GestionController extends Controller
 {
@@ -71,23 +73,15 @@ class GestionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id): JsonResponse
     {
-        $gestion_show = DB::SELECT('SELECT * FROM gestion WHERE gestionid = ?',[$id]);
-        
-        if ($gestion_show == null) {
-            echo "<script>
-                  alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
-                  window.location.href='/g';
-                  </script>";
-        } else{
-            foreach($gestion_show as $gestion_queri){
-                $id = $gestion_queri->gestionid;
-                $name = $gestion_queri->gestion_name;
-                $creado = $gestion_queri->created_at;
-                $modificado = $gestion_queri->updated_at;
-                return view('/gestioninfo')->with('id',$id)->with('name',$name)->with('creado',$creado)->with('modificado',$modificado);
-            }
+        try {
+            $gestion_show = Listado::find($id);
+            $data = formatOneListado($gestion_show);
+            $data->titulo = "Gestion";
+            return responseOK($data, 200, "Datos obtenidos exitosamente");
+        } catch(Throwable $e) {
+            return responseError("Error al obtener los datos", 400);
         }
     }
 

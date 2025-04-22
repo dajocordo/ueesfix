@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Listado;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Throwable;
 
 class FacultadController extends Controller
 {
@@ -51,17 +53,18 @@ class FacultadController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id): JsonResponse
     {
-        $facultad_show = Listado::find($id);
-        if ($facultad_show) { 
-            return view('/facultadinfo')->with('facultad', $facultad_show);
+        try {
+            $estado_show = Listado::find($id);
+            $data = formatOneListado($estado_show);
+            $data->titulo = "Facultad";
+            return responseOK($data, 200, "Datos obtenidos exitosamente");
+        } catch(Throwable $e) {
+            return responseError("Error al obtener los datos", 400);
         }
-        echo "<script>
-              alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
-              window.location.href='/e';
-              </script>";
     }
+
 
     /**
      * Show the form for editing the specified resource.

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Listado;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Throwable;
 
 class EstadoController extends Controller
 {
@@ -51,16 +53,16 @@ class EstadoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id): JsonResponse
     {
-        $estado_show = Listado::find($id);
-        if ($estado_show) {
-            return view('/estadoinfo')->with('estado', $estado_show);
+        try {
+            $estado_show = Listado::find($id);
+            $data = formatOneListado($estado_show);
+            $data->titulo = "Estado";
+            return responseOK($data, 200, "Datos obtenidos exitosamente");
+        } catch(Throwable $e) {
+            return responseError("Error al obtener los datos", 400);
         }
-        echo "<script>
-                alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
-                window.location.href='/e';
-            </script>";
     }
 
     /**

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Listado;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Throwable;
 
 class PrioridadController extends Controller
 {
@@ -21,20 +23,18 @@ class PrioridadController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Store a newly created resource in storage.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function store(Request $request)
     {
         if (isset($_POST['btnEnviarPriori'])) {
-
-            $PrioridaNombre = $_POST['txtNombrePrioridad'];
-            $Creado = date("Y-m-d H:i:s");
-            $Actual = date("Y-m-d H:i:s");
-
-            DB::INSERT("INSERT INTO prioridad (prioridad_name, created_at, updated_at) VALUES(?,?,?)",[$PrioridaNombre, $Creado, $Actual]);
-
+            $prioridad = new Listado();
+            $prioridad->valor = $request->valor;
+            $prioridad->grupo = "prioridad";
+            $prioridad->save();
             echo "<script>
                   alert('El Usuario Tipo, fue creado correctamente');
                   window.location.href='/p';
@@ -48,41 +48,21 @@ class PrioridadController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id): JsonResponse
     {
-        $prioridad_show = DB::SELECT('SELECT * FROM prioridad WHERE prioridadid = ?',[$id]);
-
-        if ($prioridad_show == null) {
-            echo "<script>
-                  alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
-                  window.location.href='/p';
-                  </script>";
-        } else{
-            foreach($prioridad_show as $prioridad_queri){
-                $id = $prioridad_queri->prioridadid;
-                $name = $prioridad_queri->prioridad_name;
-                $creado = $prioridad_queri->created_at;
-                $modificado = $prioridad_queri->updated_at;
-                return view('/prioridadinfo')->with('id',$id)->with('name',$name)->with('creado',$creado)->with('modificado',$modificado);
-            }
+        try {
+            $gestion_show = Listado::find($id);
+            $data = formatOneListado($gestion_show);
+            $data->titulo = "Prioridad";
+            return responseOK($data, 200, "Datos obtenidos exitosamente");
+        } catch(Throwable $e) {
+            return responseError("Error al obtener los datos", 400);
         }
-
     }
 
     /**

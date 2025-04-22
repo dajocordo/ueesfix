@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Listado;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Throwable;
 
 class CarreraController extends Controller
 {
@@ -52,16 +54,16 @@ class CarreraController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id): JsonResponse
     {
-        $carrera_show = Listado::find($id);
-        if ($carrera_show) {
-            return view('carrerainfo')->with('carrera', $carrera_show);
+        try {
+            $carrera_show = Listado::find($id);
+            $data = formatOneListado($carrera_show);
+            $data->titulo = "Carrera";
+            return responseOK($data, 200, "Datos obtenidos exitosamente");
+        } catch(Throwable $e) {
+            return responseError("Error al obtener los datos", 400);
         }
-        echo "<script>
-              alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
-              window.location.href='/c';
-              </script>";
     }
 
     /**
