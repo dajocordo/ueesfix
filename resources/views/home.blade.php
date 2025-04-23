@@ -16,21 +16,21 @@
       <h3 id="greeting">Administrador</h3>
       
       <div class="row"><!--|==========| Div | Row I | ↓ |==========|-->
-        <div class="col"> <p class="ppro"> <a href="{{ url('/c') }}" class="a1">Carrera</a> </p> </div>
+        <div class="col"> <p class="ppro"> <a href="{{ url('/carrera') }}" class="a1">Carrera</a> </p> </div>
         <div class="col"> <p class="ppro"> <a href="{{ url('/ch') }}" class="a2">Chatbots</a> </p> </div>
-        <div class="col"> <p class="ppro"> <a href="{{ url('/e') }}" class="a2">Estado</a> </p> </div>
+        <div class="col"> <p class="ppro"> <a href="{{ url('/estado') }}" class="a2">Estado</a> </p> </div>
       <!--|==========| Div | Row I | ↑ |==========|--></div>
 
       <div class="row"><!--|==========| Div | Row II | ↓ |==========|-->
-        <div class="col"> <p class="ppro"> <a href="{{ url('/f') }}" class="a2">Facultad</a> </p> </div>
-        <div class="col"> <p class="ppro"> <a href="{{ url('/g') }}" class="a1">Gestión</a> </p> </div>
+        <div class="col"> <p class="ppro"> <a href="{{ url('/facultad') }}" class="a2">Facultad</a> </p> </div>
+        <div class="col"> <p class="ppro"> <a href="{{ url('/gestion') }}" class="a1">Gestión</a> </p> </div>
         <div class="col"> <p class="ppro"> <a href="{{ url('/gt') }}" class="a2">Gestión Tipo</a> </p> </div>
       <!--|==========| Div | Row II | ↑ |==========|--></div>
 
       <div class="row"><!--|==========| Div | Row II | ↓ |==========|-->
         <div class="col"> <p class="ppro"> <a href="{{ url('/h') }}" class="a2">Historial</a> </p> </div>
         <div class="col"> <p class="ppro"> <a href="{{ url('/n') }}" class="a2">Notas</a> </p> </div>
-        <div class="col"> <p class="ppro"> <a href="{{ url('/p') }}" class="a1">Prioridad</a> </p> </div>
+        <div class="col"> <p class="ppro"> <a href="{{ url('/prioridad') }}" class="a1">Prioridad</a> </p> </div>
       <!--|==========| Div | Row II | ↑ |==========|--></div>
 
       <div class="row"><!--|==========| Div | Row III | ↓ |==========|-->

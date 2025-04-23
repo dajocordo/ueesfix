@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Listado;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Throwable;
 
 class CarreraController extends Controller
 {
@@ -52,30 +54,15 @@ class CarreraController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id): JsonResponse
     {
-        $carrera_show = DB::SELECT('SELECT * FROM carrera WHERE carreraid = ?',[$id]);
-        
-        if ($carrera_show == null) {
-            echo "<script>
-                  alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
-                  window.location.href='/g';
-                  </script>";
-        } else{
-            foreach($carrera_show as $carrera_queri){
-                $carreraid = $carrera_queri->carreraid;
-                $cname = $carrera_queri->carrera_name;
-                $facultadid = $carrera_queri->ffacultadid;
-                $creado = $carrera_queri->created_at;
-                $modificado = $carrera_queri->updated_at;
-                $facultad_in_carrera = DB::SELECT('SELECT * FROM facultad WHERE facultadid = ?',[$facultadid]);
-
-                foreach($facultad_in_carrera as $facultad_in_carrera_queri){
-                    $fid = $facultad_in_carrera_queri->facultadid;
-                    $fname = $facultad_in_carrera_queri->facultad_name;
-                    return view('carrerainfo')->with('carreraid',$carreraid)->with('cname',$cname)->with('fname',$fname)->with('creado',$creado)->with('modificado',$modificado);
-                }
-            }
+        try {
+            $carrera_show = Listado::find($id);
+            $data = formatOneListado($carrera_show);
+            $data->titulo = "Carrera";
+            return responseOK($data, 200, "Datos obtenidos exitosamente");
+        } catch(Throwable $e) {
+            return responseError("Error al obtener los datos", 400);
         }
     }
 
@@ -87,29 +74,16 @@ class CarreraController extends Controller
      */
     public function edit($id)
     {
-        $carrera_edit = DB::SELECT('SELECT * FROM carrera WHERE carreraid = ?',[$id]);
-
-        if ($carrera_edit == null) {
-            echo "<script>
-                  alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
-                  window.location.href='/c';
-                  </script>";
-        } else{
-            foreach($carrera_edit as $carrera_query){
-                $ii = $carrera_query->carreraid;
-                $name = $carrera_query->carrera_name;
-                $facultadid = $carrera_query->ffacultadid;
-                $facultadSelectt = DB::SELECT('SELECT * FROM facultad WHERE facultadid = ?',[$facultadid]);
-                $facultad_diferent = DB::SELECT('SELECT * FROM facultad WHERE facultadid != ?',[$facultadid]);
-                
-                foreach($facultadSelectt as $facultad_in_carrera_query){
-                    $facuid = $facultad_in_carrera_query->facultadid;
-                    $facuname = $facultad_in_carrera_query->facultad_name;
-
-                    return view('carreraedit')->with('ii',$ii)->with('name',$name)->with('facuid',$facuid)->with('facuname',$facuname)->with('facultad_diferent',$facultad_diferent);
-                }
-            }
+        $carrera = Listado::find($id);
+        if ($carrera) {
+            $getLists = Listado::where('grupo', 'facultad')->get();
+            $facultad = formatLists($getLists);
+            return view('carreraedit', compact('carrera', 'facultad'));
         }
+        echo "<script>
+              alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
+              window.location.href='/c';
+              </script>";
     }
 
     /**

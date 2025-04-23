@@ -22,6 +22,7 @@
         <div class="col-6">
           <label class="lblformuser">Facultad</label>
           <select name="facultad" class="form-control form-control-lg" required>
+            <option value=""></option>
             @foreach ($facultad as $value)
               <option value="{{ $value->id }}">{{ $value->name }}</option>
             @endforeach

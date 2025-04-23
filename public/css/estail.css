@@ -39,6 +39,10 @@ body{
   font-family: 'Open Sans', sans-serif;
 }
 
+.btn-close-white {
+  filter: invert(1);
+}
+
 #bsaludo{
   margin-top: 1.5em;
   margin-bottom: 1.5em;

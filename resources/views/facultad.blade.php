@@ -30,12 +30,17 @@
           <td>{{ $value->name }}</td>
           <td>{{ $value->fecha }}</td>
           <td><a class="optionsu" href="/f/{{ $value->id }}/edit"><img src="img/edit.png"></a></td>
-          <td><a class="optionsu" href="/f/{{ $value->id }}"><img src="img/info.png"></a></td> 
+          <td>
+            <button type="button" class="btn btn-data-info" data-cod="{{ $value->id }}" data-tipo="facultad"><img src="img/info.png"></button>
+          </td>
           <td><a class="optionsu" href="/f/delete"><p class="btndelete">X</p></a></td>
         </tr>
         @endforeach
       </tbody>
     </table>
   </div>
+
+  @vite(['resources/js/carrera/carrera-index.js'])
+
 
 @endsection

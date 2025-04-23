@@ -62,19 +62,6 @@ Route::post('/logins', [LoginnController::class, 'stepsop']);
 Route::post('/logina', [LoginnController::class, 'stepadm']);
 
 
-// 	CARRERA
-Route::get('/carreraedit', function() {return view('carreraedit');});
-// Route::get('/carreranueva', function() {return view('carreranueva');});
-Route::resource('/c', CarreraController::class);
-Route::get('/c', [CarreraController::class, 'index']);
-Route::get('/c/{id}', [CarreraController::class, 'show']);
-Route::get('/c/{id}/edit', [CarreraController::class, 'edit']);
-Route::post('/c/create', [CarreraController::class, 'store']);
-Route::post('/c/update', [CarreraController::class, 'update']);
-Route::get('/carreranueva', [CarreraController::class, 'newcarreer']);
-// // Route::get('/carreras', [carreraController::class, 'index']);
-// // Route::get('/carreras', function() {return view('carreras');});
-// Route::get('/carreras', function () {return redirect('/c');});
 
 
 //  CHATBOT
@@ -89,40 +76,6 @@ Route::post('/ch/create', [ChatbotController::class, 'create']);
 Route::post('/ch/update', [ChatbotController::class, 'update']);
 
 
-//  ESTADO
-Route::get('/estadonuevo', function() {return view('estadonuevo');});
-Route::get('/estadoedit', function() {return view('estadoedit');});
-Route::resource('/e', EstadoController::class);
-Route::get('/e', [EstadoController::class, 'index']);
-Route::get('e/{id}', [EstadoController::class, 'show']);
-Route::get('e/{id}/edit', [EstadoController::class, 'edit']);
-Route::post('/e/create', [EstadoController::class, 'store']);
-Route::post('/e/update', [EstadoController::class, 'update']);
-
-
-//  FACULTAD
-Route::get('/facultad', [FacultadController::class, 'index']);
-Route::get('/facultadnuevo', function() {return view('facultadnuevo');});
-Route::get('/facultadedit', function() {return view('facultadedit');});
-Route::resource('/f', FacultadController::class);
-Route::get('/f', [FacultadController::class, 'index']);
-Route::get('f/{id}', [FacultadController::class, 'show']);
-Route::get('f/{id}/edit', [FacultadController::class, 'edit']);
-Route::post('/f/create', [FacultadController::class, 'store']);
-Route::post('/f/update', [FacultadController::class, 'update']);
-
-
-//  GESTION
-Route::get('/gestionnuevo', function() {return view('gestionnuevo');});
-Route::get('/gestion', [GestionController::class, 'index']);
-Route::get('/gestionedit', function() {return view('gestionedit');});
-Route::resource('/g', GestionController::class);
-Route::get('/g', [GestionController::class, 'index']);
-Route::get('/g/{id}', [GestionController::class, 'show']);
-Route::get('g/{id}/edit', [GestionController::class, 'edit']);
-Route::post('/g/create', [GestionController::class, 'create']);
-Route::post('/g/update', [GestionController::class, 'update']);
-Route::get('/gtn', [GestionController::class, 'newgestion']);
 
 
 //  GESTION TIPO
@@ -161,15 +114,7 @@ Route::post('/n/create', [NotasController::class, 'create']);
 Route::post('/n/update', [NotasController::class, 'update']);
 
 
-//  PRIORIDAD
-Route::get('/prioridadnueva', function() {return view('prioridadnueva');});
-Route::get('/prioridadedita', function() {return view('prioridadedita');});
-Route::resource('/p', PrioridadController::class);
-Route::get('/p', [PrioridadController::class, 'index']);
-Route::get('p/{id}', [PrioridadController::class, 'show']);
-Route::get('p/{id}/edit', [PrioridadController::class, 'edit']);
-Route::post('/p/create', [PrioridadController::class, 'create']);
-Route::post('/p/update', [PrioridadController::class, 'update']);
+
 
 
 //  ROLES
