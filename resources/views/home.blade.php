@@ -34,7 +34,7 @@
       <!--|==========| Div | Row II | ↑ |==========|--></div>
 
       <div class="row"><!--|==========| Div | Row III | ↓ |==========|-->
-        <div class="col"> <p class="ppro"> <a href="{{ url('/r') }}" class="a2">Roles</a> </p> </div>
+        <div class="col"> <p class="ppro"> <a href="{{ url('/roles') }}" class="a2">Roles</a> </p> </div>
         <div class="col"> <p class="ppro"> <a href="{{ url('/s') }}" class="a1">Soporte</a> </p> </div>
         <div class="col"> <p class="ppro"> <a href="{{ url('/st') }}" class="a2">Soporte Tipo</a> </p> </div>
         
