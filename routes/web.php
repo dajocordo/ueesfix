@@ -115,20 +115,6 @@ Route::post('/n/update', [NotasController::class, 'update']);
 
 
 
-
-
-//  ROLES
-Route::get('/roles', [RolController::class, 'index']);
-Route::get('/rolnuevo', function() {return view('rolnuevo');});
-Route::get('/roledit', function() {return view('roledit');});
-Route::resource('/r', RolController::class);
-Route::get('/r', [RolController::class, 'index']);
-Route::get('r/{id}', [RolController::class, 'show']);
-Route::get('r/{id}/edit', [RolController::class, 'edit']);
-Route::post('/r/create', [RolController::class, 'create']);
-Route::post('/r/update', [RolController::class, 'update']);
-
-
 //  SOPORTE
 Route::get('/soporteedit', function() {return view('soporteedit');});
 // Route::get('/soporte', [SoporteController::class, 'index']);
