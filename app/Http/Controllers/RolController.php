@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Listado;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Throwable;
+
 
 class RolController extends Controller
 {
@@ -64,22 +67,15 @@ class RolController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id): JsonResponse
     {
-        $rol_show = DB::SELECT('SELECT * FROM roles WHERE roles_id = ?',[$id]);
-        if ($rol_show == null) {
-            echo "<script>
-                  alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
-                  window.location.href='/r';
-                  </script>";
-        } else{
-            foreach($rol_show as $rol_queri){
-                $id = $rol_queri->rolesid;
-                $name = $rol_queri->roles_name;
-                $creado = $rol_queri->created_at;
-                $modificado = $rol_queri->updated_at;
-                return view('/rolinfo')->with('id',$id)->with('name',$name)->with('creado',$creado)->with('modificado',$modificado);
-            }
+        try {
+            $rol_show = Listado::find($id);
+            $data = formatOneListado($rol_show);
+            $data->titulo = "Roles";
+            return responseOK($data, 200, "Datos obtenidos exitosamente");
+        } catch(Throwable $e) {
+            return responseError("Error al obtener los datos", 400);
         }
     }
 

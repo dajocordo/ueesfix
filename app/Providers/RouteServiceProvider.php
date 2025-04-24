@@ -38,6 +38,7 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/estado.php'))
                 ->group(base_path('routes/facultad.php'))
                 ->group(base_path('routes/gestion.php'))
+                ->group(base_path('routes/roles.php'))
                 ->group(base_path('routes/prioridad.php'));
                 
 
