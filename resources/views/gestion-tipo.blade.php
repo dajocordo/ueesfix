@@ -14,7 +14,7 @@
     <!--|==========| GestionTipo | ↓ | titulo |==========|-->
     <div class="middle-pro"> <p>Gestion Tipo</p> </div>
     <!--|==========| Boton | ir a derecha |==========|-->
-    <div class="btn-right-pro"> <a href="/gestion-tipo/new" title="Nuevo" class="aarrooww">+</a> </div>
+    <div class="btn-right-pro"> <a href=" {{ url('/gestion-tipo/new') }}" title="Nuevo" class="aarrooww">+</a> </div>
     
     <table class="table table-bordered">
       <thead>
