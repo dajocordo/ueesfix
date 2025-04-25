@@ -19,7 +19,7 @@ class GestionTipoController extends Controller
     {
         $getGestionTipo = Listado::where('grupo', 'tipo_gestion')->get();
         $gestionTipo = formatLists($getGestionTipo);
-        return view('gestiontipo')->with('gestion_tipo', $gestionTipo);
+        return view('gestion-tipo')->with('gestion_tipo', $gestionTipo);
     }
 
     /**
@@ -38,7 +38,7 @@ class GestionTipoController extends Controller
             echo '<script language="javascript">';
             echo 'alert("Datos ingresados correctamente")';
             echo '</script>';
-            return redirect("/gestion-tipo");
+            return redirect("gestion-tipo");
         } else {
             echo "<script>
                   alert('Error. Vuelva a intentarlo de nuevo');
@@ -75,7 +75,7 @@ class GestionTipoController extends Controller
     {
         $gestiontipo_edit = Listado::find($id);
         if ($gestiontipo_edit) {
-            return view('/gestiontipoedit')->with('gestion_tipo', $gestiontipo_edit);
+            return view('gestion-tipo-edit')->with('gestion_tipo', $gestiontipo_edit);
         }
         echo "<script>
                 alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
