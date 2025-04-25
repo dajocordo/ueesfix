@@ -24,7 +24,7 @@
       <div class="row"><!--|==========| Div | Row II | ↓ |==========|-->
         <div class="col"> <p class="ppro"> <a href="{{ url('/facultad') }}" class="a2">Facultad</a> </p> </div>
         <div class="col"> <p class="ppro"> <a href="{{ url('/gestion') }}" class="a1">Gestión</a> </p> </div>
-        <div class="col"> <p class="ppro"> <a href="{{ url('/gt') }}" class="a2">Gestión Tipo</a> </p> </div>
+        <div class="col"> <p class="ppro"> <a href="{{ url('/gestion-tipo') }}" class="a2">Gestión Tipo</a> </p> </div>
       <!--|==========| Div | Row II | ↑ |==========|--></div>
 
       <div class="row"><!--|==========| Div | Row II | ↓ |==========|-->
