@@ -6,7 +6,6 @@
 
   @include('tool.topnav')
 
-  <!--|==========| Container | ↓ | inicio |==========|-->
   <div class="container">
     <!--|==========| Boton | ir a izquierda |==========|-->
     <div class="btn-left-pro"> 
