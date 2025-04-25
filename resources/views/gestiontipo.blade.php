@@ -14,7 +14,7 @@
     <!--|==========| GestionTipo | ↓ | titulo |==========|-->
     <div class="middle-pro"> <p>Gestion Tipo</p> </div>
     <!--|==========| Boton | ir a derecha |==========|-->
-    <div class="btn-right-pro"> <a href="/gestiontiponuevo" title="Nuevo" class="aarrooww">+</a> </div>
+    <div class="btn-right-pro"> <a href="/gestion-tipo/new" title="Nuevo" class="aarrooww">+</a> </div>
     
     <table class="table table-bordered">
       <thead>
@@ -31,7 +31,7 @@
             <td>{{ $value->name }}</td> 
             <td>{{ $value->creado }}</td>
             <td>{{ $value->actualizado }}</td>
-            <td><a class="optionsu" href="/gt/{{ $value->id }}/edit" title="Editar"><img src="img/edit.png"></a></td>
+            <td><a class="optionsu" href="/gestion-tipo/{{ $value->id }}/edit" title="Editar"><img src="img/edit.png"></a></td>
             <td>
               <button type="button" class="btn btn-data-info" data-cod="{{ $value->id }}" data-tipo="gestion-tipo"><img src="img/info.png"></button>
             </td>

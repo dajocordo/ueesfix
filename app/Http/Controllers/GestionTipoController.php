@@ -23,34 +23,6 @@ class GestionTipoController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        if (isset($_POST['btnEnviarGestionTipo'])) {
-
-            $NombreGestionTipo = $_POST['txtNombreGestionTipo'];
-            $Creado = date("Y-m-d H:i:s");
-            $Actual = date("Y-m-d H:i:s");
-
-            DB::INSERT("INSERT INTO gestiontipo (gestiontipo_name, created_at, updated_at) VALUES(?,?,?)",[$NombreGestionTipo,$Creado,$Actual]);
-
-            echo '<script language="javascript">';
-            echo 'alert("Datos ingresados correctamente")';
-            echo '</script>';
-            return redirect("/gt");
-        
-        } else {
-            echo '<script language="javascript">';
-            echo 'alert("Hubo un error, favor intentarlo de nuevo")';
-            echo '</script>';
-            return redirect("/gestiontiponuevo");
-        }
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -58,7 +30,21 @@ class GestionTipoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (isset($_POST['btnEnviarGestionTipo'])) {
+            $estado = new Listado();
+            $estado->valor = $request->input('valor');
+            $estado->grupo = "tipo_gestion";
+            $estado->save();
+            echo '<script language="javascript">';
+            echo 'alert("Datos ingresados correctamente")';
+            echo '</script>';
+            return redirect("/gestion-tipo");
+        } else {
+            echo "<script>
+                  alert('Error. Vuelva a intentarlo de nuevo');
+                  window.location.href='/gestion-tipo/new';
+                  </script>";
+        }
     }
 
     /**
@@ -87,20 +73,14 @@ class GestionTipoController extends Controller
      */
     public function edit($id)
     {
-        $gestiontipo_edit = DB::SELECT('SELECT * FROM gestiontipo WHERE gestiontipoid = ?',[$id]);
-
-        if ($gestiontipo_edit == null) {
-            echo "<script>
-                  alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
-                  window.location.href='/gt';
-                  </script>";
-        } else{
-            foreach($gestiontipo_edit as $gestiontipo_query){
-                $ii = $gestiontipo_query->gestiontipoid;
-                $name = $gestiontipo_query->gestiontipo_name;    
-                return view('/gestiontipoedit')->with('ii',$ii)->with('name',$name);
-            }
+        $gestiontipo_edit = Listado::find($id);
+        if ($gestiontipo_edit) {
+            return view('/gestiontipoedit')->with('gestion_tipo', $gestiontipo_edit);
         }
+        echo "<script>
+                alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
+                window.location.href='/gestion-tipo';
+            </script>";
     }
 
     /**
@@ -110,26 +90,24 @@ class GestionTipoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $id)
+    public function update(Request $request)
     {
         if (isset($_POST['btnActualizarR'])) {
-            $ii = $_REQUEST['ii'];
-            $nuevoNombre = $_POST['txtEditNombre'];
-            $nuevoCambio = date("Y-m-d H:i:s");
-
-            $affected = DB::table('gestiontipo')
-              ->where('gestiontipoid', $ii)
-              ->update(['gestiontipo_name' => $nuevoNombre,'updated_at' => $nuevoCambio]);
-
+            $id = $request->input('id');
+            $valor = $request->input('valor');
+            $gestionTipo = Listado::find($id);
+            if ($gestionTipo) {
+                $gestionTipo->valor = $valor;
+                $gestionTipo->save();
+            }
             echo "<script>
                   alert('EXITO: Los datos ya fueron actualizados');
-                  window.location.href='/gt';
+                  window.location.href='/gestion-tipo';
                   </script>";
-  
         } else {
             echo "<script>
                   alert('ERROR: favor intentarlo de nuevo');
-                  window.location.href='/gt';
+                  window.location.href='/gestion-tipo';
                   </script>";
         }
     }
