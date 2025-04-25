@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Listado;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Throwable;
 
 class GestionTipoController extends Controller
 {
@@ -14,8 +17,9 @@ class GestionTipoController extends Controller
      */
     public function index()
     {
-        $gestiontipo1 = DB::table('gestiontipo')->get();
-        return view('gestiontipo')->with('gestiontipo1',$gestiontipo1);
+        $getGestionTipo = Listado::where('grupo', 'tipo_gestion')->get();
+        $gestionTipo = formatLists($getGestionTipo);
+        return view('gestiontipo')->with('gestion_tipo', $gestionTipo);
     }
 
     /**
@@ -63,22 +67,15 @@ class GestionTipoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id): JsonResponse
     {
-        $gestiontipo_show = DB::SELECT('SELECT * FROM gestiontipo WHERE gestiontipoid = ?',[$id]);
-        if ($gestiontipo_show == null) {
-            echo "<script>
-                  alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
-                  window.location.href='/gt';
-                  </script>";
-        } else{
-            foreach($gestiontipo_show as $gestiontipo_queri){
-                $id = $gestiontipo_queri->gestiontipoid;
-                $name = $gestiontipo_queri->gestiontipo_name;
-                $creado = $gestiontipo_queri->created_at;
-                $modificado = $gestiontipo_queri->updated_at;
-                return view('/gestiontipoinfo')->with('id',$id)->with('name',$name)->with('creado',$creado)->with('modificado',$modificado);
-            }
+        try {
+            $gestiontipo_show = Listado::find($id);
+            $data = formatOneListado($gestiontipo_show);
+            $data->titulo = "Gestion Tipo";
+            return responseOK($data, 200, "Datos obtenidos exitosamente");
+        } catch(Throwable $e) {
+            return responseError("Error al obtener los datos", 400);
         }
     }
 
