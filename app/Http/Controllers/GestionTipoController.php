@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Listado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,8 +15,9 @@ class GestionTipoController extends Controller
      */
     public function index()
     {
-        $gestiontipo1 = DB::table('gestiontipo')->get();
-        return view('gestiontipo')->with('gestiontipo1',$gestiontipo1);
+        $getGestionTipo = Listado::where('grupo', 'tipo_gestion')->get();
+        $gestionTipo = formatLists($getGestionTipo);
+        return view('gestiontipo')->with('gestion_tipo', $gestionTipo);
     }
 
     /**
