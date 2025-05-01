@@ -23,37 +23,8 @@ class GestionController extends Controller
     }
 
     public function newgestion(){
-        $gestiontipooid = DB::table('gestiontipo')->get();
-        return view('gestionnueva')->with('gestiontipooid',$gestiontipooid);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        if (isset($_POST['btnEnviarGestion'])) {
-
-            $NombreGestion = $_POST['txtNombreGestion'];
-            $Tipo = $_POST['selGestionTipo'];
-            $Creado = date("Y-m-d H:i:s");
-            $Actual = date("Y-m-d H:i:s");
-
-            DB::INSERT("INSERT INTO gestion (gestion_name, fgestiontipoid, created_at, updated_at) VALUES(?,?,?,?)",[$NombreGestion,$Tipo,$Creado,$Actual]);
-
-            echo '<script language="javascript">';
-            echo 'alert("Datos ingresados correctamente")';
-            echo '</script>';
-            return redirect("/g");
-        
-        } else {
-            echo '<script language="javascript">';
-            echo 'alert("Hubo un error, favor intentarlo de nuevo")';
-            echo '</script>';
-            return redirect("/gestionnuevo");
-        }
+        $getGestion = Listado::where('grupo', 'gestion_tipo')->get();
+        return view('gestionnueva')->with('gestiontipooid', $getGestion);
     }
 
     /**
@@ -64,7 +35,21 @@ class GestionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (isset($_POST['btnEnviarGestion'])) {
+            $gestion = new Listado();
+            $gestion->valor = $request->input('valor');
+            $gestion->grupo = 'gestion';
+            $gestion->save();
+            echo '<script language="javascript">';
+            echo 'alert("Datos ingresados correctamente")';
+            echo '</script>';
+            return redirect("gestion");
+        } else {
+            echo "<script>
+                  alert('Error. Vuelva a intentarlo de nuevo');
+                  window.location.href='/gestionnuevo';
+                  </script>";
+        }
     }
 
     /**
