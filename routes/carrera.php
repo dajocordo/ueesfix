@@ -13,7 +13,7 @@ Route::name('carrera')->prefix('carrera')->group(function() {
   Route::get('/carreraedit', function() {return view('carreraedit');});
   Route::get('/c/{id}/edit', [CarreraController::class, 'edit']);
   Route::post('/c/create', [CarreraController::class, 'store']);
-  Route::post('/c/update', [CarreraController::class, 'update']);
+  Route::post('/update', [CarreraController::class, 'update']);
   Route::get('/carreranueva', [CarreraController::class, 'newcarreer']);
   // // Route::get('/carreras', [carreraController::class, 'index']);
   // // Route::get('/carreras', function() {return view('carreras');});
