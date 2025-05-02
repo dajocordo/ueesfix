@@ -16,11 +16,9 @@
     <div class="middle-pro">
       <p><img src="/img/edit.png"> Carrera [edit]</p>
     </div>
-    
-    <form action="{{url('/c/update/')}}" method="post">
+    <form action="{{ url('/carrera/update') }}" method="post">
       @csrf
       <input type="hidden" class="form-control form-control-lg" name="id" value="{{ $carrera->id }}" autocomplete="off" required>
-
       <div class="row">
         <div class="col-6">
           <label class="lblformuser">Nombre</label>
@@ -36,7 +34,6 @@
           </select>
         </div>
       </div>
-
       <div class="d-grid gap-2">
         <input type="submit" class="btn btn-primary btn-lg" name="btnActualizar" value="Actualizar">
       </div>

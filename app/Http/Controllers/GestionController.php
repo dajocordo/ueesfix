@@ -78,20 +78,14 @@ class GestionController extends Controller
      */
     public function edit($id)
     {
-        $gestion_edit = DB::SELECT('SELECT * FROM gestion WHERE gestionid = ?',[$id]);
-
-        if ($gestion_edit == null) {
-            echo "<script>
-                  alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
-                  window.location.href='/g';
-                  </script>";
-        } else{
-            foreach($gestion_edit as $gestion_query){
-                $ii = $gestion_query->gestionid;
-                $name = $gestion_query->gestion_name;    
-                return view('/gestionedit')->with('ii',$ii)->with('name',$name);
-            }
+        $gestion_edit = Listado::find($id);
+        if ($gestion_edit) {
+            return view('gestion-edit')->with('gestion', $gestion_edit);
         }
+        echo "<script>
+                alert('El registro ingresado no fue encontrado, favor seleccionar un registro que exista');
+                window.location.href='/gestion';
+            </script>";
     }
 
     /**
@@ -101,26 +95,24 @@ class GestionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $ii)
+    public function update(Request $request)
     {
         if (isset($_POST['btnActualizarR'])) {
-            $ii = $_REQUEST['ii'];
-            $nuevoNombre = $_POST['txtEditNombre'];
-            $nuevoCambio = date("Y-m-d H:i:s");
-
-            $affected = DB::table('gestion')
-              ->where('gestionid', $ii)
-              ->update(['gestion_name' => $nuevoNombre,'updated_at' => $nuevoCambio]);
-
+            $id = $request->input('id');
+            $valor = $request->input('valor');
+            $gestion = Listado::find($id);
+            if ($gestion) {
+                $gestion->valor = $valor;
+                $gestion->save();
+            }
             echo "<script>
                   alert('EXITO: Los datos ya fueron actualizados');
-                  window.location.href='/g';
+                  window.location.href='/gestion';
                   </script>";
-  
         } else {
             echo "<script>
                   alert('ERROR: favor intentarlo de nuevo');
-                  window.location.href='/g';
+                  window.location.href='/gestion';
                   </script>";
         }
     }

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Listado;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Throwable;
 
 class GestionTipoController extends Controller
@@ -122,4 +121,5 @@ class GestionTipoController extends Controller
     {
         //
     }
+
 }
