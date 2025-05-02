@@ -93,27 +93,26 @@ class CarreraController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $ii)
+    public function update(Request $request)
     {
         if (isset($_POST['btnActualizar'])) {
-            $ii = $_REQUEST['ii'];
-            $nuevoNombre = $_POST['txtEditNombre'];
-            $nuevaFacultad = $_POST['selFacultadCa'];
-            $Actual = date("Y-m-d H:i:s");
-
-            $affected = DB::table('carrera')
-              ->where('carreraid', $ii)
-              ->update(['carrera_name' => $nuevoNombre,'ffacultadid' => $nuevaFacultad,'updated_at' => $Actual]);
-
+            $id = $request->input('id');
+            $valor = $request->input('valor');
+            $id_origin = $request->input('facultad');
+            $carrera = Listado::find($id);
+            if ($carrera) {
+                $carrera->id_origin = $id_origin;
+                $carrera->valor = $valor;
+                $carrera->save();
+            }
             echo "<script>
                   alert('EXITO: Los datos ya fueron actualizados');
-                  window.location.href='/c';
+                  window.location.href='/carrera';
                   </script>";
-            
         } else {
             echo "<script>
                   alert('ERROR: favor intentarlo de nuevo');
-                  window.location.href='/c';
+                  window.location.href='/carrera';
                   </script>";
         }
     }

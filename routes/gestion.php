@@ -11,11 +11,10 @@ Route::name('gestion')->prefix('gestion')->group(function() {
     
     //  GESTION
     Route::get('/gestionnuevo', function() {return view('gestionnuevo');});
-    Route::get('/gestionedit', function() {return view('gestionedit');});
     Route::resource('/g', GestionController::class);
-    Route::get('g/{id}/edit', [GestionController::class, 'edit']);
-    Route::post('/g/create', [GestionController::class, 'create']);
-    Route::post('/g/update', [GestionController::class, 'update']);
-    Route::get('/gtn', [GestionController::class, 'newgestion']);
+    Route::get('/{id}/edit', [GestionController::class, 'edit']);
+    Route::post('/create', [GestionController::class, 'store']);
+    Route::post('/update', [GestionController::class, 'update']);
+    Route::get('gtn', [GestionController::class, 'newgestion']);
 
 });

@@ -30,7 +30,7 @@
             <td>{{ $value->id }}</td>
             <td>{{ $value->name }}</td> 
             <td>{{ $value->fecha }}</td>
-            <td><a class="optionsu" href="/{{ $value->id }}/edit" title="Editar"><img src="img/edit.png"></a></td>
+            <td><a class="optionsu" href="/gestion/{{ $value->id }}/edit" title="Editar"><img src="img/edit.png"></a></td>
             <td>
               <button type="button" class="btn btn-data-info" data-cod="{{ $value->id }}" data-tipo="gestion"><img src="img/info.png"></button>
             </td>
