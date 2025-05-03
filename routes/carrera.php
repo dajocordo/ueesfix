@@ -19,4 +19,5 @@ Route::name('carrera')->prefix('carrera')->group(function() {
   // // Route::get('/carreras', function() {return view('carreras');});
   // Route::get('/carreras', function () {return redirect('/c');});
   
+  
 });
