@@ -1,18 +1,4 @@
-@php
-  session_start();
-  if(isset($_SESSION['admin'])){
-@endphp
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-  <title>Gestion nueva</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
- 
-  <link rel="stylesheet" type="text/css" href="/css/estail.css"> 
-</head>
-<body>
+
  @include('tool.topnav')
 
   <!--|====| Container | ↓ | → | inicio |====|-->
@@ -48,7 +34,3 @@
 
 </body>
 </html>
-@php
-  session_start();
-  if(isset($_SESSION['admin'])){
-@endphp

@@ -22,9 +22,11 @@ class GestionController extends Controller
         return view('gestion')->with('gestion', $gestion);
     }
 
-    public function newgestion(){
+    public function newgestion() 
+    {
         $getGestion = Listado::where('grupo', 'gestion_tipo')->get();
-        return view('gestionnueva')->with('gestiontipooid', $getGestion);
+        // return response()->json(['message' => 'Datos cargados correctamente']);
+        return view('gestionnuevo')->with('gestiontipooid', $getGestion);
     }
 
     /**

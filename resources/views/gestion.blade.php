@@ -15,7 +15,7 @@
     <div class="middle-pro"> <p>Gestion</p> </div>
     <!--|==========| Boton | ir a derecha |==========|-->
     <div class="btn-right-pro"> 
-      <a href="/gtn" title="Nuevo" class="aarrooww">+</a>
+      <a href="{{ url('/gtn') }}" title="Nuevo" class="aarrooww">+</a>
     </div>
     <table class="table table-bordered">
       <thead>
