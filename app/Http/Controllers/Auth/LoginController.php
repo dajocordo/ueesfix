@@ -3,15 +3,16 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Application\Usuario\UseCases\LoginUseCase;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 
 class LoginController extends Controller
 {
+    public function __construct(
+        private LoginUseCase $loginUseCase
+    ) {
+    }
 
     public function login(Request $request)
     {
@@ -20,17 +21,23 @@ class LoginController extends Controller
             'password' => 'required|string',
         ]);
 
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            $request->session()->regenerate(); // Evita ataques de sesión
-            // dd(session()->all()); // Muestra todos los datos de la sesión
+        try {
+            // Ejecutar el UseCase de login
+            $usuarioData = $this->loginUseCase->ejecutar(
+                $request->email,
+                $request->password
+            );
+
+            // Hacer login en Laravel
+            Auth::loginUsingId($usuarioData['id']);
+            $request->session()->regenerate();
+
             return redirect()->intended('/home');
+        } catch (\Exception $e) {
+            return back()->withErrors([
+                'email' => $e->getMessage(),
+            ])->onlyInput('email');
         }
-
-        return back()->withErrors([
-            'email' => 'Las credenciales no coinciden.',
-        ])->onlyInput('email');
-
-        // dd('no-paso');
     }
 
 
@@ -41,5 +48,4 @@ class LoginController extends Controller
         $request->session()->regenerateToken();
         return redirect('/');
     }
-
 }

@@ -43,6 +43,7 @@ class LoginnController extends Controller
 
     public function firstsoporte()
     {
+        // dd("llego");
         if (isset($_POST['btnLoginStepISoporte'])) {
         $esteCiff = $_POST['txtCIF'];
 
