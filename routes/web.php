@@ -36,7 +36,9 @@ Route::get('/login', [LoginController::class, 'login']);
 
 Route::get('/', function () {return view('index');});
 Route::get('/tnuevo', function() {return view('tnuevo');});
-Route::get('/home', function() {return view('home');});
+Route::get('/home', function() {return view('home');})
+    ->middleware('auth')
+    ->name('home');
 Route::get('/index', function() {return view('index');});
 Route::get('/inicio', function() {return view('inicio');});
 Route::get('/perfil', function() {return view('perfil');});
