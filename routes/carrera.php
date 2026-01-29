@@ -9,7 +9,7 @@ Route::name('carrera')->prefix('carrera')->group(function() {
   Route::get('/', [CarreraController::class, 'index']);
   Route::get('/{id}', [CarreraController::class, 'show']);
   
-  // Route::get('/carreranueva', function() {return view('carreranueva');});
+  Route::get('/carreranueva', function() {return view('carreranueva');});
   Route::get('/carreraedit', function() {return view('carreraedit');});
   Route::get('/{id}/edit', [CarreraController::class, 'edit']);
   Route::post('/c/create', [CarreraController::class, 'store']);
